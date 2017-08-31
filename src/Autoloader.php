@@ -8,7 +8,6 @@ namespace PicVid;
  * Class Autoloader
  *
  * @author Sebastian Brosch <contact@sebastianbrosch.de>
- * @copyright 2017 PicVid
  * @license GNU General Public License, version 3
  * @package PicVid
  */
@@ -17,7 +16,6 @@ class Autoloader
     /**
      * An associative array where the key is a namespace prefix and the value
      * is an array of base directories for classes in that namespace.
-     *
      * @var array
      */
     private $prefixes = [];
@@ -32,7 +30,6 @@ class Autoloader
 
     /**
      * Adds a base directory for a namespace prefix.
-     *
      * @param string $prefix The namespace prefix.
      * @param string $directory A base directory for class files in the namespace.
      */
@@ -40,7 +37,7 @@ class Autoloader
     {
         //normalize the prefix and directory.
         $prefix = trim($prefix, '\\').'\\';
-        $directory = rtrim($directory, DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR;
+        $directory = rtrim($directory, '\\/').'/';
 
         //set the directory to the namespace prefix.
         $this->prefixes[$prefix][] = $directory;
@@ -48,7 +45,6 @@ class Autoloader
 
     /**
      * Loads the class file for a given class name.
-     *
      * @param string $class The fully-qualified class name.
      * @return bool|string The mapped file name on success, or boolean false on failure.
      */
@@ -84,7 +80,6 @@ class Autoloader
 
     /**
      * Load the mapped file for a namespace prefix and relative class.
-     *
      * @param string $prefix The namespace prefix.
      * @param string $class The relative class name.
      * @return bool|string Boolean false if no mapped file can be loaded, or the
@@ -103,16 +98,31 @@ class Autoloader
             //replace the namespace prefix with the base directory,
             //replace namespace separators with directory separators
             //in the relative class name, append with .php
-            $file = $directory.str_replace('\\', DIRECTORY_SEPARATOR, $class).'.php';
+            $file = $directory.str_replace('\\', '/', $class).'.php';
 
             //if the mapped file exists, require it.
-            if (file_exists($file)) {
-                require_once($file);
+            if ($this->requireFile($file)) {
                 return $file;
             }
         }
 
         //never found it.
         return false;
+    }
+
+    /**
+     * If a file exists, require it from the file system.
+     * @param string $file The file to require.
+     * @return bool True if the file exists, false if not.
+     */
+    protected function requireFile(string $file)
+    {
+        //check if the file exists.
+        if (file_exists($file)) {
+            require_once($file);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
