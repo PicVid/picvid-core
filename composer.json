@@ -1,0 +1,31 @@
+{
+  "name": "PicVid/picvid-core",
+  "description": "The core of the PicVid application to share image files.",
+  "minimum-stability": "stable",
+  "type": "project",
+  "keywords": [
+    "image-sharing"
+  ],
+  "license": "GPL-3.0",
+
+  "authors": [
+    {
+      "email": "contact@sebastianbrosch.de",
+      "homepage": "https://sebastianbrosch.de",
+      "name": "Sebastian Brosch",
+      "role": "Developer"
+    }
+  ],
+
+  "support": {
+    "issues": "https://github.com/PicVid/picvid-core/issues",
+    "source": "https://github.com/PicVid/picvid-core/archive/master.zip"
+  },
+
+  "require-dev": {
+    "phpunit/phpunit": "6.3.*"
+  },
+  "require": {
+    "phpunit/phpunit": "6.3.*"
+  }
+}
