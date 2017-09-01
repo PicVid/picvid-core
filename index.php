@@ -13,5 +13,8 @@ $autoloader->addNamespace('PicVid', 'src');
 $cito = \PicVid\Core\CitoEngine::getInstance();
 $cito->init();
 
+//initialize the application.
+$clanify = new \PicVid\Core\PicVid();
+
 //render the output.
 $cito->render();
