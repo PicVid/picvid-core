@@ -4,6 +4,8 @@
  */
 namespace PicVid\Controller;
 
+use PicVid\Core\View;
+
 /**
  * Class IndexController
  *
@@ -18,6 +20,7 @@ class IndexController
      */
     public function index()
     {
-        echo 'Hello World';
+        $view = new View('Index');
+        $view->load();
     }
 }
