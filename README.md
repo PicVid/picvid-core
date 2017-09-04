@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/j8tiE1o.png" height="80"/>
+<img src="https://i.imgur.com/0Ew9b1K.png" height="100"/>
 
 PicVid ist eine Web-Anwendung zur Verwaltung von Bildern und Videos auf dem eigenen Server. Die ursprüngliche Version 
 vom September 2012 wurde in einem Schulprojekt zur Ausbildung (Fachinformatiker für Anwendungsentwicklung) entwickelt. 
