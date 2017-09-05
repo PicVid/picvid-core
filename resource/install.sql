@@ -1,0 +1,11 @@
+-- entities
+CREATE TABLE `user` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(255) NOT NULL DEFAULT '',
+  `firstname` VARCHAR(255) NOT NULL DEFAULT '',
+  `lastname` VARCHAR(255) NOT NULL DEFAULT '',
+  `password` CHAR(128) NOT NULL DEFAULT '',
+  `salt` CHAR(128) NOT NULL DEFAULT '',
+  `username` VARCHAR(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE = INNODB;
