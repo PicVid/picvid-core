@@ -71,7 +71,21 @@ class View
      */
     public function load()
     {
+        //get the paths to the header and footer files.
+        $headerFile = RESPATH.'template'.DIRECTORY_SEPARATOR.'header.php';
+        $footerFile = RESPATH.'template'.DIRECTORY_SEPARATOR.'footer.php';
+
+        //check whether the header file exists.
+        if (file_exists($headerFile)) {
+            require_once(RESPATH.'template'.DIRECTORY_SEPARATOR.'header.php');
+        }
+
         $this->includeView();
+
+        //check whether the footer file exists.
+        if (file_exists($footerFile)) {
+            require_once(RESPATH.'template'.DIRECTORY_SEPARATOR.'footer.php');
+        }
     }
 
     /**
