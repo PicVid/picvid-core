@@ -9,5 +9,6 @@ define('DB_PASS', 'password');
 //path and url configuration.
 define('URL', 'http://example.com/');
 define('ABSPATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
-define('SRCPATH', dirname(__FILE__).DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR);
+define('RESPATH', ABSPATH.'resource'.DIRECTORY_SEPARATOR);
+define('SRCPATH', ABSPATH.'src'.DIRECTORY_SEPARATOR);
 define('VIEWDIR', SRCPATH.'View'.DIRECTORY_SEPARATOR);
