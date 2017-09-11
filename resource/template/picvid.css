@@ -1,0 +1,19 @@
+body#index-view {
+    background: #000 url('img/index-view-bg.jpg') no-repeat center;
+    background-size: cover;
+    height: 100vh;
+}
+body#index-view img.logo {
+    margin-bottom: 20px;
+}
+body#index-view .dark-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100vh;
+    position: absolute;
+    width: 100vw;
+}
+
+/** overwrite some bootstrap rules. */
+a, a:link, a:hover {
+    border-radius: 0;
+}
