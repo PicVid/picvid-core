@@ -6,9 +6,9 @@
     </div>
     <div class="row align-self-center">
         <div class="col text-center">
-            <a class="btn btn-success" href="register">Register</a>
-            <a class="btn btn-success" href="login">Login</a>
-            <a class="btn btn-primary" href="info">Info</a>
+            <a class="btn btn-success" href="<?= URL ?>register">Register</a>
+            <a class="btn btn-success" href="<?= URL ?>login">Login</a>
+            <a class="btn btn-primary" href="<?= URL ?>info">Info</a>
         </div>
     </div>
 </div>
