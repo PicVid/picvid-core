@@ -66,7 +66,7 @@ class PicVid
      * @param bool $isMethod The status whether it is a method.
      * @return string The normalized value.
      */
-    private function normalize(string $value, boolean $isMethod)
+    private function normalize(string $value, bool $isMethod)
     {
         $normalized = implode(array_map('ucfirst', explode('_', strtolower($value))));
         $normalized = implode(array_map('ucfirst', explode('-', strtolower($normalized))));
