@@ -199,7 +199,7 @@ class CitoEngine
 
                 //create the full tag content.
                 foreach ($this->tagValues[$tag] as $content) {
-                    $tagContent .= $content.(($content === '') ? '' : "\n");
+                    $tagContent .= $content;
                 }
 
                 //check if there is any content for the tag in tag content.
