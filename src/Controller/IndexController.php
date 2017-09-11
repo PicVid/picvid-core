@@ -1,9 +1,10 @@
 <?php
 /**
- * Namespace for all controller of PicVid.
+ * Namespace for all Controller of PicVid.
  */
 namespace PicVid\Controller;
 
+use PicVid\Core\CitoEngine;
 use PicVid\Core\View;
 
 /**
@@ -16,10 +17,16 @@ use PicVid\Core\View;
 class IndexController
 {
     /**
-     * The default method / action of the controller.
+     * The default method / action of the Controller.
      */
     public function index()
     {
+        //set the values for the template tags / placeholders on CitoEngine.
+        $cito = CitoEngine::getInstance();
+        $cito->setValue('BODY_ID', 'index-view');
+        $cito->setValue('LOGO_URL', URL.'/resource/template/img/picvid-logo.png');
+
+        //load the view.
         $view = new View('Index');
         $view->load();
     }
