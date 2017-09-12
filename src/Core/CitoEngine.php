@@ -189,7 +189,7 @@ class CitoEngine
         $tagContent = '';
 
         //determine all tags from the template.
-        preg_match_all("/{{(.*)}}/", $this->siteBuffer, $tags);
+        preg_match_all("/{{(.*?)}}/", $this->siteBuffer, $tags);
 
         for ($i = 0; $i < count($tags[1]); $i++) {
             $tag = $tags[1][$i];
@@ -203,7 +203,7 @@ class CitoEngine
                 }
 
                 //check if there is any content for the tag in tag content.
-                preg_match_all("/{{(.*)}}/", $tagContent, $tagsContent);
+                preg_match_all("/{{(.*?)}}/", $tagContent, $tagsContent);
                 $tags[1] = array_merge($tags[1], $tagsContent[1]);
             }
 
