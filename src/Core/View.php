@@ -77,14 +77,15 @@ class View
 
         //check whether the header file exists.
         if (file_exists($headerFile)) {
-            require_once(RESPATH.'template'.DIRECTORY_SEPARATOR.'header.php');
+            require_once($headerFile);
         }
 
+        //include the dynamic view file.
         $this->includeView();
 
         //check whether the footer file exists.
         if (file_exists($footerFile)) {
-            require_once(RESPATH.'template'.DIRECTORY_SEPARATOR.'footer.php');
+            require_once($footerFile);
         }
     }
 
