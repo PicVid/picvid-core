@@ -1,4 +1,4 @@
-<div class="container-fluid d-flex flex-column justify-content-center dark-overlay">
+<div class="container-fluid d-flex flex-column justify-content-center">
     <div class="row align-self-center">
         <div class="col text-center">
             <img class="logo" height="70" src="{{LOGO_URL}}"/>
