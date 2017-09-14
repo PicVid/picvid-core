@@ -8,6 +8,11 @@ body#register-view {
     background-size: cover;
     height:100vh;
 }
+body#login-view {
+    background: #000 url('img/login-view-bg.jpg') no-repeat center;
+    background-size: cover;
+    height:100vh;
+}
 body#index-view > div.container-fluid,
 body#register-view > div.container-fluid {
     height:100vh;
@@ -22,7 +27,9 @@ body#register-view form {
     margin-top:-60px;
 }
 body#register-view p,
-body#register-view h2 {
+body#register-view h2,
+body#login-view p,
+body#login-view h2 {
     color:white;
 }
 
