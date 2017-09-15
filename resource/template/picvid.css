@@ -9,6 +9,34 @@ body div.bg-overlay {
     bottom:0;
     background-size: cover;
 }
+body div.bg-overlay + a.credits {
+    background-color:black;
+    bottom:20px;
+    left:20px;
+    color:white;
+    text-decoration:none;
+    padding:4px 6px;
+    font-family:-apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', Helvetica, Ubuntu, Roboto, Noto, 'Segoe UI', Arial, sans-serif;
+    font-size:12px;
+    font-weight:bold;
+    line-height:1.2;
+    display:inline-block;
+    border-radius:3px;
+    position:absolute;
+    z-index: 100;
+}
+body div.bg-overlay + a.credits span {
+    display:inline-block;
+    padding:2px 3px;
+}
+body div.bg-overlay + a.credits span svg {
+    height:12px;
+    width:auto;
+    position:relative;
+    vertical-align:middle;
+    top:-1px;
+    fill:white;
+}
 body#index-view div.bg-overlay {
     background: #000 url('img/bg-index-view.jpg') no-repeat center;
 }
