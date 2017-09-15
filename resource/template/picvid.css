@@ -1,24 +1,31 @@
-body#index-view {
-    background: #000 url('img/index-view-bg.jpg') no-repeat center;
+/** ---------------------------------------------------------------------------------------------------- */
+/** ----------------------------------- all styles for the overlays ------------------------------------ */
+/** ---------------------------------------------------------------------------------------------------- */
+body div.bg-overlay {
+    position:fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
     background-size: cover;
-    height:100vh;
 }
-body#register-view {
-    background: #000 url('img/register-view-bg.jpg') no-repeat center;
-    background-size: cover;
-    height:100vh;
+body#index-view div.bg-overlay {
+    background: #000 url('img/bg-index-view.jpg') no-repeat center;
 }
-body#login-view {
-    background: #000 url('img/login-view-bg.jpg') no-repeat center;
-    background-size: cover;
-    height:100vh;
+body#register-view div.bg-overlay {
+    background: #000 url('img/bg-register-view.jpg') no-repeat center;
+}
+body#login-view div.bg-overlay {
+    background: #000 url('img/bg-login-view.jpg') no-repeat center;
+}
+body#info-view div.bg-overlay {
+    background: #000 url('img/bg-info-view.jpg') no-repeat center;
 }
 body#index-view > div.container-fluid,
-body#register-view > div.container-fluid {
+body#register-view > div.container-fluid,
+body#login-view > div.container-fluid,
+body#info-view > div.container-fluid {
     height:100vh;
-}
-body#register-view > div.container-fluid {
-    min-height:650px;
 }
 body#index-view img.logo {
     margin-bottom: 20px;
@@ -29,7 +36,9 @@ body#register-view form {
 body#register-view p,
 body#register-view h2,
 body#login-view p,
-body#login-view h2 {
+body#login-view h2,
+body#info-view p,
+body#info-view h2 {
     color:white;
 }
 
