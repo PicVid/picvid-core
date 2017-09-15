@@ -1,3 +1,4 @@
+<div class="bg-overlay"></div>
 <div class="container-fluid d-flex flex-column justify-content-center">
     <div class="row align-self-center">
         <div class="col text-center">
