@@ -24,6 +24,7 @@ class RegisterController
         //set the values for the template tags / placeholders on CitoEngine.
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'register-view');
+        $cito->setValue('PAGE_TITLE', 'PicVid - Register');
         $cito->setValue('LOGO_URL', URL.'/resource/template/img/picvid-logo.png');
 
         //load the view.

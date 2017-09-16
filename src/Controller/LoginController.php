@@ -24,6 +24,7 @@ class LoginController
         //set the values for the template tags / placeholders on CitoEngine.
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'login-view');
+        $cito->setValue('PAGE_TITLE', 'PicVid - Login');
         $cito->setValue('LOGO_URL', URL.'/resource/template/img/picvid-logo.png');
 
         //load the view.
