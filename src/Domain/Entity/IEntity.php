@@ -17,13 +17,29 @@ interface IEntity
      * Method to load an array to the Entity.
      * @param array $array The array to load into the Entity.
      * @param string $prefix The prefix of the properties.
+     * @return void
      */
-    public function loadFromArray($array, $prefix = '');
+    public function loadFromArray(array $array, string $prefix = '');
+
+    /**
+     * Method to load the GET array to the Entity.
+     * @param string $prefix The prefix of the array index.
+     * @return void
+     */
+    public function loadFromGET(string $prefix = '');
 
     /**
      * Method to load an object to the Entity.
      * @param object $object The object to load into the Entity.
      * @param string $prefix The prefix of the properties.
+     * @return void
      */
-    public function loadFromObject($object, $prefix = '');
+    public function loadFromObject($object, string $prefix = '');
+
+    /**
+     * Method to load the POST array to the Entity.
+     * @param string $prefix The prefix of the array index.
+     * @return void
+     */
+    public function loadFromPOST(string $prefix = '');
 }
