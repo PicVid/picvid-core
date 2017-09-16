@@ -8,7 +8,7 @@
 <div class="container-fluid d-flex flex-column">
     <div class="d-flex flex-row justify-content-start align-items-center p-5 mb-5">
         <a href="<?= URL ?>">
-            <img class="logo" height="60" src="{{LOGO_URL}}"/>
+            <img class="logo" height="65" src="{{LOGO_URL}}"/>
         </a>
     </div>
     <div class="row justify-content-center px-xl-5">
