@@ -9,3 +9,11 @@ CREATE TABLE `user` (
   `username` VARCHAR(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE = INNODB;
+
+CREATE TABLE `session` (
+  `id` VARCHAR(32) NOT NULL DEFAULT '',
+  `content` TEXT NOT NULL,
+  `create_time` INT UNSIGNED NOT NULL DEFAULT 0,
+  `user_agent` VARCHAR(32) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+);
