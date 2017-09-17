@@ -50,7 +50,7 @@ class UserMapper extends DataMapper
 
         //create and set the sql query.
         $sql = 'INSERT INTO '.$this->table.' (email, firstname, lastname, password, salt, username) ';
-        $sql .= 'VALUES (:birthday, :email, :firstname, :gender, :lastname, :password, :salt, :username);';
+        $sql .= 'VALUES (:email, :firstname, :lastname, :password, :salt, :username);';
         $sth = $this->pdo->prepare($sql);
 
         //bind the values to the query.
