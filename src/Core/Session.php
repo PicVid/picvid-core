@@ -1,6 +1,6 @@
 <?php
 /**
- * Namespace for all core classes of PicVid.
+ * Namespace for all Core classes of PicVid.
  */
 namespace PicVid\Core;
 
@@ -20,16 +20,17 @@ class Session
     private $pdo = null;
 
     /**
-     * Method to close the session.
-     * @return void
+     * Method to close the Session.
+     * @return bool The status whether the Session is closed.
      */
-    public function close()
+    public function close() : bool
     {
         $this->pdo = null;
+        return true;
     }
 
     /**
-     * Method to create a session and set the information.
+     * Method to create a Session and set the information.
      * @param \PDO $pdo The PDO object to connect with database.
      * @return void
      */
@@ -52,9 +53,9 @@ class Session
     }
 
     /**
-     * Method to destroy a session.
-     * @param int $id The ID of the session.
-     * @return bool The status of whether the session could be destroyed.
+     * Method to destroy a Session.
+     * @param int $id The ID of the Session.
+     * @return bool The status of whether the Session could be destroyed.
      */
     public function destroy(int $id) : bool
     {
@@ -68,8 +69,8 @@ class Session
     }
 
     /**
-     * Method which represent the garbage collector to destroy expired sessions.
-     * @param int $lifetime The lifetime of the session in seconds.
+     * Method which represent the garbage collector to destroy expired Sessions.
+     * @param int $lifetime The lifetime of the Session in seconds.
      * @return bool The state if the garbage collector was successful.
      */
     public function gc(int $lifetime) : bool
@@ -84,8 +85,8 @@ class Session
     }
 
     /**
-     * Method to open the session.
-     * @return bool The status of whether the session could be opened.
+     * Method to open the Session.
+     * @return bool The status of whether the Session could be opened.
      */
     public function open() : bool
     {
@@ -93,9 +94,9 @@ class Session
     }
 
     /**
-     * Method to read the session.
-     * @param string $id The id of the session.
-     * @return string The content of the session.
+     * Method to read the Session.
+     * @param string $id The id of the Session.
+     * @return string The content of the Session.
      */
     public function read(string $id) : string
     {
@@ -120,10 +121,10 @@ class Session
     }
 
     /**
-     * Method to write the session.
-     * @param string $id The ID of the session.
-     * @param string $content The content of the session.
-     * @return bool The status of whether the session could be written.
+     * Method to write the Session.
+     * @param string $id The ID of the Session.
+     * @param string $content The content of the Session.
+     * @return bool The status of whether the Session could be written.
      */
     public function write(string $id, string $content) : bool
     {
