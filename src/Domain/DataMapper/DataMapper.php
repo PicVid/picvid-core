@@ -13,7 +13,7 @@ use PicVid\Domain\Entity\IEntity;
  * @license GNU General Public License, version 3
  * @package PicVid\Domain\DataMapper
  */
-abstract class DataMapper
+abstract class DataMapper implements IDataMapper
 {
     /**
      * An instance of PDO to use the database.
@@ -33,13 +33,11 @@ abstract class DataMapper
      * @param IEntity $entity The object of the Entity which will be loaded.
      * @return array An array with all found Entities.
      */
-    protected function findForEntity(string $condition, IEntity $entity)
+    protected function findForEntity(string $condition, IEntity $entity) : array
     {
         //create and set the sql query.
         $sql = 'SELECT * FROM '.$this->table.((trim($condition) !== '') ? ' WHERE '.$condition : '');
         $sth = $this->pdo->prepare($sql);
-
-        //execute the query.
         $sth->execute();
 
         //fetch all the results as Entities.

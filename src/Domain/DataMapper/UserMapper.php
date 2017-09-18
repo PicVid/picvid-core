@@ -28,22 +28,22 @@ class UserMapper extends DataMapper
     }
 
     /**
-     * Method to build the DataMapper to organize the Entity.
-     * @return UserMapper The DataMapper to organize the Entity.
+     * Method to build the DataMapper to organize the User Entity.
+     * @return IDataMapper The DataMapper to organize the User Entity.
      */
-    public static function build()
+    public static function build() : IDataMapper
     {
         return new self(Database::getInstance()->getConnection());
     }
 
     /**
      * Method to create an User Entity on database.
-     * @param IEntity $user The User Entity to save on database.
-     * @return bool The status of whether the entity could be created.
+     * @param IEntity $user The User Entity to be stored on the database.
+     * @return bool The status of whether the User Entity could be created.
      */
     public function create(IEntity $user) : bool
     {
-        //check if a User Entity is available.
+        //check if an User Entity is available.
         if (!($user instanceof User)) {
             return false;
         }
@@ -53,7 +53,7 @@ class UserMapper extends DataMapper
         $sql .= 'VALUES (:email, :firstname, :lastname, :password, :salt, :username);';
         $sth = $this->pdo->prepare($sql);
 
-        //bind the values to the query.
+        //bind the values to the query and execute the query.
         $sth->bindParam(':email', $user->email, \PDO::PARAM_STR);
         $sth->bindParam(':firstname', $user->firstname, \PDO::PARAM_STR);
         $sth->bindParam(':lastname', $user->lastname, \PDO::PARAM_STR);
@@ -65,12 +65,12 @@ class UserMapper extends DataMapper
 
     /**
      * Method to delete an User Entity on database.
-     * @param IEntity $user The User Entity to delete on database.
-     * @return bool The status of whether the entity could be deleted.
+     * @param IEntity $user The User Entity to be deleted on the database.
+     * @return bool The status of whether the User Entity could be deleted.
      */
     public function delete(IEntity $user) : bool
     {
-        //check if a User Entity is available.
+        //check if an User Entity is available.
         if (!($user instanceof User)) {
             return false;
         }
@@ -79,7 +79,7 @@ class UserMapper extends DataMapper
         $sql = 'DELETE FROM '.$this->table.' WHERE id = :id;';
         $sth = $this->pdo->prepare($sql);
 
-        //bind the values to the query.
+        //bind the values to the query and execute the query.
         $sth->bindParam(':id', $user->id, \PDO::PARAM_INT);
         return $sth->execute();
     }
@@ -96,12 +96,12 @@ class UserMapper extends DataMapper
 
     /**
      * Method to save an User Entity on database.
-     * @param IEntity $user The User Entity to save on database.
+     * @param IEntity $user The User Entity to be saved on the database.
      * @return bool The status of whether the User Entity could be saved.
      */
     public function save(IEntity $user) : bool
     {
-        //check if a User Entity is available.
+        //check if an User Entity is available.
         if (!($user instanceof User)) {
             return false;
         }
@@ -112,12 +112,12 @@ class UserMapper extends DataMapper
 
     /**
      * Method to update an User Entity on database.
-     * @param IEntity $user The User Entity to update on database.
+     * @param IEntity $user The User Entity to be updated on the database.
      * @return bool The status of whether the User Entity could be updated.
      */
-    public function update(IEntity $user)
+    public function update(IEntity $user) : bool
     {
-        //check if a User Entity is available.
+        //check if an User Entity is available.
         if (!($user instanceof User)) {
             return false;
         }
@@ -128,7 +128,7 @@ class UserMapper extends DataMapper
         $sql .= 'username = :username WHERE id = :id';
         $sth = $this->pdo->prepare($sql);
 
-        //bind the values to the query.
+        //bind the values to the query and execute the query.
         $sth->bindParam(':email', $user->email, \PDO::PARAM_STR);
         $sth->bindParam(':firstname', $user->firstname, \PDO::PARAM_STR);
         $sth->bindParam(':lastname', $user->lastname, \PDO::PARAM_STR);
