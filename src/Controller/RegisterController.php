@@ -5,16 +5,18 @@
 namespace PicVid\Controller;
 
 use PicVid\Core\CitoEngine;
+use PicVid\Core\Service\AuthenticationService;
 use PicVid\Core\View;
+use PicVid\Domain\Entity\User;
 
 /**
  * Class RegisterController
  *
- * @author Sebastian Brosch <contact@sebastianbrosch.de>
+ * @author Sebastian Brosch <coding@sebastianbrosch.de>
  * @license GNU General Public License, version 3
  * @package PicVid\Controller
  */
-class RegisterController
+class RegisterController extends Controller
 {
     /**
      * The default method / action of the Controller.
@@ -30,5 +32,18 @@ class RegisterController
         //load the view.
         $view = new View('Register');
         $view->load();
+    }
+
+    /**
+     * The register method / action of the Controller.
+     */
+    public function register()
+    {
+        //load the user from register form.
+        $user = new User();
+        $user->loadFromPOST('register_');
+
+        //register the new User Entity.
+        (new AuthenticationService())->register($user);
     }
 }

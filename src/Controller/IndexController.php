@@ -10,11 +10,11 @@ use PicVid\Core\View;
 /**
  * Class IndexController
  *
- * @author Sebastian Brosch <contact@sebastianbrosch.de>
+ * @author Sebastian Brosch <coding@sebastianbrosch.de>
  * @license GNU General Public License, version 3
  * @package PicVid\Controller
  */
-class IndexController
+class IndexController extends Controller
 {
     /**
      * The default method / action of the Controller.

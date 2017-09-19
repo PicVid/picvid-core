@@ -10,11 +10,11 @@ use PicVid\Core\View;
 /**
  * Class InfoController
  *
- * @author Sebastian Brosch <contact@sebastianbrosch.de>
+ * @author Sebastian Brosch <coding@sebastianbrosch.de>
  * @license GNU General Public License, version 3
  * @package PicVid\Controller
  */
-class InfoController
+class InfoController extends Controller
 {
     /**
      * The default method / action of the Controller.
