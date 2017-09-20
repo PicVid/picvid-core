@@ -69,6 +69,26 @@ body#info-view p,
 body#info-view h2 {
     color:white;
 }
+body#profile-index nav .fa {
+    margin-right:5px;
+}
+body#profile-index .card,
+body#profile-index .card .input-group-addon,
+body#profile-index .card .btn {
+    border-radius: 0;
+}
+body#profile-index .card .btn .fa {
+    margin-right: 5px;
+}
+body#profile-index .card input,
+body#profile-index .card .input-group-addon {
+    border:0;
+    background:white;
+}
+body#profile-index .card .input-group .fa {
+    margin-top:2px;
+    width:50px;
+}
 
 /** overwrite some bootstrap rules. */
 a, a:link, a:hover, input {
