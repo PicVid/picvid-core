@@ -44,6 +44,8 @@ class RegisterController extends Controller
         $user->loadFromPOST('register_');
 
         //register the new User Entity.
-        (new AuthenticationService())->register($user);
+        if ((new AuthenticationService())->register($user)) {
+            $this->redirect(URL.'auth');
+        }
     }
 }
