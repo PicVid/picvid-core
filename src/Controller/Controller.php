@@ -14,7 +14,7 @@ use PicVid\Core\Session;
  * @license GNU General Public License, version 3
  * @package PicVid\Controller
  */
-abstract class Controller
+abstract class Controller implements IController
 {
     /**
      * Method to redirect to an URL.
@@ -29,11 +29,11 @@ abstract class Controller
     }
 
     /**
-     * Method to redirect to an URL if no Session is avaiable.
+     * Method to redirect to a URL if no session exists.
      * @param string $redirectURL The target URL to redirect.
      * @return void
      */
-    protected function needSession($redirectURL = URL)
+    protected function needSession(string $redirectURL = URL)
     {
         //create the Session.
         $session = new Session();
