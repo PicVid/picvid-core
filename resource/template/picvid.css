@@ -94,3 +94,7 @@ body#profile-index .card .input-group .fa {
 a, a:link, a:hover, input {
     border-radius: 0 !important;
 }
+form div.alert {
+    border-radius: 0;
+    display:none;
+}
