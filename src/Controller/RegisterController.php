@@ -8,6 +8,9 @@ use PicVid\Core\CitoEngine;
 use PicVid\Core\Service\AuthenticationService;
 use PicVid\Core\View;
 use PicVid\Domain\Entity\User;
+use PicVid\Domain\Specification\User\IsValidEmail;
+use PicVid\Domain\Specification\User\IsValidPassword;
+use PicVid\Domain\Specification\User\IsValidUsername;
 
 /**
  * Class RegisterController
@@ -43,9 +46,31 @@ class RegisterController extends Controller
         $user = new User();
         $user->loadFromPOST('register_');
 
+        //check if the username of the User Entity is valid.
+        if ((new IsValidUsername())->isSatisfiedBy($user) === false) {
+            $this->jsonOutput('The username is not valid!', 'register_username', 'error');
+            return false;
+        }
+
+        //check if the email of the User Entity is valid.
+        if ((new IsValidEmail())->isSatisfiedBy($user) === false) {
+            $this->jsonOutput('The email is not valid!', 'register_email', 'error');
+            return false;
+        }
+
+        //check if the password of the User Entity is valid.
+        if ((new IsValidPassword())->isSatisfiedBy($user) === false) {
+            $this->jsonOutput('The password is not valid!', 'register_email', 'error');
+            return false;
+        }
+
         //register the new User Entity.
         if ((new AuthenticationService())->register($user)) {
-            $this->redirect(URL.'auth');
+            $this->jsonOutput('The User was successfully registered!', '', 'info', URL.'auth');
+            return true;
+        } else {
+            $this->jsonOutput('The User could not be registered!', '', 'error');
+            return false;
         }
     }
 }
