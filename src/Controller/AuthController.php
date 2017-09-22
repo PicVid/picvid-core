@@ -8,6 +8,8 @@ use PicVid\Core\CitoEngine;
 use PicVid\Core\Service\AuthenticationService;
 use PicVid\Core\View;
 use PicVid\Domain\Entity\User;
+use PicVid\Domain\Specification\User\IsValidPassword;
+use PicVid\Domain\Specification\User\IsValidUsername;
 
 /**
  * Class AuthController
@@ -19,7 +21,7 @@ use PicVid\Domain\Entity\User;
 class AuthController extends Controller
 {
     /**
-     * The default method / action of the controller.
+     * The default method / action of the Controller.
      */
     public function index()
     {
@@ -35,7 +37,7 @@ class AuthController extends Controller
     }
 
     /**
-     * The login method / action of the controller.
+     * The login method / action of the Controller.
      */
     public function login()
     {
@@ -43,9 +45,25 @@ class AuthController extends Controller
         $user = new User();
         $user->loadFromPOST('login_');
 
-        //login the User Entity and redirect to the profile page.
+        //check if the username of the User Entity is valid.
+        if ((new IsValidUsername())->isSatisfiedBy($user) === false) {
+            $this->jsonOutput('The username is not valid!', 'login_username', 'error');
+            return false;
+        }
+
+        //check if the password of the User Entity is valid.
+        if ((new IsValidPassword())->isSatisfiedBy($user) === false) {
+            $this->jsonOutput('The password is not valid!', 'login_email', 'error');
+            return false;
+        }
+
+        //login the User Entity.
         if ((new AuthenticationService())->login($user)) {
-            $this->redirect(URL.'profile');
+            $this->jsonOutput('The User was successfully logged in!', '', 'info', URL.'profile');
+            return true;
+        } else {
+            $this->jsonOutput('The User could not be logged in!', '', 'error');
+            return false;
         }
     }
 

@@ -24,16 +24,17 @@
             dis parturient montes, nascetur ridiculus mus. Sed ut nisl in nunc dignissim placerat.</p>
         </div>
         <div class="col col-3">
-            <form action="<?= URL ?>auth/login" method="post">
-                <div class="form-group row">
+            <form class="ajax" data-action="<?= URL ?>auth/login" method="post">
+                <div class="alert" role="alert"></div>
+                <div class="form-group">
                     <label class="sr-only">Username:</label>
                     <input class="form-control" name="login_username" type="text" placeholder="Username"/>
                 </div>
-                <div class="form-group row">
+                <div class="form-group">
                     <label class="sr-only">Password:</label>
                     <input class="form-control" name="login_password" type="password" placeholder="Password"/>
                 </div>
-                <div class="form-group row">
+                <div class="form-group">
                     <input type="submit" class="btn btn-success" value="Login"/>
                 </div>
             </form>
