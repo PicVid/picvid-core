@@ -38,16 +38,16 @@ body div.bg-overlay + a.credits span svg {
     fill:white;
 }
 body#index-view div.bg-overlay {
-    background: #000 url('img/bg-index-view.jpg') no-repeat center;
+    background: #000 url('../img/bg-index-view.jpg') no-repeat center;
 }
 body#register-view div.bg-overlay {
-    background: #000 url('img/bg-register-view.jpg') no-repeat center;
+    background: #000 url('../img/bg-register-view.jpg') no-repeat center;
 }
 body#login-view div.bg-overlay {
-    background: #000 url('img/bg-login-view.jpg') no-repeat center;
+    background: #000 url('../img/bg-login-view.jpg') no-repeat center;
 }
 body#info-view div.bg-overlay {
-    background: #000 url('img/bg-info-view.jpg') no-repeat center;
+    background: #000 url('../img/bg-info-view.jpg') no-repeat center;
 }
 body#index-view > div.container-fluid,
 body#register-view > div.container-fluid,
