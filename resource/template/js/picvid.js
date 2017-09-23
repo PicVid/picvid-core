@@ -38,12 +38,15 @@ $(document).ready(function() {
                 var bootstrapLogLevel = ["success", "info", "warning", "danger"];
 
                 //show the alert of the form with color of log level.
-                if (msg.state === 'error') {
-                    itemFormAlert.addClass('alert-danger').html(msg.message);
+                if (msg.state === "error") {
+                    removeAlertStateClasses(itemFormAlert);
+                    itemFormAlert.addClass("alert-danger").html(msg.message);
                 } else if (bootstrapLogLevel.indexOf(msg.state) > -1) {
-                    itemFormAlert.addClass('alert-' + msg.state).html(msg.message);
+                    removeAlertStateClasses(itemFormAlert);
+                    itemFormAlert.addClass("alert-" + msg.state).html(msg.message);
                 } else {
-                    itemFormAlert.addClass('alert-info').html(msg.message);
+                    removeAlertStateClasses(itemFormAlert);
+                    itemFormAlert.addClass("alert-info").html(msg.message);
                 }
 
                 //show the alert with warning (only if a message is available).
@@ -59,8 +62,20 @@ $(document).ready(function() {
         }).fail(function() {
 
             //the ajax call was not successfully.
-            itemFormAlert.addClass('alert-danger').html('Something went wrong. Try again later!');
+            itemFormAlert.addClass("alert-danger").html("Something went wrong. Try again later!");
             itemFormAlert.show();
         });
     });
 });
+
+/**
+ * Function to remove all state classes from an HTML element.
+ * @param alertItem The HTML element to remove the classes.
+ */
+function removeAlertStateClasses(alertItem)
+{
+    alertItem.removeClass("alert-danger");
+    alertItem.removeClass("alert-success");
+    alertItem.removeClass("alert-info");
+    alertItem.removeClass("alert-warning");
+}
