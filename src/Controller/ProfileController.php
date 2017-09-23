@@ -10,6 +10,13 @@ use PicVid\Domain\DataMapper\UserMapper;
 use PicVid\Domain\Entity\User;
 use PicVid\Domain\Repository\UserRepository;
 use PicVid\Domain\Service\User\HashService;
+use PicVid\Domain\Specification\User\IsUniqueEmail;
+use PicVid\Domain\Specification\User\IsUniqueUsername;
+use PicVid\Domain\Specification\User\IsValidEmail;
+use PicVid\Domain\Specification\User\IsValidFirstname;
+use PicVid\Domain\Specification\User\IsValidLastname;
+use PicVid\Domain\Specification\User\IsValidPassword;
+use PicVid\Domain\Specification\User\IsValidUsername;
 
 /**
  * Class ProfileController
@@ -31,7 +38,7 @@ class ProfileController extends Controller
         //get the User from database by Session information.
         $users = UserRepository::build()->findByID($_SESSION['user_id']);
 
-        //check if a user could be found.
+        //check if an User Entity could be found.
         if (count($users) === 1) {
             $user = $users[0];
 
@@ -68,11 +75,45 @@ class ProfileController extends Controller
         $user = new User();
         $user->loadFromPOST('profile_');
 
+        //check if the username of the User Entity is valid.
+        if (!(new IsValidUsername())->isSatisfiedBy($user)) {
+            $this->jsonOutput('The username is not valid!', 'profile_username', 'error');
+            return false;
+        }
+
+        //check if the email of the User Entity is valid.
+        if (!(new IsValidEmail())->isSatisfiedBy($user)) {
+            $this->jsonOutput('The email is not valid!', 'profile_email', 'error');
+            return false;
+        }
+
+        //check if the firstname of the User Entity is valid.
+        if (!(new IsValidFirstname())->isSatisfiedBy($user)) {
+            $this->jsonOutput('The firstname is not valid!', 'profile_firstname', 'error');
+            return false;
+        }
+
+        //check if the lastname of the User Entity is valid.
+        if (!(new IsValidLastname())->isSatisfiedBy($user)) {
+            $this->jsonOutput('The lastname is not valid!', 'profile_lastname', 'error');
+            return false;
+        }
+
         //check whether a password is available.
-        if ($user->password !== '') {
+        if (trim($user->password) !== '') {
+
+            //check if the password of the User Entity is valid.
+            if (!(new IsValidPassword())->isSatisfiedBy($user)) {
+                $this->jsonOutput('The password is not valid!', 'profile_password', 'error');
+                return false;
+            }
+
+            //hash the new password on the User Entity.
             $hash_service = new HashService();
             $hash_service->hash($user);
         } else {
+
+            //get the User Entity from database to set password information.
             $userDB = UserRepository::build()->findByID($user->id);
 
             //check if the User Entity was found.
@@ -81,6 +122,28 @@ class ProfileController extends Controller
 
                 //check if the ID is the same.
                 if ($user->id == $userDB->id) {
+
+                    //check if the email was changed on the User Entity.
+                    if ($userDB->email !== $user->email) {
+
+                        //check if the email of the User Entity already exists.
+                        if (!(new IsUniqueEmail())->isSatisfiedBy($user)) {
+                            $this->jsonOutput('The email already exists!', 'profile_email', 'error');
+                            return false;
+                        }
+                    }
+
+                    //check if the username was changed on the User Entity.
+                    if ($userDB->username !== $user->username) {
+
+                        //check if the username of the User Entity already exists.
+                        if (!(new IsUniqueUsername())->isSatisfiedBy($user)) {
+                            $this->jsonOutput('The username already exists!', 'profile_username', 'error');
+                            return false;
+                        }
+                    }
+
+                    //set the password information from database.
                     $user->password = $userDB->password;
                     $user->salt = $userDB->salt;
                 }
@@ -89,9 +152,14 @@ class ProfileController extends Controller
 
         //create the User Mapper and save the User Entity to database.
         $user_mapper = UserMapper::build();
-        $user_mapper->save($user);
 
-        //redirect to the profile page.
-        $this->redirect(URL.'profile');
+        //check if the User Entity was saved successfully.
+        if ($user_mapper->save($user)) {
+            $this->jsonOutput('The Profile was successfully saved!', '', 'info');
+            return true;
+        } else {
+            $this->jsonOutput('The Profile could not be saved!', '', 'error');
+            return false;
+        }
     }
 }

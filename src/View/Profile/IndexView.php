@@ -3,16 +3,19 @@
         <img src="{{LOGO_URL}}" height="40" class="d-inline-block align-top" alt="">
     </a>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <div class="navbar-nav mr-auto"></div>
+        <div class="navbar-nav mr-auto ml-3">
+            <a class="nav-item nav-link" href="<?= URL ?>upload"><i class="fa fa-upload" aria-hidden="true"></i>Upload</a>
+        </div>
         <div class="navbar-nav">
-            <a class="nav-item nav-link float-right" href="<?= URL ?>profile"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
-            <a class="nav-item nav-link float-right" href="<?= URL ?>auth/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+            <a class="nav-item nav-link" href="<?= URL ?>profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a>
+            <a class="nav-item nav-link" href="<?= URL ?>auth/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
         </div>
     </div>
 </nav>
 <div class="d-flex justify-content-center mt-5">
-    <div class="card w-25">
-        <form action="<?= URL ?>profile/save" method="post">
+    <form class="ajax w-25" data-action="<?= URL ?>profile/save" method="post">
+        <div class="alert" role="alert"></div>
+        <div class="card">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <div class="input-group">
@@ -44,6 +47,6 @@
             <div class="card-block">
                 <button class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>Save</button>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
