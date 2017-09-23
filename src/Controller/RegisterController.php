@@ -8,6 +8,8 @@ use PicVid\Core\CitoEngine;
 use PicVid\Core\Service\AuthenticationService;
 use PicVid\Core\View;
 use PicVid\Domain\Entity\User;
+use PicVid\Domain\Specification\User\IsUniqueEmail;
+use PicVid\Domain\Specification\User\IsUniqueUsername;
 use PicVid\Domain\Specification\User\IsValidEmail;
 use PicVid\Domain\Specification\User\IsValidPassword;
 use PicVid\Domain\Specification\User\IsValidUsername;
@@ -42,25 +44,37 @@ class RegisterController extends Controller
      */
     public function register()
     {
-        //load the user from register form.
+        //load the User Entity from register form.
         $user = new User();
         $user->loadFromPOST('register_');
 
         //check if the username of the User Entity is valid.
-        if ((new IsValidUsername())->isSatisfiedBy($user) === false) {
+        if (!(new IsValidUsername())->isSatisfiedBy($user)) {
             $this->jsonOutput('The username is not valid!', 'register_username', 'error');
             return false;
         }
 
         //check if the email of the User Entity is valid.
-        if ((new IsValidEmail())->isSatisfiedBy($user) === false) {
+        if (!(new IsValidEmail())->isSatisfiedBy($user)) {
             $this->jsonOutput('The email is not valid!', 'register_email', 'error');
             return false;
         }
 
         //check if the password of the User Entity is valid.
-        if ((new IsValidPassword())->isSatisfiedBy($user) === false) {
-            $this->jsonOutput('The password is not valid!', 'register_email', 'error');
+        if (!(new IsValidPassword())->isSatisfiedBy($user)) {
+            $this->jsonOutput('The password is not valid!', 'register_password', 'error');
+            return false;
+        }
+
+        //check if the email of the User Entity already exists.
+        if (!(new IsUniqueEmail())->isSatisfiedBy($user)) {
+            $this->jsonOutput('The email already exists!', 'register_email', 'error');
+            return false;
+        }
+
+        //check if the username of the User Entity already exists.
+        if (!(new IsUniqueUsername())->isSatisfiedBy($user)) {
+            $this->jsonOutput('The username already exists!', 'register_username', 'error');
             return false;
         }
 
