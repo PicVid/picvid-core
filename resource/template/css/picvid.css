@@ -89,6 +89,27 @@ body#profile-index .card .input-group .fa {
     margin-top:2px;
     width:50px;
 }
+body#profile-index form input[type="file"] {
+    display:none;
+}
+body#profile-index form label[for="file"] {
+    border: 2px dashed #5cb85c;
+    cursor: pointer;
+    display:block;
+    height:200px;
+    width:100%;
+    color:#ddd;
+    text-align:center;
+    line-height: 200px;
+    font-size: 80px;
+}
+body#profile-index form button {
+    border-radius: 0;
+}
+body#profile-index form button i {
+    margin-right:10px;
+}
+
 
 /** overwrite some bootstrap rules. */
 a, a:link, a:hover, input {
