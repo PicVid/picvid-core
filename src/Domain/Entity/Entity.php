@@ -7,7 +7,7 @@ namespace PicVid\Domain\Entity;
 /**
  * Class Entity
  *
- * @author Sebastian Brosch <contact@sebastianbrosch.de>
+ * @author Sebastian Brosch <coding@sebastianbrosch.de>
  * @license GNU General Public License, version 3
  * @package PicVid\Domain\Entity
  */
