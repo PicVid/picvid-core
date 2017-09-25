@@ -48,6 +48,11 @@ class UserMapper extends DataMapper
             return false;
         }
 
+        //check whether an ID already exists.
+        if ($user->hasID()) {
+            return false;
+        }
+
         //create and set the sql query.
         $sql = 'INSERT INTO '.$this->table.' (email, firstname, lastname, password, salt, username) ';
         $sql .= 'VALUES (:email, :firstname, :lastname, :password, :salt, :username);';
@@ -72,6 +77,11 @@ class UserMapper extends DataMapper
     {
         //check if an User Entity is available.
         if (!($user instanceof User)) {
+            return false;
+        }
+
+        //check whether an ID exists.
+        if (!$user->hasID()) {
             return false;
         }
 
@@ -107,7 +117,7 @@ class UserMapper extends DataMapper
         }
 
         //create or update the User Entity.
-        return ($user->id > 0) ? $this->update($user) : $this->create($user);
+        return ($user->hasID()) ? $this->update($user) : $this->create($user);
     }
 
     /**
@@ -119,6 +129,11 @@ class UserMapper extends DataMapper
     {
         //check if an User Entity is available.
         if (!($user instanceof User)) {
+            return false;
+        }
+
+        //check whether an ID exists.
+        if (!$user->hasID()) {
             return false;
         }
 

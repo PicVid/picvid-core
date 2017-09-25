@@ -17,7 +17,7 @@ abstract class DataMapper implements IDataMapper
 {
     /**
      * An instance of PDO to use the database.
-     * @var \PDO|null
+     * @var null|\PDO
      */
     protected $pdo = null;
 

@@ -48,6 +48,11 @@ class ImageMapper extends DataMapper
             return false;
         }
 
+        //check whether an ID already exists.
+        if ($image->hasID()) {
+            return false;
+        }
+
         //create and set the sql query.
         $sql = 'INSERT INTO '.$this->table.' (description, filename, size, title, type) ';
         $sql .= 'VALUES (:description, :filename, :size, :title, :type);';
@@ -71,6 +76,11 @@ class ImageMapper extends DataMapper
     {
         //check if an Image Entity is available.
         if (!($image instanceof Image)) {
+            return false;
+        }
+
+        //check whether an ID exists.
+        if (!$image->hasID()) {
             return false;
         }
 
@@ -106,7 +116,7 @@ class ImageMapper extends DataMapper
         }
 
         //create or update the Image Entity.
-        return ($image->id > 0) ? $this->update($image) : $this->create($image);
+        return ($image->hasID()) ? $this->update($image) : $this->create($image);
     }
 
     /**
@@ -118,6 +128,11 @@ class ImageMapper extends DataMapper
     {
         //check if an Image Entity is available.
         if (!($image instanceof Image)) {
+            return false;
+        }
+
+        //check whether an ID exists.
+        if (!$image->hasID()) {
             return false;
         }
 
