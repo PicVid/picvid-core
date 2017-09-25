@@ -20,6 +20,15 @@ abstract class Entity implements IEntity
     public $id = 0;
 
     /**
+     * Method to check whether an ID exists in the Entity.
+     * @return bool The status of whether an ID exists in the Entity.
+     */
+    public function hasID() : bool
+    {
+        return ($this->id > 0);
+    }
+
+    /**
      * Method to load an array to the Entity.
      * @param array $array The array to load into the Entity.
      * @param string $prefix The prefix of the properties.
