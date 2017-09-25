@@ -26,4 +26,13 @@ CREATE TABLE `session` (
   `create_time` INT UNSIGNED NOT NULL DEFAULT 0,
   `user_agent` VARCHAR(32) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-);
+) ENGINE = INNODB;
+
+-- mapping tables
+CREATE TABLE `user_image` (
+  `user_id` INT UNSIGNED NOT NULL DEFAULT 0,
+  `image_id` INT UNSIGNED NOT NULL DEFAULT 0,
+  FOREIGN KEY (`user_id`) REFERENCES user(`id`),
+  FOREIGN KEY (`image_id`) REFERENCES image(`id`),
+  CONSTRAINT pk_user_image PRIMARY KEY (`user_id`, `image_id`)
+) ENGINE = INNODB;
