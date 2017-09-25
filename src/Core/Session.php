@@ -48,8 +48,10 @@ class Session
             array($this, 'gc')
         );
 
-        //start the session.
-        session_start();
+        //start the session (if not already started).
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
     }
 
     /**
