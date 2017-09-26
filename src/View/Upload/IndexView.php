@@ -21,9 +21,9 @@
         <div class="form-group">
             <textarea rows="3" class="form-control" name="image_description" placeholder="Beschreibung"></textarea>
         </div>
-        <input type="file" name="image_upload" id="file"/>
+        <input type="file" name="image_upload" id="file" class="image-upload" multiple/>
         <label for="file">
-            <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+            <span>Choose a file...</span>
         </label>
         <button class="btn btn-success"><i class="fa fa-upload"></i>Upload</button>
     </form>

@@ -69,7 +69,8 @@ body#info-view p,
 body#info-view h2 {
     color:white;
 }
-body#profile-index nav .fa {
+body#profile-index nav .fa,
+body#upload-index nav .fa {
     margin-right:5px;
 }
 body#profile-index .card,
@@ -89,10 +90,10 @@ body#profile-index .card .input-group .fa {
     margin-top:2px;
     width:50px;
 }
-body#profile-index form input[type="file"] {
+body#upload-index form input[type="file"] {
     display:none;
 }
-body#profile-index form label[for="file"] {
+body#upload-index form label[for="file"] {
     border: 2px dashed #5cb85c;
     cursor: pointer;
     display:block;
@@ -100,16 +101,27 @@ body#profile-index form label[for="file"] {
     width:100%;
     color:#ddd;
     text-align:center;
-    line-height: 200px;
-    font-size: 80px;
 }
-body#profile-index form button {
+body#upload-index form label[for="file"] span {
+    background-color: #5cb85c;
+    color:white;
+    font-family: sans-serif;
+    font-size:1.1em;
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    height: 50px;
+    width: 70%;
+    line-height:50px;
+    transform: translateY(-50%);
+}
+body#upload-index form button,
+body#upload-index form textarea {
     border-radius: 0;
 }
-body#profile-index form button i {
+body#upload-index form button i {
     margin-right:10px;
 }
-
 
 /** overwrite some bootstrap rules. */
 a, a:link, a:hover, input {

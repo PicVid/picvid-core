@@ -66,11 +66,40 @@ $(document).ready(function() {
             itemFormAlert.show();
         });
     });
+
+    //get the upload element, if available.
+    var inputImageUpload = $(".image-upload");
+
+    //check whether the upload exists.
+    if (inputImageUpload !== undefined) {
+        var inputImageLabel = inputImageUpload.next();
+        var labelDefaultValue = inputImageLabel.innerHTML;
+
+        //on change of the upload we update the label.
+        inputImageUpload.bind("change", function(e) {
+            var filename = "";
+
+            //check whether multiple files are available.
+            if (this.files && this.files.length > 1) {
+                filename = this.files.length + " files selected";
+            } else {
+                filename = e.target.value.split("\\").pop();
+            }
+
+            //check whether a filename exists.
+            if (filename) {
+                inputImageLabel.find("span").text(filename);
+            } else {
+                inputImageLabel.html(labelDefaultValue);
+            }
+        });
+    }
 });
 
 /**
  * Function to remove all state classes from an HTML element.
  * @param alertItem The HTML element to remove the classes.
+ * @return void
  */
 function removeAlertStateClasses(alertItem)
 {
