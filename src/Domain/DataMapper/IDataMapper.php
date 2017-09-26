@@ -49,6 +49,12 @@ interface IDataMapper
     public function find(string $condition) : array;
 
     /**
+     * Method to get the ID of a new created Entity on database.
+     * @return int The ID of the new created Entity on database.
+     */
+    public function getInsertID() : int;
+
+    /**
      * Method to save an Entity on database.
      * @param IEntity $entity The Entity to be saved on the database.
      * @return bool The status of whether the Entity could be saved.

@@ -65,7 +65,16 @@ class UserMapper extends DataMapper
         $sth->bindParam(':password', $user->password, \PDO::PARAM_STR);
         $sth->bindParam(':salt', $user->salt, \PDO::PARAM_STR);
         $sth->bindParam(':username', $user->username, \PDO::PARAM_STR);
-        return $sth->execute();
+        $state = $sth->execute();
+
+        //get the last insert ID from PDO and return state.
+        if ($state) {
+            $this->insert_id = $this->pdo->lastInsertID();
+            return true;
+        } else {
+            $this->insert_id = 0;
+            return false;
+        }
     }
 
     /**
@@ -127,6 +136,9 @@ class UserMapper extends DataMapper
      */
     public function update(IEntity $user) : bool
     {
+        //initialize the insert ID.
+        $this->insert_id = 0;
+
         //check if an User Entity is available.
         if (!($user instanceof User)) {
             return false;

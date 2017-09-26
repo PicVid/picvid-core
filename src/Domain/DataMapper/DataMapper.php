@@ -16,6 +16,12 @@ use PicVid\Domain\Entity\IEntity;
 abstract class DataMapper implements IDataMapper
 {
     /**
+     * The ID of a new created Entity on database (ID > 0).
+     * @var int
+     */
+    protected $insert_id = 0;
+
+    /**
      * An instance of PDO to use the database.
      * @var null|\PDO
      */
@@ -42,5 +48,14 @@ abstract class DataMapper implements IDataMapper
 
         //fetch all the results as Entities.
         return $sth->fetchAll(\PDO::FETCH_CLASS, get_class($entity));
+    }
+
+    /**
+     * Method to get the ID of a new created Entity on database.
+     * @return int The ID of the new created Entity on database.
+     */
+    public function getInsertID() : int
+    {
+        return $this->insert_id;
     }
 }

@@ -64,7 +64,16 @@ class ImageMapper extends DataMapper
         $sth->bindParam(':size', $image->size, \PDO::PARAM_INT);
         $sth->bindParam(':title', $image->title, \PDO::PARAM_STR);
         $sth->bindParam(':type', $image->type, \PDO::PARAM_STR);
-        return $sth->execute();
+        $state = $sth->execute();
+
+        //get the last insert ID from PDO and return state.
+        if ($state) {
+            $this->insert_id = $this->pdo->lastInsertID();
+            return true;
+        } else {
+            $this->insert_id = 0;
+            return false;
+        }
     }
 
     /**
@@ -126,6 +135,9 @@ class ImageMapper extends DataMapper
      */
     public function update(IEntity $image): bool
     {
+        //initialize the insert ID.
+        $this->insert_id = 0;
+
         //check if an Image Entity is available.
         if (!($image instanceof Image)) {
             return false;
