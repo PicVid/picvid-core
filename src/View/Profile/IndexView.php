@@ -1,14 +1,23 @@
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-inverse bg-inverse">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" role="navigation">
     <a class="navbar-brand" href="<?= URL ?>">
-        <img src="{{LOGO_URL}}" height="40" class="d-inline-block align-top" alt="">
+        <img src="{{LOGO_URL}}" height="30" class="d-inline-block align-top" alt="Logo of PicVid">
     </a>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <div class="navbar-nav mr-auto ml-3">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav mr-auto">
             <a class="nav-item nav-link" href="<?= URL ?>upload"><i class="fa fa-upload" aria-hidden="true"></i>Upload</a>
         </div>
         <div class="navbar-nav">
-            <a class="nav-item nav-link" href="<?= URL ?>profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a>
-            <a class="nav-item nav-link" href="<?= URL ?>auth/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>{{username}}</a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="<?= URL ?>profile"><i class="fa fa-id-card" aria-hidden="true"></i>Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="<?= URL ?>auth/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
@@ -44,7 +53,7 @@
                 </li>
             </ul>
             <input type="hidden" name="profile_id" value="{{user_id}}"/>
-            <div class="card-block">
+            <div class="card-body">
                 <button class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>Save</button>
             </div>
         </div>

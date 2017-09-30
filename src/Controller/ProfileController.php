@@ -52,6 +52,7 @@ class ProfileController extends Controller
             $cito->setValue('user_lastname', $user->lastname);
             $cito->setValue('user_id', $user->id);
             $cito->setValue('user_password', '');
+            $cito->setValue('username', $user->username);
 
             //load the view.
             $view = new View('Profile');
