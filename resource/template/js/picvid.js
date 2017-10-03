@@ -68,12 +68,13 @@ $(document).ready(function() {
     });
 
     //get the upload element, if available.
-    var inputImageUpload = $(".image-upload");
+    var inputImageUpload = $("form.picvid-file-upload input#files");
 
     //check whether the upload exists.
     if (inputImageUpload !== undefined) {
-        var inputImageLabel = inputImageUpload.next();
-        var labelDefaultValue = inputImageLabel.innerHTML;
+        console.log(inputImageUpload);
+        var inputImageLabel = $("label[for='files']");
+        var labelDefaultValue = inputImageLabel.html();
 
         //on change of the upload we update the label.
         inputImageUpload.bind("change", function(e) {
@@ -94,6 +95,79 @@ $(document).ready(function() {
             }
         });
     }
+
+    /** code to upload the images with additional information with AJAX. */
+    var formUploadImage = $('form.picvid-file-upload');
+    var uploadAlert = $('form.picvid-file-upload div.alert');
+    uploadAlert.hide();
+
+    //remove the state classes.
+    removeAlertStateClasses(uploadAlert);
+
+    //the function which is called on submit.
+    formUploadImage.on('submit', function(event) {
+        event.preventDefault();
+
+        //get the form items.
+        var btnUpload = $('form.picvid-file-upload button');
+        var spanUploadInfo = $('form.picvid-file-upload label span');
+        var inpUpload = $('form.picvid-file-upload input#files');
+        var inpImageTitle = $("form.picvid-file-upload input[name='image_title']");
+        var inpImageDescription = $("form.picvid-file-upload textarea[name='image_description']");
+
+        //while uploading the file rename the button.
+        btnUpload.html('Uploading...');
+
+        //get the images of the input item and init the form data.
+        var files = inpUpload[0].files;
+        var formData = new FormData();
+
+        //run through all images of the input.
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+
+            //check the file type of the image.
+            if (!file.type.match('image.*')) {
+                continue;
+            }
+
+            //add the file to the request.
+            formData.append('image_upload[]', file, file.name);
+        }
+
+        //set the additional information of the upload.
+        formData.set('image_title', inpImageTitle.val());
+        formData.set('image_description', inpImageDescription.val());
+
+        //set up the request to send the information to the backend.
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', formUploadImage.attr('data-action'), true);
+
+        //on success of the request do the following stuff.
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                btnUpload.html('Upload');
+                spanUploadInfo.html('Choose a file...');
+                uploadAlert.html('Upload was sucessfull!');
+                uploadAlert.addClass('alert-success');
+                uploadAlert.show();
+            } else {
+                uploadAlert.html('Upload was not sucessfull!');
+                uploadAlert.addClass('alert-danger');
+                uploadAlert.show();
+            }
+        };
+
+        //on error of the request do the following stuff.
+        xhr.onerror = function () {
+            uploadAlert.html('An error occured!');
+            uploadAlert.addClass('alert-danger');
+            uploadAlert.show();
+        };
+
+        //send the request with files and additional information.
+        xhr.send(formData);
+    });
 });
 
 /**
@@ -103,8 +177,12 @@ $(document).ready(function() {
  */
 function removeAlertStateClasses(alertItem)
 {
-    alertItem.removeClass("alert-danger");
-    alertItem.removeClass("alert-success");
-    alertItem.removeClass("alert-info");
-    alertItem.removeClass("alert-warning");
+    alertItem.removeClass('alert-primary');
+    alertItem.removeClass('alert-secondary');
+    alertItem.removeClass('alert-success');
+    alertItem.removeClass('alert-danger');
+    alertItem.removeClass('alert-warning');
+    alertItem.removeClass('alert-info');
+    alertItem.removeClass('alert-light');
+    alertItem.removeClass('alert-dark');
 }
