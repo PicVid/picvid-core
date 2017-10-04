@@ -17,6 +17,24 @@ use PicVid\Core\Session;
 abstract class Controller implements IController
 {
     /**
+     * Method to create a token for a form to protect it against CSRF attacks.
+     * @param string $formName The name of the form used for the session.
+     * @return string The token of the form to protect it against CSRF attacks.
+     */
+    protected function getFormToken(string $formName) : string
+    {
+        //start the session.
+        session_start();
+
+        //create a form token and set the token to the session.
+        $token = md5(uniqid(microtime(), true));
+        $_SESSION[$formName.'_token'] = $token;
+
+        //return the form token.
+        return $token;
+    }
+
+    /**
      * Method to create and output a JSON output for AJAX.
      * @param string $message The message to display on the alert.
      * @param string $field The field to focus (e.g. for invalid field values).
@@ -61,5 +79,34 @@ abstract class Controller implements IController
         if (filter_var($url, FILTER_VALIDATE_URL)) {
             header('Location: '.$url);
         }
+    }
+
+    /**
+     * Method to check the token of the form.
+     * @param string $formName The name of the form used for the session.
+     * @return bool The status whether the token is valid.
+     */
+    function verifyFormToken(string $formName) : bool
+    {
+        //start the session.
+        session_start();
+
+        //check if there is a session with the token.
+        if (!isset($_SESSION[$formName.'_token'])) {
+            return false;
+        }
+
+        //check if there is a token of the form.
+        if (!isset($_POST['token'])) {
+            return false;
+        }
+
+        //check whether the token of the form is identical to the token of the session.
+        if ($_SESSION[$formName.'_token'] !== $_POST['token']) {
+            return false;
+        }
+
+        //the tokens are valid.
+        return true;
     }
 }
