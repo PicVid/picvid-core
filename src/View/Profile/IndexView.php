@@ -8,6 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav mr-auto">
             <a class="nav-item nav-link" href="<?= URL ?>upload"><i class="fa fa-upload" aria-hidden="true"></i>Upload</a>
+            <a class="nav-item nav-link" href="<?= URL ?>image"><i class="fa fa-picture-o" aria-hidden="true"></i>Images</a>
         </div>
         <div class="navbar-nav">
             <div class="nav-item dropdown">
@@ -23,6 +24,7 @@
 </nav>
 <div class="d-flex justify-content-center mt-5">
     <form class="ajax w-25" data-action="<?= URL ?>profile/save" method="post">
+        <input type="hidden" name="token" value="{{token}}"/>
         <div class="alert" role="alert"></div>
         <div class="card">
             <ul class="list-group list-group-flush">

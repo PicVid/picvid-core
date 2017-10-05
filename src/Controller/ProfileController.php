@@ -53,6 +53,7 @@ class ProfileController extends Controller
             $cito->setValue('user_id', $user->id);
             $cito->setValue('user_password', '');
             $cito->setValue('username', $user->username);
+            $cito->setValue('token', $this->getFormToken('profile-index'));
 
             //load the view.
             $view = new View('Profile');
@@ -71,6 +72,12 @@ class ProfileController extends Controller
     {
         //a Session is needed for this method / action.
         $this->needSession();
+
+        //check whether the token is the same.
+        if (!$this->verifyFormToken('profile-index')) {
+            $this->jsonOutput('The form state is not valid!', '', 'error');
+            return false;
+        }
 
         //get the information of the User Entity to save.
         $user = new User();
