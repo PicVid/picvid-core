@@ -25,6 +25,7 @@
         </div>
         <div class="col col-3">
             <form class="ajax" method="post" data-action="<?= URL ?>register/register">
+                <input type="hidden" name="token" value="{{token}}"/>
                 <div class="alert" role="alert"></div>
                 <div class="form-group">
                     <label class="sr-only">Username:</label>
