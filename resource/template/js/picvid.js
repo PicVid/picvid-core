@@ -114,6 +114,7 @@ $(document).ready(function() {
         var inpUpload = $('form.picvid-file-upload input#files');
         var inpImageTitle = $("form.picvid-file-upload input[name='image_title']");
         var inpImageDescription = $("form.picvid-file-upload textarea[name='image_description']");
+        var inpToken = $("form.picvid-file-upload input[name='token']");
 
         //while uploading the file rename the button.
         btnUpload.html('Uploading...');
@@ -138,6 +139,7 @@ $(document).ready(function() {
         //set the additional information of the upload.
         formData.set('image_title', inpImageTitle.val());
         formData.set('image_description', inpImageDescription.val());
+        formData.set('token', inpToken.val());
 
         //set up the request to send the information to the backend.
         var xhr = new XMLHttpRequest();
