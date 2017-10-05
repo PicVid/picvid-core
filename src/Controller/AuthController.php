@@ -30,6 +30,7 @@ class AuthController extends Controller
         $cito->setValue('BODY_ID', 'login-view');
         $cito->setValue('PAGE_TITLE', 'PicVid - Login');
         $cito->setValue('LOGO_URL', URL.'/resource/template/img/picvid-logo.png');
+        $cito->setValue('token', $this->getFormToken('auth-index'));
 
         //load the view.
         $view = new View('Auth');
@@ -41,6 +42,12 @@ class AuthController extends Controller
      */
     public function login()
     {
+        //check whether the token is the same.
+        if (!$this->verifyFormToken('auth-index')) {
+            $this->jsonOutput('The form state is not valid!', '', 'error');
+            return false;
+        }
+
         //load the User Entity from login form.
         $user = new User();
         $user->loadFromPOST('login_');
