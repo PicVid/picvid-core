@@ -7,6 +7,7 @@ namespace PicVid\Core\Service;
 use PicVid\Core\Database;
 use PicVid\Core\Session;
 use PicVid\Domain\Entity\User;
+use PicVid\Domain\Repository\UserRepository;
 
 /**
  * Class SessionService
@@ -40,5 +41,22 @@ class SessionService
     public function delete()
     {
         session_destroy();
+    }
+
+    /**
+     * Method to get the User Entity of the current Session.
+     * @return User The User Entity of the current Session.
+     */
+    public function getUser() : User
+    {
+        //create the Session.
+        $session = new Session();
+        $session->create(Database::getInstance()->getConnection());
+
+        //get the User Entity from Session.
+        $users = UserRepository::build()->findByID($_SESSION['user_id']);
+
+        //return the User Entity from database or null if not available.
+        return (count($users) === 1) ? $users[0] : null;
     }
 }
