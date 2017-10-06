@@ -24,6 +24,7 @@
 </nav>
 <div class="d-flex justify-content-center mt-5">
     <form class="w-25 picvid-file-upload" enctype="multipart/form-data" data-action="<?= URL ?>upload/upload" method="post">
+        <input type="hidden" name="token" value="{{token}}"/>
         <div class="alert"></div>
         <div class="form-group">
             <label class="sr-only" for="image-title">Title</label>
