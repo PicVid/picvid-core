@@ -72,7 +72,6 @@ $(document).ready(function() {
 
     //check whether the upload exists.
     if (inputImageUpload !== undefined) {
-        console.log(inputImageUpload);
         var inputImageLabel = $("label[for='files']");
         var labelDefaultValue = inputImageLabel.html();
 
