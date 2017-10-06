@@ -49,6 +49,9 @@ body#login-view div.bg-overlay {
 body#info-view div.bg-overlay {
     background: #000 url('../img/bg-info-view.jpg') no-repeat center;
 }
+div.bg-overlay {
+    z-index:-1;
+}
 body#index-view > div.container-fluid,
 body#register-view > div.container-fluid,
 body#login-view > div.container-fluid,
