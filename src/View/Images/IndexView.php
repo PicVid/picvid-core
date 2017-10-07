@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav mr-auto">
             <a class="nav-item nav-link" href="<?= URL ?>upload"><i class="fa fa-upload" aria-hidden="true"></i>Upload</a>
-            <a class="nav-item nav-link" href="<?= URL ?>image"><i class="fa fa-picture-o" aria-hidden="true"></i>Images</a>
+            <a class="nav-item nav-link" href="<?= URL ?>images"><i class="fa fa-picture-o" aria-hidden="true"></i>Images</a>
         </div>
         <div class="navbar-nav">
             <div class="nav-item dropdown">
@@ -34,10 +34,13 @@ for ($i = 0; $i < count($images); $i++) {
     //check whether a Image Entity is available.
     if ($image instanceof \PicVid\Domain\Entity\Image) {
 ?>
-    <div class="mt-2 mx-2 img-thumbnail float-left" style="position:relative;">
-        <img style="max-height:240px;" height="240" src="<?= $image->getImageURL() ?>"/>
-        <a class="btn btn-sm btn-success" style="position:absolute; bottom:0; left:0;" href="<?= URL ?>images/download/<?= $image->id ?>">
+    <div class="mt-2 mx-2 img-thumbnail float-left">
+        <img height="240" src="<?= $image->getImageURL() ?>"/>
+        <a class="btn btn-sm btn-success download" href="<?= URL ?>images/download/<?= $image->id ?>">
             <i class="fa fa-download" aria-hidden="true"></i>
+        </a>
+        <a class="btn btn-sm btn-info info" href="#">
+            <i class="fa fa-info" aria-hidden="true"></i>
         </a>
     </div>
 <?php

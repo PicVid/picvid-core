@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav mr-auto">
             <a class="nav-item nav-link" href="<?= URL ?>upload"><i class="fa fa-upload" aria-hidden="true"></i>Upload</a>
-            <a class="nav-item nav-link" href="<?= URL ?>image"><i class="fa fa-picture-o" aria-hidden="true"></i>Images</a>
+            <a class="nav-item nav-link" href="<?= URL ?>images"><i class="fa fa-picture-o" aria-hidden="true"></i>Images</a>
         </div>
         <div class="navbar-nav">
             <div class="nav-item dropdown">
