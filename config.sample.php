@@ -17,3 +17,6 @@ define('DATAURL', URL.'data'.DIRECTORY_SEPARATOR);
 define('UPLOADDIR', DATADIR.'upload'.DIRECTORY_SEPARATOR);
 define('IMAGEDIR', DATADIR.'images'.DIRECTORY_SEPARATOR);
 define('IMAGEURL', DATAURL.'images'.DIRECTORY_SEPARATOR);
+
+//the project honeypot key.
+define('PROJECT_HONEYPOT_KEY', '');
