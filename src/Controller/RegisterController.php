@@ -4,6 +4,7 @@
  */
 namespace PicVid\Controller;
 
+use PicVid\Core\API\ProjectHoneyPot;
 use PicVid\Core\CitoEngine;
 use PicVid\Core\Service\AuthenticationService;
 use PicVid\Core\View;
@@ -49,6 +50,16 @@ class RegisterController extends Controller
         if (!$this->verifyFormToken('register-index')) {
             $this->jsonOutput('The form state is not valid!', '', 'error');
             return false;
+        }
+
+        //check if the IP address is trusted (using Project Honey Pot).
+        if (PROJECT_HONEYPOT_KEY !== '') {
+            if (filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
+                if ((new ProjectHoneyPot(PROJECT_HONEYPOT_KEY))->check($_SERVER['REMOTE_ADDR'])) {
+                    $this->jsonOutput('The IP you are using is not trusted!', '', 'error');
+                    return false;
+                }
+            }
         }
 
         //load the User Entity from register form.
