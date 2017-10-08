@@ -22,28 +22,23 @@
         </div>
     </div>
 </nav>
-<?php
-
-//get all the images from database.
-$images = \PicVid\Domain\Repository\ImageRepository::build()->findAll();
-
-//run through all images of the database to output.
-for ($i = 0; $i < count($images); $i++) {
-    $image = $images[$i];
-
-    //check whether a Image Entity is available.
-    if ($image instanceof \PicVid\Domain\Entity\Image) {
-?>
-    <div class="mt-2 mx-2 img-thumbnail float-left">
-        <img height="240" src="<?= $image->getImageURL() ?>"/>
-        <a class="btn btn-sm btn-success download" href="<?= URL ?>images/download/<?= $image->id ?>">
-            <i class="fa fa-download" aria-hidden="true"></i>
-        </a>
-        <a class="btn btn-sm btn-info info" href="<?= URL ?>images/info/<?= $image->id ?>">
-            <i class="fa fa-info" aria-hidden="true"></i>
-        </a>
+<div class="d-flex justify-content-center mt-5">
+    <div class="card" style="width: 40rem;">
+        <img class="card-img-top" src="{{image-url}}" alt="Card image cap">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{image-title}}</li>
+            <li class="list-group-item">{{image-description}}</li>
+            <li class="list-group-item">
+                <i class="fa fa-arrows-v" aria-hidden="true" style="padding:0 7px 0 0;"></i>
+                <span>{{image-height}}</span>
+                <i class="fa fa-arrows-h" aria-hidden="true" style="padding:0 7px 0 20px;"></i>
+                <span>{{image-width}}</span>
+            </li>
+        </ul>
+        <input type="hidden" name="profile_id" value="25">
+        <div class="card-body">
+            <a class="btn btn-sm btn-success" href="<?= URL ?>images/download/{{image-id}}"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
+            <a class="btn btn-sm btn-danger float-right" href="<?= URL ?>images/delete/{{image-id}}"><i class="fa fa-trash" aria-hidden="true"></i> Löschen</a>
+        </div>
     </div>
-<?php
-    }
-}
-?>
+</div>
