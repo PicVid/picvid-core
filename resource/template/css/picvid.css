@@ -78,24 +78,24 @@ nav div.dropdown-menu-right {
 nav div.dropdown-menu {
     border-radius: 0;
 }
-#images-view div.img-thumbnail {
+#images-index div.img-thumbnail {
     position: relative;
 }
-#images-view div.img-thumbnail img {
+#images-index div.img-thumbnail img {
     max-height:240px;
 }
-#images-view div.img-thumbnail a.download {
+#images-index div.img-thumbnail a.download {
     position:absolute;
     bottom:0;
     left:0;
 }
-#images-view div.img-thumbnail a.info {
+#images-index div.img-thumbnail a.info {
     position:absolute;
     bottom: 0;
     right:0;
 }
-#images-info img,
-#images-view img {
+#images-info div.card img,
+#images-index div.img-thumbnail img {
     background: #000 url("../img/bg-transparent.png") repeat right top;
 }
 
