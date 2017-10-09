@@ -9,6 +9,7 @@ use PicVid\Core\View;
 use PicVid\Domain\DataMapper\ImageMapper;
 use PicVid\Domain\Entity\Image;
 use PicVid\Domain\Repository\ImageRepository;
+use PicVid\Domain\TableMapper\UserImageTableMapper;
 
 /**
  * Class ImagesController
@@ -57,13 +58,18 @@ class ImagesController extends Controller
 
             //check whether an Image Entity is available.
             if ($image instanceof Image) {
-                if (ImageMapper::build()->delete($image)) {
-                    $this->redirect(URL.'images');
-                } else {
-                    $this->redirect(URL.'images/info/'.$id);
+
+                if (UserImageTableMapper::build()->deleteByImage($image)) {
+                    if (ImageMapper::build()->delete($image)) {
+                        unlink($image->getImagePath());
+                        $this->redirect(URL.'images');
+                    }
                 }
             }
         }
+
+        //redirect to the image info.
+        $this->redirect(URL.'images/info/'.$id);
     }
 
     /**
