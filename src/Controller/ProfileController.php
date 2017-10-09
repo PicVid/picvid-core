@@ -6,8 +6,11 @@ namespace PicVid\Controller;
 
 use PicVid\Core\CitoEngine;
 use PicVid\Core\View;
+use PicVid\Domain\DataMapper\ImageMapper;
 use PicVid\Domain\DataMapper\UserMapper;
+use PicVid\Domain\Entity\Image;
 use PicVid\Domain\Entity\User;
+use PicVid\Domain\Repository\ImageRepository;
 use PicVid\Domain\Repository\UserRepository;
 use PicVid\Domain\Service\User\HashService;
 use PicVid\Domain\Specification\User\IsUniqueEmail;
@@ -17,6 +20,7 @@ use PicVid\Domain\Specification\User\IsValidFirstname;
 use PicVid\Domain\Specification\User\IsValidLastname;
 use PicVid\Domain\Specification\User\IsValidPassword;
 use PicVid\Domain\Specification\User\IsValidUsername;
+use PicVid\Domain\TableMapper\UserImageTableMapper;
 
 /**
  * Class ProfileController
@@ -63,6 +67,46 @@ class ProfileController extends Controller
             //user is unknown, so logout.
             $this->redirect(URL.'logout');
         }
+    }
+
+    /**
+     * The remove images method / action of the Controller.
+     */
+    public function removeImages()
+    {
+        //a Session is needed for this method / action.
+        $this->needSession();
+
+        //get the User from database by Session information.
+        $users = UserRepository::build()->findByID($_SESSION['user_id']);
+
+        //check if an User Entity could be found.
+        if (count($users) === 1) {
+            $user = $users[0];
+
+            //find all Image Entities of the User Entity.
+            $images = ImageRepository::build()->findByUser($user);
+
+            //set the UserImageTableMapper and ImageMapper to remove the connections and Image Entities.
+            $userImageTableMapper = UserImageTableMapper::build();
+            $imageMapper = ImageMapper::build();
+
+            //run through all Image Entities to remove.
+            foreach ($images as $image) {
+
+                //check whether a Image Entity is available.
+                if ($image instanceof Image) {
+
+                    //delete the connection to the User Entity and the Image Entity itself.
+                    if ($userImageTableMapper->delete($user, $image) && $imageMapper->delete($image)) {
+                        unlink($image->getImagePath());
+                    }
+                }
+            }
+        }
+
+        //redirect back to the profile.
+        $this->redirect(URL.'profile');
     }
 
     /**

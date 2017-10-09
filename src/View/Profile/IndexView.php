@@ -56,7 +56,8 @@
             </ul>
             <input type="hidden" name="profile_id" value="{{user_id}}"/>
             <div class="card-body">
-                <button class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>Save</button>
+                <button class="btn btn-sm btn-success"><i class="fa fa-check" aria-hidden="true"></i>Save</button>
+                <a class="btn btn-sm btn-danger float-right" href="<?= URL ?>profile/remove-images"><i class="fa fa-trash" aria-hidden="true"></i>Remove all Images</a>
             </div>
         </div>
     </form>
