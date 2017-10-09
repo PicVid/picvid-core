@@ -164,3 +164,11 @@ form div.alert {
     border-radius: 0;
     display:none;
 }
+
+/** overwrite some browser specific rules. */
+input[type="text"],
+input[type="text"]:-webkit-autofill,
+input[type="text"]:-webkit-autofill:hover,
+input[type="text"]:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
