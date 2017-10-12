@@ -10,7 +10,7 @@ use \PHPUnit\Framework\TestCase;
 /**
  * Class MockAutoloaderTest
  *
- * @author Sebastian Brosch <contact@sebastianbrosch.de>
+ * @author Sebastian Brosch <coding@sebastianbrosch.de>
  * @license GNU General Public License, version 3
  * @package PicVid\Test
  */
@@ -45,7 +45,7 @@ class MockAutoloaderTest extends Autoloader
 /**
  * Class AutoloaderTest
  *
- * @author Sebastian Brosch <contact@sebastianbrosch.de>
+ * @author Sebastian Brosch <coding@sebastianbrosch.de>
  * @license GNU General Public License, version 3
  * @package PicVid\Test
  */
