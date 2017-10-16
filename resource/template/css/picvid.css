@@ -94,9 +94,17 @@ nav div.dropdown-menu {
     bottom: 0;
     right:0;
 }
-#images-info div.card img,
 #images-index div.img-thumbnail img {
     background: #000 url("../img/bg-transparent.png") repeat right top;
+}
+#images-info div.card div.img-container {
+    background: #000 url("../img/bg-transparent.png") repeat right top;
+    max-height: 400px;
+    text-align: center;
+}
+#images-info div.card div.img-container img {
+    height: auto;
+    max-height: 400px;
 }
 
 /** ---------------------------------------------------------------------------------------------------- */

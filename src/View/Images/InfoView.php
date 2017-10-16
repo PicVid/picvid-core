@@ -27,10 +27,12 @@
         <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-expanded="true">Info</a>
         <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="true">EXIF</a>
     </div>
-    <div class="tab-content" id="myTabContent" style="width: 40rem; max-height: 80vh; overflow: auto;">
+    <div class="tab-content" id="myTabContent" style="width: 50rem; max-height: 80vh; overflow: auto;">
         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home">
-            <div class="card" >
-                <img class="card-img-top" src="{{image-url}}" alt="Card image cap">
+            <div class="card">
+                <div class="img-container">
+                    <img src="{{image-url}}"/>
+                </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{image-title}}</li>
                     <li class="list-group-item">{{image-description}}</li>
