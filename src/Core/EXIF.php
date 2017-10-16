@@ -302,13 +302,13 @@ class EXIF
      * A tag used to record fractions of seconds for the DateTime tag.
      * @var string
      */
-    public $SubSecTime = '';
+    public $SubsecTime = '';
 
     /**
      * A tag used to record fractions of seconds for the DateTimeDigitized tag.
      * @var string
      */
-    public $SubSecTimeDigitized = '';
+    public $SubsecTimeDigitized = '';
 
     /**
      * A tag used to record fractions of seconds for the DateTimeOriginal tag.
