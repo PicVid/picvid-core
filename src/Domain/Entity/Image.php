@@ -86,7 +86,7 @@ class Image extends Entity
 
         //check whether a path is available.
         if (trim($filePath) !== '') {
-            return is_array(exif_read_data($filePath, 'EXIF'));
+            return is_array(@exif_read_data($filePath, 'EXIF'));
         } else {
             return false;
         }

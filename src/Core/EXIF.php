@@ -337,7 +337,7 @@ class EXIF
     {
         //check whether the file exists.
         if (file_exists($filePath)) {
-            $result = exif_read_data($filePath, 'EXIF');
+            $result = @exif_read_data($filePath, 'EXIF');
 
             //check whether the EXIF data is available.
             if ($result !== false) {
