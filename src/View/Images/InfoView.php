@@ -22,13 +22,19 @@
         </div>
     </div>
 </nav>
-<div class="d-flex justify-content-center mt-5">
-    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
-        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-expanded="true">Info</a>
-        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="true">EXIF</a>
-    </div>
-    <div class="tab-content" id="myTabContent" style="width: 50rem; max-height: 80vh; overflow: auto;">
-        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home">
+<div class="d-flex flex-column mt-5 align-items-center">
+    <nav class="nav nav-pills nav-justified w-25">
+        <a class="nav-item nav-link active" href="#image-info" id="tab-image-info" data-toggle="pill" role="tab" aria-controls="image-info">
+            <i class="fa fa-picture-o" aria-hidden="true"></i>
+            <span>Info</span>
+        </a>
+        <a class="nav-item nav-link {{tab-exif-state}}" href="#image-exif" id="tab-image-exif" data-toggle="pill" role="tab" aria-controls="image-exif">
+            <i class="fa fa-info" aria-hidden="true"></i>
+            <span>EXIF</span>
+        </a>
+    </nav>
+    <div class="tab-content w-25">
+        <div class="tab-pane fade active show" id="image-info" role="tabpanel" aria-labelledby="tab-image-info">
             <div class="card">
                 <div class="img-container">
                     <img src="{{image-url}}"/>
@@ -50,7 +56,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile">
+        <div class="tab-pane fade" id="image-exif" role="tabpanel" aria-labelledby="tab-image-exif">
             <table class="table table-sm table-striped table-inverse table-bordered">
                 <tr>
                     <td>Aperture Value</td>
