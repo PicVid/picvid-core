@@ -69,4 +69,26 @@ class Image extends Entity
         //return the image URL if file exists.
         return (file_exists($imagePath)) ? $imageURL : '';
     }
+
+    /**
+     * Method to determine the state of whether EXIF data exists.
+     * @return bool The state whether EXIF data exists.
+     */
+    public function hasEXIF() : bool
+    {
+        //get the image path of the Image Entity.
+        $filePath = $this->getImagePath();
+
+        //check whether the file is a supported EXIF format.
+        if (in_array(exif_imagetype($filePath), [IMAGETYPE_JPEG, IMAGETYPE_TIFF_II, IMAGETYPE_TIFF_MM]) === false) {
+            return false;
+        }
+
+        //check whether a path is available.
+        if (trim($filePath) !== '') {
+            return is_array(exif_read_data($filePath, 'EXIF'));
+        } else {
+            return false;
+        }
+    }
 }
