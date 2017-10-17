@@ -103,8 +103,16 @@ nav div.dropdown-menu {
     text-align: center;
 }
 #images-info div.card div.img-container img {
-    height: auto;
     max-height: 400px;
+    max-width: 100%;
+}
+#images-info .nav-pills i {
+    margin-right:10px;
+}
+#images-info .tab-pane {
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /** ---------------------------------------------------------------------------------------------------- */
