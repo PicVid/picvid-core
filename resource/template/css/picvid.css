@@ -114,6 +114,16 @@ nav div.dropdown-menu {
     overflow-y: auto;
     overflow-x: hidden;
 }
+#images-info table#image-exif-info {
+    table-layout:fixed;
+    width: 100%;
+}
+#images-info table#image-exif-info td:first-of-type {
+    width: 250px;
+}
+#images-info table#image-exif-info td:last-of-type {
+    overflow-wrap: break-word;
+}
 
 /** ---------------------------------------------------------------------------------------------------- */
 /** ---------------------------------- all styles for the navigation ----------------------------------- */

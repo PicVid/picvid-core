@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="tab-pane fade" id="image-exif" role="tabpanel" aria-labelledby="tab-image-exif">
-            <table class="table table-sm table-striped table-inverse table-bordered">
+            <table class="table table-sm table-striped table-inverse table-bordered" id="image-exif-info">
                 <tr>
                     <td>Aperture Value</td>
                     <td>{{exif-aperture-value}}</td>
