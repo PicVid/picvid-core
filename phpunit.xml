@@ -13,4 +13,8 @@
             <directory suffix=".php">./src</directory>
         </whitelist>
     </filter>
+    <logging>
+        <log type="coverage-clover" target="docs/logs/phpunit-coverage.xml"/>
+        <log type="junit" target="docs/logs/phpunit-junit.xml"/>
+    </logging>
 </phpunit>

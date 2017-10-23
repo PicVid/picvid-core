@@ -1,0 +1,8 @@
+{
+  "extensions": "php",
+  "exclude": "test",
+  "junit": "./docs/logs/phpunit-junit.xml",
+  "report": {
+    "html": "./docs/phpmetrics"
+  }
+}
