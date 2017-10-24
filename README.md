@@ -7,5 +7,11 @@ Web-Anwendung selbst konnte über einen Backend-Bereich vorgenommen werden.
 
 ## Ausblick
 Dieses Projekt befindet sich aktuell in der Überarbeitung. In einer neuen Version soll der Funktionsumfang nur auf 
-Bilder beschränkt werden. Diese sollen über PicVid wieder hochgeladen und verwaltet werden können. Die Darstellung 
-der Bilder soll gängigen Image-Sharing Plattformen gleichen.
+Bilder beschränkt werden. Diese sollen über PicVid wieder hochgeladen und verwaltet werden können.
+
+## Dokumentation (Entwicklung)
+Während der Entwicklung werden auch verschiedene Tools zur Erstellung von Metriken und Dokumentationen (auf Basis des
+Quelltextes) eingesetzt. Die dabei automatisch erstellten Informationen finden Sie nachfolgend:
+
+- [PhpMetrics](http://picvid.de/docs/phpmetrics)
+- [phpDox](http://picvid.de/docs/phpdox/api)

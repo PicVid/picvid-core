@@ -10,7 +10,9 @@
                     <history enabled="true" limit="15"/>
                 </source>
             </enrich>
-            <build engine="html" output="html"/>
+            <build engine="html" enabled="true" output="api">
+                <file extension="html"/>
+            </build>
         </generator>
     </project>
 </phpdox>
