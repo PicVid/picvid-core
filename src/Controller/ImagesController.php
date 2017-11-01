@@ -107,6 +107,40 @@ class ImagesController extends Controller
     }
 
     /**
+     * Method to format the file size.
+     * @param int $bytes The file size to be formatted.
+     * @return string The formatted file size.
+     * @see https://secure.php.net/manual/en/function.filesize.php#112996
+     */
+    private function formatFileSize(int $bytes) : string
+    {
+        //convert the file size to a float value.
+        $bytes = floatval($bytes);
+
+        //set an array with all information of the units.
+        $units = [
+            0 => ['unit' => 'TB', 'value' => pow(1024, 4)],
+            1 => ['unit' => 'GB', 'value' => pow(1024, 3)],
+            2 => ['unit' => 'MB', 'value' => pow(1024, 2)],
+            3 => ['unit' => 'KB', 'value' => 1024],
+            4 => ['unit' => 'B', 'value' => 1]
+        ];
+
+        //iterate through all units to find the matching unit of the file size.
+        foreach($units as $unit)
+        {
+            //check if the current value is in the range of the unit and can be used for format.
+            if($bytes >= $unit['value'])
+            {
+                return str_replace(".", "," , strval(round(($bytes / $unit['value']), 2)))." ".$unit['unit'];
+            }
+        }
+
+        //the unit could not be found.
+        return $bytes;
+    }
+
+    /**
      * The info method / action of the Controller.
      * @param int $id The ID if the image to show the information.
      */
@@ -174,7 +208,7 @@ class ImagesController extends Controller
                     $cito->setValue('exif-image-width', $exif->ImageWidth);
                     $cito->setValue('exif-iso-speed-ratings', $exif->ISOSpeedRatings);
                     $cito->setValue('exif-light-source', $exif->LightSource);
-                    $cito->setValue('exif-maker-note', $exif->MakerNote);
+                    $cito->setValue('exif-maker-note', is_string($exif->MakerNote) ? $exif->MakerNote : '');
                     $cito->setValue('exif-max-aperture-value', $exif->MaxApertureValue);
                     $cito->setValue('exif-metering-mode', $exif->MeteringMode);
                     $cito->setValue('exif-related-sound-file', $exif->RelatedSoundFile);
@@ -185,7 +219,7 @@ class ImagesController extends Controller
                     $cito->setValue('exif-sharpness', $exif->Sharpness);
                     $cito->setValue('exif-shutter-speed-value', $exif->ShutterSpeedValue);
                     $cito->setValue('exif-subject-distance-range', $exif->SubjectDistanceRange);
-                    $cito->setValue('exif-subject-location', $exif->SubjectLocation);
+                    $cito->setValue('exif-subject-location', is_string($exif->SubjectLocation) ? $exif->SubjectLocation : '');
                     $cito->setValue('exif-subsec-time', $exif->SubsecTime);
                     $cito->setValue('exif-subsec-time-digitized', $exif->SubsecTimeDigitized);
                     $cito->setValue('exif-subsec-time-original', $exif->SubsecTimeOriginal);
@@ -202,6 +236,7 @@ class ImagesController extends Controller
                 $cito->setValue('image-description', $image->description);
                 $cito->setValue('image-width', $imageSize[0].'px');
                 $cito->setValue('image-height', $imageSize[1].'px');
+                $cito->setValue('image-size', $this->formatFileSize($image->size));
             }
         } else {
             $this->redirect(URL.'images');

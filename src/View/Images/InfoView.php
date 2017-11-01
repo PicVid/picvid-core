@@ -42,6 +42,7 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{image-title}}</li>
                     <li class="list-group-item">{{image-description}}</li>
+                    <li class="list-group-item">Größe: {{image-size}}</li>
                     <li class="list-group-item">
                         <i class="fa fa-arrows-v" aria-hidden="true" style="padding:0 7px 0 0;"></i>
                         <span>{{image-height}}</span>
