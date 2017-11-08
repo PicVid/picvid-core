@@ -4,9 +4,7 @@
  */
 namespace PicVid\Controller;
 
-use PicVid\Core\CitoEngine;
 use PicVid\Core\Service\AuthenticationService;
-use PicVid\Core\View;
 
 /**
  * Class AuthController
@@ -22,17 +20,7 @@ class AuthController extends Controller
      */
     public function index()
     {
-        //set the values for the template tags / placeholders on CitoEngine.
-        $cito = CitoEngine::getInstance();
-        $cito->setValue('BODY_ID', 'auth-view');
-        $cito->setValue('PAGE_TITLE', 'PicVid - Login');
-        $cito->setValue('LOGO_URL', URL.'/resource/template/img/picvid-logo.png');
-        $cito->setValue('token_login', $this->getFormToken('token-login'));
-        $cito->setValue('token_register', $this->getFormToken('token-register'));
-
-        //load the view.
-        $view = new View('Auth');
-        $view->load();
+        $this->redirect(URL.'login');
     }
 
     /**
