@@ -34,7 +34,7 @@ class RegisterController extends Controller
         $cito->setValue('BODY_ID', 'register-view');
         $cito->setValue('PAGE_TITLE', 'PicVid - Register');
         $cito->setValue('LOGO_URL', URL.'/resource/template/img/picvid-logo.png');
-        $cito->setValue('token', $this->getFormToken('register-index'));
+        $cito->setValue('token', $this->getFormToken('token-register'));
 
         //load the view.
         $view = new View('Register');
@@ -47,7 +47,7 @@ class RegisterController extends Controller
     public function register()
     {
         //check whether the token is the same.
-        if (!$this->verifyFormToken('register-index')) {
+        if (!$this->verifyFormToken('token-register')) {
             $this->jsonOutput('The form state is not valid!', '', 'error');
             return false;
         }
@@ -98,7 +98,7 @@ class RegisterController extends Controller
 
         //register the new User Entity.
         if ((new AuthenticationService())->register($user)) {
-            $this->jsonOutput('The User was successfully registered!', '', 'info', URL.'auth');
+            $this->jsonOutput('The User was successfully registered!', '', 'info', URL.'login');
             return true;
         } else {
             $this->jsonOutput('The User could not be registered!', '', 'error');
