@@ -13,5 +13,6 @@ Bilder beschränkt werden. Diese sollen über PicVid wieder hochgeladen und verw
 Während der Entwicklung werden auch verschiedene Tools zur Erstellung von Metriken und Dokumentationen (auf Basis des
 Quelltextes) eingesetzt. Die dabei automatisch erstellten Informationen finden Sie nachfolgend:
 
-- [PhpMetrics](http://picvid.de/docs/phpmetrics)
-- [phpDox](http://picvid.de/docs/phpdox/api)
+- [Website](https://picvid.de)
+- [PhpMetrics](https://picvid.de/docs/phpmetrics)
+- [phpDox](https://picvid.de/docs/phpdox/api)
