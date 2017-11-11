@@ -4,6 +4,7 @@
  */
 namespace PicVid\Controller;
 
+use PicVid\Core\Configuration;
 use PicVid\Core\Database;
 use PicVid\Core\Session;
 
@@ -58,7 +59,7 @@ abstract class Controller implements IController
      * @param string $redirectURL The target URL to redirect.
      * @return void
      */
-    protected function needSession(string $redirectURL = URL)
+    protected function needSession(string $redirectURL = '')
     {
         //create the Session.
         $session = new Session();
@@ -66,7 +67,8 @@ abstract class Controller implements IController
 
         //check if the Session is available.
         if (isset($_SESSION['user_username']) === false) {
-            $this->redirect($redirectURL);
+            $config = Configuration::getInstance();
+            $this->redirect(($redirectURL === '') ? $config->URL : $redirectURL);
         }
     }
 
