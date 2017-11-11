@@ -8,7 +8,7 @@ define('DB_PASS', 'password');
 
 //path and url configuration.
 define('URL', 'http://example.com/');
-define('ABSPATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
+define('ABSPATH', __DIR__.DIRECTORY_SEPARATOR);
 define('RESPATH', ABSPATH.'resource'.DIRECTORY_SEPARATOR);
 define('SRCPATH', ABSPATH.'src'.DIRECTORY_SEPARATOR);
 define('VIEWDIR', SRCPATH.'View'.DIRECTORY_SEPARATOR);
@@ -20,3 +20,7 @@ define('IMAGEURL', DATAURL.'images'.DIRECTORY_SEPARATOR);
 
 //the project honeypot key.
 define('PROJECT_HONEYPOT_KEY', '');
+
+//max image size and storage size.
+define('MAX_IMAGE_SIZE', 0);
+define('MAX_STORAGE_SIZE', 0);
