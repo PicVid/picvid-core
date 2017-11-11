@@ -4,6 +4,8 @@
  */
 namespace PicVid\Domain\Entity;
 
+use PicVid\Core\Configuration;
+
 /**
  * Class Image
  *
@@ -49,8 +51,11 @@ class Image extends Entity
      */
     public function getImagePath() : string
     {
+        //get the configuration.
+        $config = Configuration::getInstance();
+
         //set the full image path.
-        $imagePath = IMAGEDIR.$this->filename;
+        $imagePath = preg_replace('/\/\\\/', DIRECTORY_SEPARATOR, $config->IMGDIR).$this->filename;
 
         //return the image path if file exists.
         return (file_exists($imagePath)) ? $imagePath : '';
@@ -62,12 +67,14 @@ class Image extends Entity
      */
     public function getImageURL() : string
     {
-        //set the full image path and URL.
-        $imagePath = IMAGEDIR.$this->filename;
-        $imageURL = IMAGEURL.$this->filename;
+        //get the configuration.
+        $config = Configuration::getInstance();
+
+        //set the full image URL.
+        $imageURL = preg_replace("/\/|\\\/", '/', $config->IMGURL).$this->filename;
 
         //return the image URL if file exists.
-        return (file_exists($imagePath)) ? $imageURL : '';
+        return (file_exists($this->getImagePath())) ? $imageURL : '';
     }
 
     /**
