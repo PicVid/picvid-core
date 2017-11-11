@@ -5,6 +5,7 @@
 namespace PicVid\Controller;
 
 use PicVid\Core\CitoEngine;
+use PicVid\Core\Configuration;
 use PicVid\Core\EXIF;
 use PicVid\Core\View;
 use PicVid\Domain\DataMapper\ImageMapper;
@@ -29,12 +30,16 @@ class ImagesController extends Controller
         //a session is needed to see the images.
         $this->needSession();
 
+        //get the configuration.
+        $config = Configuration::getInstance();
+
         //set the values for the template tags / placeholders on CitoEngine.
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'images-index');
         $cito->setValue('PAGE_TITLE', 'PicVid - Bilder');
-        $cito->setValue('LOGO_URL', URL.'/resource/template/img/picvid-logo.png');
+        $cito->setValue('LOGO_URL', $config->URL.'/resource/template/img/picvid-logo.png');
         $cito->setValue('username', $_SESSION['user_username']);
+        $cito->setValue('URL', $config->URL);
 
         //load the view.
         $view = new View('Images');
@@ -50,6 +55,9 @@ class ImagesController extends Controller
         //a session is needed to delete the images.
         $this->needSession();
 
+        //get the configuration.
+        $config = Configuration::getInstance();
+
         //get the Image Entity from database.
         $images = ImageRepository::build()->findByID($id);
 
@@ -59,18 +67,17 @@ class ImagesController extends Controller
 
             //check whether an Image Entity is available.
             if ($image instanceof Image) {
-
                 if (UserImageTableMapper::build()->deleteByImage($image)) {
                     if (ImageMapper::build()->delete($image)) {
                         unlink($image->getImagePath());
-                        $this->redirect(URL.'images');
+                        $this->redirect($config->URL.'images');
                     }
                 }
             }
         }
 
         //redirect to the image info.
-        $this->redirect(URL.'images/info/'.$id);
+        $this->redirect($config->URL.'images/info/'.$id);
     }
 
     /**
@@ -132,7 +139,7 @@ class ImagesController extends Controller
             //check if the current value is in the range of the unit and can be used for format.
             if($bytes >= $unit['value'])
             {
-                return str_replace(".", "," , strval(round(($bytes / $unit['value']), 2)))." ".$unit['unit'];
+                return str_replace('.', ',' , strval(round(($bytes / $unit['value']), 2))).' '.$unit['unit'];
             }
         }
 
@@ -149,12 +156,16 @@ class ImagesController extends Controller
         //a session is needed to see the images.
         $this->needSession();
 
+        //get the configuration.
+        $config = Configuration::getInstance();
+
         //set the values for the template tags / placeholders on CitoEngine.
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'images-info');
         $cito->setValue('PAGE_TITLE', 'PicVid - Bilder');
-        $cito->setValue('LOGO_URL', URL.'/resource/template/img/picvid-logo.png');
+        $cito->setValue('LOGO_URL', $config->URL.'/resource/template/img/picvid-logo.png');
         $cito->setValue('username', $_SESSION['user_username']);
+        $cito->setValue('URL', $config->URL);
 
         //get the Image Entity from database.
         $images = ImageRepository::build()->findByID($id);
@@ -239,7 +250,7 @@ class ImagesController extends Controller
                 $cito->setValue('image-size', $this->formatFileSize($image->size));
             }
         } else {
-            $this->redirect(URL.'images');
+            $this->redirect($config->URL.'images');
         }
 
         //load the view.
