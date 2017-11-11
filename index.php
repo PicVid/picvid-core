@@ -1,13 +1,14 @@
 <?php
-//include the configuration.
-require_once('config.php');
-
 //include the autoloader.
-require_once(SRCPATH.'Autoloader.php');
+require_once('./src/Autoloader.php');
 
 //initialize the autoloader.
 $autoloader = new \PicVid\Autoloader();
 $autoloader->addNamespace('PicVid', 'src');
+
+//include the configuration (if exists).
+$config = \PicVid\Core\Configuration::getInstance();
+$config->load();
 
 //initialize the CitoEngine (template engine).
 $cito = \PicVid\Core\CitoEngine::getInstance();
