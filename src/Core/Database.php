@@ -47,7 +47,8 @@ class Database
     {
         //check if a PDO database connection is available.
         if (self::$pdo === null) {
-            $this->setConnection(DB_NAME, DB_HOST, DB_USER, DB_PASS, DB_PORT);
+            $config = Configuration::getInstance();
+            $this->setConnection($config->DB_NAME, $config->DB_HOST, $config->DB_USER, $config->DB_PASS, $config->DB_PORT);
         }
 
         //return the PDO database connection.
@@ -63,7 +64,7 @@ class Database
      * @param int $port The port of the database (default 3306).
      * @return bool The status whether the connection was set successfully.
      */
-    public function setConnection(string $name, string $hostname, string $username, string $password, int $port = 3306)
+    public function setConnection(string $name, string $hostname, string $username, string $password, int $port = 3306) : bool
     {
         try {
             $dsn = 'mysql:host='.$hostname.';port='.$port.';dbname='.$name;
@@ -76,9 +77,9 @@ class Database
 
     /**
      * Method to get the instance of the Database.
-     * @return Database|null An instance of the Database.
+     * @return Database An instance of the Database.
      */
-    public static function getInstance()
+    public static function getInstance() : Database
     {
         if (self::$instance === null) {
             self::$instance = new self();

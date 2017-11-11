@@ -58,7 +58,11 @@ class View
      */
     private function includeView()
     {
-        $viewFile = VIEWDIR.$this->controller.DIRECTORY_SEPARATOR.$this->method.'View.php';
+        //get the configuration.
+        $config = Configuration::getInstance();
+
+        //get the path of the View file.
+        $viewFile = $config->VIEWDIR.$this->controller.DIRECTORY_SEPARATOR.$this->method.'View.php';
 
         //check whether the file of the view exists.
         if (file_exists($viewFile)) {
@@ -71,9 +75,12 @@ class View
      */
     public function load()
     {
+        //get the configuration.
+        $config = Configuration::getInstance();
+
         //get the paths to the header and footer files.
-        $headerFile = RESPATH.'template'.DIRECTORY_SEPARATOR.'header.php';
-        $footerFile = RESPATH.'template'.DIRECTORY_SEPARATOR.'footer.php';
+        $headerFile = $config->RESPATH.'template'.DIRECTORY_SEPARATOR.'header.php';
+        $footerFile = $config->RESPATH.'template'.DIRECTORY_SEPARATOR.'footer.php';
 
         //check whether the header file exists.
         if (file_exists($headerFile)) {

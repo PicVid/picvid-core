@@ -36,11 +36,14 @@ class PicVid
      */
     public function __construct()
     {
+        //get the configuration.
+        $config = Configuration::getInstance();
+
         //parse URL to get the controller, method and parameters.
         $url = $this->parseUrl();
 
         //check if the controller is present.
-        if (isset($url[0]) && file_exists(SRCPATH.'Controller/'.$this->normalize($url[0], false).'Controller.php')) {
+        if (isset($url[0]) && file_exists($config->SRCPATH.'Controller/'.$this->normalize($url[0], false).'Controller.php')) {
             $this->controller = $this->normalize($url[0], false);
             unset($url[0]);
         }
