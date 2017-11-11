@@ -7,21 +7,19 @@ $(document).ready(function() {
     msgObject.message = "";
     msgObject.field = "";
 
-    //get the form and the alert element.
-    var itemForm = $("form.ajax");
-    var itemFormAlert = itemForm.find(".alert");
-
     //the submit event.
-    itemForm.on("submit", function(e) {
+    $("form.ajax").on("submit", function(e) {
         e.preventDefault();
+
+        var itemFormAlert = $(this).find(".alert");
 
         //the ajax call.
         $.ajax({
 
             //the settings of the ajax call.
             method: "POST",
-            url: itemForm.attr("data-action"),
-            data: itemForm.serialize(),
+            url: $(this).attr("data-action"),
+            data: $(this).serialize(),
             timeout: 3000,
             dataType: "json",
             encode: true
