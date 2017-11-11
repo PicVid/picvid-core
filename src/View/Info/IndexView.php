@@ -5,7 +5,7 @@
 </a>
 <div class="container-fluid d-flex flex-column">
     <div class="d-flex flex-row justify-content-start align-items-center p-5 mb-5">
-        <a href="<?= URL ?>">
+        <a href="{{URL}}">
             <img class="logo" height="65" src="{{LOGO_URL}}"/>
         </a>
     </div>
