@@ -199,7 +199,7 @@ class Configuration
      */
     private function getURL() : string
     {
-        return (isset($_SERVER['HTTPS']) ? "https" : "http")."://$_SERVER[HTTP_HOST]"."/";
+        return (isset($_SERVER['HTTPS']) ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/';
     }
 
     /**
