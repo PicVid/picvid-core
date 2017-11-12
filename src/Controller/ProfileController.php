@@ -5,6 +5,7 @@
 namespace PicVid\Controller;
 
 use PicVid\Core\CitoEngine;
+use PicVid\Core\Configuration;
 use PicVid\Core\View;
 use PicVid\Domain\DataMapper\ImageMapper;
 use PicVid\Domain\DataMapper\UserMapper;
@@ -39,6 +40,9 @@ class ProfileController extends Controller
         //a Session is needed for this method / action.
         $this->needSession();
 
+        //get the configuration.
+        $config = Configuration::getInstance();
+
         //get the User from database by Session information.
         $users = UserRepository::build()->findByID($_SESSION['user_id']);
 
@@ -49,7 +53,7 @@ class ProfileController extends Controller
             //set all the values for the placeholders on template.
             $cito = CitoEngine::getInstance();
             $cito->setValue('BODY_ID', 'profile-index');
-            $cito->setValue('LOGO_URL', URL.'/resource/template/img/picvid-logo.png');
+            $cito->setValue('LOGO_URL', $config->URL.'/resource/template/img/picvid-logo.png');
             $cito->setValue('user_username', $user->username);
             $cito->setValue('user_email', $user->email);
             $cito->setValue('user_firstname', $user->firstname);
@@ -65,7 +69,7 @@ class ProfileController extends Controller
         } else {
 
             //user is unknown, so logout.
-            $this->redirect(URL.'logout');
+            $this->redirect($config->URL.'logout');
         }
     }
 
@@ -76,6 +80,9 @@ class ProfileController extends Controller
     {
         //a Session is needed for this method / action.
         $this->needSession();
+
+        //get the configuration.
+        $config = Configuration::getInstance();
 
         //get the User from database by Session information.
         $users = UserRepository::build()->findByID($_SESSION['user_id']);
@@ -106,7 +113,7 @@ class ProfileController extends Controller
         }
 
         //redirect back to the profile.
-        $this->redirect(URL.'profile');
+        $this->redirect($config->URL.'profile');
     }
 
     /**
