@@ -5,7 +5,7 @@
 </a>
 <div class="container-fluid d-flex flex-column">
     <div class="d-flex flex-row justify-content-start align-items-center p-5 mb-5">
-        <a href="<?= URL ?>">
+        <a href="{{URL}}">
             <img class="logo" height="65" src="{{LOGO_URL}}"/>
         </a>
     </div>
@@ -24,7 +24,7 @@
                 dis parturient montes, nascetur ridiculus mus. Sed ut nisl in nunc dignissim placerat.</p>
         </div>
         <div class="col col-3">
-            <form class="ajax" method="post" data-action="<?= URL ?>login/login">
+            <form class="ajax" method="post" data-action="{{URL}}login/login">
                 <input type="hidden" name="token" value="{{token}}"/>
                 <div class="alert" role="alert"></div>
                 <div class="form-group">

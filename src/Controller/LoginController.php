@@ -6,6 +6,7 @@ namespace PicVid\Controller;
 
 use PicVid\Core\API\ProjectHoneyPot;
 use PicVid\Core\CitoEngine;
+use PicVid\Core\Configuration;
 use PicVid\Core\Service\AuthenticationService;
 use PicVid\Core\View;
 use PicVid\Domain\Entity\User;
@@ -26,11 +27,14 @@ class LoginController extends Controller
      */
     public function index()
     {
+        //get the configuration.
+        $config = Configuration::getInstance();
+
         //set the values for the template tags / placeholders on CitoEngine.
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'login-view');
         $cito->setValue('PAGE_TITLE', 'PicVid - Login');
-        $cito->setValue('LOGO_URL', URL.'/resource/template/img/picvid-logo.png');
+        $cito->setValue('LOGO_URL', $config->URL.'/resource/template/img/picvid-logo.png');
         $cito->setValue('token', $this->getFormToken('token-login'));
 
         //load the view.
@@ -42,6 +46,9 @@ class LoginController extends Controller
      */
     public function login()
     {
+        //get the configuration.
+        $config = Configuration::getInstance();
+
         //check whether the token is the same.
         if (!$this->verifyFormToken('token-login')) {
             $this->jsonOutput('The form state is not valid!', '', 'error');
@@ -49,9 +56,9 @@ class LoginController extends Controller
         }
 
         //check if the IP address is trusted (using Project Honey Pot).
-        if (PROJECT_HONEYPOT_KEY !== '') {
+        if ($config->PROJECT_HONEYPOT_KEY !== '') {
             if (filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-                if ((new ProjectHoneyPot(PROJECT_HONEYPOT_KEY))->check($_SERVER['REMOTE_ADDR'])) {
+                if ((new ProjectHoneyPot($config->PROJECT_HONEYPOT_KEY))->check($_SERVER['REMOTE_ADDR'])) {
                     $this->jsonOutput('The IP you are using is not trusted!', '', 'error');
                     return false;
                 }
@@ -76,7 +83,7 @@ class LoginController extends Controller
 
         //login the User Entity.
         if ((new AuthenticationService())->login($user)) {
-            $this->jsonOutput('The User was successfully logged in!', '', 'info', URL.'profile');
+            $this->jsonOutput('The User was successfully logged in!', '', 'info', $config->URL.'profile');
             return true;
         } else {
             $this->jsonOutput('The User could not be logged in!', '', 'error');
