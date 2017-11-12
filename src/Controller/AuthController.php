@@ -4,6 +4,7 @@
  */
 namespace PicVid\Controller;
 
+use PicVid\Core\Configuration;
 use PicVid\Core\Service\AuthenticationService;
 
 /**
@@ -20,7 +21,8 @@ class AuthController extends Controller
      */
     public function index()
     {
-        $this->redirect(URL.'login');
+        $config = Configuration::getInstance();
+        $this->redirect($config->URL.'login');
     }
 
     /**
@@ -35,6 +37,7 @@ class AuthController extends Controller
         (new AuthenticationService())->logout();
 
         //redirect to the index view.
-        $this->redirect(URL);
+        $config = Configuration::getInstance();
+        $this->redirect($config->URL);
     }
 }
