@@ -5,6 +5,7 @@
 namespace PicVid\Controller;
 
 use PicVid\Core\CitoEngine;
+use PicVid\Core\Configuration;
 use PicVid\Core\Service\SessionService;
 use PicVid\Core\View;
 use PicVid\Domain\DataMapper\ImageMapper;
@@ -29,6 +30,9 @@ class UploadController extends Controller
         //a Session is needed for this method / action.
         $this->needSession();
 
+        //get the configuration.
+        $config = Configuration::getInstance();
+
         //load the view.
         $view = new View('Upload');
         $view->load();
@@ -37,9 +41,10 @@ class UploadController extends Controller
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'upload-index');
         $cito->setValue('PAGE_TITLE', 'PicVid - Upload');
-        $cito->setValue('LOGO_URL', URL.'/resource/template/img/picvid-logo.png');
+        $cito->setValue('LOGO_URL', $config->URL.'/resource/template/img/picvid-logo.png');
         $cito->setValue('username', $_SESSION['user_username']);
         $cito->setValue('token', $this->getFormToken('upload-index'));
+        $cito->setValue('URL', $config->URL);
     }
 
     /**
@@ -49,6 +54,9 @@ class UploadController extends Controller
     {
         //a Session is needed for this method / action.
         $this->needSession();
+
+        //get the configuration.
+        $config = Configuration::getInstance();
 
         //check whether the token is the same.
         if (!$this->verifyFormToken('upload-index')) {
@@ -63,10 +71,13 @@ class UploadController extends Controller
             if ($error == UPLOAD_ERR_OK) {
 
                 //get the filename of the image to save on database and filesystem.
-                $filename = str_replace('.', '', uniqid('', true)).'-'.basename($_FILES["image_upload"]["name"][$key]);
+                $filename = basename($_FILES["image_upload"]["name"][$key]);
+                $filename = preg_replace('/[^0-9a-zA-Z \-\_\.]/', '', $filename);
+                $filename = str_replace(' ', '', $filename);
+                $filename = 'img-'.str_replace('.', '', uniqid('', true)).'-'.$filename;
 
                 //move the file to the image directory.
-                if (move_uploaded_file($_FILES['image_upload']['tmp_name'][$key], IMAGEDIR.$filename)) {
+                if (move_uploaded_file($_FILES['image_upload']['tmp_name'][$key], $config->IMGDIR.$filename)) {
 
                     //get the User Entity from Session.
                     $user = (new SessionService())->getUser();
@@ -98,7 +109,7 @@ class UploadController extends Controller
         }
 
         //redirect to the upload.
-        $this->redirect(URL.'upload');
+        $this->redirect($config->URL.'upload');
         return true;
     }
 }
