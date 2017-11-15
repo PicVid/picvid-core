@@ -4,7 +4,8 @@
         <a href="{{URL}}"><img class="logo" height="65" src="{{LOGO_URL}}"/></a>
     </div>
     <div class="d-flex flex-row  align-items-center mt-2">
-        <form action="{{URL}}install/install" method="post" class="container-fluid">
+        <form class="ajax container-fluid" method="post" data-action="{{URL}}install/install">
+            <div class="alert"></div>
             <div class="row justify-content-center">
                 <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 pb-4 pb-sm-4">
                     <div class="card text-white bg-success h-100">
@@ -96,6 +97,7 @@
             </div>
             <div class="row mb-4 mb-sm-4">
                 <div class="col col-12">
+                    <a class="btn btn-success float-left" href="{{URL}}install"><i class="fa fa-chevron-left" aria-hidden="true"></i>Voraussetzungen</a>
                     <button class="btn btn-success bg-success float-right"><i class="fa fa-check" aria-hidden="true"></i>Installieren</button>
                 </div>
             </div>
