@@ -249,15 +249,15 @@ class Configuration
         $fileContent = "<?php\n";
         $fileContent .= "//database configuration.\n";
         $fileContent .= "define('DB_HOST', '".$this->DB_HOST."');\n";
-        $fileContent .= "define('DB_PORT', ".$this->DB_PORT.");\n";
+        $fileContent .= "define('DB_PORT', ".intval($this->DB_PORT).");\n";
         $fileContent .= "define('DB_NAME', '".$this->DB_NAME."');\n";
         $fileContent .= "define('DB_USER', '".$this->DB_USER."');\n";
         $fileContent .= "define('DB_PASS', '".$this->DB_PASS."');\n\n";
         $fileContent .= "//the project honeypot key.\n";
         $fileContent .= "define('PROJECT_HONEYPOT_KEY', '".$this->PROJECT_HONEYPOT_KEY."');\n\n";
         $fileContent .= "//max image size and storage size.\n";
-        $fileContent .= "define('MAX_IMAGE_SIZE', ".$this->MAX_IMAGE_SIZE.");\n";
-        $fileContent .= "define('MAX_STORAGE_SIZE', ".$this->MAX_STORAGE_SIZE.");\n";
+        $fileContent .= "define('MAX_IMAGE_SIZE', ".intval($this->MAX_IMAGE_SIZE).");\n";
+        $fileContent .= "define('MAX_STORAGE_SIZE', ".intval($this->MAX_STORAGE_SIZE).");\n";
 
         //write the file and return the state.
         return (file_put_contents($this->getConfigPath(), $fileContent) !== false);
