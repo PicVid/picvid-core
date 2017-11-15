@@ -43,11 +43,18 @@ body#index-view div.bg-overlay {
 body#register-view div.bg-overlay {
     background: #000 url('../img/bg-register-view.jpg') no-repeat center;
 }
+body#auth-view div.bg-overlay,
 body#login-view div.bg-overlay {
     background: #000 url('../img/bg-login-view.jpg') no-repeat center;
 }
 body#info-view div.bg-overlay {
     background: #000 url('../img/bg-info-view.jpg') no-repeat center;
+}
+body#install-requirements div.bg-overlay {
+    background: #000;
+}
+body#install-settings div.bg-overlay {
+    background: #000;
 }
 div.bg-overlay {
     z-index:-1;
@@ -55,6 +62,7 @@ div.bg-overlay {
 body#index-view > div.container-fluid,
 body#register-view > div.container-fluid,
 body#login-view > div.container-fluid,
+body#auth-view > div.container-fluid,
 body#info-view > div.container-fluid {
     height:100vh;
 }
@@ -68,8 +76,16 @@ body#register-view p,
 body#register-view h2,
 body#login-view p,
 body#login-view h2,
+body#auth-view p,
+body#auth-view h2,
 body#info-view p,
-body#info-view h2 {
+body#info-view h2,
+body#install-requirements p,
+body#install-requirements h2,
+body#install-requirements table,
+body#install-settings p,
+body#install-settings h2,
+body#install-settings table {
     color:white;
 }
 nav div.dropdown-menu-right {
@@ -124,6 +140,37 @@ nav div.dropdown-menu {
 #images-info table#image-exif-info td:last-of-type {
     overflow-wrap: break-word;
 }
+#index-view a, #index-view a:link {
+    margin:15px 5px;
+}
+#index-view a i.fa, #index-view a:link i.fa {
+    margin-right: 3px;
+}
+#auth-view .nav-pills .nav-item {
+    margin:1rem 0;
+}
+#auth-view .nav-pills .nav-item a, #auth-view .nav-pills .nav-item a:link {
+    color:#fff;
+}
+#auth-view .nav-pills .nav-item:first-child {
+    margin-right:5px;
+}
+#install-settings div.card,
+#install-requirements div.card {
+    border:0;
+}
+#install-requirements a.btn i,
+#install-settings button.btn i,
+#install-settings a.btn i {
+    margin-right:12px;
+}
+#install-requirements thead th {
+    border-top:0;
+}
+#install-settings div.card .card-header i,
+#install-requirements div.card .card-header i {
+    margin-right:15px;
+}
 
 /** ---------------------------------------------------------------------------------------------------- */
 /** ---------------------------------- all styles for the navigation ----------------------------------- */
@@ -131,7 +178,6 @@ nav div.dropdown-menu {
 body nav i.fa {
     margin-right:7px;
 }
-
 body#profile-index .card,
 body#profile-index .card .input-group-addon,
 body#profile-index .card .btn {
@@ -183,7 +229,7 @@ body#upload-index form button i {
 }
 
 /** overwrite some bootstrap rules. */
-a, a:link, a:hover, input {
+a, a:link, a:hover, input, button, .card, .card-header {
     border-radius: 0 !important;
 }
 form div.alert {
