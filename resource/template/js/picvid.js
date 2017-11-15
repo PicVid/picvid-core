@@ -11,6 +11,7 @@ $(document).ready(function() {
     $("form.ajax").on("submit", function(e) {
         e.preventDefault();
 
+        //get the alert item on the form to outut the messages.
         var itemFormAlert = $(this).find(".alert");
 
         //the ajax call.
@@ -26,7 +27,6 @@ $(document).ready(function() {
         }).done(function(msg) {
 
             //the ajax call is successfully done.
-
             //check if a redirect URL is available.
             if (msg.redirect.toString().trim() !== "") {
                 $(location).attr("href", msg.redirect);
@@ -57,7 +57,10 @@ $(document).ready(function() {
                     $("input[name='" + msg.field + "']").focus();
                 }
             }
-        }).fail(function() {
+        }).fail(function(xhr, status, error) {
+
+            //output the error details on console.
+            console.log(status, error, xhr);
 
             //the ajax call was not successfully.
             itemFormAlert.addClass("alert-danger").html("Something went wrong. Try again later!");
