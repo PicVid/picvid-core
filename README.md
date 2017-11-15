@@ -16,3 +16,9 @@ Quelltextes) eingesetzt. Die dabei automatisch erstellten Informationen finden S
 - [Website](https://picvid.de)
 - [PhpMetrics](https://picvid.de/docs/phpmetrics)
 - [phpDox](https://picvid.de/docs/phpdox/api)
+
+### Erstellen der Dokumentation
+
+**PHPUnit**: `"vendor/bin/phpunit" -c phpunit.xml`  
+**PhpMetrics**: `"vendor/bin/phpmetrics" --config=phpmetrics.json ./src`  
+**phpDox**: `"vendor/bin/phpdox" -f phpdox.xml`
