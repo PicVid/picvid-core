@@ -1,4 +1,8 @@
 <div class="bg-overlay"></div>
+<a class="credits d-none d-md-inline-block" href="https://unsplash.com/@cindydvr?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from cindy del valle">
+    <span><i class="fa fa-camera" aria-hidden="true"></i></span>
+    <span>cindy del valle</span>
+</a>
 <div class="container-fluid d-flex flex-column">
     <div class="d-flex flex-row justify-content-center justify-content-sm-center justify-content-md-start justify-content-lg-start justify-content-xl-start p-5">
         <a href="{{URL}}"><img class="logo" height="65" src="{{LOGO_URL}}"/></a>

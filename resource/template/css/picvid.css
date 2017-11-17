@@ -51,10 +51,10 @@ body#info-view div.bg-overlay {
     background: #000 url('../img/bg-info-view.jpg') no-repeat center;
 }
 body#install-requirements div.bg-overlay {
-    background: #000;
+    background: #000 url('../img/bg-install-requirements-view.jpg') no-repeat center;
 }
 body#install-settings div.bg-overlay {
-    background: #000;
+    background: #000 url('../img/bg-install-settings-view.jpg') no-repeat center;
 }
 div.bg-overlay {
     z-index:-1;
