@@ -6,6 +6,7 @@ namespace PicVid\Controller;
 
 use PicVid\Core\CitoEngine;
 use PicVid\Core\Configuration;
+use PicVid\Core\Database;
 use PicVid\Core\Service\AuthenticationService;
 use PicVid\Core\View;
 use PicVid\Domain\Entity\User;
@@ -145,6 +146,22 @@ class InstallController extends Controller
 
         //include the configuration.
         include($config->ABSPATH.'config.php');
+
+        //parse the install.sql file to get all the queries.
+        $sqlContent = file_get_contents($config->RESPATH.'install.sql');
+        $sqlContent = trim(preg_replace('/--.*\s/','', $sqlContent));
+        $sqlContent = trim(preg_replace('/\s\s+/', ' ', $sqlContent));
+        $sqlQueries = preg_split('/;/', $sqlContent);
+
+        //get the database connection.
+        $pdo = Database::getInstance()->getConnection();
+
+        //execute all sql queries from install.sql file.
+        foreach ($sqlQueries as $sqlQuery) {
+            if (trim($sqlQuery) !== '') {
+                $pdo->exec($sqlQuery);
+            }
+        }
 
         //create a new User Entity on database.
         $user = new User();
