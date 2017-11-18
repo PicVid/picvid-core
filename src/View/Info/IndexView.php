@@ -1,5 +1,5 @@
 <div class="bg-overlay"></div>
-<a class="credits" href="https://unsplash.com/@photopirat_de?utm_medium=referral&utm_campaign=photographer-credit&utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Eike Klingspohn">
+<a class="credits d-none d-md-inline-block" href="https://unsplash.com/@photopirat_de?utm_medium=referral&utm_campaign=photographer-credit&utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Eike Klingspohn">
     <span><i class="fa fa-camera" aria-hidden="true"></i></span>
     <span>Eike Klingspohn</span>
 </a>

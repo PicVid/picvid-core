@@ -7,7 +7,7 @@
     <div class="d-flex flex-row justify-content-center justify-content-sm-center justify-content-md-start justify-content-lg-start justify-content-xl-start p-5">
         <a href="{{URL}}"><img class="logo" height="65" src="{{LOGO_URL}}"/></a>
     </div>
-    <div class="d-flex flex-row  align-items-center mt-2">
+    <div class="d-flex flex-row align-items-center mt-2">
         <form class="ajax container-fluid" method="post" data-action="{{URL}}install/install">
             <div class="alert"></div>
             <div class="row justify-content-center">

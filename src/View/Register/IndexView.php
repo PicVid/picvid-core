@@ -1,5 +1,5 @@
 <div class="bg-overlay"></div>
-<a class="credits" href="https://unsplash.com/@clarissemeyer?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Clarisse Meyer">
+<a class="credits d-none d-md-inline-block" href="https://unsplash.com/@clarissemeyer?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Clarisse Meyer">
     <span><i class="fa fa-camera" aria-hidden="true"></i></span>
     <span>Clarisse Meyer</span>
 </a>
@@ -9,7 +9,7 @@
             <img class="logo" height="65" src="{{LOGO_URL}}"/>
         </a>
     </div>
-    <div class="d-flex flex-row justify-content-around align-items-center mt-2 p-5 h-50">
+    <div class="d-flex flex-row justify-content-around align-items-center mt-5 p-5 h-50">
         <div class="col col-4">
             <h2>Willkommen bei PicVid</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus felis, semper vitae dui in,
