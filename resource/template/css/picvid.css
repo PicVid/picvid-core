@@ -224,7 +224,7 @@ body#upload-index form button,
 body#upload-index form textarea {
     border-radius: 0;
 }
-body#upload-index form button i {
+form button i {
     margin-right:10px;
 }
 
@@ -244,6 +244,8 @@ input[type="text"]:-webkit-autofill:hover,
 input[type="text"]:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 30px white inset;
 }
+
+/** new class to extend bootstrap beta 4. (buttons with breakpoint). */
 @media screen and (max-width: 767px) {
     .btn-sm-block {
         display: block;
