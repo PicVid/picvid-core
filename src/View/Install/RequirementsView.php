@@ -1,5 +1,5 @@
 <div class="bg-overlay dark"></div>
-<a class="credits d-none d-md-inline-block" href="https://unsplash.com/@eugi1492?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Eugenio Mazzone">
+<a class="credits d-none d-lg-inline-block" href="https://unsplash.com/@eugi1492?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Eugenio Mazzone">
     <span><i class="fa fa-camera" aria-hidden="true"></i></span>
     <span>Eugenio Mazzone</span>
 </a>
@@ -64,7 +64,7 @@
                     </table>
                 </div>
                 <div class="card-footer text-right px-1">
-                    <a class="btn btn-success" href="{{URL}}install/settings"><i class="fa fa-wrench" aria-hidden="true"></i> Einstellungen</a>
+                    <a class="btn btn-success btn-sm-block" href="{{URL}}install/settings"><i class="fa fa-wrench" aria-hidden="true"></i> Einstellungen</a>
                 </div>
             </div>
         </div>

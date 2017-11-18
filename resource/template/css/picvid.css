@@ -244,3 +244,13 @@ input[type="text"]:-webkit-autofill:hover,
 input[type="text"]:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 30px white inset;
 }
+@media screen and (max-width: 767px) {
+    .btn-sm-block {
+        display: block;
+        width: 100%;
+    }
+
+    .btn-sm-block + .btn-sm-block {
+        margin-top: .5rem;
+    }
+}
