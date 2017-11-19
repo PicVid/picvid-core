@@ -69,9 +69,6 @@ body#info-view > div.container-fluid {
 body#index-view img.logo {
     margin-bottom: 20px;
 }
-body#register-view form {
-    margin-top:-60px;
-}
 body#register-view p,
 body#register-view h2,
 body#login-view p,
