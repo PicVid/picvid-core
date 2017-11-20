@@ -23,23 +23,46 @@
     </div>
 </nav>
 <div class="d-flex justify-content-center mt-5">
-    <form class="w-25 picvid-file-upload" enctype="multipart/form-data" data-action="{{URL}}upload/upload" method="post">
-        <input type="hidden" name="token" value="{{token}}"/>
-        <div class="alert"></div>
-        <div class="form-group">
-            <label class="sr-only" for="image-title">Title</label>
-            <input class="form-control" id="image-title" type="text" name="image_title" placeholder="Title"/>
-        </div>
-        <div class="form-group">
-            <label class="sr-only" for="image-description">Description</label>
-            <textarea class="form-control" id="image-description" name="image_description" placeholder="Beschreibung" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-            <input class="form-control" id="files" name="image_upload" type="file" multiple/>
-        </div>
-        <label for="files">
-            <span>Choose a file...</span>
-        </label>
-        <button class="btn btn-success"><i class="fa fa-upload"></i>Upload</button>
-    </form>
+    <div class="col col-6">
+        <form>
+            <div class="form-group">
+                <label class="sr-only" for="image-title">Title</label>
+                <input class="form-control" id="image-title" type="text" name="image_title" placeholder="Title"/>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="image-description">Description</label>
+                <textarea class="form-control" id="image-description" name="image_description" placeholder="Beschreibung" rows="3"></textarea>
+            </div>
+            <div class="form-group dropzone" id="image-upload"></div>
+        </form>
+        <button class="btn btn-success upload-start"><i class="fa fa-upload" aria-hidden="true"></i>Upload</button>
+    </div>
 </div>
+<script>
+    //the elements of the upload form.
+    var titleItem = $('#image-title');
+    var descriptionItem = $('#image-description');
+
+    //the configuration of the Dropzone element.
+    Dropzone.options.imageUpload = {
+        url: "{{URL}}upload/upload",
+        paramName: "image_upload",
+        uploadMultiple: true,
+        autoProcessQueue: false,
+        maxFilesize: 5,
+        method: "post",
+        init: function() {
+            var myDropzone = this;
+
+            //upload on button click.
+            $('.upload-start').click(function() {
+                myDropzone.processQueue();
+            });
+        },
+        sending: function(file, xhr, formData) {
+            formData.append('token', '{{token}}');
+            formData.append(titleItem.attr('name'), titleItem.val());
+            formData.append(descriptionItem.attr('name'), descriptionItem.val());
+        }
+    };
+</script>

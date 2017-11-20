@@ -39,6 +39,17 @@ body div.bg-overlay + a.credits span svg {
     fill:white;
 }
 
+/** format of the Dropzone element. */
+.dz-clickable {
+    border: 2px dashed rgb(40, 167, 69);
+    cursor: pointer;
+    display:block;
+    height:200px;
+    width:100%;
+    color:#ddd;
+    text-align:center;
+}
+
 /** background images for the public parts of the application. */
 body#index-view div.bg-overlay {
     background:#000 url('../img/backgrounds/bg-index-index-view.jpg') no-repeat center;
@@ -192,36 +203,11 @@ body#profile-index .card .input-group .fa {
     margin-top:2px;
     width:50px;
 }
-body#upload-index form input[type="file"] {
-    display:none;
-}
-body#upload-index form.picvid-file-upload label[for="files"] {
-    border: 2px dashed rgb(40, 167, 69);
-    cursor: pointer;
-    display:block;
-    height:200px;
-    width:100%;
-    color:#ddd;
-    text-align:center;
-}
-body#upload-index form.picvid-file-upload label[for="files"] span {
-    background-color: rgb(40, 167, 69);
-    color:white;
-    font-family: sans-serif;
-    font-size:1.1em;
-    display: inline-block;
-    position: relative;
-    top: 50%;
-    height: 50px;
-    width: 70%;
-    line-height:50px;
-    transform: translateY(-50%);
-}
 body#upload-index form button,
 body#upload-index form textarea {
     border-radius: 0;
 }
-form button i {
+form button i, button i {
     margin-right:10px;
 }
 
