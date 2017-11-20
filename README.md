@@ -9,6 +9,11 @@ Web-Anwendung selbst konnte über einen Backend-Bereich vorgenommen werden.
 Dieses Projekt befindet sich aktuell in der Überarbeitung. In einer neuen Version soll der Funktionsumfang nur auf 
 Bilder beschränkt werden. Diese sollen über PicVid wieder hochgeladen und verwaltet werden können.
 
+## Frameworks / Libraries
+
+- [Bootstrap 4 (beta 2)](https://getbootstrap.com/)
+- [Dropzone.js](http://www.dropzonejs.com/)
+
 ## Dokumentation (Entwicklung)
 Während der Entwicklung werden auch verschiedene Tools zur Erstellung von Metriken und Dokumentationen (auf Basis des
 Quelltextes) eingesetzt. Die dabei automatisch erstellten Informationen finden Sie nachfolgend:
