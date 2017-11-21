@@ -38,6 +38,25 @@
         <button class="btn btn-success upload-start"><i class="fa fa-upload" aria-hidden="true"></i>Upload</button>
     </div>
 </div>
+
+<!-- custom template for dropzone -->
+<div class="picvid-dropzone">
+    <div class="dz-preview dz-file-preview">
+        <div class="dz-details">
+            <div class="progress">
+                <div class="progress-bar dz-upload" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-dz-uploadprogress></div>
+            </div>
+            <div class="dz-success-mark"><i class="fa fa-check" aria-hidden="true"></i></div>
+            <div class="dz-error-mark"><i class="fa fa-times" aria-hidden="true"></i></div>
+            <div class="dz-error-message badge badge-danger" data-dz-errormessage></div>
+            <div class="dz-filename badge badge-light" data-dz-name></div>
+            <div class="dz-size badge badge-light" data-dz-size></div>
+            <img data-dz-thumbnail src=""/>
+        </div>
+    </div>
+</div>
+
+<!-- dropzone configuration -->
 <script>
     //the elements of the upload form.
     var titleItem = $('#image-title');
@@ -50,7 +69,12 @@
         uploadMultiple: true,
         autoProcessQueue: false,
         maxFilesize: 5,
+        parallelUploads: 5,
+        thumbnailWidth: 400,
+        thumbnailHeight: 200,
         method: "post",
+        maxFiles: 5,
+        previewTemplate: $('.picvid-dropzone').html(),
         init: function() {
             var myDropzone = this;
 

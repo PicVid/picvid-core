@@ -39,15 +39,113 @@ body div.bg-overlay + a.credits span svg {
     fill:white;
 }
 
-/** format of the Dropzone element. */
+/** overwriting the dropzone rules to get a custom design. */
+.picvid-dropzone {
+    display:none;
+    visibility: hidden;
+}
 .dz-clickable {
     border: 2px dashed rgb(40, 167, 69);
     cursor: pointer;
-    display:block;
-    height:200px;
+    display:inline-block;
+    height:100%;
+    min-height:200px;
+    padding:10px;
+    position:relative;
     width:100%;
     color:#ddd;
     text-align:center;
+}
+.dz-clickable .dz-default.dz-message {
+    color:#000;
+    display:inline-block;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+}
+.dz-clickable.dz-started .dz-default.dz-message {
+    display:none;
+}
+.dropzone .dz-preview.dz-image-preview {
+    display:inline-block;
+    margin:5px;
+    position:relative;
+}
+.dropzone .dz-preview.dz-image-preview .dz-success-mark,
+.dropzone .dz-preview.dz-image-preview .dz-error-mark {
+    display:none;
+    background:rgba(255, 255, 255, 0.7);
+    border-radius:50%;
+    padding:10px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    height:100px;
+    width:100px;
+}
+.dropzone .dz-preview.dz-image-preview .progress,
+.dropzone .dz-preview.dz-image-preview.dz-processing.dz-complete .progress {
+    display:none;
+}
+.dropzone .dz-preview.dz-image-preview.dz-processing .progress {
+    display:inline-block;
+}
+.dropzone .dz-preview.dz-image-preview .progress {
+    height:0.5em;
+    position:absolute;
+    top:11px;
+    left:5px;
+    width:300px;
+}
+.dropzone .dz-preview.dz-image-preview.dz-success .dz-success-mark {
+    display:inline-block;
+}
+.dropzone .dz-preview.dz-image-preview.dz-error .dz-error-mark {
+    display:inline-block;
+}
+.dropzone .dz-preview.dz-image-preview .dz-success-mark i {
+    color:#000;
+    font-size:5em;
+}
+.dropzone .dz-preview.dz-image-preview .dz-error-mark i {
+    color:#ff0000;
+    font-size:5em;
+}
+
+.dropzone .dz-preview.dz-image-preview .dz-success-mark,
+.dropzone .dz-preview.dz-image-preview .dz-error-mark {
+    position:absolute;
+}
+.dropzone .dz-preview.dz-image-preview .badge {
+    border-radius: 0;
+}
+.dropzone .dz-preview.dz-image-preview .dz-details {
+    position:relative;
+}
+.dropzone .dz-preview.dz-image-preview .dz-error-message {
+    color:#fff;
+    position:absolute;
+    bottom:27px;
+    left:50%;
+    transform: translateX(-50%);
+}
+.dropzone .dz-preview.dz-image-preview .dz-filename,
+.dropzone .dz-preview.dz-image-preview .dz-size {
+    position:absolute;
+}
+.dropzone .dz-preview.dz-image-preview .dz-filename {
+    bottom:5px;
+    left:50%;
+    max-width:370px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transform:translateX(-50%);
+}
+.dropzone .dz-preview.dz-image-preview .dz-size {
+    right:5px;
+    top:5px;
 }
 
 /** background images for the public parts of the application. */
