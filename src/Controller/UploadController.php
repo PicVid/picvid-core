@@ -60,6 +60,7 @@ class UploadController extends Controller
 
         //check whether the token is the same.
         if (!$this->verifyFormToken('upload-index')) {
+            $this->setResponseCode(303);
             $this->jsonOutput('The form state is not valid!', '', 'error');
             return false;
         }
@@ -109,7 +110,7 @@ class UploadController extends Controller
         }
 
         //redirect to the upload.
-        $this->redirect($config->URL.'upload');
+        $this->setResponseCode(200);
         return true;
     }
 }

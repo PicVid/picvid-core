@@ -85,6 +85,17 @@ abstract class Controller implements IController
     }
 
     /**
+     * Method to set a response code.
+     * @param int $code The status code which will be set as response code.
+     * @return void
+     */
+    protected function setResponseCode(int $code)
+    {
+        //TODO - create a full list of all valid codes: http://php.net/manual/en/function.http-response-code.php#107261
+        header($_SERVER["SERVER_PROTOCOL"].' '.$code.' See Other');
+    }
+
+    /**
      * Method to check the token of the form.
      * @param string $formName The name of the form used for the session.
      * @return bool The status whether the token is valid.
