@@ -22,8 +22,8 @@
         </div>
     </div>
 </nav>
-<div class="d-flex justify-content-center mt-5">
-    <div class="col col-6">
+<div class="d-flex justify-content-center my-3">
+    <div class="col col-12 col-lg-8 col-xl-6">
         <form>
             <div class="form-group">
                 <label class="sr-only" for="image-title">Title</label>
@@ -33,9 +33,11 @@
                 <label class="sr-only" for="image-description">Description</label>
                 <textarea class="form-control" id="image-description" name="image_description" placeholder="Beschreibung" rows="3"></textarea>
             </div>
-            <div class="form-group dropzone" id="image-upload"></div>
+            <div class="form-group dropzone" id="image-upload">
+                <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+            </div>
         </form>
-        <button class="btn btn-success upload-start"><i class="fa fa-upload" aria-hidden="true"></i>Upload</button>
+        <button class="btn btn-success btn-sm-block upload-start"><i class="fa fa-upload" aria-hidden="true"></i>Upload</button>
     </div>
 </div>
 
@@ -43,9 +45,7 @@
 <div class="picvid-dropzone">
     <div class="dz-preview dz-file-preview">
         <div class="dz-details">
-            <div class="progress">
-                <div class="progress-bar dz-upload" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-dz-uploadprogress></div>
-            </div>
+            <div class="uploading"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
             <div class="dz-success-mark"><i class="fa fa-check" aria-hidden="true"></i></div>
             <div class="dz-error-mark"><i class="fa fa-times" aria-hidden="true"></i></div>
             <div class="dz-error-message badge badge-danger" data-dz-errormessage></div>
@@ -64,6 +64,7 @@
 
     //the configuration of the Dropzone element.
     Dropzone.options.imageUpload = {
+        dictDefaultMessage: '',
         url: "{{URL}}upload/upload",
         paramName: "image_upload",
         uploadMultiple: true,

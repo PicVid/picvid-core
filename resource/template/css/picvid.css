@@ -56,6 +56,26 @@ body div.bg-overlay + a.credits span svg {
     color:#ddd;
     text-align:center;
 }
+.dropzone.dz-clickable i {
+    color: rgba(40, 167, 69, 0.5);
+    position:absolute;
+    top:50%;
+    left:50%;
+    font-size:4em;
+    transform:translate(-50%, -50%);
+    z-index:-1;
+}
+.dz-preview {
+    display:none;
+}
+.dz-preview.dz-image-preview {
+    display:inline-block;
+    width: auto;
+    max-width: 400px;
+}
+.dz-preview.dz-image-preview img {
+    width:100%;
+}
 .dz-clickable .dz-default.dz-message {
     color:#000;
     display:inline-block;
@@ -73,7 +93,9 @@ body div.bg-overlay + a.credits span svg {
     position:relative;
 }
 .dropzone .dz-preview.dz-image-preview .dz-success-mark,
-.dropzone .dz-preview.dz-image-preview .dz-error-mark {
+.dropzone .dz-preview.dz-image-preview .dz-error-mark,
+.dropzone .dz-preview.dz-image-preview .uploading,
+.dropzone .dz-preview.dz-image-preview.dz-processing.dz-complete .uploading {
     display:none;
     background:rgba(255, 255, 255, 0.7);
     border-radius:50%;
@@ -85,38 +107,19 @@ body div.bg-overlay + a.credits span svg {
     height:100px;
     width:100px;
 }
-.dropzone .dz-preview.dz-image-preview .progress,
-.dropzone .dz-preview.dz-image-preview.dz-processing.dz-complete .progress {
-    display:none;
-}
-.dropzone .dz-preview.dz-image-preview.dz-processing .progress {
+.dropzone .dz-preview.dz-image-preview.dz-success .dz-success-mark,
+.dropzone .dz-preview.dz-image-preview.dz-error .dz-error-mark,
+.dropzone .dz-preview.dz-image-preview.dz-processing .uploading {
     display:inline-block;
 }
-.dropzone .dz-preview.dz-image-preview .progress {
-    height:0.5em;
-    position:absolute;
-    top:11px;
-    left:5px;
-    width:300px;
-}
-.dropzone .dz-preview.dz-image-preview.dz-success .dz-success-mark {
-    display:inline-block;
-}
-.dropzone .dz-preview.dz-image-preview.dz-error .dz-error-mark {
-    display:inline-block;
-}
-.dropzone .dz-preview.dz-image-preview .dz-success-mark i {
+.dropzone .dz-preview.dz-image-preview .dz-success-mark i,
+.dropzone .dz-preview.dz-image-preview .uploading i {
     color:#000;
     font-size:5em;
 }
 .dropzone .dz-preview.dz-image-preview .dz-error-mark i {
     color:#ff0000;
     font-size:5em;
-}
-
-.dropzone .dz-preview.dz-image-preview .dz-success-mark,
-.dropzone .dz-preview.dz-image-preview .dz-error-mark {
-    position:absolute;
 }
 .dropzone .dz-preview.dz-image-preview .badge {
     border-radius: 0;
@@ -127,9 +130,8 @@ body div.bg-overlay + a.credits span svg {
 .dropzone .dz-preview.dz-image-preview .dz-error-message {
     color:#fff;
     position:absolute;
-    bottom:27px;
-    left:50%;
-    transform: translateX(-50%);
+    top:5px;
+    left:5px;
 }
 .dropzone .dz-preview.dz-image-preview .dz-filename,
 .dropzone .dz-preview.dz-image-preview .dz-size {
