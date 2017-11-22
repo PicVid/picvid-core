@@ -36,8 +36,15 @@
             <div class="form-group dropzone" id="image-upload">
                 <i class="fa fa-cloud-upload" aria-hidden="true"></i>
             </div>
+            <button type="button" class="btn btn-success btn-sm-block upload-start">
+                <i class="fa fa-upload" aria-hidden="true"></i>Upload
+            </button>
+            <button type="reset" class="btn btn-secondary btn-sm-block upload-clear">
+                <i class="fa fa-times" aria-hidden="true"></i>Clear
+            </button>
         </form>
-        <button class="btn btn-success btn-sm-block upload-start"><i class="fa fa-upload" aria-hidden="true"></i>Upload</button>
+
+
     </div>
 </div>
 
@@ -82,6 +89,11 @@
             //upload on button click.
             $('.upload-start').click(function() {
                 myDropzone.processQueue();
+            });
+
+            //clear dropzone area.
+            $('.upload-clear').click(function() {
+                myDropzone.removeAllFiles();
             });
         },
         sending: function(file, xhr, formData) {

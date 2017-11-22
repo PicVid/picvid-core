@@ -56,7 +56,8 @@ body div.bg-overlay + a.credits span svg {
     color:#ddd;
     text-align:center;
 }
-.dropzone.dz-clickable i {
+.dropzone.dz-clickable > i {
+    display:inline-block;
     color: rgba(40, 167, 69, 0.5);
     position:absolute;
     top:50%;
@@ -64,6 +65,9 @@ body div.bg-overlay + a.credits span svg {
     font-size:4em;
     transform:translate(-50%, -50%);
     z-index:-1;
+}
+.dropzone.dz-clickable.dz-started > i {
+    display:none;
 }
 .dz-preview {
     display:none;
@@ -326,6 +330,9 @@ input[type="text"]:-webkit-autofill,
 input[type="text"]:-webkit-autofill:hover,
 input[type="text"]:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 30px white inset;
+}
+.form-control:focus {
+    box-shadow:none;
 }
 
 /** new class to extend bootstrap beta 4. (buttons with breakpoint). */
