@@ -23,27 +23,79 @@
     </div>
 </nav>
 <?php
-
 //get all the images from database.
 $images = \PicVid\Domain\Repository\ImageRepository::build()->findAll();
-
-//run through all images of the database to output.
-for ($i = 0; $i < count($images); $i++) {
-    $image = $images[$i];
-
-    //check whether a Image Entity is available.
-    if ($image instanceof \PicVid\Domain\Entity\Image) {
 ?>
-    <div class="mt-2 mx-2 img-thumbnail float-left">
-        <img height="240" src="<?= $image->getImageURL() ?>"/>
-        <a class="btn btn-sm btn-success download" href="{{URL}}images/download/<?= $image->id ?>">
-            <i class="fa fa-download" aria-hidden="true"></i>
-        </a>
-        <a class="btn btn-sm btn-info info" href="{{URL}}images/info/<?= $image->id ?>">
-            <i class="fa fa-info" aria-hidden="true"></i>
-        </a>
+<div class="container-fluid">
+    <div class="row img-grid justify-content-center">
+        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+            <?php
+            //run through all images of the database to output.
+            for ($i = 0; $i < count($images); $i+=3) {
+                $image = $images[$i];
+
+                //check whether a Image Entity is available.
+                if ($image instanceof \PicVid\Domain\Entity\Image) {
+                    ?>
+                    <div class="img-grid-item my-3">
+                        <img src="<?= $image->getImageURL() ?>" class="img-transparent"/>
+                        <a class="btn btn-sm btn-success download" href="{{URL}}images/download/<?= $image->id ?>">
+                            <i class="fa fa-download" aria-hidden="true"></i>Download
+                        </a>
+                        <a class="btn btn-sm btn-info info" href="{{URL}}images/info/<?= $image->id ?>">
+                            <i class="fa fa-info" aria-hidden="true"></i>Info
+                        </a>
+                    </div>
+                    <?php
+                }
+            }
+            ?>
+        </div>
+        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+            <?php
+            //run through all images of the database to output.
+            for ($i = 1; $i < count($images); $i+=3) {
+                $image = $images[$i];
+
+                //check whether a Image Entity is available.
+                if ($image instanceof \PicVid\Domain\Entity\Image) {
+                    ?>
+                    <div class="img-grid-item my-3">
+                        <img src="<?= $image->getImageURL() ?>" class="img-transparent"/>
+                        <a class="btn btn-sm btn-success download" href="{{URL}}images/download/<?= $image->id ?>">
+                            <i class="fa fa-download" aria-hidden="true"></i>Download
+                        </a>
+                        <a class="btn btn-sm btn-info info" href="{{URL}}images/info/<?= $image->id ?>">
+                            <i class="fa fa-info" aria-hidden="true"></i>Info
+                        </a>
+                    </div>
+                    <?php
+                }
+            }
+            ?>
+        </div>
+        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+            <?php
+            //run through all images of the database to output.
+            for ($i = 2; $i < count($images); $i+=3) {
+                $image = $images[$i];
+
+                //check whether a Image Entity is available.
+                if ($image instanceof \PicVid\Domain\Entity\Image) {
+                    ?>
+                    <div class="img-grid-item my-3">
+                        <img src="<?= $image->getImageURL() ?>" class="img-transparent"/>
+                        <a class="btn btn-sm btn-success download" href="{{URL}}images/download/<?= $image->id ?>">
+                            <i class="fa fa-download" aria-hidden="true"></i>Download
+                        </a>
+                        <a class="btn btn-sm btn-info info" href="{{URL}}images/info/<?= $image->id ?>">
+                            <i class="fa fa-info" aria-hidden="true"></i>Info
+                        </a>
+                    </div>
+                    <?php
+                }
+            }
+            ?>
+        </div>
     </div>
-<?php
-    }
-}
-?>
+</div>

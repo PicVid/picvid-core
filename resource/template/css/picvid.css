@@ -206,23 +206,7 @@ nav div.dropdown-menu-right {
 nav div.dropdown-menu {
     border-radius: 0;
 }
-#images-index div.img-thumbnail {
-    position: relative;
-}
-#images-index div.img-thumbnail img {
-    max-height:240px;
-}
-#images-index div.img-thumbnail a.download {
-    position:absolute;
-    bottom:0;
-    left:0;
-}
-#images-index div.img-thumbnail a.info {
-    position:absolute;
-    bottom: 0;
-    right:0;
-}
-#images-index div.img-thumbnail img {
+img.img-transparent {
     background: #000 url("../img/bg-transparent.png") repeat right top;
 }
 #images-info div.card div.img-container {
@@ -282,6 +266,37 @@ nav div.dropdown-menu {
 #install-settings div.card .card-header i,
 #install-requirements div.card .card-header i {
     margin-right:15px;
+}
+.img-grid {
+    user-select: none;
+}
+.img-grid .img-grid-item {
+    position:relative;
+}
+.img-grid .img-grid-item a {
+    display:none;
+    visibility: hidden;
+    position:absolute;
+}
+.img-grid .img-grid-item:hover a {
+    display:inline;
+    visibility: visible;
+    -webkit-animation: fadeIn 0.8s;
+    animation: fadeIn 0.8s;
+}
+.img-grid .img-grid-item a i {
+    margin-right:12px;
+}
+.img-grid .img-grid-item a.download {
+    left:10px;
+    bottom:10px;
+}
+.img-grid .img-grid-item a.info {
+    right:10px;
+    bottom:10px;
+}
+.img-grid .img-grid-item img {
+    width:100%;
 }
 
 /** ---------------------------------------------------------------------------------------------------- */
