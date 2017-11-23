@@ -43,8 +43,6 @@
                 <i class="fa fa-times" aria-hidden="true"></i>Clear
             </button>
         </form>
-
-
     </div>
 </div>
 
@@ -58,7 +56,7 @@
             <div class="dz-error-message badge badge-danger" data-dz-errormessage></div>
             <div class="dz-filename badge badge-light" data-dz-name></div>
             <div class="dz-size badge badge-light" data-dz-size></div>
-            <img data-dz-thumbnail src=""/>
+            <img data-dz-thumbnail src="" class="img-transparent"/>
         </div>
     </div>
 </div>
