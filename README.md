@@ -11,8 +11,10 @@ Bilder beschränkt werden. Diese sollen über PicVid wieder hochgeladen und verw
 
 ## Frameworks / Libraries
 
-- [Bootstrap 4 (beta 2)](https://getbootstrap.com/)
+- [Animate.css](https://daneden.github.io/animate.css/)
+- [Bootstrap 4](https://getbootstrap.com/)
 - [Dropzone.js](http://www.dropzonejs.com/)
+- [FontAwesome](http://fontawesome.io/)
 
 ## Dokumentation (Entwicklung)
 Während der Entwicklung werden auch verschiedene Tools zur Erstellung von Metriken und Dokumentationen (auf Basis des
