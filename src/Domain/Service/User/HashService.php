@@ -23,7 +23,7 @@ class HashService
     public function hash(User $user) : User
     {
         $user->salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
-        $user->password = hash('sha512', $user->password . $user->salt);
+        $user->password = hash('sha512', $user->password.$user->salt);
         return $user;
     }
 
@@ -36,7 +36,7 @@ class HashService
     public function hashWithSalt(User $user, string $salt) : User
     {
         $user->salt = $salt;
-        $user->password = hash('sha512', $user->password . $user->salt);
+        $user->password = hash('sha512', $user->password.$user->salt);
         return $user;
     }
 }
