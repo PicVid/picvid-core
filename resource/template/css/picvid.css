@@ -255,11 +255,6 @@ img.img-transparent {
 #install-requirements div.card {
     border:0;
 }
-#install-requirements a.btn i,
-#install-settings button.btn i,
-#install-settings a.btn i {
-    margin-right:12px;
-}
 #install-requirements thead th {
     border-top:0;
 }
@@ -283,9 +278,6 @@ img.img-transparent {
     visibility: visible;
     -webkit-animation: fadeIn 0.8s;
     animation: fadeIn 0.8s;
-}
-.img-grid .img-grid-item a i {
-    margin-right:12px;
 }
 .img-grid .img-grid-item a.download {
     left:10px;
@@ -326,7 +318,7 @@ body#upload-index form button,
 body#upload-index form textarea {
     border-radius: 0;
 }
-form button i, button i {
+button.btn i, a.btn i {
     margin-right:10px;
 }
 
