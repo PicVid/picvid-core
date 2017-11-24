@@ -243,11 +243,23 @@ class ImagesController extends Controller
                 //set the informationen of the Image Entity to the View.
                 $cito->setValue('image-id', $image->id);
                 $cito->setValue('image-url', $image->getImageURL());
-                $cito->setValue('image-title', $image->title);
-                $cito->setValue('image-description', $image->description);
                 $cito->setValue('image-width', $imageSize[0].'px');
                 $cito->setValue('image-height', $imageSize[1].'px');
                 $cito->setValue('image-size', $this->formatFileSize($image->size));
+
+                //show the image title if available or a placeholder.
+                if (trim($image->title) === '') {
+                    $cito->setValue('image-title', '<i>kein Titel</i>');
+                } else {
+                    $cito->setValue('image-title', $image->title);
+                }
+
+                //show the image description if available or a placeholder.
+                if (trim($image->description) === '') {
+                    $cito->setValue('image-description', '<i>keine Beschreibung</i>');
+                } else {
+                    $cito->setValue('image-description', $image->description);
+                }
             }
         } else {
             $this->redirect($config->URL.'images');
