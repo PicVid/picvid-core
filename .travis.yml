@@ -1,5 +1,8 @@
 sudo: false
 
+env:
+  CODECLIMATE_REPO_TOKEN: c920e2e7d8eb006eea138a4a8cefa9286e86b4fbd295f9e1049c44907222388e
+
 language: php
 php:
   - '7.1'
