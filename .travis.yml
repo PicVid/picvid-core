@@ -1,0 +1,24 @@
+sudo: false
+
+language: php
+php:
+  - '7.1'
+  - hhvm
+
+install:
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --dev --no-interaction
+
+before_script:
+  - composer install
+
+script:
+  - mkdir -p build/logs
+  - php vendor/bin/phpunit -c phpunit.xml
+
+after_success:
+  - travis_retry php vendor/bin/coveralls
+
+notifications:
+  email:
+    - coding@sebastianbrosch.de
