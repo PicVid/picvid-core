@@ -27,6 +27,10 @@ class UserTest extends TestCase
         $user->firstname = 'John';
         $user->lastname = 'Doe';
 
+        //test the User Entity (expected default ID = 0).
+        $this->assertEquals(0, $user->id);
+        $this->assertFalse($user->hasID());
+
         //the the User Entity.
         $this->assertEquals('John Doe', $user->getFullname());
     }
@@ -40,14 +44,15 @@ class UserTest extends TestCase
         //create a new User Entity.
         $user = new User();
 
-        //test the User Entity (not changed).
+        //test the User Entity (expected default ID = 0).
         $this->assertEquals(0, $user->id);
         $this->assertFalse($user->hasID());
 
         //set a new ID to the User Entity.
         $user->id = 1;
 
-        //test the User Entity (with changed ID).
+        //test the User Entity (expected ID > 0).
+        $this->assertEquals(1, $user->id);
         $this->assertTrue($user->hasID());
     }
 
@@ -59,6 +64,10 @@ class UserTest extends TestCase
     {
         //create a new User Entity.
         $user = new User();
+
+        //test the User Entity (expected default ID = 0).
+        $this->assertEquals(0, $user->id);
+        $this->assertFalse($user->hasID());
 
         //create an array with the user information.
         $arr = [
@@ -87,6 +96,10 @@ class UserTest extends TestCase
 
         //create a new User Entity.
         $user = new User();
+
+        //test the User Entity (expected default ID = 0).
+        $this->assertEquals(0, $user->id);
+        $this->assertFalse($user->hasID());
 
         //create an array with the user information (with prefixes).
         $arr = [
@@ -123,6 +136,10 @@ class UserTest extends TestCase
         //create a new User Entity.
         $user = new User();
 
+        //test the User Entity (expected default ID = 0).
+        $this->assertEquals(0, $user->id);
+        $this->assertFalse($user->hasID());
+
         //create an object with the user information.
         $obj = new \stdClass();
         $obj->id = 3;
@@ -149,6 +166,10 @@ class UserTest extends TestCase
 
         //create a new User Entity.
         $user = new User();
+
+        //test the User Entity (expected default ID = 0).
+        $this->assertEquals(0, $user->id);
+        $this->assertFalse($user->hasID());
 
         //create an object with the user information (with prefixes).
         $obj = new \stdClass();
