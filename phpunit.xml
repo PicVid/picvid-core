@@ -17,4 +17,10 @@
         <log type="coverage-clover" target="docs/logs/phpunit-coverage.xml"/>
         <log type="junit" target="docs/logs/phpunit-junit.xml"/>
     </logging>
+    <php>
+        <env name="DB_DSN" value="mysql:host=127.0.0.1;dbname=picvid_test;" />
+        <env name="DB_USER" value="root" />
+        <env name="DB_PASSWD" value="" />
+        <env name="DB_DBNAME" value="picvid_test" />
+    </php>
 </phpunit>
