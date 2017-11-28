@@ -39,4 +39,5 @@ Quelltextes) eingesetzt. Die dabei automatisch erstellten Informationen finden S
 
 **PHPUnit**: `"vendor/bin/phpunit" -c phpunit.xml`  
 **PhpMetrics**: `"vendor/bin/phpmetrics" --config=phpmetrics.json ./src`  
-**phpDox**: `"vendor/bin/phpdox" -f phpdox.xml`
+**phpDox**: `"vendor/bin/phpdox" -f phpdox.xml`  
+**PHPLOC**: `"vendor/bin/phploc" --log-xml docs/logs/phploc.xml ./src`
