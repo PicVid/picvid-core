@@ -9,6 +9,9 @@
                 <source type="git">
                     <history enabled="true" limit="15"/>
                 </source>
+                <source type="phpunit">
+                    <coverage path="phpunit-coverage" />
+                </source>
             </enrich>
             <build engine="html" enabled="true" output="api">
                 <file extension="html"/>
