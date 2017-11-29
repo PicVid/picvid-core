@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <dataset>
-    <table name="image">
+    <table name="user">
         <column>id</column>
         <column>email</column>
         <column>firstname</column>
