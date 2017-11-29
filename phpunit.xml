@@ -14,6 +14,7 @@
         </whitelist>
     </filter>
     <logging>
+        <log type="coverage-html" target="docs/phpunit-coverage"/>
         <log type="coverage-xml" target="docs/logs/phpunit-coverage"/>
         <log type="coverage-clover" target="docs/logs/coverage-clover.xml"/>
         <log type="junit" target="docs/logs/phpunit-junit.xml"/>
