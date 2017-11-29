@@ -107,7 +107,7 @@ class ImageMapper extends DataMapper
      * @param string $condition The SQL condition to filter the Image Entities.
      * @return array An array with all found Image Entities.
      */
-    public function find(string $condition): array
+    public function find(string $condition = ''): array
     {
         return $this->findForEntity($condition, new Image());
     }
