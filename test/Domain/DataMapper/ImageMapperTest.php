@@ -104,6 +104,59 @@ class ImageMapperTest extends DatabaseTestCase
     }
 
     /**
+     * Method to test the ImageMapper:find method.
+     * @test
+     */
+    public function testFind()
+    {
+        //The ImageMapper to find the Image Entities on database.
+        $imageMapper = new ImageMapper($this->getConnection()->getConnection());
+
+        //Find the Image Entity with ID = 1 on database.
+        $arrImage = $imageMapper->find("id = 1");
+
+        //The ImageMapper should find one Image Entity.
+        $this->assertEquals(1, count($arrImage));
+
+        //Create the first Image Entity as object to compare with the found Image Entities.
+        $firstImage = new Image();
+        $firstImage->id = 1;
+        $firstImage->description = 'Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.';
+        $firstImage->filename = 'eleifend_luctus.jpeg';
+        $firstImage->size = 442;
+        $firstImage->title = 'Cras in purus eu magna vulputate luctus.';
+        $firstImage->type = 'image/jpeg';
+
+        //Create the second Image Entity as object to compare with the found Image Entities.
+        $secondImage = new Image();
+        $secondImage->id = 2;
+        $secondImage->description = 'Duis mattis egestas metus.';
+        $secondImage->filename = 'suscipit_nulla.jpeg';
+        $secondImage->size = 375;
+        $secondImage->title = 'In hac habitasse platea dictumst.';
+        $secondImage->type = 'image/pjpeg';
+
+        //The found Image Entity (database) should be the same Image Entity (object).
+        $this->assertEquals($arrImage[0], $firstImage);
+
+        //Find all Image Entities on database.
+        $arrImage = $imageMapper->find();
+
+        //The ImageMapper should find two Image Entities.
+        $this->assertEquals(2, count($arrImage));
+
+        //The found Image Entities (database) should be the same Image Entities (objects).
+        $this->assertEquals($arrImage[0], $firstImage);
+        $this->assertEquals($arrImage[1], $secondImage);
+
+        //Find no Image Entities on database.
+        $arrImage = $imageMapper->find('1 = 2');
+
+        //The Image Mapper should not find a Image Entity.
+        $this->assertEquals(0, count($arrImage));
+    }
+
+    /**
      * Method to test the ImageMapper:save method.
      * @test
      */
@@ -169,7 +222,7 @@ class ImageMapperTest extends DatabaseTestCase
         //The ImageMapper to update the Image Entity on database.
         $imageMapper = new ImageMapper($this->getConnection()->getConnection());
 
-        //The first Entity should be updated; the second Image Entity should fail.
+        //The first Image Entity should be updated; the second Image Entity should fail.
         $this->assertTrue($imageMapper->update($imageUpdate));
         $this->assertFalse($imageMapper->update($imageCreate));
 
