@@ -221,11 +221,6 @@ img.img-transparent {
 #images-info .nav-pills i {
     margin-right:10px;
 }
-#images-info .tab-pane {
-    max-height: 70vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
 #images-info table#image-exif-info {
     table-layout:fixed;
     width: 100%;
@@ -261,6 +256,12 @@ img.img-transparent {
 #install-settings div.card .card-header i,
 #install-requirements div.card .card-header i {
     margin-right:15px;
+}
+.tab-pane .card {
+    border-top:0;
+}
+.nav-item.active {
+    background: #117a8b!important;
 }
 .img-grid {
     user-select: none;
