@@ -214,7 +214,7 @@ class ProfileController extends Controller
 
         //check if the User Entity was saved successfully.
         if ($user_mapper->save($user)) {
-            $this->jsonOutput('The Profile was successfully saved!', '', 'info');
+            $this->jsonOutput('The Profile was successfully saved!', '', 'success');
             return true;
         } else {
             $this->jsonOutput('The Profile could not be saved!', '', 'error');

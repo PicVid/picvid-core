@@ -22,43 +22,52 @@
         </div>
     </div>
 </nav>
-<div class="d-flex justify-content-center mt-5">
-    <form class="ajax w-25" data-action="{{URL}}profile/save" method="post">
-        <input type="hidden" name="token" value="{{token}}"/>
-        <div class="alert" role="alert"></div>
-        <div class="card">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <div class="input-group">
-                        <i class="fa fa-id-card-o input-group-addon" aria-hidden="true"></i>
-                        <input type="text" class="form-control" name="profile_username" value="{{user_username}}" placeholder="username"/>
+<div class="container-fluid">
+    <div class="row justify-content-center pt-2 pt-sm-5">
+        <div class="col col-12 col-md-8 col-lg-6 col-xl-4">
+            <form class="ajax" data-action="{{URL}}profile/save" method="post">
+                <div class="alert mb-2" role="alert"></div>
+                <input type="hidden" name="token" value="{{token}}"/>
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="input-group">
+                                <i class="fa fa-id-card-o input-group-addon d-none d-md-inline" aria-hidden="true"></i>
+                                <input type="text" class="form-control" name="profile_username" value="{{user_username}}" placeholder="username"/>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="input-group">
+                                <i class="fa fa-lock input-group-addon d-none d-md-inline" aria-hidden="true"></i>
+                                <input type="password" class="form-control" name="profile_password" placeholder="new password"/>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="input-group">
+                                <i class="fa fa-user input-group-addon d-none d-md-inline" aria-hidden="true"></i>
+                                <input type="text" class="form-control" name="profile_firstname" value="{{user_firstname}}" placeholder="firstname"/>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="input-group">
+                                <i class="fa fa-user input-group-addon d-none d-md-inline" aria-hidden="true"></i>
+                                <input type="text" class="form-control col-12" name="profile_lastname" value="{{user_lastname}}" placeholder="lastname"/>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="input-group">
+                                <i class="fa fa-envelope-o input-group-addon d-none d-md-inline" aria-hidden="true"></i>
+                                <input type="email" class="form-control" name="profile_email" value="{{user_email}}" placeholder="email"/>
+                            </div>
+                        </li>
+                    </ul>
+                    <input type="hidden" name="profile_id" value="{{user_id}}"/>
+                    <div class="card-body">
+                        <button class="btn btn-success btn-sm-block"><i class="fa fa-check" aria-hidden="true"></i>Save</button>
+                        <a class="btn btn-danger float-right btn-sm-block" href="{{URL}}profile/remove-images"><i class="fa fa-trash" aria-hidden="true"></i>Remove all Images</a>
                     </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="input-group">
-                        <i class="fa fa-lock input-group-addon" aria-hidden="true"></i>
-                        <input type="password" class="form-control" name="profile_password" placeholder="new password"/>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="input-group">
-                        <i class="fa fa-user input-group-addon" aria-hidden="true"></i>
-                        <input type="text" class="form-control" name="profile_firstname" value="{{user_firstname}}" placeholder="firstname"/>
-                        <input type="text" class="form-control" name="profile_lastname" value="{{user_lastname}}" placeholder="lastname"/>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="input-group">
-                        <i class="fa fa-envelope-o input-group-addon" aria-hidden="true"></i>
-                        <input type="email" class="form-control" name="profile_email" value="{{user_email}}" placeholder="email"/>
-                    </div>
-                </li>
-            </ul>
-            <input type="hidden" name="profile_id" value="{{user_id}}"/>
-            <div class="card-body">
-                <button class="btn btn-sm btn-success"><i class="fa fa-check" aria-hidden="true"></i>Save</button>
-                <a class="btn btn-sm btn-danger float-right" href="{{URL}}profile/remove-images"><i class="fa fa-trash" aria-hidden="true"></i>Remove all Images</a>
-            </div>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
