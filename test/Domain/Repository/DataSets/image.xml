@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<dataset>
+    <table name="image">
+        <column>id</column>
+        <column>description</column>
+        <column>filename</column>
+        <column>size</column>
+        <column>title</column>
+        <column>type</column>
+        <row>
+            <value>1</value>
+            <value>Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.</value>
+            <value>eleifend_luctus.jpeg</value>
+            <value>442</value>
+            <value>Cras in purus eu magna vulputate luctus.</value>
+            <value>image/jpeg</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>Duis mattis egestas metus.</value>
+            <value>suscipit_nulla.jpeg</value>
+            <value>375</value>
+            <value>In hac habitasse platea dictumst.</value>
+            <value>image/pjpeg</value>
+        </row>
+    </table>
+</dataset>
