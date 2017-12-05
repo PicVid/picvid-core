@@ -54,8 +54,8 @@ class ImageMapper extends DataMapper
         }
 
         //create and set the sql query.
-        $sql = 'INSERT INTO '.$this->table.' (description, filename, size, title, type) ';
-        $sql .= 'VALUES (:description, :filename, :size, :title, :type);';
+        $sql = 'INSERT INTO '.$this->table.' (description, filename, size, title, type) '.
+            'VALUES (:description, :filename, :size, :title, :type);';
         $sth = $this->pdo->prepare($sql);
 
         //bind the values to the query and execute the query.
@@ -81,25 +81,14 @@ class ImageMapper extends DataMapper
      * @param IEntity $image The Image Entity to be deleted on the database.
      * @return bool The status of whether the Image Entity could be deleted.
      */
-    public function delete(IEntity $image): bool
+    public function delete(IEntity $image) : bool
     {
-        //check if an Image Entity is available.
+        //only Image Entities are allowed.
         if (!($image instanceof Image)) {
             return false;
+        } else {
+            return parent::delete($image);
         }
-
-        //check whether an ID exists.
-        if (!$image->hasID()) {
-            return false;
-        }
-
-        //create and set the sql query.
-        $sql = 'DELETE FROM '.$this->table.' WHERE id = :id;';
-        $sth = $this->pdo->prepare($sql);
-
-        //bind the values to the query and execute the query.
-        $sth->bindParam(':id', $image->id, \PDO::PARAM_INT);
-        return $sth->execute();
     }
 
     /**
@@ -149,8 +138,8 @@ class ImageMapper extends DataMapper
         }
 
         //create and set the sql query.
-        $sql = 'UPDATE '.$this->table.' SET description = :description, filename = :filename, ';
-        $sql .= 'size = :size, title = :title, type = :type WHERE id = :id';
+        $sql = 'UPDATE '.$this->table.' SET description = :description, filename = :filename, '.
+            'size = :size, title = :title, type = :type WHERE id = :id';
         $sth = $this->pdo->prepare($sql);
 
         //bind the values to the query and execute the query.

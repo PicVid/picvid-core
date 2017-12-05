@@ -4,6 +4,7 @@
  */
 namespace PicVid\Domain\DataMapper;
 
+use PicVid\Domain\Entity\Entity;
 use PicVid\Domain\Entity\IEntity;
 
 /**
@@ -32,6 +33,32 @@ abstract class DataMapper implements IDataMapper
      * @var string
      */
     protected $table = '';
+
+    /**
+     * Method to delete an Entity on database.
+     * @param IEntity $entity The Entity to be deleted on the database.
+     * @return bool The status of whether the Entity could be deleted.
+     */
+    public function delete(IEntity $entity) : bool
+    {
+        //check whether a Entity is available.
+        if (!($entity instanceof Entity)) {
+            return false;
+        }
+
+        //check whether an ID exists.
+        if (!$entity->hasID()) {
+            return false;
+        }
+
+        //create and set the sql query.
+        $sql = 'DELETE FROM '.$this->table.' WHERE id = :id;';
+        $sth = $this->pdo->prepare($sql);
+
+        //bind the values to the query and execute the query.
+        $sth->bindParam(':id', $entity->id, \PDO::PARAM_INT);
+        return $sth->execute();
+    }
 
     /**
      * Method to find Entities by a SQL condition for an Entity.

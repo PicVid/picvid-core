@@ -54,8 +54,8 @@ class UserMapper extends DataMapper
         }
 
         //create and set the sql query.
-        $sql = 'INSERT INTO '.$this->table.' (email, firstname, lastname, password, salt, username) ';
-        $sql .= 'VALUES (:email, :firstname, :lastname, :password, :salt, :username);';
+        $sql = 'INSERT INTO '.$this->table.' (email, firstname, lastname, password, salt, username) '.
+            'VALUES (:email, :firstname, :lastname, :password, :salt, :username);';
         $sth = $this->pdo->prepare($sql);
 
         //bind the values to the query and execute the query.
@@ -84,23 +84,12 @@ class UserMapper extends DataMapper
      */
     public function delete(IEntity $user) : bool
     {
-        //check if an User Entity is available.
+        //only User Entities are allowed.
         if (!($user instanceof User)) {
             return false;
+        } else {
+            return parent::delete($user);
         }
-
-        //check whether an ID exists.
-        if (!$user->hasID()) {
-            return false;
-        }
-
-        //create and set the sql query.
-        $sql = 'DELETE FROM '.$this->table.' WHERE id = :id;';
-        $sth = $this->pdo->prepare($sql);
-
-        //bind the values to the query and execute the query.
-        $sth->bindParam(':id', $user->id, \PDO::PARAM_INT);
-        return $sth->execute();
     }
 
     /**
@@ -150,9 +139,8 @@ class UserMapper extends DataMapper
         }
 
         //create and set the sql query.
-        $sql = 'UPDATE '.$this->table.' SET email = :email, firstname = :firstname, ';
-        $sql .= 'lastname = :lastname, password = :password, salt = :salt, ';
-        $sql .= 'username = :username WHERE id = :id';
+        $sql = 'UPDATE '.$this->table.' SET email = :email, firstname = :firstname, '.
+            'lastname = :lastname, password = :password, salt = :salt, username = :username WHERE id = :id';
         $sth = $this->pdo->prepare($sql);
 
         //bind the values to the query and execute the query.
