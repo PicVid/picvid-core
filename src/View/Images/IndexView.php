@@ -28,7 +28,12 @@ $images = \PicVid\Domain\Repository\ImageRepository::build()->findAll();
 ?>
 <div class="container-fluid">
     <div class="row img-grid justify-content-center">
+        <?php
+            if (count($images) < 1) { echo '<div class="col-12 col-md-6 col-lg-6 col-xl-4 mt-4"><div class="alert alert-warning" role="alert"><i class="fa fa-picture-o" aria-hidden="true"></i> Es sind keine Bilder verfügbar! Über den <a class="alert-link" href="{{URL}}upload">Upload</a> kannst du deine Bilder hochladen.</div></div>'; } else {
+        ?>
+
         <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+
             <?php
             //run through all images of the database to output.
             for ($i = 0; $i < count($images); $i+=3) {
@@ -97,5 +102,6 @@ $images = \PicVid\Domain\Repository\ImageRepository::build()->findAll();
             }
             ?>
         </div>
+        <?php } ?>
     </div>
 </div>

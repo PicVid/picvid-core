@@ -319,7 +319,10 @@ body#upload-index form button,
 body#upload-index form textarea {
     border-radius: 0;
 }
-button.btn i, a.btn i {
+div.alert.alert-warning i {
+    color:#000;
+}
+button.btn i, a.btn i, div.alert i {
     margin-right:10px;
 }
 
@@ -341,6 +344,9 @@ input[type="text"]:-webkit-autofill:focus {
 }
 .form-control:focus {
     box-shadow:none;
+}
+.alert {
+    border-radius: 0;
 }
 
 /** new class to extend bootstrap beta 4. (buttons with breakpoint). */
