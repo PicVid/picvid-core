@@ -59,14 +59,7 @@ abstract class Repository implements IRepository
             return [];
         }
 
-        //check if the parameter is an array.
-        if (is_array($id)) {
-            $condition = 'id IN ('.implode(', ', $id).')';
-        } else {
-            $condition = 'id = '.$id;
-        }
-
         //return the result of the DataMapper.
-        return $this->dataMapper->find($condition);
+        return $this->dataMapper->find('id = '.$id);
     }
 }

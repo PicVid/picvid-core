@@ -50,15 +50,8 @@ class UserRepository extends Repository
             return [];
         }
 
-        //check if the parameter is an array.
-        if (is_array($email)) {
-            $condition = "email IN ('".implode("', '", $email)."')";
-        } else {
-            $condition = "email = '".$email."'";
-        }
-
         //return the result of the UserMapper.
-        return $this->dataMapper->find($condition);
+        return $this->dataMapper->find("email = '".$email."'");
     }
 
     /**
@@ -88,14 +81,7 @@ class UserRepository extends Repository
             return [];
         }
 
-        //check if the parameter is an array.
-        if (is_array($username)) {
-            $condition = "username IN ('".implode("', '", $username)."')";
-        } else {
-            $condition = "username = '".$username."'";
-        }
-
         //return the result of the UserMapper.
-        return $this->dataMapper->find($condition);
+        return $this->dataMapper->find("username = '".$username."'");
     }
 }
