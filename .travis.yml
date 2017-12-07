@@ -2,7 +2,7 @@ sudo: false
 
 language: php
 php:
-  - '7.1'
+  - 7.1
 
 install:
   - curl -s http://getcomposer.org/installer | php
@@ -29,7 +29,7 @@ script:
   - php vendor/bin/phpunit -c phpunit.xml
 
 after_success:
-  - travis_retry php vendor/bin/coveralls
+  - travis_retry php vendor/bin/coveralls -v
 
 notifications:
   email:
