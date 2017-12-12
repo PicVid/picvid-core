@@ -8,7 +8,7 @@
         <a href="{{URL}}"><img class="logo" height="65" src="{{LOGO_URL}}"/></a>
     </div>
     <div class="d-flex flex-row align-items-center mt-2">
-        <form class="ajax container-fluid" method="post" data-action="{{URL}}install/install">
+        <form class="ajax container-fluid" method="post" data-action="{{URL}}install/install" autocomplete="off">
             <div class="alert"></div>
             <div class="row justify-content-center">
                 <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 pb-4 pb-sm-4">
