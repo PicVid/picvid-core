@@ -260,9 +260,6 @@ img.img-transparent {
 .tab-pane .card {
     border-top:0;
 }
-.nav-item.active {
-    background: #117a8b!important;
-}
 .img-grid {
     user-select: none;
 }
@@ -295,9 +292,6 @@ img.img-transparent {
 /** ---------------------------------------------------------------------------------------------------- */
 /** ---------------------------------- all styles for the navigation ----------------------------------- */
 /** ---------------------------------------------------------------------------------------------------- */
-body nav i.fa {
-    margin-right:7px;
-}
 body#profile-index .card,
 body#profile-index .card .input-group-addon,
 body#profile-index .card .btn {
@@ -322,8 +316,19 @@ body#upload-index form textarea {
 div.alert.alert-warning i {
     color:#000;
 }
-button.btn i, a.btn i, div.alert i {
+button.btn i, a.btn i, div.alert i, nav i {
     margin-right:10px;
+}
+.list-group-item i {
+    margin-right:5px;
+}
+.nav.nav-pills .nav-item.disabled,
+.nav.nav-pills .nav-item.disabled:hover,
+.nav.nav-pills .nav-item.disabled:focus {
+    background:#8f8f8f!important;
+}
+.nav.nav-pills .nav-item.active {
+    background: #117a8b!important;
 }
 
 /** overwrite some bootstrap rules. */
