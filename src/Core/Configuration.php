@@ -68,6 +68,12 @@ class Configuration
     public $IMGDIR = '';
 
     /**
+     * The valid image file types (for upload).
+     * @var array
+     */
+    public $IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/tiff', 'image/x-windows-bmp', 'image/bmp'];
+
+    /**
      * The URL of the image files.
      * @var string
      */
@@ -232,6 +238,9 @@ class Configuration
         $this->MAX_STORAGE_SIZE = (defined('MAX_STORAGE_SIZE') ? \MAX_STORAGE_SIZE : 0);
         $this->MAX_IMAGE_SIZE = (defined('MAX_IMAGE_SIZE') ? \MAX_IMAGE_SIZE : 0);
 
+        //get the allowed image types from global configuration (constants).
+        $this->IMAGE_TYPES = unserialize(\IMAGE_TYPES);
+
         //check whether the configuration file is available.
         if (file_exists($this->getConfigPath()) && strpos($_SERVER['REQUEST_URI'], 'install') !== false) {
             header('Location: '.$this->getURL());
@@ -258,6 +267,7 @@ class Configuration
         $fileContent .= "//max image size and storage size.\n";
         $fileContent .= "define('MAX_IMAGE_SIZE', ".intval($this->MAX_IMAGE_SIZE).");\n";
         $fileContent .= "define('MAX_STORAGE_SIZE', ".intval($this->MAX_STORAGE_SIZE).");\n";
+        $fileContent .= "define('IMAGE_TYPES', '".serialize($this->IMAGE_TYPES)."');";
 
         //write the file and return the state.
         return (file_put_contents($this->getConfigPath(), $fileContent) !== false);
