@@ -8,15 +8,15 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav mr-auto">
             <a class="nav-item nav-link" href="{{URL}}upload"><i class="fa fa-upload" aria-hidden="true"></i>Upload</a>
-            <a class="nav-item nav-link" href="{{URL}}images"><i class="fa fa-picture-o" aria-hidden="true"></i>Images</a>
+            <a class="nav-item nav-link active" href="{{URL}}images"><i class="fa fa-picture-o" aria-hidden="true"></i>Bilder</a>
         </div>
         <div class="navbar-nav">
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>{{username}}</a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{URL}}profile"><i class="fa fa-id-card" aria-hidden="true"></i>Profile</a>
+                    <a class="dropdown-item" href="{{URL}}profile"><i class="fa fa-id-card" aria-hidden="true"></i>Profil</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{URL}}auth/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+                    <a class="dropdown-item" href="{{URL}}auth/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Abmelden</a>
                 </div>
             </div>
         </div>
@@ -44,15 +44,17 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">{{image-title}}</li>
                             <li class="list-group-item">{{image-description}}</li>
-                            <li class="list-group-item">Größe: {{image-size}}</li>
                             <li class="list-group-item">
-                                <i class="fa fa-arrows-v" aria-hidden="true" style="padding:0 7px 0 0;"></i>
+                                <span><strong>Größe:</strong> {{image-size}}</span>
+                                <span class="ml-3"><strong>Typ:</strong> {{image-type}}</span>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa fa-arrows-v" aria-hidden="true"></i>
                                 <span>{{image-height}}</span>
-                                <i class="fa fa-arrows-h" aria-hidden="true" style="padding:0 7px 0 20px;"></i>
+                                <i class="fa fa-arrows-h ml-3" aria-hidden="true"></i>
                                 <span>{{image-width}}</span>
                             </li>
                         </ul>
-                        <input type="hidden" name="profile_id" value="25">
                         <div class="card-body">
                             <a class="btn btn-success btn-sm-block" href="{{URL}}images/download/{{image-id}}"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
                             <a class="btn btn-danger float-right btn-sm-block" href="{{URL}}images/delete/{{image-id}}"><i class="fa fa-trash" aria-hidden="true"></i> Löschen</a>

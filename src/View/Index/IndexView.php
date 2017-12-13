@@ -9,8 +9,8 @@
     </div>
     <div class="row align-self-center">
         <div class="col text-center">
-            <a class="btn btn-success mr-2" href="{{URL}}login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
-            <a class="btn btn-success mr-2" href="{{URL}}register"><i class="fa fa-sign-in" aria-hidden="true"></i> Register</a>
+            <a class="btn btn-success mr-2" href="{{URL}}login"><i class="fa fa-sign-in" aria-hidden="true"></i> Anmelden</a>
+            <a class="btn btn-success mr-2" href="{{URL}}register"><i class="fa fa-sign-in" aria-hidden="true"></i> Registrieren</a>
             <a class="btn btn-primary ml-2" href="{{URL}}info"><i class="fa fa-info" aria-hidden="true"></i> Info</a>
         </div>
     </div>

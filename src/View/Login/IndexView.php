@@ -21,15 +21,15 @@
                 <input type="hidden" name="token" value="{{token}}"/>
                 <div class="alert" role="alert"></div>
                 <div class="form-group">
-                    <label class="sr-only">Username:</label>
-                    <input class="form-control" name="login_username" type="text" placeholder="Username"/>
+                    <label class="sr-only" for="username">Benutzername:</label>
+                    <input class="form-control" id="username" name="login_username" type="text" placeholder="Benutzername"/>
                 </div>
                 <div class="form-group">
-                    <label class="sr-only">Password:</label>
-                    <input class="form-control" name="login_password" type="password" placeholder="Password"/>
+                    <label class="sr-only" for="password">Passwort:</label>
+                    <input class="form-control" id="password" name="login_password" type="password" placeholder="Passwort"/>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success btn-sm-block"><i class="fa fa-key" aria-hidden="true"></i>Login</button>
+                    <button type="submit" class="btn btn-success btn-sm-block"><i class="fa fa-key" aria-hidden="true"></i>Anmelden</button>
                 </div>
             </form>
         </div>

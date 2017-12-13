@@ -44,7 +44,7 @@
                         </tr>
                         <tr>
                             <td class="text-center"><i class="fa {{file-upload-status-success}}"></i></td>
-                            <td>File Upload</td>
+                            <td>Datei-Upload</td>
                             <td>Aktiviert</td>
                             <td>{{file-upload-status}}</td>
                         </tr>

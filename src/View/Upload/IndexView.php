@@ -7,16 +7,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link" href="{{URL}}upload"><i class="fa fa-upload" aria-hidden="true"></i>Upload</a>
-            <a class="nav-item nav-link" href="{{URL}}images"><i class="fa fa-picture-o" aria-hidden="true"></i>Images</a>
+            <a class="nav-item nav-link active" href="{{URL}}upload"><i class="fa fa-upload" aria-hidden="true"></i>Upload</a>
+            <a class="nav-item nav-link" href="{{URL}}images"><i class="fa fa-picture-o" aria-hidden="true"></i>Bilder</a>
         </div>
         <div class="navbar-nav">
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>{{username}}</a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{URL}}profile"><i class="fa fa-id-card" aria-hidden="true"></i>Profile</a>
+                    <a class="dropdown-item" href="{{URL}}profile"><i class="fa fa-id-card" aria-hidden="true"></i>Profil</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{URL}}auth/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+                    <a class="dropdown-item" href="{{URL}}auth/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Abmelden</a>
                 </div>
             </div>
         </div>
@@ -26,12 +26,12 @@
     <div class="col col-12 col-lg-8 col-xl-6">
         <form>
             <div class="form-group">
-                <label class="sr-only" for="image-title">Title</label>
-                <input class="form-control" id="image-title" type="text" name="image_title" placeholder="Title"/>
+                <label class="sr-only" for="title">Titel</label>
+                <input class="form-control" id="title" type="text" name="image_title" placeholder="Titel"/>
             </div>
             <div class="form-group">
-                <label class="sr-only" for="image-description">Description</label>
-                <textarea class="form-control" id="image-description" name="image_description" placeholder="Beschreibung" rows="3"></textarea>
+                <label class="sr-only" for="description">Beschreibung</label>
+                <textarea class="form-control" id="description" name="image_description" placeholder="Beschreibung" rows="3"></textarea>
             </div>
             <div class="form-group dropzone" id="image-upload">
                 <i class="fa fa-cloud-upload" aria-hidden="true"></i>
@@ -40,7 +40,7 @@
                 <i class="fa fa-upload" aria-hidden="true"></i>Upload
             </button>
             <button type="reset" class="btn btn-secondary btn-sm-block upload-clear">
-                <i class="fa fa-times" aria-hidden="true"></i>Clear
+                <i class="fa fa-times" aria-hidden="true"></i>Leeren
             </button>
         </form>
     </div>
@@ -80,6 +80,7 @@
         thumbnailHeight: 200,
         method: "post",
         maxFiles: 5,
+        acceptedFiles: "{{accepted_files}}",
         previewTemplate: $('.picvid-dropzone').html(),
         init: function() {
             var myDropzone = this;

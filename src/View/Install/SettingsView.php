@@ -88,11 +88,11 @@
                             <div class="card-body bg-dark">
                                 <div class="form-group">
                                     <label class="sr-only">Absoluter Pfad:</label>
-                                    <input class="form-control" name="absolute_path" type="text" placeholder="absoluter Pfad" value="{{absolute_path}}" readonly>
+                                    <input class="form-control" name="absolute_path" type="text" placeholder="Absoluter Pfad" value="{{absolute_path}}" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only">URL:</label>
-                                    <input class="form-control" name="url" type="text" placeholder="absoluter Pfad" value="{{url}}" readonly>
+                                    <input class="form-control" name="url" type="text" placeholder="URL" value="{{url}}" readonly>
                                 </div>
                             </div>
                         </div>
