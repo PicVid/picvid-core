@@ -4,6 +4,7 @@
  */
 namespace PicVid\Domain\Specification\Image;
 
+use PicVid\Core\Configuration;
 use PicVid\Domain\Entity\IEntity;
 use PicVid\Domain\Entity\Image;
 use PicVid\Domain\Specification\ISpecification;
@@ -29,10 +30,7 @@ class IsValidFiletype implements ISpecification
             return false;
         }
 
-        //set an array with all valid filetypes.
-        $validFiletypes = ['image/jpeg', 'image/png', 'image/tiff', 'image/x-windows-bmp', 'image/bmp'];
-
         //return the state whether the Image Entity has a valid filetype.
-        return in_array($image->type, $validFiletypes);
+        return in_array($image->type, Configuration::getInstance()->IMAGE_TYPES);
     }
 }
