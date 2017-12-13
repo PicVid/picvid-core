@@ -65,6 +65,10 @@
                                 <input type="email" class="form-control" id="email" name="profile_email" value="{{user_email}}" placeholder="E-Mail"/>
                             </div>
                         </li>
+                        <li class="list-group-item">
+                            <i class="fa fa-bar-chart input-group-addon d-none d-md-inline pl-3" aria-hidden="true"></i>
+                            <span class="pl-2">Bilder: {{count-images}}</span>
+                        </li>
                     </ul>
                     <input type="hidden" name="profile_id" value="{{user_id}}"/>
                     <div class="card-body">
