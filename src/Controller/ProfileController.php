@@ -63,6 +63,12 @@ class ProfileController extends Controller
             $cito->setValue('username', $user->username);
             $cito->setValue('token', $this->getFormToken('profile-index'));
 
+            //get all Image Entities of the User Entity.
+            $images = ImageRepository::build()->findByUser($user);
+
+            //set the count of all Image Entities to the profile.
+            $cito->setValue('count-images', count($images));
+
             //load the view.
             $view = new View('Profile');
             $view->load();
