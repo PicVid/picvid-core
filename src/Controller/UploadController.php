@@ -50,6 +50,9 @@ class UploadController extends Controller
         $cito->setValue('username', $_SESSION['user_username']);
         $cito->setValue('token', $this->getFormToken('upload-index'));
         $cito->setValue('URL', $config->URL);
+
+        //set the allowed file types to the dropzone configuration.
+        $cito->setValue('accepted_files', implode(',', $config->IMAGE_TYPES));
     }
 
     /**
@@ -116,6 +119,10 @@ class UploadController extends Controller
 
                         //load the Image Entity from POST.
                         $image->loadFromPOST('image_');
+
+                        //remove all HTML tags from description and title.
+                        $image->description = strip_tags($image->description);
+                        $image->title = strip_tags($image->title);
 
                         //check whether the title of the Image Entity is valid.
                         if (!(new IsValidTitle())->isSatisfiedBy($image)) {
