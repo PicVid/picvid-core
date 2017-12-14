@@ -29,7 +29,7 @@ script:
   - php vendor/bin/phpunit -c phpunit.xml
 
 after_success:
-  - travis_retry php vendor/bin/coveralls -v
+  - travis_retry php vendor/bin/coveralls -v -c coveralls.yml
 
 notifications:
   email:

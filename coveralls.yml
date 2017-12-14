@@ -1,1 +1,1 @@
-coverage_clover: docs/logs/coverage-clover.xml
+coverage_clover: ./docs/logs/coverage-clover.xml
