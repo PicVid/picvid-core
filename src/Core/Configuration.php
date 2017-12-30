@@ -14,139 +14,65 @@ namespace PicVid\Core;
 class Configuration
 {
     /**
-     * The absolute path of the application.
+     * The API key for the Project Honeypot API.
+     * @see https://www.projecthoneypot.org/httpbl_api.php
      * @var string
      */
-    public $ABSPATH = '';
-
-    /**
-     * The directory of the data files.
-     * @var string
-     */
-    public $DATADIR = '';
-
-    /**
-     * The URL of the data files.
-     * @var string
-     */
-    public $DATAURL = '';
+    public $API_PROJECT_HONEYPOT_KEY = '';
 
     /**
      * The hostname to connect with database.
      * @var string
      */
-    public $DB_HOST = '';
+    public $DATABASE_HOST = '';
 
     /**
      * The name of the database to connect with database.
      * @var string
      */
-    public $DB_NAME = '';
+    public $DATABASE_NAME = '';
 
     /**
-     * The password of the database to connect with database.
+     * The password to connect with database.
      * @var string
      */
-    public $DB_PASS = '';
+    public $DATABASE_PASS = '';
 
     /**
      * The port number to connect with database.
      * @var int
      */
-    public $DB_PORT = 0;
+    public $DATABASE_PORT = 0;
 
     /**
-     * The username of the database to connect with database.
+     * The username to connect with database.
      * @var string
      */
-    public $DB_USER = '';
-
-    /**
-     * The directory of the image files.
-     * @var string
-     */
-    public $IMGDIR = '';
+    public $DATABASE_USER = '';
 
     /**
      * The valid image file types (for upload).
      * @var array
      */
-    public $IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/tiff', 'image/x-windows-bmp', 'image/bmp'];
-
-    /**
-     * The URL of the image files.
-     * @var string
-     */
-    public $IMGURL = '';
+    public $IMAGE_ALLOWED_FILETYPES = ['image/jpeg', 'image/png', 'image/tiff', 'image/x-windows-bmp', 'image/bmp'];
 
     /**
      * The maximum file size of the image files (bytes).
      * @var int
      */
-    public $MAX_IMAGE_SIZE = 0;
+    public $IMAGE_MAX_FILESIZE = 0;
 
     /**
      * The maximum size of the storage to store image files (bytes).
      * @var int
      */
-    public $MAX_STORAGE_SIZE = 0;
-
-    /**
-     * The API key for the Project Honeypot API.
-     * @var string
-     */
-    public $PROJECT_HONEYPOT_KEY = '';
-
-    /**
-     * The resource path of the application.
-     * @var string
-     */
-    public $RESPATH = '';
-
-    /**
-     * The source path of the application.
-     * @var string
-     */
-    public $SRCPATH = '';
-
-    /**
-     * The directory of the View files.
-     * @var string
-     */
-    public $VIEWDIR = '';
-
-    /**
-     * The directory for the uploaded files.
-     * @var string
-     */
-    public $UPLOADDIR = '';
-
-    /**
-     * The URL of the application.
-     * @var string
-     */
-    public $URL = '';
+    public $IMAGE_MAX_STORAGESIZE = 0;
 
     /**
      * The instance of the Configuration.
      * @var Configuration|null
      */
     private static $instance = null;
-
-    /**
-     * Private constructor to prevent a new instance.
-     */
-    private function __construct()
-    {
-       $this->detect();
-    }
-
-    /**
-     * Private clone method to prevent a new instance.
-     */
-    private function __clone()
-    {
-    }
 
     /**
      * Method to get the instance of the Configuration.
@@ -162,30 +88,10 @@ class Configuration
     }
 
     /**
-     * Method to detect the settings from server and user information.
-     */
-    private function detect()
-    {
-        //get the absolute path and URL of the application.
-        $this->ABSPATH = $this->getAbsolutePath();
-        $this->URL = $this->getURL();
-
-        //we can get the other path and URL values from absolute path and URL.
-        $this->DATADIR = $this->ABSPATH.'data'.DIRECTORY_SEPARATOR;
-        $this->DATAURL = $this->URL.'data'.DIRECTORY_SEPARATOR;
-        $this->IMGDIR = $this->DATADIR.'images'.DIRECTORY_SEPARATOR;
-        $this->IMGURL = $this->DATAURL.'images'.DIRECTORY_SEPARATOR;
-        $this->RESPATH = $this->ABSPATH.'resource'.DIRECTORY_SEPARATOR;
-        $this->SRCPATH = $this->ABSPATH.'src'.DIRECTORY_SEPARATOR;
-        $this->UPLOADDIR = $this->DATADIR.'upload'.DIRECTORY_SEPARATOR;
-        $this->VIEWDIR = $this->SRCPATH.'View'.DIRECTORY_SEPARATOR;
-    }
-
-    /**
      * Method to get the absolute path of the application.
      * @return string The absolute path of the application.
      */
-    private function getAbsolutePath() : string
+    public function getPathAbsolute() : string
     {
         return getcwd().DIRECTORY_SEPARATOR;
     }
@@ -194,82 +100,148 @@ class Configuration
      * Method to get the configuration path of the application.
      * @return string The configuration path of the application.
      */
-    private function getConfigPath() : string
+    public function getPathConfiguration() : string
     {
-        return $this->getAbsolutePath().'config.php';
+        return $this->getPathAbsolute().'config.json';
+    }
+
+    /**
+     * Method to get the image path of the application.
+     * @return string The image path of the application.
+     */
+    public function getPathImage() : string
+    {
+        return $this->getPathAbsolute().'data'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR;
+    }
+
+    /**
+     * Method to get the resource path of the application.
+     * @return string The resource path of the application.
+     */
+    public function getPathResource() : string
+    {
+        return $this->getPathAbsolute().'resource'.DIRECTORY_SEPARATOR;
+    }
+
+    /**
+     * Method to get the source path of the application.
+     * @return string The source path of the application.
+     */
+    public function getPathSource() : string
+    {
+        return $this->getPathAbsolute().'src'.DIRECTORY_SEPARATOR;
+    }
+
+    /**
+     * Method to get the view path of the application.
+     * @return string The view path of the application.
+     */
+    public function getPathView() : string
+    {
+        return $this->getPathSource().'View'.DIRECTORY_SEPARATOR;
     }
 
     /**
      * Method to get the URL of the application.
      * @return string The URL of the application.
      */
-    private function getURL() : string
+    public function getUrl() : string
     {
         return (isset($_SERVER['HTTPS']) ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/';
     }
 
     /**
-     * Method to load the configuration from configuration file (constants).
+     * Method to get the images url of the application.
+     * @return string The images url of the application.
+     */
+    public function  getUrlImage() : string
+    {
+        return $this->getUrl().'data/images/';
+    }
+
+    /**
+     * Method to save the Configuration to the JSON file.
+     * @return bool The state if the Configuration could be written.
+     */
+    public function save() : bool
+    {
+        //get all properties of the Configuration.
+        $properties = get_object_vars($this);
+
+        //initialize the array of the configuration properties.
+        $config = [];
+
+        //run through all properties of the configuration.
+        foreach ($properties as $property_name => $property_value) {
+
+            //get the property parts for configuration (group and property).
+            $arr = preg_split('/[\_]/', $property_name, 2);
+
+            //get the group of the property and the property itself.
+            $group = $arr[0];
+            $property = $arr[1];
+
+            //add the group if the group doesn't exists.
+            if (!isset($config[$group])) {
+                $config[$group] = [];
+            }
+
+            //add the property with value if the property doesn't exists on the group.
+            if (!isset($config[$group][$property])) {
+                $config[$group][$property] = $property_value;
+            }
+        }
+
+        //write the configuration to the JSON file.
+        return file_put_contents($this->getPathConfiguration(), json_encode($config, JSON_PRETTY_PRINT));
+    }
+
+    /**
+     * Method to load the Configuration of the JSON file.
      */
     public function load()
     {
-        //check whether a installation is needed.
-        if (!file_exists($this->getConfigPath()) && strpos($_SERVER['REQUEST_URI'], 'install') === false) {
-            header('Location: install');
-            exit;
+        //check if the configuration exists.
+        if (!$this->exists()) {
+            return;
         }
 
-        //check whether the configuration file is available.
-        if (file_exists($this->getConfigPath())) {
-            require($this->getConfigPath());
-        }
+        //get the configuration array from JSON file.
+        $config = json_decode(file_get_contents($this->getPathConfiguration()), true);
 
-        //loading the database information from global configuration (constants).
-        $this->DB_HOST = (defined('DB_HOST') ? \DB_HOST : '');
-        $this->DB_PORT = (defined('DB_PORT') ? \DB_PORT : 0);
-        $this->DB_PASS = (defined('DB_PASS') ? \DB_PASS : '');
-        $this->DB_NAME = (defined('DB_NAME') ? \DB_NAME : '');
-        $this->DB_USER = (defined('DB_USER') ? \DB_USER : '');
+        //get all properties of the Configuration.
+        $properties = get_object_vars($this);
 
-        //loading the API key of the Project Honeypot API from global configuration (constants).
-        $this->PROJECT_HONEYPOT_KEY = (defined('PROJECT_HONEYPOT_KEY') ? \PROJECT_HONEYPOT_KEY : '');
+        //run through all properties of the configuration.
+        foreach ($properties as $property_name => $property_value) {
 
-        //load the image and storage size from global configuration (constants).
-        $this->MAX_STORAGE_SIZE = (defined('MAX_STORAGE_SIZE') ? \MAX_STORAGE_SIZE : 0);
-        $this->MAX_IMAGE_SIZE = (defined('MAX_IMAGE_SIZE') ? \MAX_IMAGE_SIZE : 0);
+            //get the property parts for configuration (group and property).
+            $arr = preg_split('/[\_]/', $property_name, 2);
 
-        //get the allowed image types from global configuration (constants).
-        $this->IMAGE_TYPES = unserialize(\IMAGE_TYPES);
+            //get the group of the property and the property itself.
+            $group = $arr[0];
+            $property = $arr[1];
 
-        //check whether the configuration file is available.
-        if (file_exists($this->getConfigPath()) && strpos($_SERVER['REQUEST_URI'], 'install') !== false) {
-            header('Location: '.$this->getURL());
-            exit;
+            //check if the group is available.
+            if (!isset($config[$group])) {
+                continue;
+            }
+
+            //check if the property on the group is available.
+            if (!isset($config[$group][$property])) {
+                continue;
+            } else {
+                $this->$property_name = $config[$group][$property];
+            }
         }
     }
 
     /**
-     * Method to write the configuration from properties to file.
-     * @return bool The state if the configuration file could be written.
+     * Method to get the status if the Configuration file exists.
+     * @return bool The state if the Configuration file exists.
      */
-    public function write() : bool
+    public function exists() : bool
     {
-        //create the file content based on the properties.
-        $fileContent = "<?php\n";
-        $fileContent .= "//database configuration.\n";
-        $fileContent .= "define('DB_HOST', '".$this->DB_HOST."');\n";
-        $fileContent .= "define('DB_PORT', ".intval($this->DB_PORT).");\n";
-        $fileContent .= "define('DB_NAME', '".$this->DB_NAME."');\n";
-        $fileContent .= "define('DB_USER', '".$this->DB_USER."');\n";
-        $fileContent .= "define('DB_PASS', '".$this->DB_PASS."');\n\n";
-        $fileContent .= "//the project honeypot key.\n";
-        $fileContent .= "define('PROJECT_HONEYPOT_KEY', '".$this->PROJECT_HONEYPOT_KEY."');\n\n";
-        $fileContent .= "//max image size and storage size.\n";
-        $fileContent .= "define('MAX_IMAGE_SIZE', ".intval($this->MAX_IMAGE_SIZE).");\n";
-        $fileContent .= "define('MAX_STORAGE_SIZE', ".intval($this->MAX_STORAGE_SIZE).");\n";
-        $fileContent .= "define('IMAGE_TYPES', '".serialize($this->IMAGE_TYPES)."');";
-
-        //write the file and return the state.
-        return (file_put_contents($this->getConfigPath(), $fileContent) !== false);
+        return file_exists($this->getPathConfiguration());
     }
 }
