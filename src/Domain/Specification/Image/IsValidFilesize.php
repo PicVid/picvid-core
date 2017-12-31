@@ -34,8 +34,8 @@ class IsValidFilesize implements ISpecification
         $config = Configuration::getInstance();
 
         //check whether the filesize exceeds the max filesize values.
-        $isValidFile = $image->size <= $config->MAX_IMAGE_SIZE;
-        $isValidStorage = $image->size <= $config->MAX_STORAGE_SIZE;
+        $isValidFile = $image->size <= $config->IMAGE_MAX_FILESIZE ;
+        $isValidStorage = $image->size <= $config->IMAGE_MAX_STORAGESIZE;
 
         //return the state whether the Image Entity has a valid filesize.
         return $isValidFile && $isValidStorage;

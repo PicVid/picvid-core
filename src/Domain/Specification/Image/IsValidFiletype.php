@@ -31,6 +31,6 @@ class IsValidFiletype implements ISpecification
         }
 
         //return the state whether the Image Entity has a valid filetype.
-        return in_array($image->type, Configuration::getInstance()->IMAGE_TYPES);
+        return in_array($image->type, Configuration::getInstance()->IMAGE_ALLOWED_FILETYPES);
     }
 }
