@@ -29,8 +29,8 @@ class IndexController extends Controller
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'index-view');
         $cito->setValue('PAGE_TITLE', 'PicVid - Willkommen');
-        $cito->setValue('LOGO_URL', $config->URL.'/resource/template/img/picvid-logo.png');
-        $cito->setValue('URL', $config->URL);
+        $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
+        $cito->setValue('URL', $config->getUrl());
 
         //load the view.
         $view = new View('Index');

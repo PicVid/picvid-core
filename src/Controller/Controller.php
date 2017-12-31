@@ -68,7 +68,7 @@ abstract class Controller implements IController
         //check if the Session is available.
         if (isset($_SESSION['user_username']) === false) {
             $config = Configuration::getInstance();
-            $this->redirect(($redirectURL === '') ? $config->URL : $redirectURL);
+            $this->redirect(($redirectURL === '') ? $config->getUrl() : $redirectURL);
         }
     }
 

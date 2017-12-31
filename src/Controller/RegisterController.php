@@ -37,9 +37,9 @@ class RegisterController extends Controller
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'register-view');
         $cito->setValue('PAGE_TITLE', 'PicVid - Register');
-        $cito->setValue('LOGO_URL', $config->URL.'/resource/template/img/picvid-logo.png');
+        $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
         $cito->setValue('token', $this->getFormToken('token-register'));
-        $cito->setValue('URL', $config->URL);
+        $cito->setValue('URL', $config->getUrl());
 
         //load the view.
         $view = new View('Register');
@@ -61,9 +61,9 @@ class RegisterController extends Controller
         }
 
         //check if the IP address is trusted (using Project Honey Pot).
-        if ($config->PROJECT_HONEYPOT_KEY !== '') {
+        if ($config->API_PROJECT_HONEYPOT_KEY !== '') {
             if (filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-                if ((new ProjectHoneyPot($config->PROJECT_HONEYPOT_KEY))->check($_SERVER['REMOTE_ADDR'])) {
+                if ((new ProjectHoneyPot($config->API_PROJECT_HONEYPOT_KEY))->check($_SERVER['REMOTE_ADDR'])) {
                     $this->jsonOutput('The IP you are using is not trusted!', '', 'error');
                     return false;
                 }
@@ -106,7 +106,7 @@ class RegisterController extends Controller
 
         //register the new User Entity.
         if ((new AuthenticationService())->register($user)) {
-            $this->jsonOutput('The User was successfully registered!', '', 'info', $config->URL.'login');
+            $this->jsonOutput('The User was successfully registered!', '', 'info', $config->getUrl().'login');
             return true;
         } else {
             $this->jsonOutput('The User could not be registered!', '', 'error');

@@ -53,7 +53,7 @@ class ProfileController extends Controller
             //set all the values for the placeholders on template.
             $cito = CitoEngine::getInstance();
             $cito->setValue('BODY_ID', 'profile-index');
-            $cito->setValue('LOGO_URL', $config->URL.'/resource/template/img/picvid-logo.png');
+            $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
             $cito->setValue('user_username', $user->username);
             $cito->setValue('user_email', $user->email);
             $cito->setValue('user_firstname', $user->firstname);
@@ -75,7 +75,7 @@ class ProfileController extends Controller
         } else {
 
             //user is unknown, so logout.
-            $this->redirect($config->URL.'logout');
+            $this->redirect($config->getUrl().'logout');
         }
     }
 
@@ -119,7 +119,7 @@ class ProfileController extends Controller
         }
 
         //redirect back to the profile.
-        $this->redirect($config->URL.'profile');
+        $this->redirect($config->getUrl().'profile');
     }
 
     /**

@@ -43,8 +43,8 @@ class InstallController extends Controller
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'install-requirements');
         $cito->setValue('PAGE_TITLE', 'PicVid - Voraussetzungen');
-        $cito->setValue('LOGO_URL', $config->URL.'/resource/template/img/picvid-logo.png');
-        $cito->setValue('URL', $config->URL);
+        $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
+        $cito->setValue('URL', $config->getUrl());
         $cito->setValue('php-version', PHP_VERSION);
         $cito->setValue('php-version-success', ($isValidVersionPHP ? 'fa-check' : 'fa-times'));
         $cito->setValue('pdo-status', ($isAvaiablePDO && $isAvailableMySQL ? 'Aktiviert (MySQL)' : 'Deaktiviert'));
@@ -70,10 +70,10 @@ class InstallController extends Controller
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'install-settings');
         $cito->setValue('PAGE_TITLE', 'PicVid - Einstellungen');
-        $cito->setValue('LOGO_URL', $config->URL.'/resource/template/img/picvid-logo.png');
-        $cito->setValue('URL', $config->URL);
-        $cito->setValue('url', str_replace('install/settings', '', $config->URL));
-        $cito->setValue('absolute_path', $config->ABSPATH);
+        $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
+        $cito->setValue('URL', $config->getUrl());
+        $cito->setValue('url', str_replace('install/settings', '', $config->getUrl()));
+        $cito->setValue('absolute_path', $config->getPathAbsolute());
 
         //load the view.
         (new View('Install', 'Settings'))->load();
@@ -104,21 +104,21 @@ class InstallController extends Controller
             $this->jsonOutput('The database settings are not valid!', 'database_host', 'error');
             return false;
         } else {
-            $config->DB_HOST = $config_database['database_host'];
-            $config->DB_PORT = intval($config_database['database_port']);
-            $config->DB_NAME = $config_database['database_name'];
-            $config->DB_USER = $config_database['database_user'];
-            $config->DB_PASS = $config_database['database_pass'];
+            $config->DATABASE_HOST = $config_database['database_host'];
+            $config->DATABASE_PORT = intval($config_database['database_port']);
+            $config->DATABASE_NAME = $config_database['database_name'];
+            $config->DATABASE_USER = $config_database['database_user'];
+            $config->DATABASE_PASS = $config_database['database_pass'];
         }
 
         //check if the properties are valid.
-        if (trim($config->DB_HOST) === '' || trim($config->DB_USER) === '' || trim($config->DB_NAME) === '' || trim($config->DB_PORT) === '') {
+        if (trim($config->DATABASE_HOST) === '' || trim($config->DATABASE_USER) === '' || trim($config->DATABASE_NAME) === '' || trim($config->DATABASE_PORT) === '') {
             $this->jsonOutput('The database settings are not valid!', 'database_host', 'error');
             return false;
         }
 
         //set the API keys.
-        $config->PROJECT_HONEYPOT_KEY = $_POST['api_project_honeypot_key'];
+        $config->API_PROJECT_HONEYPOT_KEY = $_POST['api_project_honeypot_key'];
 
         //set the filter for the size limits.
         $size_filter = [
@@ -134,21 +134,20 @@ class InstallController extends Controller
             $this->jsonOutput('The size limits are not valid!', 'max_file_size', 'error');
             return false;
         } else {
-            $config->MAX_IMAGE_SIZE = intval($_POST['max_file_size']);
-            $config->MAX_STORAGE_SIZE = intval($_POST['max_storage_size']);
+            $config->IMAGE_MAX_FILESIZE = intval($_POST['max_file_size']);
+            $config->IMAGE_MAX_STORAGESIZE = intval($_POST['max_storage_size']);
         }
 
         //write the configuration.
-        if (!$config->write()) {
+        if (!$config->save()) {
             $this->jsonOutput('The configuration could not be written!', '', 'error');
             return false;
+        } else {
+            $config->load();
         }
 
-        //include the configuration.
-        include($config->ABSPATH.'config.php');
-
         //parse the install.sql file to get all the queries.
-        $sqlContent = file_get_contents($config->RESPATH.'install.sql');
+        $sqlContent = file_get_contents($config->getPathResource().'install.sql');
         $sqlContent = trim(preg_replace('/--.*\s/','', $sqlContent));
         $sqlContent = trim(preg_replace('/\s\s+/', ' ', $sqlContent));
         $sqlQueries = preg_split('/;/', $sqlContent);
@@ -199,7 +198,7 @@ class InstallController extends Controller
 
         //register the new User Entity.
         if ((new AuthenticationService())->register($user)) {
-            $this->jsonOutput('The User was successfully registered!', '', 'info', $config->URL);
+            $this->jsonOutput('The User was successfully registered!', '', 'info', $config->getUrl());
             return true;
         } else {
             $this->jsonOutput('The User could not be registered!', '', 'error');

@@ -37,9 +37,9 @@ class ImagesController extends Controller
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'images-index');
         $cito->setValue('PAGE_TITLE', 'PicVid - Bilder');
-        $cito->setValue('LOGO_URL', $config->URL.'/resource/template/img/picvid-logo.png');
+        $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
         $cito->setValue('username', $_SESSION['user_username']);
-        $cito->setValue('URL', $config->URL);
+        $cito->setValue('URL', $config->getUrl());
 
         //load the view.
         $view = new View('Images');
@@ -70,14 +70,14 @@ class ImagesController extends Controller
                 if (UserImageTableMapper::build()->deleteByImage($image)) {
                     if (ImageMapper::build()->delete($image)) {
                         unlink($image->getImagePath());
-                        $this->redirect($config->URL.'images');
+                        $this->redirect($config->getUrl().'images');
                     }
                 }
             }
         }
 
         //redirect to the image info.
-        $this->redirect($config->URL.'images/info/'.$id);
+        $this->redirect($config->getUrl().'images/info/'.$id);
     }
 
     /**
@@ -163,9 +163,9 @@ class ImagesController extends Controller
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'images-info');
         $cito->setValue('PAGE_TITLE', 'PicVid - Bilder');
-        $cito->setValue('LOGO_URL', $config->URL.'/resource/template/img/picvid-logo.png');
+        $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
         $cito->setValue('username', $_SESSION['user_username']);
-        $cito->setValue('URL', $config->URL);
+        $cito->setValue('URL', $config->getUrl());
 
         //get the Image Entity from database.
         $images = ImageRepository::build()->findByID($id);
@@ -246,6 +246,7 @@ class ImagesController extends Controller
                 $cito->setValue('image-width', $imageSize[0].'px');
                 $cito->setValue('image-height', $imageSize[1].'px');
                 $cito->setValue('image-size', $this->formatFileSize($image->size));
+                $cito->setValue('image-type', $image->type);
 
                 //show the image title if available or a placeholder.
                 if (trim($image->title) === '') {
@@ -262,7 +263,7 @@ class ImagesController extends Controller
                 }
             }
         } else {
-            $this->redirect($config->URL.'images');
+            $this->redirect($config->getUrl().'images');
         }
 
         //load the view.

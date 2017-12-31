@@ -55,7 +55,7 @@ class Image extends Entity
         $config = Configuration::getInstance();
 
         //set the full image path.
-        $imagePath = preg_replace('/\/\\\/', DIRECTORY_SEPARATOR, $config->IMGDIR).$this->filename;
+        $imagePath = preg_replace('/\/\\\/', DIRECTORY_SEPARATOR, $config->getPathImage()).$this->filename;
 
         //return the image path if file exists.
         return (file_exists($imagePath)) ? $imagePath : '';
@@ -71,7 +71,7 @@ class Image extends Entity
         $config = Configuration::getInstance();
 
         //set the full image URL.
-        $imageURL = preg_replace("/\/|\\\/", '/', $config->IMGURL).$this->filename;
+        $imageURL = preg_replace("/\/|\\\/", '/', $config->getUrlImage()).$this->filename;
 
         //return the image URL if file exists.
         return (file_exists($this->getImagePath())) ? $imageURL : '';

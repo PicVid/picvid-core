@@ -43,7 +43,7 @@ class PicVid
         $url = $this->parseUrl();
 
         //check if the controller is present.
-        if (isset($url[0]) && file_exists($config->SRCPATH.'Controller/'.$this->normalize($url[0], false).'Controller.php')) {
+        if (isset($url[0]) && file_exists($config->getPathSource().'Controller/'.$this->normalize($url[0], false).'Controller.php')) {
             $this->controller = $this->normalize($url[0], false);
             unset($url[0]);
         }

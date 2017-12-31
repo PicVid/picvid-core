@@ -62,7 +62,7 @@ class View
         $config = Configuration::getInstance();
 
         //get the path of the View file.
-        $viewFile = $config->VIEWDIR.$this->controller.DIRECTORY_SEPARATOR.$this->method.'View.php';
+        $viewFile = $config->getPathView().$this->controller.DIRECTORY_SEPARATOR.$this->method.'View.php';
 
         //check whether the file of the view exists.
         if (file_exists($viewFile)) {
@@ -79,8 +79,8 @@ class View
         $config = Configuration::getInstance();
 
         //get the paths to the header and footer files.
-        $headerFile = $config->RESPATH.'template'.DIRECTORY_SEPARATOR.'header.php';
-        $footerFile = $config->RESPATH.'template'.DIRECTORY_SEPARATOR.'footer.php';
+        $headerFile = $config->getPathResource().'template'.DIRECTORY_SEPARATOR.'header.php';
+        $footerFile = $config->getPathResource().'template'.DIRECTORY_SEPARATOR.'footer.php';
 
         //check whether the header file exists.
         if (file_exists($headerFile)) {

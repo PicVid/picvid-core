@@ -8,7 +8,14 @@ $autoloader->addNamespace('PicVid', 'src');
 
 //include the configuration (if exists).
 $config = \PicVid\Core\Configuration::getInstance();
-$config->load();
+
+//check if the configuration is available (outside install).
+if ($config->exists()) {
+    $config->load();
+} elseif (strpos($_SERVER['REQUEST_URI'], 'install') === false) {
+    header('Location: install');
+    exit;
+}
 
 //initialize the CitoEngine (template engine).
 $cito = \PicVid\Core\CitoEngine::getInstance();

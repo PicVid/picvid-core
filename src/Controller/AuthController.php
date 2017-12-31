@@ -22,7 +22,7 @@ class AuthController extends Controller
     public function index()
     {
         $config = Configuration::getInstance();
-        $this->redirect($config->URL.'login');
+        $this->redirect($config->getUrl().'login');
     }
 
     /**
@@ -38,6 +38,6 @@ class AuthController extends Controller
 
         //redirect to the index view.
         $config = Configuration::getInstance();
-        $this->redirect($config->URL);
+        $this->redirect($config->getUrl());
     }
 }

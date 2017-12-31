@@ -46,13 +46,13 @@ class UploadController extends Controller
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'upload-index');
         $cito->setValue('PAGE_TITLE', 'PicVid - Upload');
-        $cito->setValue('LOGO_URL', $config->URL.'/resource/template/img/picvid-logo.png');
+        $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
         $cito->setValue('username', $_SESSION['user_username']);
         $cito->setValue('token', $this->getFormToken('upload-index'));
-        $cito->setValue('URL', $config->URL);
+        $cito->setValue('URL', $config->getUrl());
 
         //set the allowed file types to the dropzone configuration.
-        $cito->setValue('accepted_files', implode(',', $config->IMAGE_TYPES));
+        $cito->setValue('accepted_files', implode(',', $config->IMAGE_ALLOWED_FILETYPES));
     }
 
     /**
@@ -109,7 +109,7 @@ class UploadController extends Controller
                 }
 
                 //move the file to the image directory.
-                if (move_uploaded_file($_FILES['image_upload']['tmp_name'][$key], $config->IMGDIR.$filename)) {
+                if (move_uploaded_file($_FILES['image_upload']['tmp_name'][$key], $config->getPathImage().$filename)) {
 
                     //get the User Entity from Session.
                     $user = (new SessionService())->getUser();
@@ -126,13 +126,13 @@ class UploadController extends Controller
 
                         //check whether the title of the Image Entity is valid.
                         if (!(new IsValidTitle())->isSatisfiedBy($image)) {
-                            unlink($config->IMGDIR.$filename);
+                            unlink($config->getPathImage().$filename);
                             continue;
                         }
 
                         //check whether the description of the Image Entity is valid.
                         if (!(new IsValidDescription())->isSatisfiedBy($image)) {
-                            unlink($config->IMGDIR.$filename);
+                            unlink($config->getPathImage().$filename);
                             continue;
                         }
 
