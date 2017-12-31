@@ -7,16 +7,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link" href="{{URL}}upload"><i class="fa fa-upload" aria-hidden="true"></i>Upload</a>
-            <a class="nav-item nav-link active" href="{{URL}}images"><i class="fa fa-picture-o" aria-hidden="true"></i>Bilder</a>
+            <a class="nav-item nav-link" href="{{URL}}upload"><i class="fas fa-upload" aria-hidden="true"></i>Upload</a>
+            <a class="nav-item nav-link active" href="{{URL}}images"><i class="far fa-image" aria-hidden="true"></i>Bilder</a>
         </div>
         <div class="navbar-nav">
             <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>{{username}}</a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user" aria-hidden="true"></i>{{username}}</a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{URL}}profile"><i class="fa fa-id-card" aria-hidden="true"></i>Profil</a>
+                    <a class="dropdown-item" href="{{URL}}profile"><i class="fas fa-id-card" aria-hidden="true"></i>Profil</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{URL}}auth/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Abmelden</a>
+                    <a class="dropdown-item" href="{{URL}}auth/logout"><i class="fas fa-sign-out-alt" aria-hidden="true"></i>Abmelden</a>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@ $images = \PicVid\Domain\Repository\ImageRepository::build()->findAll();
 <div class="container-fluid">
     <div class="row img-grid justify-content-center">
         <?php
-            if (count($images) < 1) { echo '<div class="col-12 col-md-6 col-lg-6 col-xl-4 mt-4"><div class="alert alert-warning" role="alert"><i class="fa fa-picture-o" aria-hidden="true"></i> Es sind keine Bilder verfügbar! Über den <a class="alert-link" href="{{URL}}upload">Upload</a> kannst du deine Bilder hochladen.</div></div>'; } else {
+            if (count($images) < 1) { echo '<div class="col-12 col-md-6 col-lg-6 col-xl-4 mt-4"><div class="alert alert-warning" role="alert"><i class="far fa-image" aria-hidden="true"></i> Es sind keine Bilder verfügbar! Über den <a class="alert-link" href="{{URL}}upload">Upload</a> kannst du deine Bilder hochladen.</div></div>'; } else {
         ?>
 
         <div class="col-12 col-md-6 col-lg-6 col-xl-4">
@@ -45,10 +45,10 @@ $images = \PicVid\Domain\Repository\ImageRepository::build()->findAll();
                     <div class="img-grid-item my-3">
                         <img src="<?= $image->getImageURL() ?>" class="img-transparent"/>
                         <a class="btn btn-sm btn-success download" href="{{URL}}images/download/<?= $image->id ?>">
-                            <i class="fa fa-download" aria-hidden="true"></i>Download
+                            <i class="fas fa-download" aria-hidden="true"></i>Download
                         </a>
                         <a class="btn btn-sm btn-info info" href="{{URL}}images/info/<?= $image->id ?>">
-                            <i class="fa fa-info" aria-hidden="true"></i>Info
+                            <i class="fas fa-info" aria-hidden="true"></i>Info
                         </a>
                     </div>
                     <?php
@@ -68,10 +68,10 @@ $images = \PicVid\Domain\Repository\ImageRepository::build()->findAll();
                     <div class="img-grid-item my-3">
                         <img src="<?= $image->getImageURL() ?>" class="img-transparent"/>
                         <a class="btn btn-sm btn-success download" href="{{URL}}images/download/<?= $image->id ?>">
-                            <i class="fa fa-download" aria-hidden="true"></i>Download
+                            <i class="fas fa-download" aria-hidden="true"></i>Download
                         </a>
                         <a class="btn btn-sm btn-info info" href="{{URL}}images/info/<?= $image->id ?>">
-                            <i class="fa fa-info" aria-hidden="true"></i>Info
+                            <i class="fas fa-info" aria-hidden="true"></i>Info
                         </a>
                     </div>
                     <?php
@@ -91,10 +91,10 @@ $images = \PicVid\Domain\Repository\ImageRepository::build()->findAll();
                     <div class="img-grid-item my-3">
                         <img src="<?= $image->getImageURL() ?>" class="img-transparent"/>
                         <a class="btn btn-sm btn-success download" href="{{URL}}images/download/<?= $image->id ?>">
-                            <i class="fa fa-download" aria-hidden="true"></i>Download
+                            <i class="fas fa-download" aria-hidden="true"></i>Download
                         </a>
                         <a class="btn btn-sm btn-info info" href="{{URL}}images/info/<?= $image->id ?>">
-                            <i class="fa fa-info" aria-hidden="true"></i>Info
+                            <i class="fas fa-info" aria-hidden="true"></i>Info
                         </a>
                     </div>
                     <?php

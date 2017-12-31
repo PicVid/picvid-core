@@ -76,6 +76,7 @@ body div.bg-overlay + a.credits span svg {
     display:inline-block;
     width: auto;
     max-width: 400px;
+    min-width: 250px;
 }
 .dz-preview.dz-image-preview img {
     width:100%;
@@ -234,7 +235,7 @@ img.img-transparent {
 #index-view a, #index-view a:link {
     margin:15px 5px;
 }
-#index-view a i.fa, #index-view a:link i.fa {
+#index-view a i, #index-view a:link i {
     margin-right: 3px;
 }
 #auth-view .nav-pills .nav-item {
@@ -297,15 +298,12 @@ body#profile-index .card .input-group-addon,
 body#profile-index .card .btn {
     border-radius: 0;
 }
-body#profile-index .card .btn .fa {
-    margin-right: 7px;
-}
 body#profile-index .card input,
 body#profile-index .card .input-group-addon {
     border:0;
     background:white;
 }
-body#profile-index .card .input-group .fa {
+body#profile-index .card .input-group i {
     margin-top:2px;
     width:50px;
 }

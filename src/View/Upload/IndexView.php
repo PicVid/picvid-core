@@ -7,16 +7,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link active" href="{{URL}}upload"><i class="fa fa-upload" aria-hidden="true"></i>Upload</a>
-            <a class="nav-item nav-link" href="{{URL}}images"><i class="fa fa-picture-o" aria-hidden="true"></i>Bilder</a>
+            <a class="nav-item nav-link active" href="{{URL}}upload"><i class="fas fa-upload" aria-hidden="true"></i>Upload</a>
+            <a class="nav-item nav-link" href="{{URL}}images"><i class="far fa-image" aria-hidden="true"></i>Bilder</a>
         </div>
         <div class="navbar-nav">
             <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>{{username}}</a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user" aria-hidden="true"></i>{{username}}</a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{URL}}profile"><i class="fa fa-id-card" aria-hidden="true"></i>Profil</a>
+                    <a class="dropdown-item" href="{{URL}}profile"><i class="fas fa-id-card" aria-hidden="true"></i>Profil</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{URL}}auth/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Abmelden</a>
+                    <a class="dropdown-item" href="{{URL}}auth/logout"><i class="fas fa-sign-out-alt" aria-hidden="true"></i>Abmelden</a>
                 </div>
             </div>
         </div>
@@ -34,13 +34,13 @@
                 <textarea class="form-control" id="description" name="image_description" placeholder="Beschreibung" rows="3"></textarea>
             </div>
             <div class="form-group dropzone" id="image-upload">
-                <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
             </div>
             <button type="button" class="btn btn-success btn-sm-block upload-start">
-                <i class="fa fa-upload" aria-hidden="true"></i>Upload
+                <i class="fas fa-upload" aria-hidden="true"></i>Upload
             </button>
             <button type="reset" class="btn btn-secondary btn-sm-block upload-clear">
-                <i class="fa fa-times" aria-hidden="true"></i>Leeren
+                <i class="fas fa-times" aria-hidden="true"></i>Leeren
             </button>
         </form>
     </div>
@@ -50,9 +50,9 @@
 <div class="picvid-dropzone">
     <div class="dz-preview dz-file-preview">
         <div class="dz-details">
-            <div class="uploading"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
-            <div class="dz-success-mark"><i class="fa fa-check" aria-hidden="true"></i></div>
-            <div class="dz-error-mark"><i class="fa fa-times" aria-hidden="true"></i></div>
+            <div class="uploading"><i class="far fa-clock" aria-hidden="true"></i></div>
+            <div class="dz-success-mark"><i class="fas fa-check" aria-hidden="true"></i></div>
+            <div class="dz-error-mark"><i class="fas fa-times" aria-hidden="true"></i></div>
             <div class="dz-error-message badge badge-danger" data-dz-errormessage></div>
             <div class="dz-filename badge badge-light" data-dz-name></div>
             <div class="dz-size badge badge-light" data-dz-size></div>

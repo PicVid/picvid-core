@@ -46,11 +46,11 @@ class InstallController extends Controller
         $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
         $cito->setValue('URL', $config->getUrl());
         $cito->setValue('php-version', PHP_VERSION);
-        $cito->setValue('php-version-success', ($isValidVersionPHP ? 'fa-check' : 'fa-times'));
+        $cito->setValue('php-version-success', ($isValidVersionPHP ? 'fas fa-check' : 'fas fa-times'));
         $cito->setValue('pdo-status', ($isAvaiablePDO && $isAvailableMySQL ? 'Aktiviert (MySQL)' : 'Deaktiviert'));
-        $cito->setValue('pdo-status-success', ($isAvaiablePDO ? 'fa-check' : 'fa-times'));
+        $cito->setValue('pdo-status-success', ($isAvaiablePDO ? 'fas fa-check' : 'fas fa-times'));
         $cito->setValue('file-upload-status', ($isAvailableFileUpload ? 'Aktiviert' : 'Deaktiviert'));
-        $cito->setValue('file-upload-status-success', ($isAvailableFileUpload ? 'fa-check' : 'fa-times'));
+        $cito->setValue('file-upload-status-success', ($isAvailableFileUpload ? 'fas fa-check' : 'fas fa-times'));
         $cito->setValue('file-upload-max-post-size', ini_get('post_max_size'));
         $cito->setValue('file-upload-max-file-size', ini_get('upload_max_filesize'));
 

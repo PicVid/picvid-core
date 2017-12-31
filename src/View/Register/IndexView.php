@@ -1,6 +1,6 @@
 <div class="bg-overlay"></div>
 <a class="credits d-none d-md-inline-block" href="https://unsplash.com/@clarissemeyer?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Clarisse Meyer">
-    <span><i class="fa fa-camera" aria-hidden="true"></i></span>
+    <span><i class="fas fa-camera" aria-hidden="true"></i></span>
     <span>Clarisse Meyer</span>
 </a>
 <div class="container-fluid d-flex flex-column">
@@ -33,7 +33,7 @@
                     <input class="form-control" id="password" name="register_password" type="password" placeholder="Passwort"/>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success btn-sm-block"><i class="fa fa-sign-in" aria-hidden="true"></i>Registrieren</button>
+                    <button type="submit" class="btn btn-success btn-sm-block"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Registrieren</button>
                 </div>
             </form>
         </div>

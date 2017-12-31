@@ -1,6 +1,6 @@
 <div class="bg-overlay dark"></div>
 <a class="credits d-none d-lg-inline-block" href="https://unsplash.com/@eugi1492?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Eugenio Mazzone">
-    <span><i class="fa fa-camera" aria-hidden="true"></i></span>
+    <span><i class="fas fa-camera" aria-hidden="true"></i></span>
     <span>Eugenio Mazzone</span>
 </a>
 <div class="container-fluid d-flex flex-column">
@@ -18,7 +18,7 @@
         </div>
         <div class="col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-5 mb-4 mb-sm-4 mb-md-4 mb-lg-0 mb-xl-0">
             <div class="card bg-dark text-white">
-                <h4 class="card-header bg-success"><i class="fa fa-rocket" aria-hidden="true"></i>Voraussetzungen</h4>
+                <h4 class="card-header bg-success"><i class="fas fa-rocket" aria-hidden="true"></i>Voraussetzungen</h4>
                 <div class="card-body px-1">
                     <table class="table table-striped table-dark mb-0">
                         <thead>
@@ -31,31 +31,31 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="text-center"><i class="fa {{php-version-success}}"></i></td>
+                            <td class="text-center"><i class="{{php-version-success}}"></i></td>
                             <td>PHP-Version</td>
                             <td>7.1</td>
                             <td>{{php-version}}</td>
                         </tr>
                         <tr>
-                            <td class="text-center"><i class="fa {{pdo-status-success}}"></i></td>
+                            <td class="text-center"><i class="{{pdo-status-success}}"></i></td>
                             <td>Datenbank</td>
                             <td>PDO</td>
                             <td>{{pdo-status}}</td>
                         </tr>
                         <tr>
-                            <td class="text-center"><i class="fa {{file-upload-status-success}}"></i></td>
+                            <td class="text-center"><i class="{{file-upload-status-success}}"></i></td>
                             <td>Datei-Upload</td>
                             <td>Aktiviert</td>
                             <td>{{file-upload-status}}</td>
                         </tr>
                         <tr>
-                            <td class="text-center"><i class="fa fa-info" aria-hidden="true"></i></td>
+                            <td class="text-center"><i class="fas fa-info" aria-hidden="true"></i></td>
                             <td>max. POST-Größe</td>
                             <td>&gt; 1M</td>
                             <td>{{file-upload-max-post-size}}</td>
                         </tr>
                         <tr>
-                            <td class="text-center"><i class="fa fa-info" aria-hidden="true"></i></td>
+                            <td class="text-center"><i class="fas fa-info" aria-hidden="true"></i></td>
                             <td>max. Datei-Größe</td>
                             <td>&gt; 1M</td>
                             <td>{{file-upload-max-file-size}}</td>
@@ -64,7 +64,7 @@
                     </table>
                 </div>
                 <div class="card-footer text-right px-1">
-                    <a class="btn btn-success btn-sm-block" href="{{URL}}install/settings"><i class="fa fa-wrench" aria-hidden="true"></i> Einstellungen</a>
+                    <a class="btn btn-success btn-sm-block" href="{{URL}}install/settings"><i class="fas fa-wrench" aria-hidden="true"></i> Einstellungen</a>
                 </div>
             </div>
         </div>

@@ -7,16 +7,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link" href="{{URL}}upload"><i class="fa fa-upload" aria-hidden="true"></i>Upload</a>
-            <a class="nav-item nav-link active" href="{{URL}}images"><i class="fa fa-picture-o" aria-hidden="true"></i>Bilder</a>
+            <a class="nav-item nav-link" href="{{URL}}upload"><i class="fas fa-upload" aria-hidden="true"></i>Upload</a>
+            <a class="nav-item nav-link active" href="{{URL}}images"><i class="far fa-image" aria-hidden="true"></i>Bilder</a>
         </div>
         <div class="navbar-nav">
             <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>{{username}}</a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user" aria-hidden="true"></i>{{username}}</a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{URL}}profile"><i class="fa fa-id-card" aria-hidden="true"></i>Profil</a>
+                    <a class="dropdown-item" href="{{URL}}profile"><i class="fas fa-id-card" aria-hidden="true"></i>Profil</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{URL}}auth/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Abmelden</a>
+                    <a class="dropdown-item" href="{{URL}}auth/logout"><i class="fas fa-sign-out-alt" aria-hidden="true"></i>Abmelden</a>
                 </div>
             </div>
         </div>
@@ -27,11 +27,11 @@
         <div class="col-12 col-md-8 col-lg-6 col-xl-4">
             <nav class="nav nav-pills nav-justified">
                 <a class="nav-item nav-link active bg-info text-white" href="#image-info" id="tab-image-info" data-toggle="pill" role="tab" aria-controls="image-info">
-                    <i class="fa fa-picture-o" aria-hidden="true"></i>
+                    <i class="far fa-image" aria-hidden="true"></i>
                     <span>Info</span>
                 </a>
                 <a class="nav-item nav-link bg-info text-white {{tab-exif-state}}" href="#image-exif" id="tab-image-exif" data-toggle="pill" role="tab" aria-controls="image-exif">
-                    <i class="fa fa-info" aria-hidden="true"></i>
+                    <i class="fas fa-info" aria-hidden="true"></i>
                     <span>EXIF</span>
                 </a>
             </nav>
@@ -49,15 +49,15 @@
                                 <span class="ml-3"><strong>Typ:</strong> {{image-type}}</span>
                             </li>
                             <li class="list-group-item">
-                                <i class="fa fa-arrows-v" aria-hidden="true"></i>
+                                <i class="fas fa-arrows-alt-v" aria-hidden="true"></i>
                                 <span>{{image-height}}</span>
-                                <i class="fa fa-arrows-h ml-3" aria-hidden="true"></i>
+                                <i class="fas fa-arrows-alt-h ml-3" aria-hidden="true"></i>
                                 <span>{{image-width}}</span>
                             </li>
                         </ul>
                         <div class="card-body">
-                            <a class="btn btn-success btn-sm-block" href="{{URL}}images/download/{{image-id}}"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
-                            <a class="btn btn-danger float-right btn-sm-block" href="{{URL}}images/delete/{{image-id}}"><i class="fa fa-trash" aria-hidden="true"></i> Löschen</a>
+                            <a class="btn btn-success btn-sm-block" href="{{URL}}images/download/{{image-id}}"><i class="fas fa-download" aria-hidden="true"></i> Download</a>
+                            <a class="btn btn-danger float-right btn-sm-block" href="{{URL}}images/delete/{{image-id}}"><i class="fas fa-trash" aria-hidden="true"></i> Löschen</a>
                         </div>
                     </div>
                 </div>
