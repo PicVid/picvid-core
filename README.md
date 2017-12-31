@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/PicVid/picvid-core.svg?branch=master)](https://travis-ci.org/PicVid/picvid-core)
 [![Maintainability](https://api.codeclimate.com/v1/badges/c8946e69e8da6078c00e/maintainability)](https://codeclimate.com/github/PicVid/picvid-core/maintainability)
+[![Coverage Status](https://coveralls.io/repos/github/PicVid/picvid-core/badge.svg?branch=master)](https://coveralls.io/github/PicVid/picvid-core?branch=master)
 
 PicVid ist eine Web-Anwendung zur Verwaltung von Bildern und Videos auf dem eigenen Server. Die ursprüngliche Version 
 vom September 2012 wurde in einem Schulprojekt zur Ausbildung (Fachinformatiker für Anwendungsentwicklung) entwickelt. 
@@ -17,15 +18,19 @@ Bilder beschränkt werden. Diese sollen über PicVid wieder hochgeladen und verw
 - [Animate.css](https://daneden.github.io/animate.css/)
 - [Bootstrap 4](https://getbootstrap.com/)
 - [Dropzone.js](http://www.dropzonejs.com/)
-- [FontAwesome](http://fontawesome.io/)
+- [FontAwesome](https://fontawesome.com/)
 
 ## Externe Tools
-
 Für die Entwicklung von PicVid werden verschiedene externe Tools eingesetzt um automatisiert verschiedene
 Aufgaben auszuführen. Nachfolgend eine Liste aller verwendeten externen Tools:
 
 - [Code Climate](https://codeclimate.com/github/PicVid/picvid-core)
+- [Coveralls](https://coveralls.io/github/PicVid/picvid-core)
 - [Travis-CI](https://travis-ci.org/PicVid/picvid-core)
+
+## Unterstützung
+Du möchtest die Entwicklung von PicVid unterstützen?  
+[feedback@picvid.de](feedback@picvid.de)
 
 ## Dokumentation (Entwicklung)
 Während der Entwicklung werden auch verschiedene Tools zur Erstellung von Metriken und Dokumentationen (auf Basis des
