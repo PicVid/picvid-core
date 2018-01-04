@@ -30,7 +30,7 @@ Aufgaben auszuführen. Nachfolgend eine Liste aller verwendeten externen Tools:
 
 ## Unterstützung
 Du möchtest die Entwicklung von PicVid unterstützen?  
-[feedback@picvid.de](feedback@picvid.de)
+<a href="mailto:feedback@picvid.de">feedback@picvid.de</a>
 
 ## Dokumentation (Entwicklung)
 Während der Entwicklung werden auch verschiedene Tools zur Erstellung von Metriken und Dokumentationen (auf Basis des
