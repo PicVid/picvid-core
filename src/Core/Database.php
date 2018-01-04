@@ -48,7 +48,7 @@ class Database
         //check if a PDO database connection is available.
         if (self::$pdo === null) {
             $config = Configuration::getInstance();
-            $this->setConnection($config->DATABASE_NAME, $config->DATABASE_HOST, $config->DATABASE_USER, $config->DATABASE_PASS, $config->DATABASE_PORT);
+            $this->setConnection($config->DATABASE_NAME, $config->DATABASE_HOST, $config->DATABASE_USER, $config->DATABASE_PASS, intval($config->DATABASE_PORT));
         }
 
         //return the PDO database connection.
