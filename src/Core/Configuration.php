@@ -21,6 +21,19 @@ class Configuration
     public $API_PROJECT_HONEYPOT_KEY = '';
 
     /**
+     * The encryption method to encrypt and decrypt the information.
+     * @see http://php.net/manual/en/function.openssl-get-cipher-methods.php
+     * @var string
+     */
+    public $ENCRYPTION_METHOD = 'AES-256-CBC';
+
+    /**
+     * The security key to encrypt and decrypt the information.
+     * @var string
+     */
+    public $ENCRYPTION_SECURITY_KEY = '';
+
+    /**
      * The hostname to connect with database.
      * @var string
      */
