@@ -7,6 +7,7 @@ namespace PicVid\Controller;
 use PicVid\Core\CitoEngine;
 use PicVid\Core\Configuration;
 use PicVid\Core\Database;
+use PicVid\Core\Encryption;
 use PicVid\Core\Service\AuthenticationService;
 use PicVid\Core\View;
 use PicVid\Domain\Entity\User;
@@ -87,6 +88,10 @@ class InstallController extends Controller
         //get the configuration.
         $config = Configuration::getInstance();
 
+        //set the information to encrypt and decrypt the information.
+        $config->ENCRYPTION_SECURITY_KEY = Encryption::getRandomKey();
+        $encryption = new Encryption($config->ENCRYPTION_METHOD, $config->ENCRYPTION_SECURITY_KEY);
+
         //set the filter for the database information.
         $database_filter = [
             'database_host' => FILTER_DEFAULT,
@@ -116,6 +121,13 @@ class InstallController extends Controller
             $this->jsonOutput('The database settings are not valid!', 'database_host', 'error');
             return false;
         }
+
+        //encrypt the database information.
+        $config->DATABASE_HOST = $encryption->encrypt($config->DATABASE_HOST);
+        $config->DATABASE_PORT = $encryption->encrypt($config->DATABASE_PORT);
+        $config->DATABASE_NAME = $encryption->encrypt($config->DATABASE_NAME);
+        $config->DATABASE_USER = $encryption->encrypt($config->DATABASE_USER);
+        $config->DATABASE_PASS = $encryption->encrypt($config->DATABASE_PASS);
 
         //set the API keys.
         $config->API_PROJECT_HONEYPOT_KEY = $_POST['api_project_honeypot_key'];
