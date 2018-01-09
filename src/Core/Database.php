@@ -48,13 +48,17 @@ class Database
         //check if a PDO database connection is available.
         if (self::$pdo === null) {
             $config = Configuration::getInstance();
+
+            //get the Encryption object to decrypt the database information.
             $encryption = new Encryption($config->ENCRYPTION_METHOD, $config->ENCRYPTION_SECURITY_KEY);
+
+            //set the connection with the decrypted database information.
             $this->setConnection(
-                    $encryption->decrypt($config->DATABASE_NAME),
-                    $encryption->decrypt($config->DATABASE_HOST),
-                    $encryption->decrypt($config->DATABASE_USER),
-                    $encryption->decrypt($config->DATABASE_PASS),
-                    intval($encryption->decrypt($config->DATABASE_PORT))
+                $encryption->decrypt($config->DATABASE_NAME),
+                $encryption->decrypt($config->DATABASE_HOST),
+                $encryption->decrypt($config->DATABASE_USER),
+                $encryption->decrypt($config->DATABASE_PASS),
+                intval($encryption->decrypt($config->DATABASE_PORT))
             );
         }
 
