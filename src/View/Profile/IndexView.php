@@ -67,7 +67,11 @@
                         </li>
                         <li class="list-group-item">
                             <i class="far fa-chart-bar input-group-addon d-none d-md-inline pl-3" aria-hidden="true"></i>
-                            <span class="pl-2">Bilder: {{count-images}}</span>
+                            <span class="pl-2">Bilder: {{count-images}}</span></label>
+                            <i class="fas fa-unlink input-group-addon d-none d-md-inline pl-3 ml-2 mr-0" aria-hidden="true"></i>
+                            <span class="mr-3">Dateien: {{count-unused-files}}</span>
+                            <a class="btn btn-sm btn-danger" href="{{URL}}profile/clean-images/delete"><i class="fas fa-trash" aria-hidden="true"></i>Löschen</a>
+                            <a class="btn btn-sm btn-secondary" href="{{URL}}profile/clean-images/backup"><i class="far fa-hdd"></i>Backup</a>
                         </li>
                     </ul>
                     <input type="hidden" name="profile_id" value="{{user_id}}"/>

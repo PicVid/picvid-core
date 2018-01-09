@@ -68,6 +68,7 @@ class ProfileController extends Controller
 
             //set the count of all Image Entities to the profile.
             $cito->setValue('count-images', count($images));
+            $cito->setValue('count-unused-files', count($this->getUnusedImageFiles()));
 
             //load the view.
             $view = new View('Profile');
@@ -77,6 +78,54 @@ class ProfileController extends Controller
             //user is unknown, so logout.
             $this->redirect($config->getUrl().'logout');
         }
+    }
+
+    /**
+     * The clean images method / action of the Controller.
+     * @param string $mode The mode which will be used to clean the unused images.
+     */
+    public function cleanImages(string $mode = 'backup')
+    {
+        //a Session is needed for this method / action.
+        $this->needSession();
+
+        //get the Configuration object.
+        $config = Configuration::getInstance();
+
+        //only two modes are available (backup and delete).
+        if (!in_array($mode, ['delete', 'backup'])) {
+            $this->redirect($config->getUrl().'profile');
+            return;
+        }
+
+        //get the name if the backup directory.
+        $backupPath = $config->getPathImage().'backup-'.(new \DateTime())->format('Y-m-d-H-i-s').DIRECTORY_SEPARATOR;
+
+        //get all the unused files on the image directory.
+        $unusedFiles = $this->getUnusedImageFiles();
+
+        //run through all files to delete or backup these files.
+        foreach ($unusedFiles as $unusedFile) {
+
+            //chech if a backup should be created or the files should be deleted.
+            if ($mode !== 'delete') {
+
+                //create the backup directory if it doesn't exist.
+                if (!file_exists($backupPath)) {
+                    mkdir($backupPath);
+                }
+
+                //move the unused file from the image directory to the backup directory.
+                rename($config->getPathImage().$unusedFile, $backupPath.$unusedFile);
+            } else {
+
+                //delete the unused file on the image directory.
+                unlink($config->getPathImage().$unusedFile);
+            }
+        }
+
+        //at the end redirect to the profile page (refresh the page).
+        $this->redirect($config->getUrl().'profile');
     }
 
     /**
@@ -226,5 +275,36 @@ class ProfileController extends Controller
             $this->jsonOutput('The Profile could not be saved!', '', 'error');
             return false;
         }
+    }
+
+    /**
+     * Method to get all unsued files of the image directory.
+     * @return array The array with all unused files of the image directory.
+     */
+    private function getUnusedImageFiles() : array
+    {
+        //get the Configuration object.
+        $config = Configuration::getInstance();
+
+        //get all files of the image directory.
+        $files = scandir($config->getPathImage());
+
+        //check if some files are available.
+        if (is_array($files)) {
+
+            //filter all directories from the found files.
+            $files = array_filter($files, function($file) use ($config) {
+                return !is_dir($config->getPathImage().$file);
+            });
+
+            //get all the filenames of the found Image Entities.
+            $databaseFiles = array_map(function($image) { return $image->filename; }, ImageRepository::build()->findAll());
+
+            //return the difference between the two array (all unused files).
+            return array_diff($files, $databaseFiles);
+        }
+
+        //there is no unused file.
+        return [];
     }
 }
