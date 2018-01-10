@@ -64,8 +64,8 @@
 <!-- dropzone configuration -->
 <script>
     //the elements of the upload form.
-    var titleItem = $('#image-title');
-    var descriptionItem = $('#image-description');
+    var titleItem = $('#title');
+    var descriptionItem = $('#description');
 
     //the configuration of the Dropzone element.
     Dropzone.options.imageUpload = {
