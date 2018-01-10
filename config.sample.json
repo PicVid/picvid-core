@@ -1,0 +1,27 @@
+{
+  "API": {
+    "PROJECT_HONEYPOT_KEY": ""
+  },
+  "ENCRYPTION": {
+    "METHOD": "",
+    "SECURITY_KEY": ""
+  },
+  "DATABASE": {
+    "HOST": "",
+    "NAME": "",
+    "PASS": "",
+    "PORT": "",
+    "USER": ""
+  },
+  "IMAGE": {
+    "ALLOWED_FILETYPES": [
+      "image\/jpeg",
+      "image\/png",
+      "image\/tiff",
+      "image\/x-windows-bmp",
+      "image\/bmp"
+    ],
+    "MAX_FILESIZE": 0,
+    "MAX_STORAGESIZE": 0
+  }
+}
