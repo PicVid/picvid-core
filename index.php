@@ -13,7 +13,7 @@ $config = \PicVid\Core\Configuration::getInstance();
 if ($config->exists()) {
     $config->load();
 } elseif (strpos($_SERVER['REQUEST_URI'], 'install') === false) {
-    header('Location: install');
+    header('Location: /install');
     exit;
 }
 
