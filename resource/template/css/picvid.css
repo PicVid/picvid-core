@@ -185,6 +185,14 @@ body#info-view > div.container-fluid {
 body#index-view img.logo {
     margin-bottom: 20px;
 }
+body#profile-index .list-group i,
+body#profile-index .list-group span {
+    color:#495057;
+    user-select:none;
+}
+body#profile-index .list-group a i {
+    color:#fff;
+}
 body#register-view p,
 body#register-view h2,
 body#login-view p,
@@ -350,6 +358,11 @@ input[type="text"]:-webkit-autofill:focus {
 }
 .alert {
     border-radius: 0;
+}
+.input-group-text {
+    background-color:transparent!important;
+    border:1px solid transparent;
+    color:#495057;
 }
 
 /** new class to extend bootstrap beta 4. (buttons with breakpoint). */

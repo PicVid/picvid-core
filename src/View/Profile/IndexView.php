@@ -23,8 +23,8 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <div class="row justify-content-center pt-2 pt-sm-5">
-        <div class="col col-12 col-md-8 col-lg-6 col-xl-4">
+    <div class="row justify-content-center pt-3 pt-sm-5">
+        <div class="col col-12 col-md-8 col-lg-6 col-xl-5">
             <form class="ajax" data-action="{{URL}}profile/save" method="post">
                 <div class="alert mb-2" role="alert"></div>
                 <input type="hidden" name="token" value="{{token}}"/>
@@ -32,46 +32,56 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="input-group">
-                                <i class="fas fa-id-card input-group-addon d-none d-md-inline" aria-hidden="true"></i>
-                                <label class="sr-only" for="username">Benutzername</label>
+                                <div class="input-group-prepend">
+                                    <i class="fas fa-id-card input-group-text d-none d-md-inline" aria-hidden="true"></i>
+                                    <label class="sr-only" for="password">Benutzername</label>
+                                </div>
                                 <input type="text" class="form-control" id="username" name="profile_username" value="{{user_username}}" placeholder="Benutzername"/>
                             </div>
                         </li>
                         <li class="list-group-item">
                             <div class="input-group">
-                                <i class="fas fa-lock input-group-addon d-none d-md-inline" aria-hidden="true"></i>
-                                <label class="sr-only" for="password">Neues Passwort</label>
+                                <div class="input-group-prepend">
+                                    <i class="fas fa-lock input-group-text d-none d-md-inline" aria-hidden="true"></i>
+                                    <label class="sr-only" for="password">Neues Passwort</label>
+                                </div>
                                 <input type="password" class="form-control" id="password" name="profile_password" placeholder="Neues Passwort"/>
                             </div>
                         </li>
                         <li class="list-group-item">
                             <div class="input-group">
-                                <i class="fas fa-user input-group-addon d-none d-md-inline" aria-hidden="true"></i>
-                                <label class="sr-only" for="firstname">Vorname</label>
+                                <div class="input-group-prepend">
+                                    <i class="fas fa-user input-group-text d-none d-md-inline" aria-hidden="true"></i>
+                                    <label class="sr-only" for="firstname">Vorname</label>
+                                </div>
                                 <input type="text" class="form-control" id="firstname" name="profile_firstname" value="{{user_firstname}}" placeholder="Vorname"/>
                             </div>
                         </li>
                         <li class="list-group-item">
                             <div class="input-group">
-                                <i class="fas fa-user input-group-addon d-none d-md-inline" aria-hidden="true"></i>
-                                <label class="sr-only" for="lastname">Nachname</label>
+                                <div class="input-group-prepend">
+                                    <i class="fas fa-user input-group-text d-none d-md-inline" aria-hidden="true"></i>
+                                    <label class="sr-only" for="lastname">Nachname</label>
+                                </div>
                                 <input type="text" class="form-control col-12" id="lastname" name="profile_lastname" value="{{user_lastname}}" placeholder="Nachname"/>
                             </div>
                         </li>
                         <li class="list-group-item">
                             <div class="input-group">
-                                <i class="fas fa-envelope input-group-addon d-none d-md-inline" aria-hidden="true"></i>
-                                <label class="sr-only" for="email">E-Mail</label>
+                                <div class="input-group-prepend">
+                                    <i class="fas fa-envelope input-group-text d-none d-md-inline" aria-hidden="true"></i>
+                                    <label class="sr-only" for="email">E-Mail</label>
+                                </div>
                                 <input type="email" class="form-control" id="email" name="profile_email" value="{{user_email}}" placeholder="E-Mail"/>
                             </div>
                         </li>
-                        <li class="list-group-item">
-                            <i class="far fa-chart-bar input-group-addon d-none d-md-inline pl-3" aria-hidden="true"></i>
+                        <li class="list-group-item d-none d-sm-flex align-items-center">
+                            <i class="far fa-chart-bar d-none d-md-inline pl-3" aria-hidden="true"></i>
                             <span class="pl-2">Bilder: {{count-images}}</span></label>
-                            <i class="fas fa-unlink input-group-addon d-none d-md-inline pl-3 ml-2 mr-0" aria-hidden="true"></i>
-                            <span class="mr-3">Dateien: {{count-unused-files}}</span>
-                            <a class="btn btn-sm btn-danger" href="{{URL}}profile/clean-images/delete"><i class="fas fa-trash" aria-hidden="true"></i>Löschen</a>
-                            <a class="btn btn-sm btn-secondary" href="{{URL}}profile/clean-images/backup"><i class="far fa-hdd"></i>Backup</a>
+                            <i class="fas fa-exclamation-triangle d-none d-md-inline pl-3 ml-2 mr-0" aria-hidden="true"></i>
+                            <span class="pl-2 mr-4">Dateien: {{count-unused-files}}</span>
+                            <a class="btn btn-sm btn-danger mr-2" href="{{URL}}profile/clean-images/delete"><i class="fas fa-trash" aria-hidden="true"></i>Löschen</a>
+                            <a class="btn btn-sm btn-success" href="{{URL}}profile/clean-images/backup"><i class="far fa-hdd" aria-hidden="true"></i>Backup</a>
                         </li>
                     </ul>
                     <input type="hidden" name="profile_id" value="{{user_id}}"/>
