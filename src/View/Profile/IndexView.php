@@ -36,7 +36,7 @@
                                     <i class="fas fa-id-card input-group-text d-none d-md-inline" aria-hidden="true"></i>
                                     <label class="sr-only" for="password">Benutzername</label>
                                 </div>
-                                <input type="text" class="form-control" id="username" name="profile_username" value="{{user_username}}" placeholder="Benutzername"/>
+                                <input type="text" class="form-control" id="username" name="profile_username" autocomplete="username" value="{{user_username}}" placeholder="Benutzername"/>
                             </div>
                         </li>
                         <li class="list-group-item">
@@ -45,7 +45,7 @@
                                     <i class="fas fa-lock input-group-text d-none d-md-inline" aria-hidden="true"></i>
                                     <label class="sr-only" for="password">Neues Passwort</label>
                                 </div>
-                                <input type="password" class="form-control" id="password" name="profile_password" placeholder="Neues Passwort"/>
+                                <input type="password" class="form-control" id="password" name="profile_password" autocomplete="new-password" placeholder="Neues Passwort"/>
                             </div>
                         </li>
                         <li class="list-group-item">
@@ -54,7 +54,7 @@
                                     <i class="fas fa-user input-group-text d-none d-md-inline" aria-hidden="true"></i>
                                     <label class="sr-only" for="firstname">Vorname</label>
                                 </div>
-                                <input type="text" class="form-control" id="firstname" name="profile_firstname" value="{{user_firstname}}" placeholder="Vorname"/>
+                                <input type="text" class="form-control" id="firstname" name="profile_firstname" autocomplete="given-name" value="{{user_firstname}}" placeholder="Vorname"/>
                             </div>
                         </li>
                         <li class="list-group-item">
@@ -63,7 +63,7 @@
                                     <i class="fas fa-user input-group-text d-none d-md-inline" aria-hidden="true"></i>
                                     <label class="sr-only" for="lastname">Nachname</label>
                                 </div>
-                                <input type="text" class="form-control col-12" id="lastname" name="profile_lastname" value="{{user_lastname}}" placeholder="Nachname"/>
+                                <input type="text" class="form-control col-12" id="lastname" name="profile_lastname" autocomplete="family-name" value="{{user_lastname}}" placeholder="Nachname"/>
                             </div>
                         </li>
                         <li class="list-group-item">
@@ -72,7 +72,7 @@
                                     <i class="fas fa-envelope input-group-text d-none d-md-inline" aria-hidden="true"></i>
                                     <label class="sr-only" for="email">E-Mail</label>
                                 </div>
-                                <input type="email" class="form-control" id="email" name="profile_email" value="{{user_email}}" placeholder="E-Mail"/>
+                                <input type="email" class="form-control" id="email" name="profile_email" autocomplete="email" value="{{user_email}}" placeholder="E-Mail"/>
                             </div>
                         </li>
                         <li class="list-group-item d-none d-sm-flex align-items-center">

@@ -8,7 +8,7 @@
         <a href="{{URL}}"><img class="logo" height="65" src="{{LOGO_URL}}"/></a>
     </div>
     <div class="d-flex flex-row align-items-center mt-2">
-        <form class="ajax container-fluid" method="post" data-action="{{URL}}install/install" autocomplete="off">
+        <form class="ajax container-fluid" method="post" data-action="{{URL}}install/install">
             <div class="alert"></div>
             <div class="row justify-content-center">
                 <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 pb-4 pb-sm-4">
@@ -29,11 +29,11 @@
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="database_user">Benutzername:</label>
-                                <input class="form-control" name="database_user" type="text" placeholder="Benutzername"/>
+                                <input class="form-control" name="database_user" type="text" autocomplete="username" placeholder="Benutzername"/>
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="database_pass">Passwort:</label>
-                                <input class="form-control" name="database_pass" type="password" placeholder="Passwort"/>
+                                <input class="form-control" name="database_pass" type="password" autocomplete="current-password" placeholder="Passwort"/>
                             </div>
                         </div>
                     </div>
@@ -44,15 +44,15 @@
                         <div class="card-body bg-dark">
                             <div class="form-group">
                                 <label class="sr-only" for="database_host">Benutzername:</label>
-                                <input class="form-control" name="admin_username" type="text" placeholder="Benutzername"/>
+                                <input class="form-control" name="admin_username" type="text" autocomplete="username" placeholder="Benutzername"/>
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="database_port">E-Mail:</label>
-                                <input class="form-control" name="admin_email" type="email" placeholder="E-Mail"/>
+                                <input class="form-control" name="admin_email" type="email" autocomplete="email" placeholder="E-Mail"/>
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="database_name">Passwort:</label>
-                                <input class="form-control" name="admin_password" type="password" placeholder="Passwort"/>
+                                <input class="form-control" name="admin_password" type="password" autocomplete="new-password" placeholder="Passwort"/>
                             </div>
                         </div>
                     </div>

@@ -22,11 +22,11 @@
                 <div class="alert" role="alert"></div>
                 <div class="form-group">
                     <label class="sr-only" for="username">Benutzername:</label>
-                    <input class="form-control" id="username" name="login_username" type="text" placeholder="Benutzername"/>
+                    <input class="form-control" id="username" name="login_username" autocomplete="username" type="text" placeholder="Benutzername"/>
                 </div>
                 <div class="form-group">
                     <label class="sr-only" for="password">Passwort:</label>
-                    <input class="form-control" id="password" name="login_password" type="password" placeholder="Passwort"/>
+                    <input class="form-control" id="password" name="login_password" autocomplete="current-password" type="password" placeholder="Passwort"/>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-success btn-sm-block"><i class="fas fa-key" aria-hidden="true"></i>Anmelden</button>

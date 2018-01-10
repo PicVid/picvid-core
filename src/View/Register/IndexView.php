@@ -22,15 +22,15 @@
                 <div class="alert" role="alert"></div>
                 <div class="form-group">
                     <label class="sr-only" for="username">Benutzername:</label>
-                    <input class="form-control" id="username" name="register_username" type="text" placeholder="Benutzername"/>
+                    <input class="form-control" id="username" name="register_username" autocomplete="username" type="text" placeholder="Benutzername"/>
                 </div>
                 <div class="form-group">
                     <label class="sr-only" for="email">E-Mail:</label>
-                    <input class="form-control" id="email" name="register_email" type="text" placeholder="E-Mail"/>
+                    <input class="form-control" id="email" name="register_email" autocomplete="email" type="text" placeholder="E-Mail"/>
                 </div>
                 <div class="form-group">
                     <label class="sr-only" for="password">Passwort:</label>
-                    <input class="form-control" id="password" name="register_password" type="password" placeholder="Passwort"/>
+                    <input class="form-control" id="password" name="register_password" autocomplete="new-password" type="password" placeholder="Passwort"/>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-success btn-sm-block"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Registrieren</button>
