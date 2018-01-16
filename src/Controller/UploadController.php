@@ -40,7 +40,7 @@ class UploadController extends Controller
 
         //load the view.
         $view = new View('Upload');
-        $view->load();
+        $view->load(true);
 
         //set all the values for the placeholders on template.
         $cito = CitoEngine::getInstance();

@@ -43,7 +43,7 @@ class ImagesController extends Controller
 
         //load the view.
         $view = new View('Images');
-        $view->load();
+        $view->load(true);
     }
 
     /**
@@ -134,12 +134,9 @@ class ImagesController extends Controller
         ];
 
         //iterate through all units to find the matching unit of the file size.
-        foreach($units as $unit)
-        {
-            //check if the current value is in the range of the unit and can be used for format.
-            if($bytes >= $unit['value'])
-            {
-                return str_replace('.', ',' , strval(round(($bytes / $unit['value']), 2))).' '.$unit['unit'];
+        foreach ($units as $unit) {
+            if ($bytes >= $unit['value']) {
+                return str_replace('.', ',', strval(round(($bytes / $unit['value']), 2))).' '.$unit['unit'];
             }
         }
 
@@ -268,6 +265,6 @@ class ImagesController extends Controller
 
         //load the view.
         $view = new View('Images', 'Info');
-        $view->load();
+        $view->load(true);
     }
 }

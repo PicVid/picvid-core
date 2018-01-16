@@ -72,10 +72,8 @@ class ProfileController extends Controller
 
             //load the view.
             $view = new View('Profile');
-            $view->load();
+            $view->load(true);
         } else {
-
-            //user is unknown, so logout.
             $this->redirect($config->getUrl().'logout');
         }
     }
@@ -293,7 +291,7 @@ class ProfileController extends Controller
         if (is_array($files)) {
 
             //filter all directories from the found files.
-            $files = array_filter($files, function($file) use ($config) {
+            $files = array_filter($files, function ($file) use ($config) {
                 return !is_dir($config->getPathImage().$file);
             });
 
