@@ -43,6 +43,12 @@
                             <td>{{pdo-status}}</td>
                         </tr>
                         <tr>
+                            <td class="text-center"><i class="{{openssl-status-success}}"></i></td>
+                            <td>OpenSSL</td>
+                            <td>Aktiviert</td>
+                            <td>{{openssl-status}}</td>
+                        </tr>
+                        <tr>
                             <td class="text-center"><i class="{{file-upload-status-success}}"></i></td>
                             <td>Datei-Upload</td>
                             <td>Aktiviert</td>

@@ -36,6 +36,7 @@ class InstallController extends Controller
         $isAvaiablePDO = extension_loaded('pdo');
         $isAvailableMySQL = extension_loaded('pdo_mysql');
         $isAvailableFileUpload = ini_get('file_uploads') === '1';
+        $isAvailableOpenSSL = extension_loaded('openssl');
 
         //get the configuration.
         $config = Configuration::getInstance();
@@ -50,6 +51,8 @@ class InstallController extends Controller
         $cito->setValue('php-version-success', ($isValidVersionPHP ? 'fas fa-check' : 'fas fa-times'));
         $cito->setValue('pdo-status', ($isAvaiablePDO && $isAvailableMySQL ? 'Aktiviert (MySQL)' : 'Deaktiviert'));
         $cito->setValue('pdo-status-success', ($isAvaiablePDO ? 'fas fa-check' : 'fas fa-times'));
+        $cito->setValue('openssl-status', ($isAvailableOpenSSL ? 'Aktiviert' : 'Deaktiviert'));
+        $cito->setValue('openssl-status-success', ($isAvailableOpenSSL ? 'fas fa-check' : 'fas fa-times'));
         $cito->setValue('file-upload-status', ($isAvailableFileUpload ? 'Aktiviert' : 'Deaktiviert'));
         $cito->setValue('file-upload-status-success', ($isAvailableFileUpload ? 'fas fa-check' : 'fas fa-times'));
         $cito->setValue('file-upload-max-post-size', ini_get('post_max_size'));
