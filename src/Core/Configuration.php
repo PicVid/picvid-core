@@ -155,6 +155,15 @@ class Configuration
     }
 
     /**
+     * Method to get the resource URL of the application.
+     * @return string The resource URL of the application.
+     */
+    public function getUrlResource() : string
+    {
+        return $this->getUrl().'resource'.DIRECTORY_SEPARATOR;
+    }
+
+    /**
      * Method to get the URL of the application.
      * @return string The URL of the application.
      */
