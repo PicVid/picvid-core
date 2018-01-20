@@ -1,7 +1,7 @@
 <div class="bg-overlay dark"></div>
-<a class="credits d-none d-lg-inline-block" href="https://unsplash.com/@eugi1492?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Eugenio Mazzone">
+<a class="credits d-none d-lg-inline-block" href="https://unsplash.com/@cakirchoff?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Chad Kirchoff">
     <span><i class="fas fa-camera" aria-hidden="true"></i></span>
-    <span>Eugenio Mazzone</span>
+    <span>Chad Kirchoff</span>
 </a>
 <div class="container-fluid d-flex flex-column">
     <div class="d-flex flex-row justify-content-center justify-content-sm-center justify-content-md-start justify-content-lg-start justify-content-xl-start p-5">
@@ -70,7 +70,10 @@
                     </table>
                 </div>
                 <div class="card-footer text-right px-1">
-                    <a class="btn btn-success btn-sm-block" href="{{URL}}install/settings"><i class="fas fa-wrench" aria-hidden="true"></i> Einstellungen</a>
+                    <a class="btn btn-success btn-sm-block {{can-continue}}" href="{{URL}}install/database">
+                        <i class="fas fa-wrench" aria-hidden="true"></i>
+                        <span>Einstellungen</span>
+                    </a>
                 </div>
             </div>
         </div>
