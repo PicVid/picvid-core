@@ -29,8 +29,13 @@ Aufgaben auszuführen. Nachfolgend eine Liste aller verwendeten externen Tools:
 - [Travis-CI](https://travis-ci.org/PicVid/picvid-core)
 
 ## Unterstützung
-Du möchtest die Entwicklung von PicVid unterstützen?  
-<a href="mailto:feedback@picvid.de">feedback@picvid.de</a>
+- Du hast einen Fehler entdeckt? 
+- Du vermisst eine Funktion / ein Feature? 
+- Du möchtest die Entwicklung von PicVid unterstützen?
+
+Einfach eine E-Mail an <a href="mailto:feedback@picvid.de">feedback@picvid.de</a> oder auf dem 
+[Discord-Server](https://discord.gg/s9TuhWM) vorbeischauen. Fehler können auch direkt hier im Repository als 
+Issue mitgeteilt werden.
 
 ## Dokumentation (Entwicklung)
 Während der Entwicklung werden auch verschiedene Tools zur Erstellung von Metriken und Dokumentationen (auf Basis des
