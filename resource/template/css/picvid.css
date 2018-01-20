@@ -168,11 +168,8 @@ body#login-view div.bg-overlay {
 body#info-view div.bg-overlay {
     background: #000 url('../img/backgrounds/bg-info-index-view.jpg') no-repeat center;
 }
-body#install-requirements div.bg-overlay {
-    background: #000 url('../img/backgrounds/bg-install-requirements-view.jpg') no-repeat center;
-}
-body#install-settings div.bg-overlay {
-    background: #000 url('../img/backgrounds/bg-install-settings-view.jpg') no-repeat center;
+body#install div.bg-overlay {
+    background: #000 url('../img/backgrounds/bg-install-view.png') no-repeat center;
 }
 
 body#index-view > div.container-fluid,
@@ -201,12 +198,9 @@ body#auth-view p,
 body#auth-view h2,
 body#info-view p,
 body#info-view h2,
-body#install-requirements p,
-body#install-requirements h2,
-body#install-requirements table,
-body#install-settings p,
-body#install-settings h2,
-body#install-settings table {
+body#install p,
+body#install h2,
+body#install table {
     color:white;
 }
 nav div.dropdown-menu-right {
@@ -255,15 +249,13 @@ img.img-transparent {
 #auth-view .nav-pills .nav-item:first-child {
     margin-right:5px;
 }
-#install-settings div.card,
-#install-requirements div.card {
+body#install div.card {
     border:0;
 }
-#install-requirements thead th {
+body#install thead th {
     border-top:0;
 }
-#install-settings div.card .card-header i,
-#install-requirements div.card .card-header i {
+body#install div.card .card-header i {
     margin-right:15px;
 }
 .tab-pane .card {
@@ -324,6 +316,10 @@ div.alert.alert-warning i {
 }
 button.btn i, a.btn i, div.alert i, nav i {
     margin-right:10px;
+}
+button.btn.btn-next i {
+    margin-right:0;
+    margin-left:10px;
 }
 .list-group-item i {
     margin-right:5px;
