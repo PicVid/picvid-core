@@ -72,8 +72,9 @@ class View
 
     /**
      * Method to load the view.
+     * @param bool $showNavigation The state whether the navigation should be visible.
      */
-    public function load()
+    public function load(bool $showNavigation = false)
     {
         //get the configuration.
         $config = Configuration::getInstance();
@@ -81,10 +82,16 @@ class View
         //get the paths to the header and footer files.
         $headerFile = $config->getPathResource().'template'.DIRECTORY_SEPARATOR.'header.php';
         $footerFile = $config->getPathResource().'template'.DIRECTORY_SEPARATOR.'footer.php';
+        $navigationFile = $config->getPathResource().'template'.DIRECTORY_SEPARATOR.'nav-backend.php';
 
         //check whether the header file exists.
         if (file_exists($headerFile)) {
             require_once($headerFile);
+        }
+
+        //check whether the navigation file exists.
+        if ($showNavigation && file_exists($navigationFile)) {
+            require_once($navigationFile);
         }
 
         //include the dynamic view file.
