@@ -68,7 +68,7 @@ class InstallController extends Controller
 
         //set the values for the template tags / placeholders on CitoEngine and load the view.
         $cito = CitoEngine::getInstance();
-        $cito->setValue('BODY_ID', 'install');
+        $cito->setValue('BODY_ID', 'install-view');
         $cito->setValue('PAGE_TITLE', 'PicVid &raquo; Installation &raquo; Voraussetzungen');
         $cito->setValue('LOGO_URL', $config->getUrlResource().'template/img/picvid-logo.png');
         $cito->setValue('URL', $config->getUrl());
@@ -185,7 +185,7 @@ class InstallController extends Controller
 
             //set the values for the template tags / placeholders on CitoEngine.
             $cito = CitoEngine::getInstance();
-            $cito->setValue('BODY_ID', 'install');
+            $cito->setValue('BODY_ID', 'install-view');
             $cito->setValue('PAGE_TITLE', 'PicVid &raquo; Installation &raquo; Datenbank');
             $cito->setValue('LOGO_URL', $config->getUrlResource().'template/img/picvid-logo.png');
             $cito->setValue('URL', $config->getUrl());
@@ -266,7 +266,7 @@ class InstallController extends Controller
 
             //set the values for the template tags / placeholders on CitoEngine and load the view.
             $cito = CitoEngine::getInstance();
-            $cito->setValue('BODY_ID', 'install');
+            $cito->setValue('BODY_ID', 'install-view');
             $cito->setValue('PAGE_TITLE', 'PicVid &raquo; Installation &raquo; Administrator');
             $cito->setValue('LOGO_URL', $config->getUrlResource().'template/img/picvid-logo.png');
             $cito->setValue('URL', $config->getUrl());
@@ -322,7 +322,7 @@ class InstallController extends Controller
 
             //set the values for the template tags / placeholders on CitoEngine and load the view.
             $cito = CitoEngine::getInstance();
-            $cito->setValue('BODY_ID', 'install');
+            $cito->setValue('BODY_ID', 'install-view');
             $cito->setValue('PAGE_TITLE', 'PicVid &raquo; Installation &raquo; Speicher und API');
             $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
             $cito->setValue('URL', $config->getUrl());

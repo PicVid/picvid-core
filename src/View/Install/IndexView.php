@@ -1,4 +1,3 @@
-<div class="bg-overlay dark"></div>
 <a class="credits d-none d-lg-inline-block" href="https://unsplash.com/@cakirchoff?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Chad Kirchoff">
     <span><i class="fas fa-camera" aria-hidden="true"></i></span>
     <span>Chad Kirchoff</span>

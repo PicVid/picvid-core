@@ -1,16 +1,7 @@
 /** ---------------------------------------------------------------------------------------------------- */
 /** ----------------------------------- all styles for the overlays ------------------------------------ */
 /** ---------------------------------------------------------------------------------------------------- */
-body div.bg-overlay {
-    position:fixed;
-    left:0;
-    right:0;
-    top:0;
-    bottom:0;
-    background-size: cover;
-    z-index:-1;
-}
-body div.bg-overlay + a.credits {
+body a.credits {
     background-color:black;
     bottom:20px;
     left:20px;
@@ -155,20 +146,33 @@ body div.bg-overlay + a.credits span svg {
     top:5px;
 }
 
-/** background images for the public parts of the application. */
-body#index-view div.bg-overlay {
+/** style to show a overlay with background image. */
+body::before {
+    background:none;
+    background-size:cover;
+    bottom:0;
+    content:"";
+    left:0;
+    position:fixed;
+    right:0;
+    top:0;
+    z-index:-1;
+}
+
+/** background images for the overlay. */
+body#index-view::before {
     background:#000 url('../img/backgrounds/bg-index-index-view.jpg') no-repeat center;
 }
-body#register-view div.bg-overlay {
+body#register-view::before {
     background:#000 url('../img/backgrounds/bg-register-index-view.jpg') no-repeat center;
 }
-body#login-view div.bg-overlay {
-    background: #000 url('../img/backgrounds/bg-login-index-view.jpg') no-repeat center;
+body#login-view::before {
+    background:#000 url('../img/backgrounds/bg-login-index-view.jpg') no-repeat center;
 }
-body#info-view div.bg-overlay {
+body#info-view::before {
     background: #000 url('../img/backgrounds/bg-info-index-view.jpg') no-repeat center;
 }
-body#install div.bg-overlay {
+body#install-view::before {
     background: #000 url('../img/backgrounds/bg-install-view.png') no-repeat center;
 }
 
@@ -198,9 +202,9 @@ body#auth-view p,
 body#auth-view h2,
 body#info-view p,
 body#info-view h2,
-body#install p,
-body#install h2,
-body#install table {
+body#install-view p,
+body#install-view h2,
+body#install-view table {
     color:white;
 }
 nav div.dropdown-menu-right {
@@ -249,13 +253,13 @@ img.img-transparent {
 #auth-view .nav-pills .nav-item:first-child {
     margin-right:5px;
 }
-body#install div.card {
+body#install-view div.card {
     border:0;
 }
-body#install thead th {
+body#install-view thead th {
     border-top:0;
 }
-body#install div.card .card-header i {
+body#install-view div.card .card-header i {
     margin-right:15px;
 }
 .tab-pane .card {
