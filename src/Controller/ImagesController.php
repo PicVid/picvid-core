@@ -36,7 +36,7 @@ class ImagesController extends Controller
         //set the values for the template tags / placeholders on CitoEngine.
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'images-index');
-        $cito->setValue('PAGE_TITLE', 'PicVid - Bilder');
+        $cito->setValue('PAGE_TITLE', 'PicVid &raquo; Bilder');
         $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
         $cito->setValue('username', $_SESSION['user_username']);
         $cito->setValue('URL', $config->getUrl());
@@ -159,7 +159,7 @@ class ImagesController extends Controller
         //set the values for the template tags / placeholders on CitoEngine.
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'images-info');
-        $cito->setValue('PAGE_TITLE', 'PicVid - Bilder');
+        $cito->setValue('PAGE_TITLE', 'PicVid &raquo; Bilder');
         $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
         $cito->setValue('username', $_SESSION['user_username']);
         $cito->setValue('URL', $config->getUrl());

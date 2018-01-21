@@ -33,7 +33,7 @@ class LoginController extends Controller
         //set the values for the template tags / placeholders on CitoEngine.
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'login-view');
-        $cito->setValue('PAGE_TITLE', 'PicVid - Login');
+        $cito->setValue('PAGE_TITLE', 'PicVid &raquo; Anmelden');
         $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
         $cito->setValue('token', $this->getFormToken('token-login'));
 

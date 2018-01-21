@@ -54,6 +54,7 @@ class ProfileController extends Controller
             $cito = CitoEngine::getInstance();
             $cito->setValue('BODY_ID', 'profile-index');
             $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
+            $cito->setValue('PAGE_TITLE', 'PicVid &raquo; Profil');
             $cito->setValue('user_username', $user->username);
             $cito->setValue('user_email', $user->email);
             $cito->setValue('user_firstname', $user->firstname);

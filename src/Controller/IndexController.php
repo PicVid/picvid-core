@@ -28,7 +28,7 @@ class IndexController extends Controller
         //set the values for the template tags / placeholders on CitoEngine.
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'index-view');
-        $cito->setValue('PAGE_TITLE', 'PicVid - Willkommen');
+        $cito->setValue('PAGE_TITLE', 'PicVid &raquo; Willkommen');
         $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
         $cito->setValue('URL', $config->getUrl());
 

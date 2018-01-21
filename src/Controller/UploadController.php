@@ -45,7 +45,7 @@ class UploadController extends Controller
         //set all the values for the placeholders on template.
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'upload-index');
-        $cito->setValue('PAGE_TITLE', 'PicVid - Upload');
+        $cito->setValue('PAGE_TITLE', 'PicVid &raquo; Upload');
         $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
         $cito->setValue('username', $_SESSION['user_username']);
         $cito->setValue('token', $this->getFormToken('upload-index'));

@@ -28,7 +28,7 @@ class InfoController extends Controller
         //set the values for the template tags / placeholders on CitoEngine.
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'info-view');
-        $cito->setValue('PAGE_TITLE', 'PicVid - Info');
+        $cito->setValue('PAGE_TITLE', 'PicVid &raquo; Info');
         $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
         $cito->setValue('URL', $config->getUrl());
 

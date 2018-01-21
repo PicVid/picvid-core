@@ -36,7 +36,7 @@ class RegisterController extends Controller
         //set the values for the template tags / placeholders on CitoEngine.
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'register-view');
-        $cito->setValue('PAGE_TITLE', 'PicVid - Register');
+        $cito->setValue('PAGE_TITLE', 'PicVid &raquo; Registrierung');
         $cito->setValue('LOGO_URL', $config->getUrl().'/resource/template/img/picvid-logo.png');
         $cito->setValue('token', $this->getFormToken('token-register'));
         $cito->setValue('URL', $config->getUrl());
