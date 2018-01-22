@@ -338,7 +338,7 @@ button.btn.btn-next i {
 }
 
 /** overwrite some bootstrap rules. */
-a, a:link, a:hover, input, button, .card, .card-header {
+a, a:link, a:hover, input, button, .card, .card-header, .custom-select {
     border-radius: 0 !important;
 }
 form div.alert {

@@ -9,20 +9,44 @@
     <div class="d-flex flex-row align-items-center mt-2">
         <form class="ajax container-fluid" method="post" data-action="{{URL}}install/storage">
             <input type="hidden" name="install-task" value="storage-save"/>
-            <div class="alert"></div>
+            <div class="row justify-content-center">
+                <div class="col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
+                    <div class="alert"></div>
+                </div>
+            </div>
             <div class="row justify-content-center">
                 <div class="col col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 pb-4 pb-sm-4 pb-md-0 pb-lg-4 d-md-flex flex-lg-row flex-lg-wrap">
                     <div class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-12 px-0 px-sm-0 pr-md-3 px-lg-0">
                         <div class="card text-white bg-success mb-4">
                             <h4 class="card-header py-3"><i class="fas fa-hdd" aria-hidden="true"></i>Speicher</h4>
                             <div class="card-body bg-dark">
-                                <div class="form-group">
-                                    <label class="sr-only">max. Dateigröße:</label>
-                                    <input class="form-control" name="max_file_size" type="number" placeholder="max. Dateigröße">
+                                <div class="form-row mb-3">
+                                    <div class="col-10">
+                                        <label class="sr-only">max. Dateigröße</label>
+                                        <input class="form-control" name="max_file_size" type="number" placeholder="max. Dateigröße" step="0.01">
+                                    </div>
+                                    <div class="col-2">
+                                        <label class="sr-only" for="max_file_size_unit">Einheit</label>
+                                        <select class="custom-select" name="max_file_size_unit" id="max_file_size_unit">
+                                            <option value="KB">KB</option>
+                                            <option value="MB" selected>MB</option>
+                                            <option value="GB">GB</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="sr-only">max. Speicherplatz:</label>
-                                    <input class="form-control" name="max_storage_size" type="number" placeholder="max. Speicherplatz">
+                                <div class="form-row">
+                                    <div class="col-10">
+                                        <label class="sr-only">max. Speicherplatz</label>
+                                        <input class="form-control" name="max_storage_size" type="number" placeholder="max. Speicherplatz" step="0.01">
+                                    </div>
+                                    <div class="col-2">
+                                        <label class="sr-only" for="max_storage_size_unit">Einheit</label>
+                                        <select class="custom-select" name="max_storage_size_unit" id="max_storage_size_unit">
+                                            <option value="KB">KB</option>
+                                            <option value="MB" selected>MB</option>
+                                            <option value="GB">GB</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>

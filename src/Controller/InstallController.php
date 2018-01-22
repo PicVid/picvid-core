@@ -34,6 +34,13 @@ class InstallController extends Controller
     private const TASK_STORAGE_SAVE = 'storage-save';
 
     /**
+     * The size units available to convert.
+     */
+    private const SIZE_UNIT_KB = 'KB';
+    private const SIZE_UNIT_MB = 'MB';
+    private const SIZE_UNIT_GB = 'GB';
+
+    /**
      * Method to get the task value from POST array and return if valid.
      * @return string The valid task or a empty value if the task value is not valid.
      */
@@ -287,12 +294,12 @@ class InstallController extends Controller
         if ($this->getTask() === self::TASK_STORAGE_SAVE) {
 
             //set the API keys to the configuration.
-            $config->API_PROJECT_HONEYPOT_KEY = $_POST['api_project_honeypot_key'];
+            $config->API_PROJECT_HONEYPOT_KEY = filter_input(INPUT_POST, 'api_project_honeypot_key', FILTER_DEFAULT);
 
             //set the filter for the limits of storage and file size.
             $size_filter = [
-                'max_file_size' => FILTER_VALIDATE_INT,
-                'max_storage_size' => FILTER_VALIDATE_INT
+                'max_file_size' => FILTER_VALIDATE_FLOAT,
+                'max_storage_size' => FILTER_VALIDATE_FLOAT
             ];
 
             //validate the information on POST.
@@ -303,8 +310,44 @@ class InstallController extends Controller
                 $this->jsonOutput('Die Einstellungen der Speichergrößen sind nicht gültig!', 'max_file_size', 'error');
                 exit;
             } else {
-                $config->IMAGE_MAX_FILESIZE = intval($_POST['max_file_size']);
-                $config->IMAGE_MAX_STORAGESIZE = intval($_POST['max_storage_size']);
+
+                //get the size limits (file and storage) for images.
+                $storage_limit = floatval($limits['max_storage_size']);
+                $file_limit = floatval($limits['max_file_size']);
+
+                //get the unit for the size limits (file and storage) for images.
+                $storage_unit = filter_input(INPUT_POST, 'max_storage_size_unit', FILTER_DEFAULT);
+                $file_unit = filter_input(INPUT_POST, 'max_file_size_unit', FILTER_DEFAULT);
+
+                //convert the storage limit to mega bytes.
+                switch ($storage_unit) {
+                    case self::SIZE_UNIT_KB:
+                        $config->IMAGE_MAX_STORAGESIZE = $storage_limit / 1000;
+                        break;
+                    case self::SIZE_UNIT_MB:
+                        $config->IMAGE_MAX_STORAGESIZE = $storage_limit;
+                        break;
+                    case self::SIZE_UNIT_GB:
+                        $config->IMAGE_MAX_STORAGESIZE = $storage_limit * 1000;
+                        break;
+                    default:
+                        $config->IMAGE_MAX_STORAGESIZE = 0;
+                }
+
+                //convert the file limit to mega bytes.
+                switch ($file_unit) {
+                    case self::SIZE_UNIT_KB:
+                        $config->IMAGE_MAX_FILESIZE = $file_limit / 1000;
+                        break;
+                    case self::SIZE_UNIT_MB:
+                        $config->IMAGE_MAX_FILESIZE = $file_limit;
+                        break;
+                    case self::SIZE_UNIT_GB:
+                        $config->IMAGE_MAX_FILESIZE = $file_limit * 1000;
+                        break;
+                    default:
+                        $config->IMAGE_MAX_FILESIZE = 0;
+                }
             }
 
             //write / save the configuration to the file.

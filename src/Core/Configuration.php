@@ -71,15 +71,15 @@ class Configuration
 
     /**
      * The maximum file size of the image files (bytes).
-     * @var int
+     * @var float
      */
-    public $IMAGE_MAX_FILESIZE = 0;
+    public $IMAGE_MAX_FILESIZE = 0.0;
 
     /**
      * The maximum size of the storage to store image files (bytes).
-     * @var int
+     * @var float
      */
-    public $IMAGE_MAX_STORAGESIZE = 0;
+    public $IMAGE_MAX_STORAGESIZE = 0.0;
 
     /**
      * The instance of the Configuration.
