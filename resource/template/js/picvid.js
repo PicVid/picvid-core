@@ -57,6 +57,9 @@ $(document).ready(function() {
                     $("input[name='" + msg.field + "']").focus();
                 }
             }
+
+            //remove all the password values of the form.
+            removePasswordValues($("form.ajax"));
         }).fail(function(xhr, status, error) {
 
             //output the error details on console.
@@ -65,6 +68,9 @@ $(document).ready(function() {
             //the ajax call was not successfully.
             itemFormAlert.addClass("alert-danger").html("Something went wrong. Try again later!");
             itemFormAlert.show();
+
+            //remove all the password values of the form.
+            removePasswordValues($("form.ajax"));
         });
     });
 });
@@ -84,4 +90,14 @@ function removeAlertStateClasses(alertItem)
     alertItem.removeClass('alert-info');
     alertItem.removeClass('alert-light');
     alertItem.removeClass('alert-dark');
+}
+
+/**
+ * Function to remove all values on the password fields of a form.
+ * @param formElement The form element to remove all the values of the password fields.
+ * @return void
+ */
+function removePasswordValues(formElement)
+{
+    $(formElement).find("input[type=password]").val('');
 }
