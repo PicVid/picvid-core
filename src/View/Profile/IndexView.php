@@ -51,9 +51,18 @@
                                 <input type="email" class="form-control" id="email" name="profile_email" autocomplete="email" value="{{user_email}}" placeholder="E-Mail"/>
                             </div>
                         </li>
+                        <li class="list-group-item">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <i class="fas fa-unlock input-group-text d-none d-md-inline" aria-hidden="true"></i>
+                                    <label class="sr-only" for="confirm-password">Passwort (Bestätigung)</label>
+                                </div>
+                                <input type="password" class="form-control" id="confirm-password" name="profile_confirm_password" placeholder="Passwort zur Bestätigung"/>
+                            </div>
+                        </li>
                         <li class="list-group-item d-none d-sm-flex align-items-center">
                             <i class="far fa-chart-bar d-none d-md-inline pl-3" aria-hidden="true"></i>
-                            <span class="pl-2">Bilder: {{count-images}}</span></label>
+                            <span class="pl-2">Bilder: {{count-images}}</span>
                             <i class="fas fa-exclamation-triangle d-none d-md-inline pl-3 ml-2 mr-0" aria-hidden="true"></i>
                             <span class="pl-2 mr-4">Dateien: {{count-unused-files}}</span>
                             <a class="btn btn-sm btn-danger mr-2" href="{{URL}}profile/clean-images/delete"><i class="fas fa-trash" aria-hidden="true"></i>Löschen</a>

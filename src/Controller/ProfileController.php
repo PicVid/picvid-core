@@ -6,6 +6,7 @@ namespace PicVid\Controller;
 
 use PicVid\Core\CitoEngine;
 use PicVid\Core\Configuration;
+use PicVid\Core\Service\AuthenticationService;
 use PicVid\Core\View;
 use PicVid\Domain\DataMapper\ImageMapper;
 use PicVid\Domain\DataMapper\UserMapper;
@@ -180,7 +181,29 @@ class ProfileController extends Controller
 
         //check whether the token is the same.
         if (!$this->verifyFormToken('profile-index')) {
-            $this->jsonOutput('The form state is not valid!', '', 'error');
+            $this->jsonOutput('Es ist ein Fehler beim Speichern der Daten aufgetreten!', '', 'error');
+            return false;
+        }
+
+        //get the user information from Session.
+        $username = filter_var($_SESSION['user_username'], FILTER_SANITIZE_STRING);
+        $password = filter_input(INPUT_POST, 'profile_confirm_password', FILTER_SANITIZE_STRING);
+
+        //check if the username is available.
+        if ($username === false) {
+            $this->jsonOutput('Der Benutzername ist nicht verfügbar!', '', 'error');
+            return false;
+        }
+
+        //check if the password is available.
+        if ($password === false || $password === null) {
+            $this->jsonOutput('Das Passwort zur Bestätigung ist nicht gültig!', 'profile_confirm_password', 'error');
+            return false;
+        }
+
+        //confirm the user information is allowed to change the profile information.
+        if (!(new AuthenticationService())->confirm($username, $password)) {
+            $this->jsonOutput('Das Passwort zur Bestätigung ist nicht korrekt!', 'profile_confirm_password', 'error');
             return false;
         }
 
@@ -190,25 +213,25 @@ class ProfileController extends Controller
 
         //check if the username of the User Entity is valid.
         if (!(new IsValidUsername())->isSatisfiedBy($user)) {
-            $this->jsonOutput('The username is not valid!', 'profile_username', 'error');
+            $this->jsonOutput('Der Benutzername ist nicht gültig!', 'profile_username', 'error');
             return false;
         }
 
         //check if the email of the User Entity is valid.
         if (!(new IsValidEmail())->isSatisfiedBy($user)) {
-            $this->jsonOutput('The email is not valid!', 'profile_email', 'error');
+            $this->jsonOutput('Die E-Mail ist nicht gültig!', 'profile_email', 'error');
             return false;
         }
 
         //check if the firstname of the User Entity is valid.
         if (!(new IsValidFirstname())->isSatisfiedBy($user)) {
-            $this->jsonOutput('The firstname is not valid!', 'profile_firstname', 'error');
+            $this->jsonOutput('Der Vorname ist nicht gültig!', 'profile_firstname', 'error');
             return false;
         }
 
         //check if the lastname of the User Entity is valid.
         if (!(new IsValidLastname())->isSatisfiedBy($user)) {
-            $this->jsonOutput('The lastname is not valid!', 'profile_lastname', 'error');
+            $this->jsonOutput('Der Nachname ist nicht gültig!', 'profile_lastname', 'error');
             return false;
         }
 
@@ -217,7 +240,7 @@ class ProfileController extends Controller
 
             //check if the password of the User Entity is valid.
             if (!(new IsValidPassword())->isSatisfiedBy($user)) {
-                $this->jsonOutput('The password is not valid!', 'profile_password', 'error');
+                $this->jsonOutput('Das Passwort ist nicht gültig!', 'profile_password', 'error');
                 return false;
             }
 
@@ -241,7 +264,7 @@ class ProfileController extends Controller
 
                         //check if the email of the User Entity already exists.
                         if (!(new IsUniqueEmail())->isSatisfiedBy($user)) {
-                            $this->jsonOutput('The email already exists!', 'profile_email', 'error');
+                            $this->jsonOutput('Die E-Mail ist bereits vorhanden!', 'profile_email', 'error');
                             return false;
                         }
                     }
@@ -251,7 +274,7 @@ class ProfileController extends Controller
 
                         //check if the username of the User Entity already exists.
                         if (!(new IsUniqueUsername())->isSatisfiedBy($user)) {
-                            $this->jsonOutput('The username already exists!', 'profile_username', 'error');
+                            $this->jsonOutput('Der Benutzername ist bereits vorhanden!', 'profile_username', 'error');
                             return false;
                         }
                     }
@@ -268,10 +291,15 @@ class ProfileController extends Controller
 
         //check if the User Entity was saved successfully.
         if ($user_mapper->save($user)) {
-            $this->jsonOutput('The Profile was successfully saved!', '', 'success');
+
+            //set the new username of the User Entity to the Session.
+            $_SESSION['user_username'] = $user->username;
+
+            //output the JSON information and return the state.
+            $this->jsonOutput('Das Profil wurde erfolgreich gespeichert.', '', 'success');
             return true;
         } else {
-            $this->jsonOutput('The Profile could not be saved!', '', 'error');
+            $this->jsonOutput('Das Profil konnte nicht gespeichert werden!', '', 'error');
             return false;
         }
     }
