@@ -19,11 +19,12 @@ use PicVid\Domain\Service\User\HashService;
 class AuthenticationService
 {
     /**
-     * Method to login an User Entity.
-     * @param User $user The User Entity to be logged in.
-     * @return bool The status of whether the User Entity could be logged in.
+     * Method to authenticate a User Entity (with or without Session).
+     * @param User $user The User Entity which should be authenticated.
+     * @param bool $withSession The state if a Session should be created (using the user information).
+     * @return bool The state if the authentication was successfull.
      */
-    public function login(User $user) : bool
+    private function auth(User $user, bool $withSession = false) : bool
     {
         //load the User Entity from database.
         $users = UserRepository::build()->findByUsername($user->username);
@@ -41,13 +42,47 @@ class AuthenticationService
 
                 //check if the password match.
                 if ($userDB->password === $user->password) {
-                    (new SessionService())->create($userDB);
+
+                    //check if a Session should be created.
+                    if ($withSession) {
+                        (new SessionService())->create($userDB);
+                    }
+
+                    //the authentication was successfull, return the state.
                     return true;
                 }
             }
         }
 
+        //the authentication was not successfull, return the state.
         return false;
+    }
+
+    /**
+     * Method to confirm a User.
+     * @param string $username The username of the User Entity.
+     * @param string $password The password of the User Entity.
+     * @return bool The state if the User could be authenticated.
+     */
+    public function confirm(string $username, string $password) : bool
+    {
+        //create the User Entity with the available information.
+        $user = new User();
+        $user->username = $username;
+        $user->password = $password;
+
+        //authenticate the User Entity without a Session and return the state.
+        return $this->auth($user, false);
+    }
+
+    /**
+     * Method to login an User Entity.
+     * @param User $user The User Entity to be logged in.
+     * @return bool The status of whether the User Entity could be logged in.
+     */
+    public function login(User $user) : bool
+    {
+        return $this->auth($user, true);
     }
 
     /**
