@@ -19,7 +19,7 @@ $images = \PicVid\Domain\Repository\ImageRepository::build()->findAll();
                 if ($image instanceof \PicVid\Domain\Entity\Image) {
                     ?>
                     <div class="img-grid-item my-3">
-                        <img src="<?= $image->getImageURL() ?>" class="img-transparent"/>
+                        <img src="<?= $image->getImageURL() ?>"/>
                         <a class="btn btn-sm btn-success download" href="{{URL}}images/download/<?= $image->id ?>">
                             <i class="fas fa-download" aria-hidden="true"></i>Download
                         </a>
@@ -42,7 +42,7 @@ $images = \PicVid\Domain\Repository\ImageRepository::build()->findAll();
                 if ($image instanceof \PicVid\Domain\Entity\Image) {
                     ?>
                     <div class="img-grid-item my-3">
-                        <img src="<?= $image->getImageURL() ?>" class="img-transparent"/>
+                        <img src="<?= $image->getImageURL() ?>"/>
                         <a class="btn btn-sm btn-success download" href="{{URL}}images/download/<?= $image->id ?>">
                             <i class="fas fa-download" aria-hidden="true"></i>Download
                         </a>
@@ -65,7 +65,7 @@ $images = \PicVid\Domain\Repository\ImageRepository::build()->findAll();
                 if ($image instanceof \PicVid\Domain\Entity\Image) {
                     ?>
                     <div class="img-grid-item my-3">
-                        <img src="<?= $image->getImageURL() ?>" class="img-transparent"/>
+                        <img src="<?= $image->getImageURL() ?>"/>
                         <a class="btn btn-sm btn-success download" href="{{URL}}images/download/<?= $image->id ?>">
                             <i class="fas fa-download" aria-hidden="true"></i>Download
                         </a>

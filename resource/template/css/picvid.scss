@@ -1,0 +1,344 @@
+/** a list with all background images. */
+$bg-list: ('index', 'info', 'install', 'login', 'register');
+
+/** mixin to set a background image. */
+@mixin background-img($filename) {
+  background: #000 url('../img/backgrounds/bg-#{$filename}-view.jpg') no-repeat center;
+  background-size: cover;
+}
+
+/** mixin to set a transparent background image. */
+@mixin transparent-img {
+  background: #000 url("../img/bg-transparent.png") repeat right top;
+}
+
+/** mixin to set an element in center (absolute). */
+@mixin center-absolute {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/** mixin to hide an element. */
+@mixin hide {
+  display: none;
+  visibility: hidden;
+}
+
+%absolute {
+  position: absolute;
+}
+
+/** create the overlay for the background images. */
+body::before {
+  background:none;
+  bottom:0;
+  content:"";
+  left:0;
+  position:fixed;
+  right:0;
+  top:0;
+  z-index:-1;
+}
+
+/** create the background image IDs. */
+@each $bg-name in $bg-list {
+  body##{$bg-name}-view {
+    &:before {
+      @include background-img($bg-name);
+    }
+
+    & > .container-fluid {
+      height: 100vh;
+    }
+
+    & p, h2 {
+      color: #fff;
+    }
+  }
+}
+
+/** the credits for the background images (unsplash). */
+a.credits {
+  background: #000;
+  bottom: 20px;
+  color: white;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  left: 20px;
+  line-height: 1.2;
+  padding: 4px 6px;
+  position: absolute;
+  text-decoration: none;
+  z-index: 100;
+
+  span {
+    display: inline-block;
+    padding: 2px 3px;
+  }
+}
+
+/** the file template for the dropzone. */
+div.picvid-dropzone {
+
+  &.template {
+    @include hide;
+  }
+
+  &.dz-clickable {
+    border: 2px dashed rgb(40, 167, 69);
+    cursor: pointer;
+    display: inline-block;
+    min-height: 200px;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    width:100%;
+
+    & > i {
+      color: rgba(40, 167, 69, 0.5);
+      display: inline-block;
+      font-size: 3em;
+      z-index: -1;
+      @include center-absolute;
+    }
+
+    & .dz-message {
+      @include hide;
+    }
+
+    &.dz-started > i {
+      @include hide;
+    }
+
+    & .dz-preview {
+      @include hide;
+
+      &.dz-image-preview {
+        display: inline-block;
+        margin: 5px;
+        max-width: 400px;
+        min-width: 250px;
+        position: relative;
+        visibility: visible;
+        width: auto;
+
+        &.dz-processing.dz-complete .uploading,
+        & .dz-success-mark, .dz-error-mark, .uploading {
+          background: rgba(255, 255, 255, 0.7);
+          border-radius: 50%;
+          height: 100px;
+          padding: 10px;
+          width: 100px;
+          @include center-absolute;
+          @include hide;
+
+          & i {
+            color: #000;
+            font-size: 5em;
+          }
+        }
+
+        &.dz-success .dz-success-mark,
+        &.dz-error .dz-error-mark,
+        &.dz-processing .uploading {
+          display: inline-block;
+          visibility: visible;
+        }
+
+        & .dz-filename {
+          bottom: 5px;
+          left: 50%;
+          max-width: 370px;
+          overflow: hidden;
+          position: absolute;
+          text-overflow: ellipsis;
+          transform: translateX(-50%);
+        }
+
+        & .dz-error-message {
+          left: 5px;
+          position: absolute;
+          top: 5px;
+        }
+
+        & .dz-size {
+          right: 5px;
+          position: absolute;
+          top: 5px;
+        }
+
+        & img {
+          width: 100%;
+          @include transparent-img;
+        }
+      }
+    }
+  }
+}
+
+/** styles for the profile views. */
+body#profile-index {
+  & i.fa-chart-bar, & i.fa-exclamation-triangle {
+    color: #495057;
+  }
+
+  & .card {
+    & input {
+      border: 0;
+    }
+
+    & .input-group-prepend i {
+      margin: 2px 5px 0 0;
+      width: 50px;
+    }
+  }
+
+  & .input-group-text {
+    background: transparent;
+    border: 0;
+  }
+}
+
+/** styles for the image views. */
+body#images-index {
+  & .img-grid {
+    user-select: none;
+
+    & .img-grid-item {
+      position: relative;
+
+      a, a:link {
+        position: absolute;
+        @include hide;
+
+        &.download {
+          left: 10px;
+          bottom: 10px;
+        }
+
+        &.info {
+          right: 10px;
+          bottom: 10px;
+        }
+      }
+
+      &:hover a, &:hover a:link {
+        display: inline;
+        visibility: visible;
+        -webkit-animation: fadeIn 0.8s;
+        animation: fadeIn 0.8s;
+      }
+
+      & img {
+        width:100%;
+        @include transparent-img;
+      }
+    }
+  }
+}
+
+/** sytles for the image info. */
+body#images-info {
+  & .card {
+    border-top: 0;
+
+    & .img-container {
+      max-height: 400px;
+      text-align: center;
+      @include transparent-img;
+
+      & img {
+        max-height: 400px;
+        max-width: 100%;
+      }
+    }
+  }
+
+  & table#image-exif-info {
+    & td:first-of-type {
+      width: 250px;
+    }
+    & td:last-of-type {
+      overflow-wrap: break-word;
+    }
+  }
+
+  & .nav.nav-pills .nav-item.disabled,
+  & .nav.nav-pills .nav-item.disabled:hover,
+  & .nav.nav-pills .nav-item.disabled:focus {
+    background:#8f8f8f!important;
+  }
+
+  & .nav.nav-pills .nav-item.active {
+    background: #117a8b!important;
+  }
+}
+
+/** styles for the install view. */
+body#install-view {
+  & div.card  {
+    border:0;
+
+    & .card-header i {
+      margin-right: 15px;
+    }
+  }
+
+  & thead th {
+    border: 0;
+  }
+}
+
+/** styles for the navigation. */
+nav {
+  .dropdown-toggle {
+    &::after {
+      margin-left: 10px;
+    }
+
+    & i {
+      margin-right: 14px;
+    }
+  }
+}
+
+/** styles for the icons. */
+button.btn i, a.btn i, div.alert i, nav i {
+  margin-left:0;
+  margin-right:7px;
+}
+button.btn.btn-next i {
+  margin-left:7px;
+  margin-right:0;
+}
+.alert.alert-warning i {
+  color: #856404;
+}
+
+/** change the bootstrap styles. */
+a, a:link, a:hover, input, button, textarea, .card, .card-header, .custom-select, .dropdown-menu, .alert, .badge  {
+  border-radius: 0 !important;
+}
+form div.alert {
+  border-radius: 0;
+  display: none;
+}
+.form-control:focus {
+  box-shadow: none;
+}
+
+/** new class to extend bootstrap beta 4. (buttons with breakpoint). */
+@media screen and (max-width: 767px) {
+  .btn-sm-block {
+    display: block;
+    width: 100%;
+  }
+
+  .btn-sm-block + .btn-sm-block {
+    margin-top: .5rem;
+  }
+}

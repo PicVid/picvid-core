@@ -28,7 +28,10 @@
                     <input class="form-control" id="password" name="login_password" autocomplete="current-password" type="password" placeholder="Passwort"/>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success btn-sm-block"><i class="fas fa-key" aria-hidden="true"></i>Anmelden</button>
+                    <button type="submit" class="btn btn-success btn-sm-block">
+                        <i class="fas fa-lock" aria-hidden="true"></i>
+                        <span>Anmelden</span>
+                    </button>
                 </div>
             </form>
         </div>

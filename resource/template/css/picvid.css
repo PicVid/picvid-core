@@ -1,378 +1,255 @@
-/** ---------------------------------------------------------------------------------------------------- */
-/** ----------------------------------- all styles for the overlays ------------------------------------ */
-/** ---------------------------------------------------------------------------------------------------- */
-body a.credits {
-    background-color:black;
-    bottom:20px;
-    left:20px;
-    color:white;
-    text-decoration:none;
-    padding:4px 6px;
-    font-family:-apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', Helvetica, Ubuntu, Roboto, Noto, 'Segoe UI', Arial, sans-serif;
-    font-size:12px;
-    font-weight:bold;
-    line-height:1.2;
-    display:inline-block;
-    border-radius:3px;
-    position:absolute;
-    z-index: 100;
-}
-body div.bg-overlay + a.credits span {
-    display:inline-block;
-    padding:2px 3px;
-}
-body div.bg-overlay + a.credits span svg {
-    height:12px;
-    width:auto;
-    position:relative;
-    vertical-align:middle;
-    top:-1px;
-    fill:white;
-}
-
-/** overwriting the dropzone rules to get a custom design. */
-.picvid-dropzone {
-    display:none;
-    visibility: hidden;
-}
-.dz-clickable {
-    border: 2px dashed rgb(40, 167, 69);
-    cursor: pointer;
-    display:inline-block;
-    height:100%;
-    min-height:200px;
-    padding:10px;
-    position:relative;
-    width:100%;
-    color:#ddd;
-    text-align:center;
-}
-.dropzone.dz-clickable > i {
-    display:inline-block;
-    color: rgba(40, 167, 69, 0.5);
-    position:absolute;
-    top:50%;
-    left:50%;
-    font-size:4em;
-    transform:translate(-50%, -50%);
-    z-index:-1;
-}
-.dropzone.dz-clickable.dz-started > i {
-    display:none;
-}
-.dz-preview {
-    display:none;
-}
-.dz-preview.dz-image-preview {
-    display:inline-block;
-    width: auto;
-    max-width: 400px;
-    min-width: 250px;
-}
-.dz-preview.dz-image-preview img {
-    width:100%;
-}
-.dz-clickable .dz-default.dz-message {
-    color:#000;
-    display:inline-block;
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%, -50%);
-}
-.dz-clickable.dz-started .dz-default.dz-message {
-    display:none;
-}
-.dropzone .dz-preview.dz-image-preview {
-    display:inline-block;
-    margin:5px;
-    position:relative;
-}
-.dropzone .dz-preview.dz-image-preview .dz-success-mark,
-.dropzone .dz-preview.dz-image-preview .dz-error-mark,
-.dropzone .dz-preview.dz-image-preview .uploading,
-.dropzone .dz-preview.dz-image-preview.dz-processing.dz-complete .uploading {
-    display:none;
-    background:rgba(255, 255, 255, 0.7);
-    border-radius:50%;
-    padding:10px;
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%, -50%);
-    height:100px;
-    width:100px;
-}
-.dropzone .dz-preview.dz-image-preview.dz-success .dz-success-mark,
-.dropzone .dz-preview.dz-image-preview.dz-error .dz-error-mark,
-.dropzone .dz-preview.dz-image-preview.dz-processing .uploading {
-    display:inline-block;
-}
-.dropzone .dz-preview.dz-image-preview .dz-success-mark i,
-.dropzone .dz-preview.dz-image-preview .uploading i {
-    color:#000;
-    font-size:5em;
-}
-.dropzone .dz-preview.dz-image-preview .dz-error-mark i {
-    color:#ff0000;
-    font-size:5em;
-}
-.dropzone .dz-preview.dz-image-preview .badge {
-    border-radius: 0;
-}
-.dropzone .dz-preview.dz-image-preview .dz-details {
-    position:relative;
-}
-.dropzone .dz-preview.dz-image-preview .dz-error-message {
-    color:#fff;
-    position:absolute;
-    top:5px;
-    left:5px;
-}
-.dropzone .dz-preview.dz-image-preview .dz-filename,
-.dropzone .dz-preview.dz-image-preview .dz-size {
-    position:absolute;
-}
-.dropzone .dz-preview.dz-image-preview .dz-filename {
-    bottom:5px;
-    left:50%;
-    max-width:370px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transform:translateX(-50%);
-}
-.dropzone .dz-preview.dz-image-preview .dz-size {
-    right:5px;
-    top:5px;
-}
-
-/** style to show a overlay with background image. */
+/** a list with all background images. */
+/** mixin to set a background image. */
+/** mixin to set a transparent background image. */
+/** mixin to set an element in center (absolute). */
+/** mixin to hide an element. */
+/** create the overlay for the background images. */
 body::before {
-    background:none;
-    background-size:cover;
-    bottom:0;
-    content:"";
-    left:0;
-    position:fixed;
-    right:0;
-    top:0;
-    z-index:-1;
-}
+  background: none;
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: -1; }
 
-/** background images for the overlay. */
-body#index-view::before {
-    background:#000 url('../img/backgrounds/bg-index-index-view.jpg') no-repeat center;
-}
-body#register-view::before {
-    background:#000 url('../img/backgrounds/bg-register-index-view.jpg') no-repeat center;
-}
-body#login-view::before {
-    background:#000 url('../img/backgrounds/bg-login-index-view.jpg') no-repeat center;
-}
-body#info-view::before {
-    background: #000 url('../img/backgrounds/bg-info-index-view.jpg') no-repeat center;
-}
-body#install-view::before {
-    background: #000 url('../img/backgrounds/bg-install-view.png') no-repeat center;
-}
+/** create the background image IDs. */
+body#index-view:before {
+  background: #000 url("../img/backgrounds/bg-index-view.jpg") no-repeat center;
+  background-size: cover; }
+body#index-view > .container-fluid {
+  height: 100vh; }
+body#index-view p, body#index-view h2 {
+  color: #fff; }
 
-body#index-view > div.container-fluid,
-body#register-view > div.container-fluid,
-body#login-view > div.container-fluid,
-body#auth-view > div.container-fluid,
-body#info-view > div.container-fluid {
-    height:100vh;
-}
-body#index-view img.logo {
-    margin-bottom: 20px;
-}
-body#profile-index .list-group i,
-body#profile-index .list-group span {
-    color:#495057;
-    user-select:none;
-}
-body#profile-index .list-group a i {
-    color:#fff;
-}
-body#register-view p,
-body#register-view h2,
-body#login-view p,
-body#login-view h2,
-body#auth-view p,
-body#auth-view h2,
-body#info-view p,
-body#info-view h2,
-body#install-view p,
-body#install-view h2,
-body#install-view table {
-    color:white;
-}
-nav div.dropdown-menu-right {
-    margin-top: 10px;
-}
-nav div.dropdown-menu {
-    border-radius: 0;
-}
-img.img-transparent {
-    background: #000 url("../img/bg-transparent.png") repeat right top;
-}
-#images-info div.card div.img-container {
-    background: #000 url("../img/bg-transparent.png") repeat right top;
+body#info-view:before {
+  background: #000 url("../img/backgrounds/bg-info-view.jpg") no-repeat center;
+  background-size: cover; }
+body#info-view > .container-fluid {
+  height: 100vh; }
+body#info-view p, body#info-view h2 {
+  color: #fff; }
+
+body#install-view:before {
+  background: #000 url("../img/backgrounds/bg-install-view.jpg") no-repeat center;
+  background-size: cover; }
+body#install-view > .container-fluid {
+  height: 100vh; }
+body#install-view p, body#install-view h2 {
+  color: #fff; }
+
+body#login-view:before {
+  background: #000 url("../img/backgrounds/bg-login-view.jpg") no-repeat center;
+  background-size: cover; }
+body#login-view > .container-fluid {
+  height: 100vh; }
+body#login-view p, body#login-view h2 {
+  color: #fff; }
+
+body#register-view:before {
+  background: #000 url("../img/backgrounds/bg-register-view.jpg") no-repeat center;
+  background-size: cover; }
+body#register-view > .container-fluid {
+  height: 100vh; }
+body#register-view p, body#register-view h2 {
+  color: #fff; }
+
+/** the credits for the background images (unsplash). */
+a.credits {
+  background: #000;
+  bottom: 20px;
+  color: white;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  left: 20px;
+  line-height: 1.2;
+  padding: 4px 6px;
+  position: absolute;
+  text-decoration: none;
+  z-index: 100; }
+  a.credits span {
+    display: inline-block;
+    padding: 2px 3px; }
+
+/** the file template for the dropzone. */
+div.picvid-dropzone.template {
+  display: none;
+  visibility: hidden; }
+div.picvid-dropzone.dz-clickable {
+  border: 2px dashed #28a745;
+  cursor: pointer;
+  display: inline-block;
+  min-height: 200px;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  width: 100%; }
+  div.picvid-dropzone.dz-clickable > i {
+    color: rgba(40, 167, 69, 0.5);
+    display: inline-block;
+    font-size: 3em;
+    z-index: -1;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%); }
+  div.picvid-dropzone.dz-clickable .dz-message {
+    display: none;
+    visibility: hidden; }
+  div.picvid-dropzone.dz-clickable.dz-started > i {
+    display: none;
+    visibility: hidden; }
+  div.picvid-dropzone.dz-clickable .dz-preview {
+    display: none;
+    visibility: hidden; }
+    div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview {
+      display: inline-block;
+      margin: 5px;
+      max-width: 400px;
+      min-width: 250px;
+      position: relative;
+      visibility: visible;
+      width: auto; }
+      div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview.dz-processing.dz-complete .uploading, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-success-mark, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-error-mark, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .uploading {
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 50%;
+        height: 100px;
+        padding: 10px;
+        width: 100px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        visibility: hidden; }
+        div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview.dz-processing.dz-complete .uploading i, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-success-mark i, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-error-mark i, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .uploading i {
+          color: #000;
+          font-size: 5em; }
+      div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview.dz-success .dz-success-mark, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview.dz-error .dz-error-mark, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview.dz-processing .uploading {
+        display: inline-block;
+        visibility: visible; }
+      div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-filename {
+        bottom: 5px;
+        left: 50%;
+        max-width: 370px;
+        overflow: hidden;
+        position: absolute;
+        text-overflow: ellipsis;
+        transform: translateX(-50%); }
+      div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-error-message {
+        left: 5px;
+        position: absolute;
+        top: 5px; }
+      div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-size {
+        right: 5px;
+        position: absolute;
+        top: 5px; }
+      div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview img {
+        width: 100%;
+        background: #000 url("../img/bg-transparent.png") repeat right top; }
+
+/** styles for the profile views. */
+body#profile-index i.fa-chart-bar, body#profile-index i.fa-exclamation-triangle {
+  color: #495057; }
+body#profile-index .card input {
+  border: 0; }
+body#profile-index .card .input-group-prepend i {
+  margin: 2px 5px 0 0;
+  width: 50px; }
+body#profile-index .input-group-text {
+  background: transparent;
+  border: 0; }
+
+/** styles for the image views. */
+body#images-index .img-grid {
+  user-select: none; }
+  body#images-index .img-grid .img-grid-item {
+    position: relative; }
+    body#images-index .img-grid .img-grid-item a, body#images-index .img-grid .img-grid-item a:link {
+      position: absolute;
+      display: none;
+      visibility: hidden; }
+      body#images-index .img-grid .img-grid-item a.download, body#images-index .img-grid .img-grid-item a:link.download {
+        left: 10px;
+        bottom: 10px; }
+      body#images-index .img-grid .img-grid-item a.info, body#images-index .img-grid .img-grid-item a:link.info {
+        right: 10px;
+        bottom: 10px; }
+    body#images-index .img-grid .img-grid-item:hover a, body#images-index .img-grid .img-grid-item:hover a:link {
+      display: inline;
+      visibility: visible;
+      -webkit-animation: fadeIn 0.8s;
+      animation: fadeIn 0.8s; }
+    body#images-index .img-grid .img-grid-item img {
+      width: 100%;
+      background: #000 url("../img/bg-transparent.png") repeat right top; }
+
+/** sytles for the image info. */
+body#images-info .card {
+  border-top: 0; }
+  body#images-info .card .img-container {
     max-height: 400px;
     text-align: center;
-}
-#images-info div.card div.img-container img {
-    max-height: 400px;
-    max-width: 100%;
-}
-#images-info .nav-pills i {
-    margin-right:10px;
-}
-#images-info table#image-exif-info {
-    table-layout:fixed;
-    width: 100%;
-}
-#images-info table#image-exif-info td:first-of-type {
-    width: 250px;
-}
-#images-info table#image-exif-info td:last-of-type {
-    overflow-wrap: break-word;
-}
-#index-view a, #index-view a:link {
-    margin:15px 5px;
-}
-#index-view a i, #index-view a:link i {
-    margin-right: 3px;
-}
-#auth-view .nav-pills .nav-item {
-    margin:1rem 0;
-}
-#auth-view .nav-pills .nav-item a, #auth-view .nav-pills .nav-item a:link {
-    color:#fff;
-}
-#auth-view .nav-pills .nav-item:first-child {
-    margin-right:5px;
-}
+    background: #000 url("../img/bg-transparent.png") repeat right top; }
+    body#images-info .card .img-container img {
+      max-height: 400px;
+      max-width: 100%; }
+body#images-info table#image-exif-info td:first-of-type {
+  width: 250px; }
+body#images-info table#image-exif-info td:last-of-type {
+  overflow-wrap: break-word; }
+body#images-info .nav.nav-pills .nav-item.disabled, body#images-info .nav.nav-pills .nav-item.disabled:hover, body#images-info .nav.nav-pills .nav-item.disabled:focus {
+  background: #8f8f8f !important; }
+body#images-info .nav.nav-pills .nav-item.active {
+  background: #117a8b !important; }
+
+/** styles for the install view. */
 body#install-view div.card {
-    border:0;
-}
+  border: 0; }
+  body#install-view div.card .card-header i {
+    margin-right: 15px; }
 body#install-view thead th {
-    border-top:0;
-}
-body#install-view div.card .card-header i {
-    margin-right:15px;
-}
-.tab-pane .card {
-    border-top:0;
-}
-.img-grid {
-    user-select: none;
-}
-.img-grid .img-grid-item {
-    position:relative;
-}
-.img-grid .img-grid-item a {
-    display:none;
-    visibility: hidden;
-    position:absolute;
-}
-.img-grid .img-grid-item:hover a {
-    display:inline;
-    visibility: visible;
-    -webkit-animation: fadeIn 0.8s;
-    animation: fadeIn 0.8s;
-}
-.img-grid .img-grid-item a.download {
-    left:10px;
-    bottom:10px;
-}
-.img-grid .img-grid-item a.info {
-    right:10px;
-    bottom:10px;
-}
-.img-grid .img-grid-item img {
-    width:100%;
-}
+  border: 0; }
 
-/** ---------------------------------------------------------------------------------------------------- */
-/** ---------------------------------- all styles for the navigation ----------------------------------- */
-/** ---------------------------------------------------------------------------------------------------- */
-body#profile-index .card,
-body#profile-index .card .input-group-addon,
-body#profile-index .card .btn {
-    border-radius: 0;
-}
-body#profile-index .card input,
-body#profile-index .card .input-group-addon {
-    border:0;
-    background:white;
-}
-body#profile-index .card .input-group i {
-    margin-top:2px;
-    width:50px;
-}
-body#upload-index form button,
-body#upload-index form textarea {
-    border-radius: 0;
-}
-div.alert.alert-warning i {
-    color:#000;
-}
+/** styles for the navigation. */
+nav .dropdown-toggle::after {
+  margin-left: 10px; }
+nav .dropdown-toggle i {
+  margin-right: 14px; }
+
+/** styles for the icons. */
 button.btn i, a.btn i, div.alert i, nav i {
-    margin-right:10px;
-}
+  margin-left: 0;
+  margin-right: 7px; }
+
 button.btn.btn-next i {
-    margin-right:0;
-    margin-left:10px;
-}
-.list-group-item i {
-    margin-right:5px;
-}
-.nav.nav-pills .nav-item.disabled,
-.nav.nav-pills .nav-item.disabled:hover,
-.nav.nav-pills .nav-item.disabled:focus {
-    background:#8f8f8f!important;
-}
-.nav.nav-pills .nav-item.active {
-    background: #117a8b!important;
-}
+  margin-left: 7px;
+  margin-right: 0; }
 
-/** overwrite some bootstrap rules. */
-a, a:link, a:hover, input, button, .card, .card-header, .custom-select {
-    border-radius: 0 !important;
-}
+.alert.alert-warning i {
+  color: #856404; }
+
+/** change the bootstrap styles. */
+a, a:link, a:hover, input, button, textarea, .card, .card-header, .custom-select, .dropdown-menu, .alert, .badge {
+  border-radius: 0 !important; }
+
 form div.alert {
-    border-radius: 0;
-    display:none;
-}
+  border-radius: 0;
+  display: none; }
 
-/** overwrite some browser specific rules. */
-input[type="text"],
-input[type="text"]:-webkit-autofill,
-input[type="text"]:-webkit-autofill:hover,
-input[type="text"]:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0 30px white inset;
-}
 .form-control:focus {
-    box-shadow:none;
-}
-.alert {
-    border-radius: 0;
-}
-.input-group-text {
-    background-color:transparent!important;
-    border:1px solid transparent;
-    color:#495057;
-}
+  box-shadow: none; }
 
 /** new class to extend bootstrap beta 4. (buttons with breakpoint). */
 @media screen and (max-width: 767px) {
-    .btn-sm-block {
-        display: block;
-        width: 100%;
-    }
+  .btn-sm-block {
+    display: block;
+    width: 100%; }
 
-    .btn-sm-block + .btn-sm-block {
-        margin-top: .5rem;
-    }
-}
+  .btn-sm-block + .btn-sm-block {
+    margin-top: .5rem; } }
+
+/*# sourceMappingURL=picvid.css.map */

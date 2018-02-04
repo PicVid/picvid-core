@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark" role="navigation">
-    <a class="navbar-brand" href="{{URL}}">
+    <a class="navbar-brand mr-5" href="{{URL}}">
         <img src="{{LOGO_URL}}" height="30" class="d-inline-block align-top" alt="Logo of PicVid">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,8 +7,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link" href="{{URL}}upload"><i class="fas fa-upload" aria-hidden="true"></i>Upload</a>
-            <a class="nav-item nav-link" href="{{URL}}images"><i class="far fa-image" aria-hidden="true"></i>Bilder</a>
+            <a class="nav-item nav-link mr-3" href="{{URL}}upload">
+                <i class="fas fa-upload" aria-hidden="true"></i>
+                <span>Upload</span>
+            </a>
+            <a class="nav-item nav-link" href="{{URL}}images">
+                <i class="far fa-image" aria-hidden="true"></i>
+                <span>Bilder</span>
+            </a>
         </div>
         <div class="navbar-nav">
             <div class="nav-item dropdown">

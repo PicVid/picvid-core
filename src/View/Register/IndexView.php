@@ -32,7 +32,10 @@
                     <input class="form-control" id="password" name="register_password" autocomplete="new-password" type="password" placeholder="Passwort"/>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success btn-sm-block"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Registrieren</button>
+                    <button type="submit" class="btn btn-success btn-sm-block">
+                        <i class="fas fa-key" aria-hidden="true"></i>
+                        <span>Registrieren</span>
+                    </button>
                 </div>
             </form>
         </div>
