@@ -83,6 +83,6 @@ class PicVid
     private function parseUrl()
     {
         $url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
-        return ($url !== null && $url !== false) ? explode('/', rtrim($url, '/')) : [];
+        return ($url !== null && $url !== false) ? explode('/', trim($url, '/')) : [];
     }
 }
