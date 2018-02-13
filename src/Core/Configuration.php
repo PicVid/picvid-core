@@ -187,14 +187,11 @@ class Configuration
      */
     public function save() : bool
     {
-        //get all properties of the Configuration.
-        $properties = get_object_vars($this);
-
         //initialize the array of the configuration properties.
         $config = [];
 
         //run through all properties of the configuration.
-        foreach ($properties as $property_name => $property_value) {
+        foreach (get_object_vars($this) as $property_name => $property_value) {
 
             //get the property parts for configuration (group and property).
             $arr = preg_split('/[\_]/', $property_name, 2);
@@ -231,11 +228,8 @@ class Configuration
         //get the configuration array from JSON file.
         $config = json_decode(file_get_contents($this->getPathConfiguration()), true);
 
-        //get all properties of the Configuration.
-        $properties = get_object_vars($this);
-
         //run through all properties of the configuration.
-        foreach ($properties as $property_name => $property_value) {
+        foreach (get_object_vars($this) as $property_name => $property_value) {
 
             //get the property parts for configuration (group and property).
             $arr = preg_split('/[\_]/', $property_name, 2);
