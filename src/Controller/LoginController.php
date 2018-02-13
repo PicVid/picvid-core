@@ -7,6 +7,7 @@ namespace PicVid\Controller;
 use PicVid\Core\API\ProjectHoneyPot;
 use PicVid\Core\CitoEngine;
 use PicVid\Core\Configuration;
+use PicVid\Core\Encryption;
 use PicVid\Core\Service\AuthenticationService;
 use PicVid\Core\View;
 use PicVid\Domain\Entity\User;
@@ -51,15 +52,19 @@ class LoginController extends Controller
 
         //check whether the token is the same.
         if (!$this->verifyFormToken('token-login')) {
-            $this->jsonOutput('The form state is not valid!', '', 'error');
+            $this->jsonOutput('Es ist ein Fehler bei der Übermittlung aufgetreten!', '', 'error');
             return false;
         }
 
+        //get the Encryption object to decrypt and encrypt the Project Honeypot API key.
+        $encryption = new Encryption($config->ENCRYPTION_METHOD, $config->ENCRYPTION_SECURITY_KEY);
+        $apiHoneypotKey = $encryption->decrypt($config->API_PROJECT_HONEYPOT_KEY);
+
         //check if the IP address is trusted (using Project Honey Pot).
-        if ($config->API_PROJECT_HONEYPOT_KEY !== '') {
+        if ($apiHoneypotKey !== '') {
             if (filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-                if ((new ProjectHoneyPot($config->API_PROJECT_HONEYPOT_KEY))->check($_SERVER['REMOTE_ADDR'])) {
-                    $this->jsonOutput('The IP you are using is not trusted!', '', 'error');
+                if ((new ProjectHoneyPot($apiHoneypotKey))->check($_SERVER['REMOTE_ADDR'])) {
+                    $this->jsonOutput('Die verwendete IP-Adresse ist nicht vertrauenswürdig (Project Honeypot)!', '', 'error');
                     return false;
                 }
             }
@@ -71,22 +76,22 @@ class LoginController extends Controller
 
         //check if the username of the User Entity is valid.
         if ((new IsValidUsername())->isSatisfiedBy($user) === false) {
-            $this->jsonOutput('The username is not valid!', 'login_username', 'error');
+            $this->jsonOutput('Der Benutzername ist nicht gültig!', 'login_username', 'error');
             return false;
         }
 
         //check if the password of the User Entity is valid.
         if ((new IsValidPassword())->isSatisfiedBy($user) === false) {
-            $this->jsonOutput('The password is not valid!', 'login_email', 'error');
+            $this->jsonOutput('Das Passwort ist nicht gültig!', 'login_email', 'error');
             return false;
         }
 
         //login the User Entity.
         if ((new AuthenticationService())->login($user)) {
-            $this->jsonOutput('The User was successfully logged in!', '', 'info', $config->getUrl().'profile');
+            $this->jsonOutput('Der Benutzer wurde erfolgreich angemeldet.', '', 'info', $config->getUrl().'profile');
             return true;
         } else {
-            $this->jsonOutput('The User could not be logged in!', '', 'error');
+            $this->jsonOutput('Der Benutzer konnte nicht angemeldet werden!', '', 'error');
             return false;
         }
     }

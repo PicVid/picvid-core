@@ -293,8 +293,12 @@ class InstallController extends Controller
         //check whether the storage and API configuration should be saved.
         if ($this->getTask() === self::TASK_STORAGE_SAVE) {
 
+            //get the Encrpytion object to encrypt and decrypt information.
+            $encryption = new Encryption($config->ENCRYPTION_METHOD, $config->ENCRYPTION_SECURITY_KEY);
+
             //set the API keys to the configuration.
-            $config->API_PROJECT_HONEYPOT_KEY = filter_input(INPUT_POST, 'api_project_honeypot_key', FILTER_DEFAULT);
+            $apiHoneypotKey = filter_input(INPUT_POST, 'api_project_honeypot_key', FILTER_DEFAULT);
+            $config->API_PROJECT_HONEYPOT_KEY =  $encryption->encrypt($apiHoneypotKey);
 
             //set the filter for the limits of storage and file size.
             $size_filter = [
