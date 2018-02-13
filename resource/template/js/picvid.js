@@ -64,6 +64,7 @@ $(document).ready(function() {
 
             //output the error details on console.
             console.log(status, error, xhr);
+            console.warn(xhr.responseText);
 
             //the ajax call was not successfully.
             itemFormAlert.addClass("alert-danger").html("Something went wrong. Try again later!");
