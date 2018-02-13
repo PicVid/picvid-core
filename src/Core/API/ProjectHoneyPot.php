@@ -71,7 +71,7 @@ class ProjectHoneyPot
      */
     public function __construct(string $accessKey)
     {
-        $this->accessKey = (preg_match('/^[a-z]{12}$/', $accessKey) === 1) ? $accessKey : '';
+        $this->accessKey = ($this->isValidAccessKey($accessKey)) ? $accessKey : '';
     }
 
     /**
@@ -88,6 +88,11 @@ class ProjectHoneyPot
 
         //check if the IP address have a valid format.
         if ($this->isValidIP($ip) === false) {
+            return false;
+        }
+
+        //check if the access key is available (can be empty if not valid).
+        if ($this->isValidAccessKey($this->accessKey) === false) {
             return false;
         }
 
@@ -158,6 +163,16 @@ class ProjectHoneyPot
     public function isSuspicious() : bool
     {
         return (($this->visitorType & self::SUSPICIOUS) === self::SUSPICIOUS);
+    }
+
+    /**
+     * Method to check if the access key have a valid format.
+     * @param string $accessKey The access key which will be checked.
+     * @return bool The state if the access key have a valid format.
+     */
+    private function isValidAccessKey(string $accessKey) : bool
+    {
+        return (preg_match('/^[a-z]{12}$/', $accessKey) === 1);
     }
 
     /**
