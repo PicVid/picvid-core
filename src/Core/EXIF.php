@@ -347,6 +347,27 @@ class EXIF
     }
 
     /**
+     * Method to get an array of the EXIF properties and values as key / value pairs.
+     * @param bool $filterEmpty The state if the properties with empty values should be removed.
+     * @return array An array with the properties and values as key / value pairs.
+     */
+    public function getKeyValueArray(bool $filterEmpty = true) : array
+    {
+        //check if the empty values should be removed.
+        if ($filterEmpty) {
+
+            //filter the array with all properties and values to remove the properties with empty values.
+            return array_filter(get_object_vars($this), function($value) {
+                return trim($value) !== '';
+            });
+        } else {
+
+            //don't filter the array and return the complete array.
+            return get_object_vars($this);
+        }
+    }
+
+    /**
      * Method to load an array to the EXIF class.
      * @param array $array The array to load into the EXIF class.
      * @return void
