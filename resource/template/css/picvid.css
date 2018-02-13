@@ -75,81 +75,85 @@ a.credits {
     padding: 2px 3px; }
 
 /** the file template for the dropzone. */
-div.picvid-dropzone.template {
+div.picvid-dropzone {
   display: none;
   visibility: hidden; }
-div.picvid-dropzone.dz-clickable {
-  border: 2px dashed #28a745;
-  cursor: pointer;
-  display: inline-block;
-  min-height: 200px;
-  padding: 10px;
-  position: relative;
-  text-align: center;
-  width: 100%; }
-  div.picvid-dropzone.dz-clickable > i {
-    color: rgba(40, 167, 69, 0.5);
+  div.picvid-dropzone.template {
+    display: none;
+    visibility: hidden; }
+  div.picvid-dropzone.dz-clickable {
+    border: 2px dashed #28a745;
+    cursor: pointer;
     display: inline-block;
-    font-size: 3em;
-    z-index: -1;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%); }
-  div.picvid-dropzone.dz-clickable .dz-message {
-    display: none;
-    visibility: hidden; }
-  div.picvid-dropzone.dz-clickable.dz-started > i {
-    display: none;
-    visibility: hidden; }
-  div.picvid-dropzone.dz-clickable .dz-preview {
-    display: none;
-    visibility: hidden; }
-    div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview {
+    min-height: 200px;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    visibility: visible;
+    width: 100%; }
+    div.picvid-dropzone.dz-clickable > i {
+      color: rgba(40, 167, 69, 0.5);
       display: inline-block;
-      margin: 5px;
-      max-width: 400px;
-      min-width: 250px;
-      position: relative;
-      visibility: visible;
-      width: auto; }
-      div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview.dz-processing.dz-complete .uploading, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-success-mark, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-error-mark, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .uploading {
-        background: rgba(255, 255, 255, 0.7);
-        border-radius: 50%;
-        height: 100px;
-        padding: 10px;
-        width: 100px;
-        left: 50%;
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        display: none;
-        visibility: hidden; }
-        div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview.dz-processing.dz-complete .uploading i, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-success-mark i, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-error-mark i, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .uploading i {
-          color: #000;
-          font-size: 5em; }
-      div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview.dz-success .dz-success-mark, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview.dz-error .dz-error-mark, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview.dz-processing .uploading {
+      font-size: 3em;
+      z-index: -1;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%); }
+    div.picvid-dropzone.dz-clickable .dz-message {
+      display: none;
+      visibility: hidden; }
+    div.picvid-dropzone.dz-clickable.dz-started > i {
+      display: none;
+      visibility: hidden; }
+    div.picvid-dropzone.dz-clickable .dz-preview {
+      display: none;
+      visibility: hidden; }
+      div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview {
         display: inline-block;
-        visibility: visible; }
-      div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-filename {
-        bottom: 5px;
-        left: 50%;
-        max-width: 370px;
-        overflow: hidden;
-        position: absolute;
-        text-overflow: ellipsis;
-        transform: translateX(-50%); }
-      div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-error-message {
-        left: 5px;
-        position: absolute;
-        top: 5px; }
-      div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-size {
-        right: 5px;
-        position: absolute;
-        top: 5px; }
-      div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview img {
-        width: 100%;
-        background: #000 url("../img/bg-transparent.png") repeat right top; }
+        margin: 5px;
+        max-width: 400px;
+        min-width: 250px;
+        position: relative;
+        visibility: visible;
+        width: auto; }
+        div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview.dz-processing.dz-complete .uploading, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-success-mark, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-error-mark, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .uploading {
+          background: rgba(255, 255, 255, 0.7);
+          border-radius: 50%;
+          height: 100px;
+          padding: 10px;
+          width: 100px;
+          left: 50%;
+          position: absolute;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          display: none;
+          visibility: hidden; }
+          div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview.dz-processing.dz-complete .uploading i, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-success-mark i, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-error-mark i, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .uploading i {
+            color: #000;
+            font-size: 5em; }
+        div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview.dz-success .dz-success-mark, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview.dz-error .dz-error-mark, div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview.dz-processing .uploading {
+          display: inline-block;
+          visibility: visible; }
+        div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-filename {
+          bottom: 5px;
+          left: 50%;
+          max-width: 370px;
+          overflow: hidden;
+          position: absolute;
+          text-overflow: ellipsis;
+          transform: translateX(-50%); }
+        div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-error-message {
+          left: 5px;
+          position: absolute;
+          top: 5px; }
+        div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-size {
+          right: 5px;
+          position: absolute;
+          top: 5px; }
+        div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview img {
+          width: 100%;
+          background: #000 url("../img/bg-transparent.png") repeat right top; }
 
 /** styles for the profile views. */
 body#profile-index i.fa-chart-bar, body#profile-index i.fa-exclamation-triangle {

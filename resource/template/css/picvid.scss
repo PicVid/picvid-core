@@ -83,6 +83,7 @@ a.credits {
 
 /** the file template for the dropzone. */
 div.picvid-dropzone {
+  @include hide;
 
   &.template {
     @include hide;
@@ -96,6 +97,7 @@ div.picvid-dropzone {
     padding: 10px;
     position: relative;
     text-align: center;
+    visibility: visible;
     width:100%;
 
     & > i {

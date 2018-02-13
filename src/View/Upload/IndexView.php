@@ -11,6 +11,9 @@
         <div class="form-group picvid-dropzone dropzone" id="image-upload">
             <i class="fas fa-upload" aria-hidden="true"></i>
         </div>
+        <noscript>
+            <div class="alert alert-warning"><strong>Hinweis:</strong> Für den Upload muss JavaScript aktiviert werden. Aktiviere JavaScript in deinem Browser um den Upload verwenden zu können.</div>
+        </noscript>
         <button type="button" class="btn btn-success btn-sm-block upload-start mr-2">
             <i class="fas fa-upload" aria-hidden="true"></i>
             <span>Upload</span>
