@@ -74,6 +74,21 @@ $(document).ready(function() {
             removePasswordValues($("form.ajax"));
         });
     });
+
+    /** scroll to the top of the page with specific buttons. */
+    $("a[href='#scroll-top'], a.scroll-top").click(function() {
+        $("html, body").animate({scrollTop: 0}, "slow");
+        return false;
+    });
+
+    /** show the specific buttons only if we need to scroll. */
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $("a[href='#scroll-top'], a.scroll-top").fadeIn();
+        } else {
+            $("a[href='#scroll-top'], a.scroll-top").fadeOut();
+        }
+    });
 });
 
 /**

@@ -3,6 +3,9 @@
 $images = \PicVid\Domain\Repository\ImageRepository::build()->findAll();
 ?>
 <div class="container-fluid">
+    <a href="#scroll-top" class="scroll-top m-3">
+        <i class="fas fa-angle-up" aria-hidden="true"></i>
+    </a>
     <div class="row img-grid justify-content-center">
         <?php
             if (count($images) < 1) { echo '<div class="col-12 col-md-6 col-lg-6 col-xl-4 mt-4"><div class="alert alert-warning" role="alert"><i class="far fa-image" aria-hidden="true"></i> Es sind keine Bilder verfügbar! Über den <a class="alert-link" href="{{URL}}upload">Upload</a> kannst du deine Bilder hochladen.</div></div>'; } else {

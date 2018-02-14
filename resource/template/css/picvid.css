@@ -3,6 +3,21 @@
 /** mixin to set a transparent background image. */
 /** mixin to set an element in center (absolute). */
 /** mixin to hide an element. */
+/** style for the scroll to top button. */
+.scroll-top {
+  background: rgba(0, 0, 0, 0.8);
+  bottom: 0;
+  color: #fff;
+  display: none;
+  font-size: 2.5em;
+  height: 50px;
+  line-height: 1.1em;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  width: 50px;
+  z-index: 1000; }
+
 /** create the overlay for the background images. */
 body::before {
   background: none;
