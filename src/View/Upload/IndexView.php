@@ -45,9 +45,15 @@
     var descriptionItem = $('#description');
     var uploadItem = $('#image-upload');
 
+    //function to generate the placeholder for dropzone (to avoid parsing by the CitoEngine).
+    function getVarPlaceholder(varName) {
+        return '{' + '{' + varName + '}' + '}';
+    }
+
     //the configuration of the Dropzone element.
     Dropzone.options.imageUpload = {
         dictDefaultMessage: '',
+        dictFileTooBig: 'Datei zu groß (' + getVarPlaceholder('filesize') + ' MB)! - max. ' + getVarPlaceholder('maxFilesize') + ' MB',
         url: "{{URL}}upload/upload",
         paramName: "image_upload",
         uploadMultiple: true,
