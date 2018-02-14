@@ -43,6 +43,7 @@
     //the elements of the upload form.
     var titleItem = $('#title');
     var descriptionItem = $('#description');
+    var uploadItem = $('#image-upload');
 
     //the configuration of the Dropzone element.
     Dropzone.options.imageUpload = {
@@ -51,13 +52,13 @@
         paramName: "image_upload",
         uploadMultiple: true,
         autoProcessQueue: false,
-        maxFilesize: 5,
+        maxFilesize: "{{upload-max-filesize}}",
         parallelUploads: 5,
         thumbnailWidth: 400,
         thumbnailHeight: 200,
         method: "post",
         maxFiles: 5,
-        acceptedFiles: "{{accepted_files}}",
+        acceptedFiles: "{{accepted-files}}",
         previewTemplate: $('.picvid-dropzone.template').html(),
         init: function() {
             var myDropzone = this;
@@ -76,6 +77,11 @@
             formData.append('token', '{{token}}');
             formData.append(titleItem.attr('name'), titleItem.val());
             formData.append(descriptionItem.attr('name'), descriptionItem.val());
+        },
+        reset: function() {
+            uploadItem.removeClass('dz-started');
+            titleItem.val('');
+            descriptionItem.val('');
         }
     };
 </script>

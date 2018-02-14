@@ -51,8 +51,9 @@ class UploadController extends Controller
         $cito->setValue('token', $this->getFormToken('upload-index'));
         $cito->setValue('URL', $config->getUrl());
 
-        //set the allowed file types to the dropzone configuration.
-        $cito->setValue('accepted_files', implode(',', $config->IMAGE_ALLOWED_FILETYPES));
+        //set the allowed file types and max filesize to the dropzone configuration.
+        $cito->setValue('accepted-files', implode(',', $config->IMAGE_ALLOWED_FILETYPES));
+        $cito->setValue('upload-max-filesize', $config->IMAGE_MAX_FILESIZE);
     }
 
     /**
