@@ -58,13 +58,13 @@
         paramName: "image_upload",
         uploadMultiple: true,
         autoProcessQueue: false,
-        maxFilesize: "{{upload-max-filesize}}",
+        maxFilesize: '{{upload-max-filesize}}',
+        acceptedFiles: '{{accepted-files}}',
         parallelUploads: 5,
         thumbnailWidth: 400,
         thumbnailHeight: 200,
         method: "post",
         maxFiles: 5,
-        acceptedFiles: "{{accepted-files}}",
         previewTemplate: $('.picvid-dropzone.template').html(),
         init: function() {
             var myDropzone = this;
