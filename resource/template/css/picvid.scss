@@ -44,6 +44,11 @@ $bg-list: ('index', 'info', 'install', 'login', 'register');
   text-align: center;
   width: 50px;
   z-index: 1000;
+
+  &:hover {
+    background: rgba(0, 0, 0, 1);
+    color: #fff;
+  }
 }
 
 /** create the overlay for the background images. */

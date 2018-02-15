@@ -17,6 +17,9 @@
   text-align: center;
   width: 50px;
   z-index: 1000; }
+  .scroll-top:hover {
+    background: black;
+    color: #fff; }
 
 /** create the overlay for the background images. */
 body::before {
