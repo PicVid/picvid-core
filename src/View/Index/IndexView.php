@@ -6,17 +6,17 @@
     <div class="row align-self-center">
         <div class="col text-center"><img class="logo mb-4" height="90" src="{{LOGO_URL}}"/></div>
     </div>
-    <div class="row align-self-center">
-        <div class="col text-center">
-            <a class="btn btn-success btn-sm-block mx-2 my-3" href="{{URL}}login">
+    <div class="row align-self-center justify-content-center w-100">
+        <div class="col col-8 col-md-12 text-center">
+            <a class="btn btn-success btn-sm-block mx-md-2 my-3" href="{{URL}}login">
                 <i class="fas fa-lock" aria-hidden="true"></i>
                 <span>Anmelden</span>
             </a>
-            <a class="btn btn-success btn-sm-block mx-2 my-3" href="{{URL}}register">
+            <a class="btn btn-success btn-sm-block mx-md-2 my-3" href="{{URL}}register">
                 <i class="fas fa-key" aria-hidden="true"></i>
                 <span>Registrieren</span>
             </a>
-            <a class="btn btn-primary btn-sm-block mx-2 my-3" href="{{URL}}info">
+            <a class="btn btn-primary btn-sm-block mx-md-2 my-3" href="{{URL}}info">
                 <i class="fas fa-info-circle" aria-hidden="true"></i>
                 <span>Info</span>
             </a>
