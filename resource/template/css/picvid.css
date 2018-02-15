@@ -1,8 +1,17 @@
 /** a list with all background images. */
+/** keyframes to set the background color for autofill fields. */
+@-webkit-keyframes autofill {
+  to {
+    background: #fff; } }
 /** mixin to set a background image. */
 /** mixin to set a transparent background image. */
 /** mixin to set an element in center (absolute). */
 /** mixin to hide an element. */
+/** remove the autofill background-color on form elements. */
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both; }
+
 /** style for the scroll to top button. */
 .scroll-top {
   background: rgba(0, 0, 0, 0.8);

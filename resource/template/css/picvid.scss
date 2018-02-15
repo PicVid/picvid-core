@@ -1,6 +1,13 @@
 /** a list with all background images. */
 $bg-list: ('index', 'info', 'install', 'login', 'register');
 
+/** keyframes to set the background color for autofill fields. */
+@-webkit-keyframes autofill {
+  to {
+    background: #fff;
+  }
+}
+
 /** mixin to set a background image. */
 @mixin background-img($filename) {
   background: #000 url('../img/backgrounds/bg-#{$filename}-view.jpg') no-repeat center;
@@ -24,6 +31,14 @@ $bg-list: ('index', 'info', 'install', 'login', 'register');
 @mixin hide {
   display: none;
   visibility: hidden;
+}
+
+/** remove the autofill background-color on form elements. */
+input, textarea, select {
+  &:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+  }
 }
 
 %absolute {
