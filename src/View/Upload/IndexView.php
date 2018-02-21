@@ -66,8 +66,27 @@
         method: "post",
         maxFiles: 5,
         previewTemplate: $('.picvid-dropzone.template').html(),
+        params: {token: '{{token}}'},
+
         init: function() {
             var myDropzone = this;
+            var size = 0;
+            var max_size = '{{post-max-size}}';
+
+            //sum the size of the files to control the max post size.
+            this.on("addedfile", function(file) {
+                if((size + file.size) > max_size) {
+                    myDropzone.removeFile(file);
+                    console.warn('Das POST-Limit des Servers wurde erreicht!');
+                } else {
+                    size += file.size;
+                }
+            });
+
+            //remove the size of the file.
+            this.on("removedfile", function(file) {
+                size -= file.size;
+            });
 
             //upload on button click.
             $('.upload-start').click(function() {
@@ -80,7 +99,6 @@
             });
         },
         sending: function(file, xhr, formData) {
-            formData.append('token', '{{token}}');
             formData.append(titleItem.attr('name'), titleItem.val());
             formData.append(descriptionItem.attr('name'), descriptionItem.val());
         },

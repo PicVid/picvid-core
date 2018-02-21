@@ -54,6 +54,7 @@ class UploadController extends Controller
         //set the allowed file types and max filesize to the dropzone configuration.
         $cito->setValue('accepted-files', implode(',', $config->IMAGE_ALLOWED_FILETYPES));
         $cito->setValue('upload-max-filesize', $config->IMAGE_MAX_FILESIZE);
+        $cito->setValue('post-max-size', $config->getPostMaxSize() - (1 * pow(1024, 2)));
     }
 
     /**
@@ -64,13 +65,20 @@ class UploadController extends Controller
         //a Session is needed for this method / action.
         $this->needSession();
 
+        //check if the POST size is exceeded.
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) && empty($_FILES) && $_SERVER['CONTENT_LENGTH'] > 0) {
+            $this->setResponseCode(303);
+            $this->jsonOutput('Die Daten konnten nicht übertragen werden!', '', 'error');
+            return false;
+        }
+
         //get the configuration.
         $config = Configuration::getInstance();
 
         //check whether the token is the same.
         if (!$this->verifyFormToken('upload-index')) {
             $this->setResponseCode(303);
-            $this->jsonOutput('The form state is not valid!', '', 'error');
+            $this->jsonOutput('Es ist ein Fehler bei der Übermittlung aufgetreten!', '', 'error');
             return false;
         }
 
