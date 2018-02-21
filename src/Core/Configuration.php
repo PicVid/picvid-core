@@ -155,6 +155,15 @@ class Configuration
     }
 
     /**
+     * Method to get the max POST size of the PHP server.
+     * @return int The max POST size of the PHP server.
+     */
+    public function getPostMaxSize() : int
+    {
+        return (int) (str_replace('M', '', ini_get('post_max_size')) * pow(1024, 2));
+    }
+
+    /**
      * Method to get the resource URL of the application.
      * @return string The resource URL of the application.
      */
