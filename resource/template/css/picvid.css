@@ -172,8 +172,10 @@ div.picvid-dropzone {
           transform: translateX(-50%); }
         div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-error-message {
           left: 5px;
+          overflow: hidden;
           position: absolute;
-          top: 5px; }
+          top: 5px;
+          width: calc(100% - 10px); }
         div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-size {
           right: 5px;
           position: absolute;
