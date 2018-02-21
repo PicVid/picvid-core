@@ -83,11 +83,6 @@
                 }
             });
 
-            //remove the size of the file.
-            this.on("removedfile", function(file) {
-                size -= file.size;
-            });
-
             //upload on button click.
             $('.upload-start').click(function() {
                 myDropzone.processQueue();
