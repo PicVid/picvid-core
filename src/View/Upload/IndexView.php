@@ -34,6 +34,9 @@
         <div class="dz-error-message badge badge-danger text-light" data-dz-errormessage></div>
         <div class="dz-filename badge badge-light" data-dz-name></div>
         <div class="dz-size badge badge-light" data-dz-size></div>
+        <div class="dz-remove badge badge-danger text-light" data-dz-remove>
+            <i class="fas fa-trash" aria-hidden="true"></i>
+        </div>
         <img data-dz-thumbnail src=""/>
     </div>
 </div>
@@ -45,62 +48,71 @@
     var descriptionItem = $('#description');
     var uploadItem = $('#image-upload');
 
-    //function to generate the placeholder for dropzone (to avoid parsing by the CitoEngine).
-    function getVarPlaceholder(varName) {
-        return '{' + '{' + varName + '}' + '}';
-    }
+    //do not automatically discover dropzone areas.
+    Dropzone.autoDiscover = false;
 
-    //the configuration of the Dropzone element.
-    Dropzone.options.imageUpload = {
-        dictDefaultMessage: '',
-        dictFileTooBig: 'Datei zu groß (' + getVarPlaceholder('filesize') + ' MB)! - max. ' + getVarPlaceholder('maxFilesize') + ' MB',
-        url: "{{URL}}upload/upload",
-        paramName: "image_upload",
+    //set the dropzone object with configuration.
+    var picvidDropzone = new Dropzone('div#image-upload', {
+        url: '{{URL}}upload/upload',
         uploadMultiple: true,
-        autoProcessQueue: false,
         maxFilesize: '{{upload-max-filesize}}',
+        paramName: 'image-upload',
+        createImageThumbnails: true,
+        filesizeBase: 1024,
+        maxFiles: 10,
+        ignoreHiddenFiles: true,
         acceptedFiles: '{{accepted-files}}',
-        parallelUploads: 5,
+        autoProcessQueue: false,
+        autoQueue: true,
+        addRemoveLinks: true,
         thumbnailWidth: 400,
         thumbnailHeight: 200,
-        method: "post",
-        maxFiles: 5,
+        thumbnailMethod: 'crop',
         previewTemplate: $('.picvid-dropzone.template').html(),
-        params: {token: '{{token}}'},
-
-        init: function() {
-            var myDropzone = this;
-            var size = 0;
-            var max_size = '{{post-max-size}}';
-
-            //sum the size of the files to control the max post size.
-            this.on("addedfile", function(file) {
-                if((size + file.size) > max_size) {
-                    myDropzone.removeFile(file);
-                    console.warn('Das POST-Limit des Servers wurde erreicht!');
-                } else {
-                    size += file.size;
-                }
-            });
-
-            //upload on button click.
-            $('.upload-start').click(function() {
-                myDropzone.processQueue();
-            });
-
-            //clear dropzone area.
-            $('.upload-clear').click(function() {
-                myDropzone.removeAllFiles();
-            });
+        dictRemoveFile: '',
+        dictDefaultMessage: '',
+        dictCancelUploadConfirmation: '',
+        dictCancelUpload: '',
+        dictFileTooBig: 'Das Bild ist zu groß!',
+        params: {
+            token: '{{token}}'
         },
-        sending: function(file, xhr, formData) {
-            formData.append(titleItem.attr('name'), titleItem.val());
-            formData.append(descriptionItem.attr('name'), descriptionItem.val());
+        init: function() {
+            var _this = this;
+
+            //add a event to start the upload of the dropzone.
+            $('.upload-start').click(function() {
+                _this.processQueue();
+            });
+
+            //add a event to clear the dropzone
+            $('.upload-clear').click(function() {
+                _this.removeAllFiles();
+            });
+
+            //on success process the queue automatically.
+            this.on("success", function() {
+                _this.options.autoProcessQueue = true;
+            });
+
+            //on completed queue stop the auto process.
+            this.on("queuecomplete", function() {
+                _this.options.autoProcessQueue = false;
+            });
         },
         reset: function() {
             uploadItem.removeClass('dz-started');
             titleItem.val('');
             descriptionItem.val('');
+        },
+        sending: function(file, xhr, data) {
+            data.append(titleItem.attr('name'), titleItem.val());
+            data.append(descriptionItem.attr('name'), descriptionItem.val());
         }
-    };
+    });
+
+    //set the empty callbacks for used events (for IDE support / remove the warnings).
+    picvidDropzone.init = function() { };
+    picvidDropzone.sending = function() { };
+    picvidDropzone.reset = function() { };
 </script>

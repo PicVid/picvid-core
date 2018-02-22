@@ -199,16 +199,23 @@ div.picvid-dropzone {
 
         & .dz-error-message {
           left: 5px;
+          max-width: calc(100% - 10px);
           overflow: hidden;
           position: absolute;
           top: 5px;
-          width: calc(100% - 10px);
         }
 
         & .dz-size {
           right: 5px;
           position: absolute;
           top: 5px;
+        }
+
+        & .dz-remove {
+          bottom: 5px;
+          left: 5px;
+          position: absolute;
+          width: 40px;
         }
 
         & img {

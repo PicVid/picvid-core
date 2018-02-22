@@ -83,15 +83,15 @@ class UploadController extends Controller
         }
 
         //run through all images of the upload.
-        foreach ($_FILES['image_upload']['error'] as $key => $error) {
+        foreach ($_FILES['image-upload']['error'] as $key => $error) {
 
             //check if the upload was successful for this image.
             if ($error == UPLOAD_ERR_OK) {
 
                 //get the filesize and filetype from upload.
                 $image = new Image();
-                $image->size = $_FILES['image_upload']['size'][$key];
-                $image->type = $_FILES['image_upload']['type'][$key];
+                $image->size = $_FILES['image-upload']['size'][$key];
+                $image->type = $_FILES['image-upload']['type'][$key];
 
                 //check whether the filesize of the Image Entity is valid.
                 if (!(new IsValidFilesize())->isSatisfiedBy($image)) {
@@ -104,7 +104,7 @@ class UploadController extends Controller
                 }
 
                 //get the filename of the image to save on database and filesystem.
-                $filename = basename($_FILES["image_upload"]["name"][$key]);
+                $filename = basename($_FILES["image-upload"]["name"][$key]);
                 $filename = preg_replace('/[^0-9a-zA-Z \-\_\.]/', '', $filename);
                 $filename = str_replace(' ', '', $filename);
                 $filename = 'img-'.str_replace('.', '', uniqid('', true)).'-'.$filename;
@@ -118,7 +118,7 @@ class UploadController extends Controller
                 }
 
                 //move the file to the image directory.
-                if (move_uploaded_file($_FILES['image_upload']['tmp_name'][$key], $config->getPathImage().$filename)) {
+                if (move_uploaded_file($_FILES['image-upload']['tmp_name'][$key], $config->getPathImage().$filename)) {
 
                     //get the User Entity from Session.
                     $user = (new SessionService())->getUser();

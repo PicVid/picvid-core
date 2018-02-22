@@ -172,14 +172,19 @@ div.picvid-dropzone {
           transform: translateX(-50%); }
         div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-error-message {
           left: 5px;
+          max-width: calc(100% - 10px);
           overflow: hidden;
           position: absolute;
-          top: 5px;
-          width: calc(100% - 10px); }
+          top: 5px; }
         div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-size {
           right: 5px;
           position: absolute;
           top: 5px; }
+        div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview .dz-remove {
+          bottom: 5px;
+          left: 5px;
+          position: absolute;
+          width: 40px; }
         div.picvid-dropzone.dz-clickable .dz-preview.dz-image-preview img {
           width: 100%;
           background: #000 url("../img/bg-transparent.png") repeat right top; }
