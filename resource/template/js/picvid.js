@@ -67,7 +67,7 @@ $(document).ready(function() {
             console.warn(xhr.responseText);
 
             //the ajax call was not successfully.
-            itemFormAlert.addClass("alert-danger").html("Something went wrong. Try again later!");
+            itemFormAlert.addClass("alert-danger").html("Es ist ein Fehler aufgetreten. Versuche es später noch einmal!");
             itemFormAlert.show();
 
             //remove all the password values of the form.
