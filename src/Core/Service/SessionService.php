@@ -26,8 +26,8 @@ class SessionService
     public function create(User $user)
     {
         //create the Session.
-        $session = new Session();
-        $session->create(Database::getInstance()->getConnection());
+        $session = new Session(Database::getInstance()->getConnection());
+        $session->create();
 
         //set the information to the Session.
         $_SESSION['user_username'] = $user->username;
@@ -50,8 +50,8 @@ class SessionService
     public function getUser() : User
     {
         //create the Session.
-        $session = new Session();
-        $session->create(Database::getInstance()->getConnection());
+        $session = new Session(Database::getInstance()->getConnection());
+        $session->create();
 
         //get the User Entity from Session.
         $users = UserRepository::build()->findByID($_SESSION['user_id']);

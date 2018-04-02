@@ -21,11 +21,11 @@ CREATE TABLE `user` (
 ) ENGINE = INNODB;
 
 CREATE TABLE `session` (
-  `id` VARCHAR(32) NOT NULL DEFAULT '',
-  `content` TEXT NOT NULL,
-  `create_time` INT UNSIGNED NOT NULL DEFAULT 0,
-  `user_agent` VARCHAR(32) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`)
+  `id` VARCHAR(32),
+  `access` INT UNSIGNED,
+  `data` TEXT,
+  `user_agent` VARCHAR(255),
+  PRIMARY KEY(`id`)
 ) ENGINE = INNODB;
 
 -- mapping tables

@@ -25,8 +25,8 @@ abstract class Controller implements IController
     protected function getFormToken(string $formName) : string
     {
         //create the Session.
-        $session = new Session();
-        $session->create(Database::getInstance()->getConnection());
+        $session = new Session(Database::getInstance()->getConnection());
+        $session->create();
 
         //create a form token and set the token to the session.
         $token = md5(uniqid(microtime(), true));
@@ -62,8 +62,8 @@ abstract class Controller implements IController
     protected function needSession(string $redirectURL = '')
     {
         //create the Session.
-        $session = new Session();
-        $session->create(Database::getInstance()->getConnection());
+        $session = new Session(Database::getInstance()->getConnection());
+        $session->create();
 
         //check if the Session is available.
         if (isset($_SESSION['user_username']) === false) {
@@ -144,8 +144,8 @@ abstract class Controller implements IController
     function verifyFormToken(string $formName) : bool
     {
         //create the Session.
-        $session = new Session();
-        $session->create(Database::getInstance()->getConnection());
+        $session = new Session(Database::getInstance()->getConnection());
+        $session->create();
 
         //check if there is a session with the token.
         if (!isset($_SESSION[$formName.'_token'])) {
