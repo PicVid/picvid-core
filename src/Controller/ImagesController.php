@@ -33,6 +33,11 @@ class ImagesController extends Controller
         //get the configuration.
         $config = Configuration::getInstance();
 
+        //check if the images folder is available.
+        if (!file_exists($config->getPathImage())) {
+            mkdir($config->getPathImage(), 0755, true);
+        }
+
         //set the values for the template tags / placeholders on CitoEngine.
         $cito = CitoEngine::getInstance();
         $cito->setValue('BODY_ID', 'images-index');

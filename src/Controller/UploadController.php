@@ -38,6 +38,11 @@ class UploadController extends Controller
         //get the configuration.
         $config = Configuration::getInstance();
 
+        //check if the images folder is available.
+        if (!file_exists($config->getPathImage())) {
+            mkdir($config->getPathImage(), 0755, true);
+        }
+
         //load the view.
         $view = new View('Upload');
         $view->load(true);

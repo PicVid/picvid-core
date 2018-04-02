@@ -290,6 +290,11 @@ class InstallController extends Controller
         //get the configuration.
         $config = Configuration::getInstance();
 
+        //check if the images folder is available.
+        if (!file_exists($config->getPathImage())) {
+            mkdir($config->getPathImage(), 0755, true);
+        }
+
         //check whether the storage and API configuration should be saved.
         if ($this->getTask() === self::TASK_STORAGE_SAVE) {
 

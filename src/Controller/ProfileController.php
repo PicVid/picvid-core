@@ -44,6 +44,11 @@ class ProfileController extends Controller
         //get the configuration.
         $config = Configuration::getInstance();
 
+        //check if the images folder is available.
+        if (!file_exists($config->getPathImage())) {
+            mkdir($config->getPathImage(), 0755, true);
+        }
+
         //get the User from database by Session information.
         $users = UserRepository::build()->findByID($_SESSION['user_id']);
 
@@ -312,6 +317,11 @@ class ProfileController extends Controller
     {
         //get the Configuration object.
         $config = Configuration::getInstance();
+
+        //check if the images folder is available.
+        if (!file_exists($config->getPathImage())) {
+            mkdir($config->getPathImage(), 0755, true);
+        }
 
         //get all files of the image directory.
         $files = scandir($config->getPathImage());
