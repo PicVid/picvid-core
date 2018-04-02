@@ -75,7 +75,7 @@ class Database
      * @param int $port The port of the database (default 3306).
      * @return bool The status whether the connection was set successfully.
      */
-    public function setConnection(string $name, string $hostname, string $username, string $password, int $port = 3306) : bool
+    public function setConnection(string $name, string $hostname, string $username, string $password, int $port) : bool
     {
         try {
             $dsn = 'mysql:host='.$hostname.';port='.$port.';dbname='.$name;

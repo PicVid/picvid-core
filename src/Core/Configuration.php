@@ -185,7 +185,7 @@ class Configuration
      * Method to get the images url of the application.
      * @return string The images url of the application.
      */
-    public function  getUrlImage() : string
+    public function getUrlImage() : string
     {
         return $this->getUrl().'data/images/';
     }
@@ -201,8 +201,6 @@ class Configuration
 
         //run through all properties of the configuration.
         foreach (get_object_vars($this) as $property_name => $property_value) {
-
-            //get the property parts for configuration (group and property).
             $arr = preg_split('/[\_]/', $property_name, 2);
 
             //get the group of the property and the property itself.
@@ -239,8 +237,6 @@ class Configuration
 
         //run through all properties of the configuration.
         foreach (get_object_vars($this) as $property_name => $property_value) {
-
-            //get the property parts for configuration (group and property).
             $arr = preg_split('/[\_]/', $property_name, 2);
 
             //get the group of the property and the property itself.

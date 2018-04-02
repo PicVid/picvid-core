@@ -355,14 +355,10 @@ class EXIF
     {
         //check if the empty values should be removed.
         if ($filterEmpty) {
-
-            //filter the array with all properties and values to remove the properties with empty values.
-            return array_filter(get_object_vars($this), function($value) {
+            return array_filter(get_object_vars($this), function ($value) {
                 return trim($value) !== '';
             });
         } else {
-
-            //don't filter the array and return the complete array.
             return get_object_vars($this);
         }
     }

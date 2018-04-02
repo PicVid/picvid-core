@@ -135,16 +135,12 @@ class CitoEngine
 
             //check if a gecko browser is used.
             if (strpos(filter_input(INPUT_SERVER, 'HTTP_USER_AGENT'), 'Gecko') !== false) {
-
-                //check which compression is available.
                 if (strpos($encoding, 'deflate') !== false) {
                     $this->usedCompression = 'deflate';
                 } elseif (strpos($encoding, 'gzip') !== false) {
                     $this->usedCompression = 'gzip';
                 }
             } elseif ((version_compare(phpversion(), '4.0.5') >= 0) && (strpos($encoding, 'gzip') !== false)) {
-
-                //check if the zlib extension exists.
                 if (extension_loaded('zlib') === true) {
                     ob_start('ob_gzhandler');
                 }
@@ -196,8 +192,6 @@ class CitoEngine
 
             //check if there is any content for the tag.
             if (isset($this->tagValues[$tag])) {
-
-                //create the full tag content.
                 foreach ($this->tagValues[$tag] as $content) {
                     $tagContent .= $content;
                 }

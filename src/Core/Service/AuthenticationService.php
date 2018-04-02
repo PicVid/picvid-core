@@ -35,15 +35,11 @@ class AuthenticationService
 
             //check if an User Entity is available.
             if ($userDB instanceof User) {
-
-                //hash the input information to compare with the found User Entity.
                 $hashService = new HashService();
                 $user = $hashService->hashWithSalt($user, $userDB->salt);
 
                 //check if the password match.
                 if ($userDB->password === $user->password) {
-
-                    //check if a Session should be created.
                     if ($withSession) {
                         (new SessionService())->create($userDB);
                     }
