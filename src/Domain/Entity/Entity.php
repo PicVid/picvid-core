@@ -91,9 +91,9 @@ abstract class Entity implements IEntity
     private function loadFromGlobalArray(int $global, string $prefix = '')
     {
         //map all the doc comment types to the globals.
-        $filterMap['string'] = FILTER_DEFAULT;
-        $filterMap['int'] = FILTER_VALIDATE_INT;
-        $filterMap['bool'] = FILTER_VALIDATE_BOOLEAN;
+        $filter['string'] = FILTER_DEFAULT;
+        $filter['int'] = FILTER_VALIDATE_INT;
+        $filter['bool'] = FILTER_VALIDATE_BOOLEAN;
 
         //run through all class properties.
         foreach (array_keys(get_class_vars(get_class($this))) as $property) {
@@ -102,20 +102,18 @@ abstract class Entity implements IEntity
             //check if the property name exists on the global.
             if (filter_has_var($global, $globalProperty) === true) {
                 try {
-
-                    //try to open the property to get the doc comments.
                     $reflection = new \ReflectionProperty(get_class($this), $property);
 
                     //get type from doc comments.
                     if (preg_match('/@var\s+([^\s]+)/', $reflection->getDocComment(), $matches)) {
-                        $value = filter_input($global, $globalProperty, $filterMap[$matches[1]], FILTER_NULL_ON_FAILURE);
+                        $value = filter_input($global, $globalProperty, $filter[$matches[1]], FILTER_NULL_ON_FAILURE);
 
                         //check if the validation was successfully.
                         if ($value !== null) {
                             $this->$property = $value;
                         }
                     }
-                } catch(\ReflectionException $exception) {
+                } catch (\ReflectionException $exception) {
                     trigger_error($exception->getMessage(), E_USER_ERROR);
                 }
             }
