@@ -101,16 +101,22 @@ abstract class Entity implements IEntity
 
             //check if the property name exists on the global.
             if (filter_has_var($global, $globalProperty) === true) {
-                $reflection = new \ReflectionProperty(get_class($this), $property);
+                try {
 
-                //get type from doc comments.
-                if (preg_match('/@var\s+([^\s]+)/', $reflection->getDocComment(), $matches)) {
-                    $value = filter_input($global, $globalProperty, $filterMap[$matches[1]], FILTER_NULL_ON_FAILURE);
+                    //try to open the property to get the doc comments.
+                    $reflection = new \ReflectionProperty(get_class($this), $property);
 
-                    //check if the validation was successfully.
-                    if ($value !== null) {
-                        $this->$property = $value;
+                    //get type from doc comments.
+                    if (preg_match('/@var\s+([^\s]+)/', $reflection->getDocComment(), $matches)) {
+                        $value = filter_input($global, $globalProperty, $filterMap[$matches[1]], FILTER_NULL_ON_FAILURE);
+
+                        //check if the validation was successfully.
+                        if ($value !== null) {
+                            $this->$property = $value;
+                        }
                     }
+                } catch(\ReflectionException $exception) {
+                    trigger_error($exception->getMessage(), E_USER_ERROR);
                 }
             }
         }
