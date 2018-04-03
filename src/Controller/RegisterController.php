@@ -69,7 +69,8 @@ class RegisterController extends Controller
         if ($apiHoneypotKey !== '') {
             if (filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
                 if ((new ProjectHoneyPot($apiHoneypotKey))->check($_SERVER['REMOTE_ADDR'])) {
-                    $this->jsonOutput('Die verwendete IP-Adresse ist nicht vertrauenswürdig (Project Honeypot)!', '', 'error');
+                    $message = 'Die verwendete IP-Adresse ist nicht vertrauenswürdig (Project Honeypot)!';
+                    $this->jsonOutput($message, '', 'error');
                     return false;
                 }
             }

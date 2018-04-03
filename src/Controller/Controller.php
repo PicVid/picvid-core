@@ -141,7 +141,7 @@ abstract class Controller implements IController
      * @param string $formName The name of the form used for the session.
      * @return bool The status whether the token is valid.
      */
-    function verifyFormToken(string $formName) : bool
+    public function verifyFormToken(string $formName) : bool
     {
         //create the Session.
         $session = new Session(Database::getInstance()->getConnection());

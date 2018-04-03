@@ -68,7 +68,8 @@ class InstallController extends Controller
         $isAvailableFileUpload = ini_get('file_uploads') === '1';
 
         //get the state to continue to the next step.
-        $canContinue = $isValidVersionPHP && $isAvailablePDO && $isAvailableMySQL && $isAvailableOpenSSL & $isAvailableFileUpload;
+        $canContinue = $isValidVersionPHP && $isAvailablePDO && $isAvailableMySQL;
+        $canContinue = $canContinue && $isAvailableOpenSSL && $isAvailableFileUpload;
 
         //get the configuration.
         $config = Configuration::getInstance();
@@ -104,8 +105,6 @@ class InstallController extends Controller
 
         //check whether the database configuration should be saved.
         if ($this->getTask() === self::TASK_DATABASE_SAVE) {
-
-            //set the information to encrypt and decrypt the information.
             $config->ENCRYPTION_SECURITY_KEY = Encryption::getRandomKey();
             $encryption = new Encryption($config->ENCRYPTION_METHOD, $config->ENCRYPTION_SECURITY_KEY);
 
@@ -160,12 +159,12 @@ class InstallController extends Controller
 
             //parse the install.sql file on the resource folder and get all queries.
             $sqlContent = file_get_contents($config->getPathResource().'install.sql');
-            $sqlContent = trim(preg_replace('/--.*\s/','', $sqlContent));
+            $sqlContent = trim(preg_replace('/--.*\s/', '', $sqlContent));
             $sqlContent = trim(preg_replace('/\s\s+/', ' ', $sqlContent));
             $sqlQueries = preg_split('/;/', $sqlContent);
 
             //filter all empty queries from the array (would cause an exception on PDO).
-            $sqlQueries = array_filter($sqlQueries, function($v) {
+            $sqlQueries = array_filter($sqlQueries, function ($v) {
                 return (trim($v) !== '');
             });
 
@@ -189,8 +188,6 @@ class InstallController extends Controller
             $this->jsonOutput('', '', 'success', $config->getUrl().'install/admin');
             exit;
         } else {
-
-            //set the values for the template tags / placeholders on CitoEngine.
             $cito = CitoEngine::getInstance();
             $cito->setValue('BODY_ID', 'install-view');
             $cito->setValue('PAGE_TITLE', 'PicVid &raquo; Installation &raquo; Datenbank');
@@ -199,8 +196,6 @@ class InstallController extends Controller
 
             //check if a security key is available to decrypt the information.
             if ($config->ENCRYPTION_SECURITY_KEY !== '' && $config->ENCRYPTION_METHOD !== '') {
-
-                //get the object to encrypt and decrypt information.
                 $encryption = new Encryption($config->ENCRYPTION_METHOD, $config->ENCRYPTION_SECURITY_KEY);
 
                 //set the decrypted values to the form.
@@ -226,8 +221,6 @@ class InstallController extends Controller
 
         //check whether the admin user configuration should be saved.
         if ($this->getTask() === self::TASK_ADMIN_SAVE) {
-
-            //create a new User Entity on database.
             $user = new User();
             $user->loadFromPOST('admin_');
 
@@ -270,8 +263,6 @@ class InstallController extends Controller
                 exit;
             }
         } else {
-
-            //set the values for the template tags / placeholders on CitoEngine and load the view.
             $cito = CitoEngine::getInstance();
             $cito->setValue('BODY_ID', 'install-view');
             $cito->setValue('PAGE_TITLE', 'PicVid &raquo; Installation &raquo; Administrator');
@@ -297,8 +288,6 @@ class InstallController extends Controller
 
         //check whether the storage and API configuration should be saved.
         if ($this->getTask() === self::TASK_STORAGE_SAVE) {
-
-            //get the Encrpytion object to encrypt and decrypt information.
             $encryption = new Encryption($config->ENCRYPTION_METHOD, $config->ENCRYPTION_SECURITY_KEY);
 
             //set the API keys to the configuration.
@@ -319,8 +308,6 @@ class InstallController extends Controller
                 $this->jsonOutput('Die Einstellungen der Speichergrößen sind nicht gültig!', 'max_file_size', 'error');
                 exit;
             } else {
-
-                //get the size limits (file and storage) for images.
                 $storage_limit = floatval($limits['max_storage_size']);
                 $file_limit = floatval($limits['max_file_size']);
 
@@ -371,8 +358,6 @@ class InstallController extends Controller
             $this->jsonOutput('', '', 'info', $config->getUrl());
             exit;
         } else {
-
-            //set the values for the template tags / placeholders on CitoEngine and load the view.
             $cito = CitoEngine::getInstance();
             $cito->setValue('BODY_ID', 'install-view');
             $cito->setValue('PAGE_TITLE', 'PicVid &raquo; Installation &raquo; Speicher und API');

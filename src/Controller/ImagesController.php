@@ -178,8 +178,6 @@ class ImagesController extends Controller
 
             //check whether an Image Entity is available.
             if ($image instanceof Image) {
-
-                //get some information about the Image Entity.
                 $imageInfo = [];
                 $imageSize = getimagesize($image->getImagePath(), $imageInfo);
 

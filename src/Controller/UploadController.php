@@ -89,11 +89,7 @@ class UploadController extends Controller
 
         //run through all images of the upload.
         foreach ($_FILES['image-upload']['error'] as $key => $error) {
-
-            //check if the upload was successful for this image.
             if ($error == UPLOAD_ERR_OK) {
-
-                //get the filesize and filetype from upload.
                 $image = new Image();
                 $image->size = $_FILES['image-upload']['size'][$key];
                 $image->type = $_FILES['image-upload']['type'][$key];
@@ -124,14 +120,10 @@ class UploadController extends Controller
 
                 //move the file to the image directory.
                 if (move_uploaded_file($_FILES['image-upload']['tmp_name'][$key], $config->getPathImage().$filename)) {
-
-                    //get the User Entity from Session.
                     $user = (new SessionService())->getUser();
 
                     //check whether the User Entity could be determined.
                     if ($user instanceof User) {
-
-                        //load the Image Entity from POST.
                         $image->loadFromPOST('image_');
 
                         //remove all HTML tags from description and title.

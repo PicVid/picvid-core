@@ -111,11 +111,7 @@ class ProfileController extends Controller
 
         //run through all files to delete or backup these files.
         foreach ($unusedFiles as $unusedFile) {
-
-            //chech if a backup should be created or the files should be deleted.
             if ($mode !== 'delete') {
-
-                //create the backup directory if it doesn't exist.
                 if (!file_exists($backupPath)) {
                     mkdir($backupPath);
                 }
@@ -123,8 +119,6 @@ class ProfileController extends Controller
                 //move the unused file from the image directory to the backup directory.
                 rename($config->getPathImage().$unusedFile, $backupPath.$unusedFile);
             } else {
-
-                //delete the unused file on the image directory.
                 unlink($config->getPathImage().$unusedFile);
             }
         }
@@ -160,11 +154,7 @@ class ProfileController extends Controller
 
             //run through all Image Entities to remove.
             foreach ($images as $image) {
-
-                //check whether a Image Entity is available.
                 if ($image instanceof Image) {
-
-                    //delete the connection to the User Entity and the Image Entity itself.
                     if ($userImageTableMapper->delete($user, $image) && $imageMapper->delete($image)) {
                         unlink($image->getImagePath());
                     }
@@ -242,8 +232,6 @@ class ProfileController extends Controller
 
         //check whether a password is available.
         if (trim($user->password) !== '') {
-
-            //check if the password of the User Entity is valid.
             if (!(new IsValidPassword())->isSatisfiedBy($user)) {
                 $this->jsonOutput('Das Passwort ist nicht gültig!', 'profile_password', 'error');
                 return false;
@@ -253,8 +241,6 @@ class ProfileController extends Controller
             $hash_service = new HashService();
             $hash_service->hash($user);
         } else {
-
-            //get the User Entity from database to set password information.
             $userDB = UserRepository::build()->findByID($user->id);
 
             //check if the User Entity was found.
@@ -263,11 +249,7 @@ class ProfileController extends Controller
 
                 //check if the ID is the same.
                 if ($user->id == $userDB->id) {
-
-                    //check if the email was changed on the User Entity.
                     if ($userDB->email !== $user->email) {
-
-                        //check if the email of the User Entity already exists.
                         if (!(new IsUniqueEmail())->isSatisfiedBy($user)) {
                             $this->jsonOutput('Die E-Mail ist bereits vorhanden!', 'profile_email', 'error');
                             return false;
@@ -276,8 +258,6 @@ class ProfileController extends Controller
 
                     //check if the username was changed on the User Entity.
                     if ($userDB->username !== $user->username) {
-
-                        //check if the username of the User Entity already exists.
                         if (!(new IsUniqueUsername())->isSatisfiedBy($user)) {
                             $this->jsonOutput('Der Benutzername ist bereits vorhanden!', 'profile_username', 'error');
                             return false;
@@ -296,8 +276,6 @@ class ProfileController extends Controller
 
         //check if the User Entity was saved successfully.
         if ($user_mapper->save($user)) {
-
-            //set the new username of the User Entity to the Session.
             $_SESSION['user_username'] = $user->username;
 
             //output the JSON information and return the state.
@@ -328,14 +306,14 @@ class ProfileController extends Controller
 
         //check if some files are available.
         if (is_array($files)) {
-
-            //filter all directories from the found files.
             $files = array_filter($files, function ($file) use ($config) {
                 return !is_dir($config->getPathImage().$file);
             });
 
             //get all the filenames of the found Image Entities.
-            $databaseFiles = array_map(function($image) { return $image->filename; }, ImageRepository::build()->findAll());
+            $databaseFiles = array_map(function ($image) {
+                return $image->filename;
+            }, ImageRepository::build()->findAll());
 
             //return the difference between the two array (all unused files).
             return array_diff($files, $databaseFiles);
