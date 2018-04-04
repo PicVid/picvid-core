@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ruleset name="PicVid - Code Standard">
+    <description>The PicVid coding standard to check the source code.</description>
+
+    <!-- set the source directory and exlude rules -->
+    <file>./src</file>
+    <exclude-pattern>./src/View</exclude-pattern>
+
+    <!-- set the report settings -->
+    <arg name="report" value="full"/>
+
+    <!-- include the sniffs -->
+    <rule ref="PSR1"/>
+    <rule ref="PSR2"/>
+</ruleset>

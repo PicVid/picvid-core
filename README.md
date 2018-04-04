@@ -13,6 +13,11 @@ Web-Anwendung selbst konnte über einen Backend-Bereich vorgenommen werden.
 Dieses Projekt befindet sich aktuell in der Überarbeitung. In einer neuen Version soll der Funktionsumfang nur auf 
 Bilder beschränkt werden. Diese sollen über PicVid wieder hochgeladen und verwaltet werden können.
 
+## Voraussetzungen
+
+- PHP 7.1 oder PHP 7.2
+- MySQL oder PostgreSQL
+
 ## Frameworks / Libraries
 
 - [Animate.css](https://daneden.github.io/animate.css/)
@@ -50,4 +55,5 @@ Quelltextes) eingesetzt. Die dabei automatisch erstellten Informationen finden S
 **PHPUnit**: `"vendor/bin/phpunit" -c phpunit.xml`  
 **PhpMetrics**: `"vendor/bin/phpmetrics" --config=phpmetrics.json ./src`  
 **phpDox**: `"vendor/bin/phpdox" -f phpdox.xml`  
-**PHPLOC**: `"vendor/bin/phploc" --log-xml docs/logs/phploc.xml ./src`
+**PHPLOC**: `"vendor/bin/phploc" --log-xml docs/logs/phploc.xml ./src`  
+**PHPCS**: `"vendor/bin/phpcs" --standard=phpcs.xml`
