@@ -67,7 +67,7 @@ class ImageRepository extends Repository
         }
 
         //create the condition and return the result.
-        $condition = 'id IN (SELECT image_id FROM user_image WHERE user_id = '.$user->id.')';
+        $condition = 'id IN (SELECT images_id FROM users_images WHERE users_id = '.$user->id.')';
         return $this->dataMapper->find($condition);
     }
 }

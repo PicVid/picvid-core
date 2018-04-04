@@ -23,7 +23,7 @@ class ImageMapper extends DataMapper
      */
     public function __construct(\PDO $pdo)
     {
-        $this->table = 'image';
+        $this->table = 'images';
         $this->pdo = $pdo;
     }
 

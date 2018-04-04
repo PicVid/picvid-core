@@ -40,12 +40,12 @@ class UserImageTableMapper extends TableMapper
         }
 
         //create the association in database and return the state.
-        $sql = 'INSERT INTO `user_image` (`user_id`, `image_id`) VALUES (:user_id, :image_id);';
+        $sql = 'INSERT INTO users_images (users_id, images_id) VALUES (:users_id, :images_id);';
         $sth = $this->pdo->prepare($sql);
 
         //bind and execute the query and return the state.
-        $sth->bindParam(':user_id', $user->id, \PDO::PARAM_INT);
-        $sth->bindParam(':image_id', $image->id, \PDO::PARAM_INT);
+        $sth->bindParam(':users_id', $user->id, \PDO::PARAM_INT);
+        $sth->bindParam(':images_id', $image->id, \PDO::PARAM_INT);
         return $sth->execute();
     }
 
@@ -63,12 +63,12 @@ class UserImageTableMapper extends TableMapper
         }
 
         //delete the connection in database and return the state.
-        $sql = 'DELETE FROM `user_image` WHERE `user_id` = :user_id AND `image_id` = :image_id;';
+        $sql = 'DELETE FROM users_images WHERE users_id = :users_id AND images_id = :images_id;';
         $sth = $this->pdo->prepare($sql);
 
         //bind and execute the query and return the state.
-        $sth->bindParam(':user_id', $user->id, \PDO::PARAM_INT);
-        $sth->bindParam(':image_id', $image->id, \PDO::PARAM_INT);
+        $sth->bindParam(':users_id', $user->id, \PDO::PARAM_INT);
+        $sth->bindParam(':images_id', $image->id, \PDO::PARAM_INT);
         return $sth->execute();
     }
 
@@ -85,11 +85,11 @@ class UserImageTableMapper extends TableMapper
         }
 
         //delete the connections in database and return the state.
-        $sql = 'DELETE FROM `user_image` WHERE `image_id` = :image_id;';
+        $sql = 'DELETE FROM users_images WHERE images_id = :images_id;';
         $sth = $this->pdo->prepare($sql);
 
         //bind the execute the query and return the state.
-        $sth->bindParam(':image_id', $image->id, \PDO::PARAM_INT);
+        $sth->bindParam(':images_id', $image->id, \PDO::PARAM_INT);
         return $sth->execute();
     }
 
@@ -106,11 +106,11 @@ class UserImageTableMapper extends TableMapper
         }
 
         //delete the connections in database and return the state.
-        $sql = 'DELETE FROM `user_image` WHERE `user_id` = :user_id;';
+        $sql = 'DELETE FROM users_images WHERE users_id = :users_id;';
         $sth = $this->pdo->prepare($sql);
 
         //bind and execute the query and return the state.
-        $sth->bindParam(':user_id', $user->id, \PDO::PARAM_INT);
+        $sth->bindParam(':users_id', $user->id, \PDO::PARAM_INT);
         return $sth->execute();
     }
 }

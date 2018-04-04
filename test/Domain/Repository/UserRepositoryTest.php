@@ -26,7 +26,7 @@ class UserRepositoryTest extends DatabaseTestCase
      */
     public function getDataset() : XmlDataSet
     {
-        return $this->createXMLDataSet(__DIR__ . '/DataSets/user.xml');
+        return $this->createXMLDataSet(__DIR__ . '/DataSets/users.xml');
     }
 
     /**

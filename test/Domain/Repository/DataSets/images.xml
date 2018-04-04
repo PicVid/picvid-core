@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <dataset>
-    <table name="image">
+    <table name="images">
         <column>id</column>
         <column>description</column>
         <column>filename</column>
@@ -17,11 +17,11 @@
         </row>
         <row>
             <value>2</value>
-            <value>Duis bibendum.</value>
-            <value>tempor.jpeg</value>
-            <value>578</value>
-            <value>Sed sagittis.</value>
-            <value>image/jpeg</value>
+            <value>Duis mattis egestas metus.</value>
+            <value>suscipit_nulla.jpeg</value>
+            <value>375</value>
+            <value>In hac habitasse platea dictumst.</value>
+            <value>image/pjpeg</value>
         </row>
     </table>
 </dataset>

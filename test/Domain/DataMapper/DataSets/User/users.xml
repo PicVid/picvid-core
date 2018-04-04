@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <dataset>
-    <table name="user">
+    <table name="users">
         <column>id</column>
         <column>email</column>
         <column>firstname</column>
@@ -15,10 +15,10 @@
         </row>
         <row>
             <value>2</value>
-            <value>teyrl3@github.io</value>
-            <value>Theodore</value>
-            <value>Eyrl</value>
-            <value>teyrl3</value>
+            <value>ftrayes1@answers.com</value>
+            <value>Fleurette</value>
+            <value>Trayes</value>
+            <value>ftrayes1</value>
         </row>
     </table>
 </dataset>

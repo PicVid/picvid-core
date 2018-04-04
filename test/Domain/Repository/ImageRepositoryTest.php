@@ -25,7 +25,7 @@ class ImageRepositoryTest extends DatabaseTestCase
      */
     public function getDataset() : XmlDataSet
     {
-        return $this->createXMLDataSet(__DIR__ . '/DataSets/image.xml');
+        return $this->createXMLDataSet(__DIR__ . '/DataSets/images.xml');
     }
 
     /**

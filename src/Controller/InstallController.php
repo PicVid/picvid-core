@@ -110,6 +110,7 @@ class InstallController extends Controller
 
             //set the filter for the database information.
             $database_filter = [
+                'database_driver' => FILTER_DEFAULT,
                 'database_host' => FILTER_DEFAULT,
                 'database_port' => FILTER_VALIDATE_INT,
                 'database_name' => FILTER_DEFAULT,
@@ -123,6 +124,12 @@ class InstallController extends Controller
             //check if the information is valid.
             if ($database === false) {
                 $this->jsonOutput('Die Einstellungen der Datenbank sind nicht gültig!', 'database_host', 'error');
+                exit;
+            }
+
+            //check if the database driver is valid.
+            if (!in_array($database['database_driver'], ['mysql', 'pgsql'])) {
+                $this->jsonOutput('Der Triber ist nicht gültig!', 'database_driver', 'error');
                 exit;
             }
 
@@ -151,14 +158,21 @@ class InstallController extends Controller
             }
 
             //set and encrypt the database information.
+            $config->DATABASE_DRIVER = $encryption->encrypt($database['database_driver']);
             $config->DATABASE_HOST = $encryption->encrypt($database['database_host']);
             $config->DATABASE_PORT = $encryption->encrypt($database['database_port']);
             $config->DATABASE_NAME = $encryption->encrypt($database['database_name']);
             $config->DATABASE_USER = $encryption->encrypt($database['database_user']);
             $config->DATABASE_PASS = $encryption->encrypt($database['database_pass']);
 
+            //get the install.sql file depending on the database driver.
+            if ($encryption->decrypt($config->DATABASE_DRIVER) === 'pgsql') {
+                $sqlContent = file_get_contents($config->getPathResource().'install-pgsql.sql');
+            } else {
+                $sqlContent = file_get_contents($config->getPathResource().'install-mysql.sql');
+            }
+
             //parse the install.sql file on the resource folder and get all queries.
-            $sqlContent = file_get_contents($config->getPathResource().'install.sql');
             $sqlContent = trim(preg_replace('/--.*\s/', '', $sqlContent));
             $sqlContent = trim(preg_replace('/\s\s+/', ' ', $sqlContent));
             $sqlQueries = preg_split('/;/', $sqlContent);

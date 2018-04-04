@@ -25,7 +25,7 @@ class UserMapperTest extends DatabaseTestCase
      */
     public function getDataset() : XmlDataSet
     {
-        return $this->createXMLDataSet(__DIR__ . '/DataSets/User/user.xml');
+        return $this->createXMLDataSet(__DIR__ . '/DataSets/User/users.xml');
     }
 
     /**
@@ -59,9 +59,9 @@ class UserMapperTest extends DatabaseTestCase
         $this->assertEquals(3, $userMapper->getInsertID());
 
         //get the actual and expected table.
-        $actualTable = $this->getConnection()->createQueryTable('user', 'SELECT id, email, firstname, lastname, username FROM user');
-        $expectedDataset = __DIR__.'/DataSets/User/user-create.xml';
-        $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('user');
+        $actualTable = $this->getConnection()->createQueryTable('users', 'SELECT id, email, firstname, lastname, username FROM users');
+        $expectedDataset = __DIR__.'/DataSets/User/users-create.xml';
+        $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('users');
 
         //check whether the tables are equal.
         $this->assertTablesEqual($expectedTable, $actualTable);
@@ -94,9 +94,9 @@ class UserMapperTest extends DatabaseTestCase
         $this->assertEquals(0, $userMapper->getInsertID());
 
         //get the actual and expected table.
-        $actualTable = $this->getConnection()->createQueryTable('user', 'SELECT id, email, firstname, lastname, username FROM user');
-        $expectedDataset = __DIR__.'/DataSets/User/user-delete.xml';
-        $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('user');
+        $actualTable = $this->getConnection()->createQueryTable('users', 'SELECT id, email, firstname, lastname, username FROM users');
+        $expectedDataset = __DIR__.'/DataSets/User/users-delete.xml';
+        $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('users');
 
         //check whether the tables are equal.
         $this->assertTablesEqual($expectedTable, $actualTable);
@@ -188,9 +188,9 @@ class UserMapperTest extends DatabaseTestCase
         $this->assertEquals(3, $userMapper->getInsertID());
 
         //get the actual and expected table.
-        $actualTable = $this->getConnection()->createQueryTable('user', 'SELECT id, email, firstname, lastname, username FROM user');
-        $expectedDataset = __DIR__.'/DataSets/User/user-save.xml';
-        $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('user');
+        $actualTable = $this->getConnection()->createQueryTable('users', 'SELECT id, email, firstname, lastname, username FROM users');
+        $expectedDataset = __DIR__.'/DataSets/User/users-save.xml';
+        $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('users');
 
         //check whether the tables are equal.
         $this->assertTablesEqual($expectedTable, $actualTable);
@@ -227,9 +227,9 @@ class UserMapperTest extends DatabaseTestCase
         $this->assertEquals(0, $userMapper->getInsertID());
 
         //get the actual and expected table.
-        $actualTable = $this->getConnection()->createQueryTable('user', 'SELECT id, email, firstname, lastname, username FROM user');
-        $expectedDataset = __DIR__.'/DataSets/User/user-update.xml';
-        $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('user');
+        $actualTable = $this->getConnection()->createQueryTable('users', 'SELECT id, email, firstname, lastname, username FROM users');
+        $expectedDataset = __DIR__.'/DataSets/User/users-update.xml';
+        $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('users');
 
         //check whether the tables are equal.
         $this->assertTablesEqual($expectedTable, $actualTable);

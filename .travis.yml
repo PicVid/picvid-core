@@ -11,9 +11,7 @@ install:
 
 services:
   - mysql
-
-env:
-  - DB=mysql
+  - postgresql
 
 mysql:
   database: picvid_test
@@ -22,8 +20,11 @@ mysql:
 
 before_script:
   - composer install
-  - mysql -e 'create database picvid_test;'
-  - mysql picvid_test < resource/install.sql
+  - mysql -e 'CREATE DATABASE picvid_test;'
+  - mysql picvid_test < resource/install-mysql.sql
+  - psql -c 'CREATE DATABASE picvid_test;' -U postgres
+  - psql -c "CREATE USER root WITH PASSWORD '';" -U postgres
+  - psql -U root -d picvid_test -a -f resource/install-pgsql.sql
 
 script:
   - mkdir -p build/logs

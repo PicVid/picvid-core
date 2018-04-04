@@ -23,7 +23,7 @@ class UserMapper extends DataMapper
      */
     public function __construct(\PDO $pdo)
     {
-        $this->table = 'user';
+        $this->table = 'users';
         $this->pdo = $pdo;
     }
 

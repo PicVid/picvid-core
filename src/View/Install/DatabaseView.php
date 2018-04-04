@@ -17,8 +17,15 @@
             <div class="row justify-content-center">
                 <div class="col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 pb-4 pb-sm-4">
                     <div class="card text-white bg-success">
-                        <h4 class="card-header py-3"><i class="fas fa-database" aria-hidden="true"></i>Datenbank (MySQL)</h4>
+                        <h4 class="card-header py-3"><i class="fas fa-database" aria-hidden="true"></i>Datenbank (MySQL / PostgreSQL)</h4>
                         <div class="card-body bg-dark">
+                            <div class="form-group">
+                                <label class="sr-only" for="database_driver">Treiber:</label>
+                                <select class="form-control" id="database_driver" name="database_driver">
+                                    <option value="mysql">MySQL</option>
+                                    <option value="pgsql">PostgreSQL</option>
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label class="sr-only" for="database_host">Hostname:</label>
                                 <input class="form-control" name="database_host" type="text" placeholder="Hostname" value="{{database-host}}"/>

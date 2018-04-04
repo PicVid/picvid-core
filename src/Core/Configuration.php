@@ -34,6 +34,12 @@ class Configuration
     public $ENCRYPTION_SECURITY_KEY = '';
 
     /**
+     * The driver of the database system.
+     * @var string
+     */
+    public $DATABASE_DRIVER = '';
+
+    /**
      * The hostname to connect with database.
      * @var string
      */

@@ -91,7 +91,7 @@ class Session
     public function destroy(string $session_id) : bool
     {
         //create and set the sql query.
-        $sql = 'DELETE FROM session WHERE id = :id';
+        $sql = 'DELETE FROM sessions WHERE id = :id';
         $sth = $this->pdo->prepare($sql);
 
         //bind the values to the query and return the state.
@@ -108,7 +108,7 @@ class Session
     public function gc(int $maxlifetime) : bool
     {
         //set the statement to cleanup old sessions.
-        $sql = 'DELETE FROM session WHERE access < :expired';
+        $sql = 'DELETE FROM sessions WHERE access < :expired';
         $sth = $this->pdo->prepare($sql);
 
         //get the time for cleanup.
@@ -147,7 +147,7 @@ class Session
     public function read(string $session_id) : string
     {
         //create and set the sql query.
-        $sql = 'SELECT data, user_agent FROM session WHERE id = :id';
+        $sql = 'SELECT data, user_agent FROM sessions WHERE id = :id';
         $sth = $this->pdo->prepare($sql);
 
         //bind the values to the query.
@@ -176,8 +176,15 @@ class Session
     public function write(string $session_id, string $session_data) : bool
     {
         //set the statement to insert or update the session data.
-        $sql = 'INSERT INTO session (id, access, data, user_agent) VALUES (:id, :access, :data, :user_agent) ';
-        $sql .= 'ON DUPLICATE KEY UPDATE access = :access, data = :data, user_agent = :user_agent';
+        if ($this->pdo->getAttribute(\PDO::ATTR_DRIVER_NAME) === 'pgsql') {
+            $sql = 'INSERT INTO sessions (id, access, data, user_agent) VALUES (:id, :access, :data, :user_agent) ';
+            $sql .= 'ON CONFLICT (id) DO UPDATE SET access = :access, data = :data, user_agent = :user_agent';
+        } else {
+            $sql = 'INSERT INTO sessions (id, access, data, user_agent) VALUES (:id, :access, :data, :user_agent) ';
+            $sql .= 'ON DUPLICATE KEY UPDATE access = :access, data = :data, user_agent = :user_agent';
+        }
+
+        //prepare the sql statement.
         $sth = $this->pdo->prepare($sql);
 
         //set the time and user-agent.

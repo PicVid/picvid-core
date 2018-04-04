@@ -25,7 +25,7 @@ class ImageMapperTest extends DatabaseTestCase
      */
     public function getDataset() : XmlDataSet
     {
-        return $this->createXMLDataSet(__DIR__ . '/DataSets/Image/image.xml');
+        return $this->createXMLDataSet(__DIR__ . '/DataSets/Image/images.xml');
     }
 
     /**
@@ -60,9 +60,9 @@ class ImageMapperTest extends DatabaseTestCase
         $this->assertEquals(3, $imageMapper->getInsertID());
 
         //get the actual and expected table.
-        $actualTable = $this->getConnection()->createQueryTable('image', 'SELECT * FROM image');
-        $expectedDataset = __DIR__.'/DataSets/Image/image-create.xml';
-        $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('image');
+        $actualTable = $this->getConnection()->createQueryTable('images', 'SELECT * FROM images');
+        $expectedDataset = __DIR__.'/DataSets/Image/images-create.xml';
+        $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('images');
 
         //check whether the tables are equal.
         $this->assertTablesEqual($expectedTable, $actualTable);
@@ -95,9 +95,9 @@ class ImageMapperTest extends DatabaseTestCase
         $this->assertEquals(0, $imageMapper->getInsertID());
 
         //get the actual and expected table.
-        $actualTable = $this->getConnection()->createQueryTable('image', 'SELECT * FROM image');
-        $expectedDataset = __DIR__.'/DataSets/Image/image-delete.xml';
-        $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('image');
+        $actualTable = $this->getConnection()->createQueryTable('images', 'SELECT * FROM images');
+        $expectedDataset = __DIR__.'/DataSets/Image/images-delete.xml';
+        $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('images');
 
         //check whether the tables are equal.
         $this->assertTablesEqual($expectedTable, $actualTable);
@@ -193,9 +193,9 @@ class ImageMapperTest extends DatabaseTestCase
         $this->assertEquals(3, $imageMapper->getInsertID());
 
         //get the actual and expected table.
-        $actualTable = $this->getConnection()->createQueryTable('image', 'SELECT * FROM image');
-        $expectedDataset = __DIR__.'/DataSets/Image/image-save.xml';
-        $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('image');
+        $actualTable = $this->getConnection()->createQueryTable('images', 'SELECT * FROM images');
+        $expectedDataset = __DIR__.'/DataSets/Image/images-save.xml';
+        $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('images');
 
         //check whether the tables are equal.
         $this->assertTablesEqual($expectedTable, $actualTable);
@@ -233,9 +233,9 @@ class ImageMapperTest extends DatabaseTestCase
         $this->assertEquals(0, $imageMapper->getInsertID());
 
         //get the actual and expected table.
-        $actualTable = $this->getConnection()->createQueryTable('image', 'SELECT * FROM image');
-        $expectedDataset = __DIR__.'/DataSets/Image/image-update.xml';
-        $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('image');
+        $actualTable = $this->getConnection()->createQueryTable('images', 'SELECT * FROM images');
+        $expectedDataset = __DIR__.'/DataSets/Image/images-update.xml';
+        $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('images');
 
         //check whether the tables are equal.
         $this->assertTablesEqual($expectedTable, $actualTable);
