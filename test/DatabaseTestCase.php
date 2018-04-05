@@ -42,7 +42,18 @@ abstract class DatabaseTestCase extends TestCase
 
             //set the PDO connection if not available.
             if (self::$pdo == null) {
-                self::$pdo = new \PDO(getenv('DB_DSN'), getenv('DB_USER'), getenv('DB_PASSWD'));
+
+                //set the data source name depending on test environment.
+                if (getenv('DB') === 'postgres') {
+                    $dsn = getenv('DB_PGSQL_DSN');
+                } elseif (getenv('DB') === 'mysql') {
+                    $dsn = getenv('DB_MYSQL_DSN');
+                } else {
+                    $dsn = '';
+                }
+
+                //create and set the PDO database connection.
+                self::$pdo = new \PDO($dsn, getenv('DB_USER'), getenv('DB_PASSWD'));
             }
 
             //create and set the PHPUnit database connection.
