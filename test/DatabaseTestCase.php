@@ -5,6 +5,7 @@
 namespace PicVid\Test;
 
 use PHPUnit\DbUnit\Database\DefaultConnection;
+use PHPUnit\DbUnit\Operation\Factory;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\DbUnit\TestCaseTrait;
 
@@ -44,12 +45,16 @@ abstract class DatabaseTestCase extends TestCase
             if (self::$pdo == null) {
 
                 //set the data source name depending on test environment.
-                if (getenv('DB') === 'postgres') {
-                    $dsn = getenv('DB_PGSQL_DSN');
-                } elseif (getenv('DB') === 'mysql') {
-                    $dsn = getenv('DB_MYSQL_DSN');
-                } else {
-                    $dsn = '';
+                switch (getenv('DB')) {
+                    case 'postgres':
+                        $dsn = getenv('DB_PGSQL_DSN');
+                        break;
+                    case 'mysql':
+                        $dsn = getenv('DB_MYSQL_DSN');
+                        break;
+                    default:
+                        $dsn = getenv('DB_MYSQL_DSN');
+                        break;
                 }
 
                 //create and set the PDO database connection.
@@ -62,5 +67,13 @@ abstract class DatabaseTestCase extends TestCase
 
         //return the PHPUnit database connection.
         return $this->connection;
+    }
+
+    /**
+     * Returns the database operation executed in test setup.
+     * @return \PHPUnit\DbUnit\Operation\Operation
+     */
+    protected function getSetUpOperation() {
+        return Factory::CLEAN_INSERT ( true );
     }
 }
