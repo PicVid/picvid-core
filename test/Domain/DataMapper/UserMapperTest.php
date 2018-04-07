@@ -59,7 +59,7 @@ class UserMapperTest extends DatabaseTestCase
         $this->assertEquals(3, $userMapper->getInsertID());
 
         //get the actual and expected table.
-        $actualTable = $this->getConnection()->createQueryTable('users', 'SELECT id, email, firstname, lastname, username FROM users');
+        $actualTable = $this->getConnection()->createQueryTable('users', 'SELECT email, firstname, lastname, username FROM users');
         $expectedDataset = __DIR__.'/DataSets/User/users-create.xml';
         $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('users');
 
@@ -94,7 +94,7 @@ class UserMapperTest extends DatabaseTestCase
         $this->assertEquals(0, $userMapper->getInsertID());
 
         //get the actual and expected table.
-        $actualTable = $this->getConnection()->createQueryTable('users', 'SELECT id, email, firstname, lastname, username FROM users');
+        $actualTable = $this->getConnection()->createQueryTable('users', 'SELECT email, firstname, lastname, username FROM users');
         $expectedDataset = __DIR__.'/DataSets/User/users-delete.xml';
         $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('users');
 
@@ -188,7 +188,7 @@ class UserMapperTest extends DatabaseTestCase
         $this->assertEquals(3, $userMapper->getInsertID());
 
         //get the actual and expected table.
-        $actualTable = $this->getConnection()->createQueryTable('users', 'SELECT id, email, firstname, lastname, username FROM users');
+        $actualTable = $this->getConnection()->createQueryTable('users', 'SELECT email, firstname, lastname, username FROM users');
         $expectedDataset = __DIR__.'/DataSets/User/users-save.xml';
         $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('users');
 
@@ -227,7 +227,7 @@ class UserMapperTest extends DatabaseTestCase
         $this->assertEquals(0, $userMapper->getInsertID());
 
         //get the actual and expected table.
-        $actualTable = $this->getConnection()->createQueryTable('users', 'SELECT id, email, firstname, lastname, username FROM users');
+        $actualTable = $this->getConnection()->createQueryTable('users', 'SELECT email, firstname, lastname, username FROM users');
         $expectedDataset = __DIR__.'/DataSets/User/users-update.xml';
         $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('users');
 

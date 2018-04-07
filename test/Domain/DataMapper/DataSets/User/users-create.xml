@@ -1,27 +1,23 @@
 <?xml version="1.0" ?>
 <dataset>
     <table name="users">
-        <column>id</column>
         <column>email</column>
         <column>firstname</column>
         <column>lastname</column>
         <column>username</column>
         <row>
-            <value>1</value>
             <value>tmoxon0@buzzfeed.com</value>
             <value>Tim</value>
             <value>Moxon</value>
             <value>tmoxon0</value>
         </row>
         <row>
-            <value>2</value>
             <value>ftrayes1@answers.com</value>
             <value>Fleurette</value>
             <value>Trayes</value>
             <value>ftrayes1</value>
         </row>
         <row>
-            <value>3</value>
             <value>eknappett2@prnewswire.com</value>
             <value>Elsworth</value>
             <value>Knappett</value>

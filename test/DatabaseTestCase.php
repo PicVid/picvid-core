@@ -74,6 +74,14 @@ abstract class DatabaseTestCase extends TestCase
      * @return \PHPUnit\DbUnit\Operation\Operation
      */
     protected function getSetUpOperation() {
+
+        //reset the sequences (on PostgreSQL).
+        if (self::$pdo->getAttribute(\PDO::ATTR_DRIVER_NAME) === 'pgsql') {
+            self::$pdo->exec("ALTER SEQUENCE users_id_seq RESTART WITH 1;");
+            self::$pdo->exec("ALTER SEQUENCE images_id_seq RESTART WITH 1;");
+        }
+
+        //enable truncate cascades (needed for PostgreSQL).
         return Factory::CLEAN_INSERT ( true );
     }
 }

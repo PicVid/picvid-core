@@ -60,7 +60,7 @@ class ImageMapperTest extends DatabaseTestCase
         $this->assertEquals(3, $imageMapper->getInsertID());
 
         //get the actual and expected table.
-        $actualTable = $this->getConnection()->createQueryTable('images', 'SELECT * FROM images');
+        $actualTable = $this->getConnection()->createQueryTable('images', 'SELECT description, filename, size, title, type FROM images');
         $expectedDataset = __DIR__.'/DataSets/Image/images-create.xml';
         $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('images');
 
@@ -95,7 +95,7 @@ class ImageMapperTest extends DatabaseTestCase
         $this->assertEquals(0, $imageMapper->getInsertID());
 
         //get the actual and expected table.
-        $actualTable = $this->getConnection()->createQueryTable('images', 'SELECT * FROM images');
+        $actualTable = $this->getConnection()->createQueryTable('images', 'SELECT description, filename, size, title, type FROM images');
         $expectedDataset = __DIR__.'/DataSets/Image/images-delete.xml';
         $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('images');
 
@@ -193,7 +193,7 @@ class ImageMapperTest extends DatabaseTestCase
         $this->assertEquals(3, $imageMapper->getInsertID());
 
         //get the actual and expected table.
-        $actualTable = $this->getConnection()->createQueryTable('images', 'SELECT * FROM images');
+        $actualTable = $this->getConnection()->createQueryTable('images', 'SELECT description, filename, size, title, type FROM images');
         $expectedDataset = __DIR__.'/DataSets/Image/images-save.xml';
         $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('images');
 
@@ -233,7 +233,7 @@ class ImageMapperTest extends DatabaseTestCase
         $this->assertEquals(0, $imageMapper->getInsertID());
 
         //get the actual and expected table.
-        $actualTable = $this->getConnection()->createQueryTable('images', 'SELECT * FROM images');
+        $actualTable = $this->getConnection()->createQueryTable('images', 'SELECT description, filename, size, title, type FROM images');
         $expectedDataset = __DIR__.'/DataSets/Image/images-update.xml';
         $expectedTable = $this->createXMLDataSet($expectedDataset)->getTable('images');
 
