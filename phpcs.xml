@@ -9,7 +9,6 @@
     <!-- set the report settings -->
     <arg name="report" value="full"/>
 
-    <!-- include the sniffs -->
-    <rule ref="PSR1"/>
+    <!-- include the sniffs (PSR1 is referenced in PSR2). -->
     <rule ref="PSR2"/>
 </ruleset>

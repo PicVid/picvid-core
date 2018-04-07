@@ -80,7 +80,6 @@ class Database
     public function setConnection(string $driver, string $name, string $hostname, string $username, string $password, int $port) : bool
     {
         try {
-
             //check if the driver of the database system is available.
             if (!in_array($driver, \PDO::getAvailableDrivers())) {
                 return false;
