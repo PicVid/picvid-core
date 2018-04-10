@@ -60,20 +60,6 @@
                                 <input type="password" class="form-control" id="confirm-password" name="profile_confirm_password" placeholder="Passwort zur Bestätigung"/>
                             </div>
                         </li>
-                        <li class="list-group-item d-none d-sm-flex align-items-center">
-                            <i class="far fa-chart-bar d-none d-md-inline pl-3 mr-1" aria-hidden="true"></i>
-                            <span class="pl-2">Bilder: {{count-images}}</span>
-                            <i class="fas fa-exclamation-triangle d-none d-md-inline pl-3 ml-2 mr-0" aria-hidden="true"></i>
-                            <span class="pl-2 mr-4">Dateien: {{count-unused-files}}</span>
-                            <a class="btn btn-sm btn-danger mr-1" href="{{URL}}profile/clean-images/delete">
-                                <i class="fas fa-trash" aria-hidden="true"></i>
-                                <span>Löschen</span>
-                            </a>
-                            <a class="btn btn-sm btn-success" href="{{URL}}profile/clean-images/backup">
-                                <i class="far fa-hdd" aria-hidden="true"></i>
-                                <span>Backup</span>
-                            </a>
-                        </li>
                     </ul>
                     <input type="hidden" name="profile_id" value="{{user_id}}"/>
                     <div class="card-body">
