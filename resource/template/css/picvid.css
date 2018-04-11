@@ -252,6 +252,14 @@ body#install-view div.card {
 body#install-view thead th {
   border: 0; }
 
+/** styles for the settings view. */
+body#settings-view div.tab-content h5 i {
+  margin-right: 10px; }
+body#settings-view div.tab-content div.card {
+  border: 0; }
+body#settings-view a.nav-link {
+  color: #495057; }
+
 /** styles for the navigation. */
 nav .dropdown-toggle::after {
   margin-left: 10px; }

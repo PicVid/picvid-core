@@ -340,6 +340,21 @@ body#install-view {
   }
 }
 
+/** styles for the settings view. */
+body#settings-view {
+  & div.tab-content {
+    & h5 i {
+      margin-right: 10px;
+    }
+    & div.card {
+      border: 0;
+    }
+  }
+  & a.nav-link {
+    color: #495057;
+  }
+}
+
 /** styles for the navigation. */
 nav {
   .dropdown-toggle {
