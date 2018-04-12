@@ -16,10 +16,6 @@
                 <i class="fas fa-key" aria-hidden="true"></i>
                 <span>Registrieren</span>
             </a>
-            <a class="btn btn-primary btn-sm-block mx-md-2 my-3" href="{{URL}}info">
-                <i class="fas fa-info-circle" aria-hidden="true"></i>
-                <span>Info</span>
-            </a>
         </div>
     </div>
 </div>
