@@ -20,17 +20,19 @@ $images = \PicVid\Domain\Repository\ImageRepository::build()->findAll();
 
                 //check whether a Image Entity is available.
                 if ($image instanceof \PicVid\Domain\Entity\Image) {
-                    ?>
-                    <div class="img-grid-item my-3">
-                        <img src="<?= $image->getImageURL() ?>"/>
-                        <a class="btn btn-sm btn-success download" href="{{URL}}images/download/<?= $image->id ?>">
-                            <i class="fas fa-download" aria-hidden="true"></i>Download
-                        </a>
-                        <a class="btn btn-sm btn-info info" href="{{URL}}images/info/<?= $image->id ?>">
-                            <i class="fas fa-info" aria-hidden="true"></i>Info
-                        </a>
-                    </div>
-                    <?php
+                    if (file_exists($image->getImagePath())) {
+                        ?>
+                        <div class="img-grid-item my-3">
+                            <img src="<?= $image->getImageURL() ?>"/>
+                            <a class="btn btn-sm btn-success download" href="{{URL}}images/download/<?= $image->id ?>">
+                                <i class="fas fa-download" aria-hidden="true"></i>Download
+                            </a>
+                            <a class="btn btn-sm btn-info info" href="{{URL}}images/info/<?= $image->id ?>">
+                                <i class="fas fa-info" aria-hidden="true"></i>Info
+                            </a>
+                        </div>
+                        <?php
+                    }
                 }
             }
             ?>
@@ -43,17 +45,19 @@ $images = \PicVid\Domain\Repository\ImageRepository::build()->findAll();
 
                 //check whether a Image Entity is available.
                 if ($image instanceof \PicVid\Domain\Entity\Image) {
-                    ?>
-                    <div class="img-grid-item my-3">
-                        <img src="<?= $image->getImageURL() ?>"/>
-                        <a class="btn btn-sm btn-success download" href="{{URL}}images/download/<?= $image->id ?>">
-                            <i class="fas fa-download" aria-hidden="true"></i>Download
-                        </a>
-                        <a class="btn btn-sm btn-info info" href="{{URL}}images/info/<?= $image->id ?>">
-                            <i class="fas fa-info" aria-hidden="true"></i>Info
-                        </a>
-                    </div>
-                    <?php
+                    if (file_exists($image->getImagePath())) {
+                        ?>
+                        <div class="img-grid-item my-3">
+                            <img src="<?= $image->getImageURL() ?>"/>
+                            <a class="btn btn-sm btn-success download" href="{{URL}}images/download/<?= $image->id ?>">
+                                <i class="fas fa-download" aria-hidden="true"></i>Download
+                            </a>
+                            <a class="btn btn-sm btn-info info" href="{{URL}}images/info/<?= $image->id ?>">
+                                <i class="fas fa-info" aria-hidden="true"></i>Info
+                            </a>
+                        </div>
+                        <?php
+                    }
                 }
             }
             ?>
@@ -66,17 +70,19 @@ $images = \PicVid\Domain\Repository\ImageRepository::build()->findAll();
 
                 //check whether a Image Entity is available.
                 if ($image instanceof \PicVid\Domain\Entity\Image) {
-                    ?>
-                    <div class="img-grid-item my-3">
-                        <img src="<?= $image->getImageURL() ?>"/>
-                        <a class="btn btn-sm btn-success download" href="{{URL}}images/download/<?= $image->id ?>">
-                            <i class="fas fa-download" aria-hidden="true"></i>Download
-                        </a>
-                        <a class="btn btn-sm btn-info info" href="{{URL}}images/info/<?= $image->id ?>">
-                            <i class="fas fa-info" aria-hidden="true"></i>Info
-                        </a>
-                    </div>
-                    <?php
+                    if (file_exists($image->getImagePath())) {
+                        ?>
+                        <div class="img-grid-item my-3">
+                            <img src="<?= $image->getImageURL() ?>"/>
+                            <a class="btn btn-sm btn-success download" href="{{URL}}images/download/<?= $image->id ?>">
+                                <i class="fas fa-download" aria-hidden="true"></i>Download
+                            </a>
+                            <a class="btn btn-sm btn-info info" href="{{URL}}images/info/<?= $image->id ?>">
+                                <i class="fas fa-info" aria-hidden="true"></i>Info
+                            </a>
+                        </div>
+                        <?php
+                    }
                 }
             }
             ?>
