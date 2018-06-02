@@ -4,19 +4,17 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/c8946e69e8da6078c00e/maintainability)](https://codeclimate.com/github/PicVid/picvid-core/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/PicVid/picvid-core/badge.svg?branch=master)](https://coveralls.io/github/PicVid/picvid-core?branch=master)
 
-PicVid ist eine Web-Anwendung zur Verwaltung von Bildern und Videos auf dem eigenen Server. Die ursprüngliche Version 
-vom September 2012 wurde in einem Schulprojekt zur Ausbildung (Fachinformatiker für Anwendungsentwicklung) entwickelt. 
-In dieser Version war das Sharing von Bildern und Videos über verschiedene Shortcodes möglich. Auch die Verwaltung der 
-Web-Anwendung selbst konnte über einen Backend-Bereich vorgenommen werden.
-
-## Ausblick
-Dieses Projekt befindet sich aktuell in der Überarbeitung. In einer neuen Version soll der Funktionsumfang nur auf 
-Bilder beschränkt werden. Diese sollen über PicVid wieder hochgeladen und verwaltet werden können.
+PicVid ist eine Web-Anwendung zur Verwaltung von Bildern auf dem eigenen Server. Es können Bilder hochgeladen und
+in einer Übersicht angezeigt werden. Sollten in einem Bild EXIF-Informationen vorhanden sein, können diese ebenfalls
+angezeigt werden.
 
 ## Voraussetzungen
 
 - PHP 7.1 oder PHP 7.2
 - MySQL oder PostgreSQL
+
+PicVid kann auch über Docker eingerichtet werden. Weitere Informationen findest du in 
+[diesem Repository](https://github.com/PicVid/picvid-docker).
 
 ## Frameworks / Libraries
 
@@ -44,7 +42,7 @@ Issue mitgeteilt werden.
 
 ## Dokumentation (Entwicklung)
 Während der Entwicklung werden auch verschiedene Tools zur Erstellung von Metriken und Dokumentationen (auf Basis des
-Quelltextes) eingesetzt. Die dabei automatisch erstellten Informationen finden Sie nachfolgend:
+Quellcodes) eingesetzt. Die dabei automatisch erstellten Informationen findest du nachfolgend:
 
 - [Website](https://picvid.de)
 - [PhpMetrics](https://picvid.de/docs/phpmetrics)
