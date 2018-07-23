@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/0Ew9b1K.png" height="100"/><br/>
+<img src="https://github.com/PicVid/picvid-core/raw/master/resource/template/img/picvid-logo.png" height="100"/><br/>
 
 [![Build Status](https://travis-ci.org/PicVid/picvid-core.svg?branch=master)](https://travis-ci.org/PicVid/picvid-core)
 [![Maintainability](https://api.codeclimate.com/v1/badges/c8946e69e8da6078c00e/maintainability)](https://codeclimate.com/github/PicVid/picvid-core/maintainability)
