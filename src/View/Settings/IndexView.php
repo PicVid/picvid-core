@@ -32,13 +32,13 @@
                             <div class="col-6">
                                 <h5><i class="fab fa-github" aria-hidden="true"></i>GitHub</h5>
                                 <p>
-                                    Der Quellcode steht auf <a href="https://github.com/PicVid">GitHub zur Verfügung</a>. Dort werden auch weitere Projekte und
+                                    Der Quellcode steht auf <a href="https://github.com/PicVid" target="_blank">GitHub zur Verfügung</a>. Dort werden auch weitere Projekte und
                                     Informationen zu PicVid verwaltet. Auf GitHub gibt es außerdem eine Konfiguration
-                                    für die <a href="https://github.com/PicVid/picvid-docker">Installation / Einrichtung in Docker</a>.
+                                    für die <a href="https://github.com/PicVid/picvid-docker" target="_blank">Installation / Einrichtung in Docker</a>.
                                 </p>
                                 <h5><i class="fas fa-globe" aria-hidden="true"></i>Website</h5>
                                 <p>
-                                    Auf der <a href="https://picvid.de">Website</a> werden weitere Informationen und Resourcen zur Verfügung gestellt.
+                                    Auf der <a href="https://picvid.de" target="_blank">Website</a> werden weitere Informationen und Resourcen zur Verfügung gestellt.
                                 </p>
                             </div>
                             <div class="col-6">
@@ -48,24 +48,24 @@
                                     Frameworks werden eingesetzt:
                                 </p>
                                 <p>
-                                    <a href="https://daneden.github.io/animate.css/"><strong>Animate.css:</strong></a>
+                                    <a href="https://daneden.github.io/animate.css/" target="_blank"><strong>Animate.css:</strong></a>
                                     Mit diesem CSS-Framework werden verschiedene Animationen realisiert.
                                 </p>
                                 <p>
-                                    <a href="https://getbootstrap.com/"><strong>Bootstrap 4:</strong></a>
+                                    <a href="https://getbootstrap.com/" target="_blank"><strong>Bootstrap 4:</strong></a>
                                     Das grundlegende Design von PicVid wurde mit Bootstrap 4 realisiert. Durch eigene
                                     Anpassungen entsteht so ein individuelles aber sehr flexibles Design. Durch
                                     Bootstrap 4 wird so auch das responsive Design ermöglicht so dass PicVid auch auf
                                     den verschiedensten Endgeräten verwendet werden kann.
                                 </p>
                                 <p>
-                                    <a href="http://www.dropzonejs.com/"><strong>Dropzone.js:</strong></a>
+                                    <a href="http://www.dropzonejs.com/" target="_blank"><strong>Dropzone.js:</strong></a>
                                     Der Upload von Bildern wird im Frontend durch das Framework Dropzone.js unterstützt.
                                     Durch das Framework besteht auch die Möglichkeit mehrere Bilder hochzuladen und
                                     verschiedene Informationen darzustellen.
                                 </p>
                                 <p>
-                                    <a href="https://fontawesome.com/"><strong>FontAwesome 5:</strong></a>
+                                    <a href="https://fontawesome.com/" target="_blank"><strong>FontAwesome 5:</strong></a>
                                     FontAwesome ist eine Symbol-Schriftart. So können  verschiedene Icons über eine
                                     Schriftart verwendet werden.
                                 </p>
