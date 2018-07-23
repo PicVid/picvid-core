@@ -30,6 +30,13 @@
                     <div class="card">
                         <div class="card-body row">
                             <div class="col-6">
+                                <h5>PicVid</h5>
+                                <p>
+                                    <img alt="Logo - PicVid" class="logo" height="50" src="{{URL}}resource/template/img/picvid-logo.png"/>
+                                    PicVid ist eine Web-Anwendung zur Verwaltung von Bildern auf dem eigenen Server. Es
+                                    können Bilder hochgeladen und in einer Übersicht angezeigt werden. Sollten in einem
+                                    Bild EXIF-Informationen vorhanden sein, können diese ebenfalls angezeigt werden.
+                                </p>
                                 <h5><i class="fab fa-github" aria-hidden="true"></i>GitHub</h5>
                                 <p>
                                     Der Quellcode steht auf <a href="https://github.com/PicVid" target="_blank">GitHub zur Verfügung</a>. Dort werden auch weitere Projekte und

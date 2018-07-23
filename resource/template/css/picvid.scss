@@ -348,6 +348,11 @@ body#settings-view {
     }
     & div.card {
       border: 0;
+
+      & p img.logo {
+        float: left;
+        margin: 10px 15px 0 0;
+      }
     }
   }
   & ul.nav-tabs a.nav-link {
