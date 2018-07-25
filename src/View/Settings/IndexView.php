@@ -30,7 +30,6 @@
                     <div class="card">
                         <div class="card-body row">
                             <div class="col-6">
-                                <h5>PicVid</h5>
                                 <p>
                                     <img alt="Logo - PicVid" class="logo" height="50" src="{{URL}}resource/template/img/picvid-logo.png"/>
                                     PicVid ist eine Web-Anwendung zur Verwaltung von Bildern auf dem eigenen Server. Es
